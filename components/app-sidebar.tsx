@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Users, Calendar, Settings, LogOut } from "lucide-react"
+import { Home, Users, Calendar, Settings, LogOut, PanelLeftClose, PanelLeft } from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -12,7 +12,9 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
+import { Button } from "@/components/ui/button"
 
 const items = [
   {
@@ -38,14 +40,21 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const { toggleSidebar, state } = useSidebar()
+  
   return (
-    <Sidebar variant="inset">
+    <Sidebar variant="inset" collapsible="icon">
       <SidebarHeader>
-        <div className="flex items-center gap-2 px-4 py-2">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <span className="text-sm font-bold">FC</span>
+        <div className="flex items-center justify-between gap-2 py-2">
+          <div className="flex items-center gap-2">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+              <span className="text-sm font-bold group-data-[collapsible=icon]:text-xs">FC</span>
+            </div>
+            <span className="font-semibold group-data-[collapsible=icon]:hidden">FlashCareAI</span>
           </div>
-          <span className="font-semibold">FlashCareAI</span>
+          <Button variant="ghost" size="icon" className="h-7 w-7" onClick={toggleSidebar}>
+            <PanelLeftClose className="h-4 w-4" />
+          </Button>
         </div>
       </SidebarHeader>
       <SidebarContent>

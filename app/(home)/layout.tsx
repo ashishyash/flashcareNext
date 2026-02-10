@@ -14,7 +14,6 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
       <AppSidebar />
       <SidebarInset className="flex flex-col h-screen">
         <header className=" flex items-center h-16 bg-primary border-b border-gray-200 sticky top-0 z-10 shadow-sm">
-          <SidebarTrigger className="w-8" />
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center">
@@ -36,7 +35,7 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
             </div>
           </div>
         </header>
-        <main className="flex-1 overflow-auto">{children}</main>
+        <div className="flex-1 overflow-auto ">{children}</div>
       </SidebarInset>
     </SidebarProvider>
   );
