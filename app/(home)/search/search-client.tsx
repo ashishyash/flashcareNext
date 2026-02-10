@@ -1,11 +1,36 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
+import searchFilters from "@/data/search-filters.json";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export const SearchClient = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  const [filters, setFilters] = useState({
+    location: searchParams.get('location') || '100',
+    specialization: searchParams.get('specialization') || 'icu',
+    experience: searchParams.get('experience') || '5+',
+    availability: searchParams.get('availability') || 'immediate'
+  });
+
+  useEffect(() => {
+    const params = new URLSearchParams(filters);
+    router.replace(`/search?${params.toString()}`);
+  }, []);
+
+  const handleSubmit = () => {
+    const params = new URLSearchParams(filters);
+    router.push(`/search?${params.toString()}`);
+  };
+
   return (
-    <div className="flex gap-6 p-4">
-      <div className="w-80 flex-shrink-0">
+   <div className="w-full flex-shrink-0 group-data-[collapsible=icon]:hidden">
         <Card>
           <CardHeader>
             <CardTitle>Search Filters</CardTitle>
@@ -13,68 +38,65 @@ export const SearchClient = () => {
           <CardContent className="space-y-4">
             <div>
               <Label htmlFor="location">Location</Label>
-              <Select defaultValue="100">
+              <Select value={filters.location} onValueChange={(value) => setFilters({...filters, location: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select location" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="50">Within 50 miles</SelectItem>
-                  <SelectItem value="100">Within 100 miles</SelectItem>
-                  <SelectItem value="200">Within 200 miles</SelectItem>
+                  {searchFilters.location.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
             
             <div>
               <Label htmlFor="specialization">Specialization</Label>
-              <Select defaultValue="icu">
+              <Select value={filters.specialization} onValueChange={(value) => setFilters({...filters, specialization: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select specialization" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="icu">ICU</SelectItem>
-                  <SelectItem value="emergency">Emergency</SelectItem>
-                  <SelectItem value="med-surg">Med-Surg</SelectItem>
-                  <SelectItem value="pediatric">Pediatric</SelectItem>
+                  {searchFilters.specialization.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
             
             <div>
               <Label htmlFor="experience">Experience</Label>
-              <Select defaultValue="5+">
+              <Select value={filters.experience} onValueChange={(value) => setFilters({...filters, experience: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select experience" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="1+">1+ years</SelectItem>
-                  <SelectItem value="3+">3+ years</SelectItem>
-                  <SelectItem value="5+">5+ years</SelectItem>
-                  <SelectItem value="10+">10+ years</SelectItem>
+                  {searchFilters.experience.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
             
             <div>
               <Label htmlFor="availability">Availability</Label>
-              <Select defaultValue="immediate">
+              <Select value={filters.availability} onValueChange={(value) => setFilters({...filters, availability: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select availability" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="immediate">Immediate (24hrs)</SelectItem>
-                  <SelectItem value="week">Within a week</SelectItem>
-                  <SelectItem value="month">Within a month</SelectItem>
+                  {searchFilters.availability.map((item) => (
+                    <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>
+                  ))}
                 </SelectContent>
               </Select>
             </div>
+            
+            <Button onClick={handleSubmit} className="w-full bg-cyan-600 hover:bg-cyan-700">
+              Apply Filters
+            </Button>
           </CardContent>
         </Card>
       </div>
-      
-      <div className="flex-1">
-        <div className="p-4">Search results will appear here</div>
-      </div>
-    </div>
   );
 };

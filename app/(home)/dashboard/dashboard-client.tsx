@@ -31,7 +31,15 @@ interface Unit {
   color: string;
   bg: string;
   border: string;
+  barColor?: string;
 }
+
+const getBarColor = (color: string): string => {
+  if (color.includes('red')) return '#dc2626';
+  if (color.includes('amber')) return '#d97706';
+  if (color.includes('green')) return '#16a34a';
+  return '#dc2626';
+};
 
 interface Activity_Item {
   time: string;
@@ -47,7 +55,7 @@ interface DashboardState {
 export default function DashboardClient(): JSX.Element {
   const [state, setState] = useState<DashboardState>({
     elapsedTime: "2 hours ago",
-    countdown: 720,
+    countdown: 120,
     seconds: 0,
   });
 
@@ -125,7 +133,7 @@ export default function DashboardClient(): JSX.Element {
             const Icon = metric.icon;
             return (
               <Card key={index} className="hover:shadow-md transition">
-                <CardContent className="p-6">
+                <CardContent className="p-2">
                   <div className="flex items-center justify-between mb-3">
                     <div className={`${metric.bg} p-3 rounded-lg`}>
                       <Icon className={`w-6 h-6 ${metric.color}`} />
@@ -166,10 +174,13 @@ export default function DashboardClient(): JSX.Element {
                         {unit.status}
                       </div>
                     </div>
-                    <div className="mt-3 bg-white rounded-full h-2 overflow-hidden">
+                    <div className="mt-3 bg-gray-200 rounded-full h-2 overflow-hidden">
                       <div
-                        className={`h-full ${unit.color.replace("text-", "bg-")}`}
-                        style={{ width: `${unit.staffed}%` }}
+                        className="h-full transition-all"
+                        style={{ 
+                          width: `${unit.staffed}%`,
+                          backgroundColor: getBarColor(unit.color)
+                        }}
                       />
                     </div>
                   </div>
@@ -203,7 +214,7 @@ export default function DashboardClient(): JSX.Element {
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
               <Button onClick={search} className="bg-cyan-600 hover:bg-cyan-700 text-white">
                 <Users className="w-5 h-5 mr-2" />
                 Find Nurses

@@ -1,7 +1,7 @@
-import { SearchClient } from "./search-client"
+
 export const NurseSearchPage = () => {
   return (
-   <SearchClient/>
+   <div>search result</div>
   )
 }
 export default NurseSearchPage;
