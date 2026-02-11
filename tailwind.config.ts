@@ -6,6 +6,21 @@ const config = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './data/**/*.{json}',
+  ],
+  safelist: [
+    'bg-red-100',
+    'bg-red-600',
+    'bg-amber-100',
+    'bg-amber-600',
+    'bg-green-100',
+    'bg-green-600',
+    'text-red-600',
+    'text-amber-600',
+    'text-green-600',
+    'border-red-300',
+    'border-amber-300',
+    'border-green-300',
   ],
   theme: {
   	extend: {

@@ -159,7 +159,7 @@ export default function DashboardClient(): JSX.Element {
                 {units.map((unit, index) => (
                   <div
                     key={index}
-                    className={`border-l-4 ${unit.border} ${unit.bg} rounded-r-lg p-4`}
+                    className={`border-l-4 ${unit.border}  rounded-r-lg p-4`}
                   >
                     <div className="flex items-center justify-between">
                       <div>

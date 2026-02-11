@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Nurse } from "./search.constant";
+import { NurseDetailDialog } from "./nurse-detail-dialog";
 
 
 interface NursesTableProps {
@@ -33,22 +34,18 @@ export function SearchWrapper({
 }: NursesTableProps) {
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set());
   const [sortBy, setSortBy] = useState<string>("name");
-  const [filterSpecialty, setFilterSpecialty] = useState<string>("all");
   const [filterAvailability, setFilterAvailability] = useState<string>("all");
+  const [selectedNurse, setSelectedNurse] = useState<Nurse | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const uniqueSpecialties = useMemo(
-    () => Array.from(new Set(nurses.map((n) => n.specialty))).sort(),
-    [nurses]
-  );
 
   const filteredAndSortedNurses = useMemo(() => {
     let filtered = nurses.filter((nurse) => {
-      const specialtyMatch =
-        filterSpecialty === "all" || nurse.specialty === filterSpecialty;
+ 
       const availabilityMatch =
         filterAvailability === "all" ||
         nurse.availability_status === filterAvailability;
-      return specialtyMatch && availabilityMatch;
+      return  availabilityMatch;
     });
 
     return filtered.sort((a, b) => {
@@ -67,7 +64,7 @@ export function SearchWrapper({
           return 0;
       }
     });
-  }, [nurses, sortBy, filterSpecialty, filterAvailability]);
+  }, [nurses, sortBy, filterAvailability]);
 
   const checkedNurses = useMemo(
     () => filteredAndSortedNurses.filter((n) => checkedIds.has(n.id)),
@@ -112,20 +109,30 @@ export function SearchWrapper({
     URL.revokeObjectURL(url);
   };
 
+  const handleDeploy = (nurse: Nurse) => {
+    console.log('Deploying nurse:', nurse);
+    alert(`Deploying ${nurse.name} to Memorial Hospital`);
+  };
+
+  const handleNurseClick = (nurse: Nurse) => {
+    setSelectedNurse(nurse);
+    setIsDialogOpen(true);
+  };
+
   // Call the callback when checked nurses change
 //   if (onCheckedNursesChange) {
 //     // onCheckedNursesChange(checkedNurses);
 //   }
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-4 p-4">
       <div className="flex flex-wrap items-center gap-4 bg-slate-50 p-4 rounded-lg">
         <div className="flex-1 min-w-[200px]">
-          <label className="text-sm font-medium text-slate-700 block mb-2">
+          <label htmlFor="sort-by" className="text-sm font-medium text-slate-700 block mb-2">
             Sort By
           </label>
           <Select value={sortBy} onValueChange={setSortBy}>
-            <SelectTrigger>
+            <SelectTrigger id="sort-by">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -139,33 +146,14 @@ export function SearchWrapper({
         </div>
 
         <div className="flex-1 min-w-[200px]">
-          <label className="text-sm font-medium text-slate-700 block mb-2">
-            Specialty
-          </label>
-          <Select value={filterSpecialty} onValueChange={setFilterSpecialty}>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Specialties</SelectItem>
-              {uniqueSpecialties.map((specialty) => (
-                <SelectItem key={specialty} value={specialty}>
-                  {specialty}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="flex-1 min-w-[200px]">
-          <label className="text-sm font-medium text-slate-700 block mb-2">
+          <label htmlFor="availability" className="text-sm font-medium text-slate-700 block mb-2">
             Availability
           </label>
           <Select
             value={filterAvailability}
             onValueChange={setFilterAvailability}
           >
-            <SelectTrigger>
+            <SelectTrigger id="availability">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -220,6 +208,7 @@ export function SearchWrapper({
               <TableHead className="text-right">Rate/hr</TableHead>
               <TableHead className="text-right">Rating</TableHead>
               <TableHead>Certifications</TableHead>
+              <TableHead className="text-center">Action</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -244,7 +233,7 @@ export function SearchWrapper({
                     />
                   </div>
                 </TableCell>
-                <TableCell className="font-medium">{nurse.name}</TableCell>
+                <TableCell className="font-medium cursor-pointer text-cyan-600 hover:text-cyan-700" onClick={() => handleNurseClick(nurse)}>{nurse.name}</TableCell>
                 <TableCell className="text-sm">{nurse.credentials}</TableCell>
                 <TableCell className="text-sm">{nurse.specialty}</TableCell>
                 <TableCell className="text-right text-sm">
@@ -295,6 +284,15 @@ export function SearchWrapper({
                     ))}
                   </div>
                 </TableCell>
+                <TableCell className="text-center">
+                  <Button 
+                    size="sm" 
+                    onClick={() => handleDeploy(nurse)}
+                    className="bg-cyan-600 hover:bg-cyan-700"
+                  >
+                    Deploy
+                  </Button>
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -328,6 +326,13 @@ export function SearchWrapper({
           </div>
         </div>
       )}
+
+      <NurseDetailDialog 
+        nurse={selectedNurse}
+        open={isDialogOpen}
+        onOpenChange={setIsDialogOpen}
+        onDeploy={handleDeploy}
+      />
     </div>
   );
 }

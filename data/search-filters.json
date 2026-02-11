@@ -6,9 +6,12 @@
   ],
   "specialization": [
     { "value": "icu", "label": "ICU" },
+    { "value": "maternity", "label": "Maternity" },
+    { "value": "dialysis", "label": "Dialysis" },
+    { "value": "general ward", "label": "General Ward" },
     { "value": "emergency", "label": "Emergency" },
-    { "value": "med-surg", "label": "Med-Surg" },
-    { "value": "pediatric", "label": "Pediatric" }
+    { "value": "oncology", "label": "Oncology" },
+    { "value": "nicu", "label": "NICU" }
   ],
   "experience": [
     { "value": "1+", "label": "1+ years" },
