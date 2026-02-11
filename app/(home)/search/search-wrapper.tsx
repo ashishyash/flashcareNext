@@ -22,6 +22,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Nurse } from "./search.constant";
 import { NurseDetailDialog } from "./nurse-detail-dialog";
+import { DeploymentDialog } from "./deployment-dialog";
 
 
 interface NursesTableProps {
@@ -37,6 +38,8 @@ export function SearchWrapper({
   const [filterAvailability, setFilterAvailability] = useState<string>("all");
   const [selectedNurse, setSelectedNurse] = useState<Nurse | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [deployingNurses, setDeployingNurses] = useState<Nurse[]>([]);
+  const [isDeploymentOpen, setIsDeploymentOpen] = useState(false);
 
 
   const filteredAndSortedNurses = useMemo(() => {
@@ -96,22 +99,33 @@ export function SearchWrapper({
     handleSelectAll(checkedIds.size !== filteredAndSortedNurses.length);
   };
 
-  const exportCheckedData = () => {
-    const dataStr = JSON.stringify(checkedNurses, null, 2);
-    const dataBlob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = `checked-nurses-${new Date().toISOString().split("T")[0]}.json`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+//   const exportCheckedData = () => {
+//     const dataStr = JSON.stringify(checkedNurses, null, 2);
+//     const dataBlob = new Blob([dataStr], { type: "application/json" });
+//     const url = URL.createObjectURL(dataBlob);
+//     const link = document.createElement("a");
+//     link.href = url;
+//     link.download = `checked-nurses-${new Date().toISOString().split("T")[0]}.json`;
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+//     URL.revokeObjectURL(url);
+//   };
 
   const handleDeploy = (nurse: Nurse) => {
-    console.log('Deploying nurse:', nurse);
-    alert(`Deploying ${nurse.name} to Memorial Hospital`);
+    setDeployingNurses([nurse]);
+    setIsDeploymentOpen(true);
+    setIsDialogOpen(false);
+  };
+
+  const handleBulkDeploy = () => {
+    setDeployingNurses(checkedNurses);
+    setIsDeploymentOpen(true);
+  };
+
+  const handleDeploymentComplete = () => {
+    setCheckedIds(new Set());
+    setIsDeploymentOpen(false);
   };
 
   const handleNurseClick = (nurse: Nurse) => {
@@ -166,11 +180,11 @@ export function SearchWrapper({
 
         <div className="pt-6">
           <Button
-            onClick={exportCheckedData}
+            onClick={handleBulkDeploy}
             disabled={checkedNurses.length === 0}
-            className="w-full"
+            className="w-full bg-cyan-600 hover:bg-cyan-700"
           >
-            Export ({checkedNurses.length})
+            Deploy ({checkedNurses.length})
           </Button>
         </div>
       </div>
@@ -332,6 +346,12 @@ export function SearchWrapper({
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         onDeploy={handleDeploy}
+      />
+      
+      <DeploymentDialog
+        nurses={deployingNurses}
+        open={isDeploymentOpen}
+        onOpenChange={handleDeploymentComplete}
       />
     </div>
   );
