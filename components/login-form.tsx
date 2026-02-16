@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
+import Image from 'next/image'
 
 export function LoginForm() {
   const [email, setEmail] = useState('admin@flashcare.ai')
@@ -46,10 +47,11 @@ export function LoginForm() {
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader className="space-y-2">
-        <CardTitle className="text-2xl">Welcome back</CardTitle>
-        <CardDescription>
-          Enter your credentials to access your account
+      <CardHeader className="space-y-2 items-center">
+        <Image alt='login-icon' src="/assets/icon/login-icon.svg" width={64} height={64} />
+        <CardTitle className="text-2xl">FlashCare AI</CardTitle>
+        <CardDescription className='text-black-400'>
+          Crisis Management & Deployment System
         </CardDescription>
       </CardHeader>
       <CardContent>
