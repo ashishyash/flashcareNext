@@ -3,17 +3,20 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useEffect } from "react";
 import { SearchWrapper } from "./search-wrapper";
-import nursesData from "@/data/nurses.json";
+import { useApiData } from "@/hooks/useApiData";
 import { Nurse } from "./search.constant";
 import { Loader2 } from "lucide-react";
 
 export const NurseSearchPage = () => {
   const searchParams = useSearchParams();
+  const { data: nursesData, loading: apiLoading } = useApiData<Nurse>('nurses');
   const [isLoading, setIsLoading] = useState(false);
   const [displayedNurses, setDisplayedNurses] = useState<Nurse[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
   
   const filteredNurses = useMemo(() => {
+    if (!nursesData || nursesData.length === 0) return [];
+    
     const location = searchParams.get('location') || '100';
     const specialization = searchParams.get('specialization') || 'icu';
     const experience = searchParams.get('experience') || '5+';
@@ -22,7 +25,7 @@ export const NurseSearchPage = () => {
     const locationMiles = Number.parseInt(location);
     const experienceYears = Number.parseInt(experience);
     
-    return (nursesData as Nurse[]).filter((nurse) => {
+    return nursesData.filter((nurse) => {
       const matchesLocation = nurse.distance_miles <= locationMiles;
       const matchesSpecialization = nurse.specialty.toLowerCase() === specialization.toLowerCase();
       const matchesExperience = nurse.experience_years >= experienceYears;
@@ -32,7 +35,7 @@ export const NurseSearchPage = () => {
       
       return matchesLocation && matchesSpecialization && matchesExperience && matchesAvailability;
     });
-  }, [searchParams]);
+  }, [searchParams, nursesData]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -61,7 +64,7 @@ export const NurseSearchPage = () => {
     `Found ${filteredNurses.length} qualified nurses`
   ];
   
-  if (isLoading) {
+  if (isLoading || apiLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
