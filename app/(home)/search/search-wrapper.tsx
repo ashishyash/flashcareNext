@@ -23,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { Nurse } from "./search.constant";
 import { NurseDetailDialog } from "./nurse-detail-dialog";
 import { DeploymentDialog } from "./deployment-dialog";
+import { SearchClient } from "./search-client";
 
 
 interface NursesTableProps {
@@ -188,6 +189,7 @@ export function SearchWrapper({
           </Button>
         </div>
       </div>
+      <SearchClient/>
 
       <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
         <p className="text-sm text-slate-700">

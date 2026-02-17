@@ -13,8 +13,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { usePathname } from "next/navigation"
-import { SearchClient } from "@/app/(home)/search/search-client"
 import Image from "next/image"
 
 const items = [
@@ -51,8 +49,6 @@ const items = [
 ]
 
 export function AppSidebar() {
-  const pathname = usePathname()
-  const isSearchPage = pathname === '/search'
   
   return (
     <Sidebar variant="inset" collapsible="icon">
@@ -87,9 +83,6 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
-         {isSearchPage && (
-          <SearchClient />
-        )}
       </SidebarContent>
       <SidebarFooter>
         <SidebarMenu>

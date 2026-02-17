@@ -5,12 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import searchFilters from "@/data/search-filters.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export const SearchClient = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [isOpen, setIsOpen] = useState(true);
   
   const [filters, setFilters] = useState({
     location: searchParams.get('location') || '100',
@@ -19,10 +21,10 @@ export const SearchClient = () => {
     availability: searchParams.get('availability') || 'immediate'
   });
 
-  useEffect(() => {
-    const params = new URLSearchParams(filters);
-    router.replace(`/search?${params.toString()}`);
-  }, []);
+  // useEffect(() => {
+  //   const params = new URLSearchParams(filters);
+  //   router.replace(`/search?${params.toString()}`);
+  // }, []);
 
   const handleSubmit = () => {
     const params = new URLSearchParams(filters);
@@ -30,14 +32,18 @@ export const SearchClient = () => {
   };
 
   return (
-   <div className="w-full flex-shrink-0 group-data-[collapsible=icon]:hidden">
+   <div className="w-full flex-shrink-0">
         <Card>
-          <CardHeader>
-            <CardTitle>Search Filters</CardTitle>
+          <CardHeader className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+            <div className="flex items-center justify-between">
+              <CardTitle>Search Filters</CardTitle>
+              {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+            </div>
           </CardHeader>
-          <CardContent className="space-y-4">
+          {isOpen && (
+          <CardContent className="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
             <div>
-              <Label htmlFor="location">Location</Label>
+              <Label htmlFor="location" className="text-gray-900">Location</Label>
               <Select value={filters.location} onValueChange={(value) => setFilters({...filters, location: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select location" />
@@ -51,7 +57,7 @@ export const SearchClient = () => {
             </div>
             
             <div>
-              <Label htmlFor="specialization">Specialization</Label>
+              <Label htmlFor="specialization" className="text-gray-900">Specialization</Label>
               <Select value={filters.specialization} onValueChange={(value) => setFilters({...filters, specialization: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select specialization" />
@@ -65,7 +71,7 @@ export const SearchClient = () => {
             </div>
             
             <div>
-              <Label htmlFor="experience">Experience</Label>
+              <Label htmlFor="experience" className="text-gray-900">Experience</Label>
               <Select value={filters.experience} onValueChange={(value) => setFilters({...filters, experience: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select experience" />
@@ -79,7 +85,7 @@ export const SearchClient = () => {
             </div>
             
             <div>
-              <Label htmlFor="availability">Availability</Label>
+              <Label htmlFor="availability" className="text-gray-900">Availability</Label>
               <Select value={filters.availability} onValueChange={(value) => setFilters({...filters, availability: value})}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select availability" />
@@ -92,10 +98,11 @@ export const SearchClient = () => {
               </Select>
             </div>
             
-            <Button onClick={handleSubmit} className="w-full bg-cyan-600 hover:bg-cyan-700">
+            <Button onClick={handleSubmit} className="bg-cyan-600 hover:bg-cyan-700">
               Apply Filters
             </Button>
           </CardContent>
+          )}
         </Card>
       </div>
   );
