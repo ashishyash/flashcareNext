@@ -11,9 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import metricsData from "@/data/metrics.json";
-import unitsData from "@/data/units.json";
-import activitiesData from "@/data/activities.json";
+import { useApiData } from "@/hooks/useApiData";
 import { useRouter } from "next/navigation";
 
 interface Metric {
@@ -25,6 +23,7 @@ interface Metric {
 }
 
 interface Unit {
+  id: number;
   name: string;
   staffed: number;
   status: string;
@@ -32,6 +31,9 @@ interface Unit {
   bg: string;
   border: string;
   barColor?: string;
+  current: number;
+  capacity: number;
+  needed: number;
 }
 
 const getBarColor = (color: string): string => {
@@ -42,6 +44,7 @@ const getBarColor = (color: string): string => {
 };
 
 interface Activity_Item {
+  id: number;
   time: string;
   text: string;
 }
@@ -53,6 +56,10 @@ interface DashboardState {
 }
 
 export default function DashboardClient(): JSX.Element {
+  const { data: metricsData } = useApiData<any>('metrics');
+  const { data: unitsData } = useApiData<Unit>('units');
+  const { data: activitiesData } = useApiData<Activity_Item>('activities');
+  
   const [state, setState] = useState<DashboardState>({
     elapsedTime: "2 hours ago",
     countdown: 120,
@@ -72,6 +79,7 @@ export default function DashboardClient(): JSX.Element {
     return () => clearInterval(timer);
   }, []);
 
+
   const formatCountdown = (minutes: number, seconds: number): string => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
@@ -84,14 +92,14 @@ export default function DashboardClient(): JSX.Element {
     Clock,
   };
 
-  const metrics: Metric[] = metricsData.map(metric => ({
+  const metrics: Metric[] = (metricsData || []).map(metric => ({
     ...metric,
     icon: iconMap[metric.icon as keyof typeof iconMap],
   }));
 
-  const units: Unit[] = unitsData;
+  const units: Unit[] = unitsData || [];
 
-  const activities: Activity_Item[] = activitiesData;
+  const activities: Activity_Item[] = activitiesData || [];
   const search = () => {
     router.push('/search')
   }
@@ -167,7 +175,7 @@ export default function DashboardClient(): JSX.Element {
                           {unit.name}
                         </div>
                         <div className="text-sm text-gray-600 mt-1">
-                          {unit.staffed}% staffed
+                          {(unit.current/ unit.capacity)*100}% staffed
                         </div>
                       </div>
                       <div className={`font-semibold ${unit.color}`}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { CheckCircle2, Clock, Loader2 } from "lucide-react";
@@ -18,25 +18,129 @@ interface DeploymentStep {
   progress?: number;
 }
 
+const updateDashboardData = async (nurses: readonly Nurse[]) => {
+  try {
+    console.log('Starting dashboard update for', nurses.length, 'nurses');
+    const deployedCount = nurses.length;
+    
+    // Update metrics - increment deployed nurses
+    const metricsRes = await fetch('/api/metrics');
+    const metricsData = await metricsRes.json();
+    console.log('Metrics data:', metricsData);
+    
+    if (metricsData.success && metricsData.data) {
+      // Update Deployed count
+      const deployedMetric = metricsData.data.find((m: any) => m.label === 'Deployed');
+      console.log('Found deployed metric:', deployedMetric);
+      
+      if (deployedMetric) {
+        const currentValue = Number.parseInt(deployedMetric.value);
+        const newValue = currentValue + deployedCount;
+        console.log('Updating deployed from', currentValue, 'to', newValue);
+        
+        await fetch(`/api/metrics/${deployedMetric.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ value: String(newValue) })
+        });
+      }
+
+      // Update Nurses Needed count (decrease)
+      const neededMetric = metricsData.data.find((m: any) => m.label === 'Nurses Needed');
+      console.log('Found nurses needed metric:', neededMetric);
+      
+      if (neededMetric) {
+        const currentValue = Number.parseInt(neededMetric.value);
+        const newValue = Math.max(0, currentValue - deployedCount);
+        console.log('Updating nurses needed from', currentValue, 'to', newValue);
+        
+        await fetch(`/api/metrics/${neededMetric.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ value: String(newValue) })
+        });
+      }
+    }
+
+    // Update units - increase staffed percentage based on specialty
+    const unitsRes = await fetch('/api/units');
+    const unitsData = await unitsRes.json();
+    console.log('Units data:', unitsData);
+    
+    if (unitsData.success && unitsData.data) {
+      // Group nurses by specialty
+      const nursesBySpecialty = nurses.reduce((acc, nurse) => {
+        const specialty = nurse.specialty;
+        acc[specialty] = (acc[specialty] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>);
+      
+      console.log('Nurses by specialty:', nursesBySpecialty);
+      
+      // Update each unit based on matching specialty
+      for (const unit of unitsData.data) {
+        const matchingCount = nursesBySpecialty[unit.name] || 0;
+        
+        if (matchingCount > 0) {
+          const newCurrent = Math.min(unit.capacity, unit.current + matchingCount);
+          const newNeeded = Math.max(0, unit.capacity - newCurrent);
+          const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
+          
+          console.log(`Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`);
+          
+          await fetch(`/api/units/${unit.id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+              current: newCurrent,
+              needed: newNeeded,
+              staffed: newStaffed 
+            })
+          });
+        }
+      }
+    }
+
+    // Add activity
+    console.log('Adding activity');
+    const activityRes = await fetch('/api/activities', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+        text: `${deployedCount} nurse${deployedCount > 1 ? 's' : ''} deployed to Memorial Hospital`
+      })
+    });
+    const activityResult = await activityRes.json();
+    console.log('Activity result:', activityResult);
+    
+    console.log('Dashboard update complete');
+  } catch (error) {
+    console.error('Failed to update dashboard:', error);
+  }
+};
+
 export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialogProps) {
   const [steps, setSteps] = useState<DeploymentStep[]>([
     { label: "Generate contracts", status: "complete" },
     { label: "Send to nurses for signature", status: "complete" },
-    { label: "Verify licenses", status: "progress", progress: 80 },
-    { label: "Run background checks", status: "progress", progress: 60 },
+    { label: "Verify licenses", status: "progress", progress: 0 },
+    { label: "Run background checks", status: "progress", progress: 0 },
     { label: "Create HR profiles", status: "pending" },
     { label: "Activate badges", status: "pending" },
   ]);
   const [isComplete, setIsComplete] = useState(false);
+  const hasUpdatedRef = useRef(false);
 
   useEffect(() => {
     if (!open) {
       setIsComplete(false);
+      hasUpdatedRef.current = false;
       setSteps([
         { label: "Generate contracts", status: "complete" },
         { label: "Send to nurses for signature", status: "complete" },
-        { label: "Verify licenses", status: "progress", progress: 80 },
-        { label: "Run background checks", status: "progress", progress: 60 },
+        { label: "Verify licenses", status: "progress", progress: 0 },
+        { label: "Run background checks", status: "progress", progress: 0 },
         { label: "Create HR profiles", status: "pending" },
         { label: "Activate badges", status: "pending" },
       ]);
@@ -62,17 +166,23 @@ export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialo
           }
         }
         
-        const allComplete = updated.every((s) => s.status === "complete");
-        if (allComplete) {
-          setIsComplete(true);
-        }
-        
         return updated;
       });
     }, 200);
 
     return () => clearInterval(interval);
   }, [open]);
+
+  // Separate effect to handle completion
+  useEffect(() => {
+    const allComplete = steps.every((s) => s.status === "complete");
+    if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
+      console.log('Deployment complete, calling updateDashboardData once');
+      setIsComplete(true);
+      hasUpdatedRef.current = true;
+      updateDashboardData(nurses);
+    }
+  }, [steps, isComplete, open, nurses.length]);
 
   if (nurses.length === 0) return null;
 
