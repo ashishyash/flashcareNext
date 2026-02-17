@@ -32,16 +32,25 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    
+
     /* Custom Colors */
     --brand-blue: 214 95% 50%;
     --brand-green: 142 76% 36%;
+    --brand-green1: 168, 86%, 78%;
     --brand-orange: 25 95% 53%;
-    
+
     /* Custom Gradients */
     --gradient-primary: linear-gradient(135deg, #009689 0%, #007595 100%);
-    --gradient-sunset: linear-gradient(135deg, hsl(25 95% 53%) 0%, hsl(340 82% 52%) 100%);
-    --gradient-ocean: linear-gradient(135deg, hsl(214 95% 50%) 0%, hsl(174 71% 45%) 100%);
+    --gradient-sunset: linear-gradient(
+      135deg,
+      hsl(25 95% 53%) 0%,
+      hsl(340 82% 52%) 100%
+    );
+    --gradient-ocean: linear-gradient(
+      135deg,
+      hsl(214 95% 50%) 0%,
+      hsl(174 71% 45%) 100%
+    );
   }
 
   .dark {
@@ -72,16 +81,29 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    
+
     /* Custom Colors - Dark Mode */
     --brand-blue: 214 95% 60%;
     --brand-green: 142 76% 46%;
+    --brand-green1: 168, 86%, 78%;
     --brand-orange: 25 95% 63%;
-    
+
     /* Custom Gradients - Dark Mode */
-    --gradient-primary: linear-gradient(135deg, hsl(174 71% 55%) 0%, hsl(214 95% 60%) 100%);
-    --gradient-sunset: linear-gradient(135deg, hsl(25 95% 63%) 0%, hsl(340 82% 62%) 100%);
-    --gradient-ocean: linear-gradient(135deg, hsl(214 95% 60%) 0%, hsl(174 71% 55%) 100%);
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(174 71% 55%) 0%,
+      hsl(214 95% 60%) 100%
+    );
+    --gradient-sunset: linear-gradient(
+      135deg,
+      hsl(25 95% 63%) 0%,
+      hsl(340 82% 62%) 100%
+    );
+    --gradient-ocean: linear-gradient(
+      135deg,
+      hsl(214 95% 60%) 0%,
+      hsl(174 71% 55%) 100%
+    );
   }
 }
 
@@ -91,5 +113,26 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  [data-sidebar="sidebar"] {
+    color: white;
+  }
+
+  [data-sidebar="sidebar"] [data-sidebar="group-label"],
+  [data-sidebar="sidebar"] [data-sidebar="menu-button"],
+  [data-sidebar="sidebar"] span,
+  [data-sidebar="sidebar"] svg {
+    color: white;
+  }
+
+  [data-sidebar="sidebar"] [data-sidebar="menu-button"]:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-sidebar="sidebar"] [data-sidebar="menu-button"]:hover svg {
+    color: white;
   }
 }

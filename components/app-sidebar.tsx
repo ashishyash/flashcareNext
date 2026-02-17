@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Users, Calendar, Settings, LogOut, PanelLeftClose, PanelLeft, Search } from "lucide-react"
+import { Home, Search, GitBranch, FileCheck, FileText, BarChart3, LogOut} from "lucide-react"
 import {
   Sidebar,
   SidebarContent,
@@ -12,11 +12,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from "@/components/ui/sidebar"
-import { Button } from "@/components/ui/button"
 import { usePathname } from "next/navigation"
 import { SearchClient } from "@/app/(home)/search/search-client"
+import Image from "next/image"
 
 const items = [
   {
@@ -25,41 +24,50 @@ const items = [
     icon: Home,
   },
   {
-    title: "Patients",
-    url: "/patients",
-    icon: Users,
+    title: "Nurse Search",
+    url: "/search",
+    icon: Search,
   },
   {
-    title: "Appointments",
-    url: "/appointments",
-    icon: Calendar,
+    title: "Deployment Pipeline",
+    url: "/deployment",
+    icon: GitBranch,
   },
   {
-    title: "Settings",
-    url: "/settings",
-    icon: Settings,
+    title: "Credentialing Queue",
+    url: "/credentialing",
+    icon: FileCheck,
+  },
+  {
+    title: "Contract Generation",
+    url: "/contracts",
+    icon: FileText,
+  },
+  {
+    title: "Analytics/Reporting",
+    url: "/analytics",
+    icon: BarChart3,
   },
 ]
 
 export function AppSidebar() {
-  const { toggleSidebar, state } = useSidebar()
   const pathname = usePathname()
   const isSearchPage = pathname === '/search'
   
   return (
     <Sidebar variant="inset" collapsible="icon">
-      <SidebarHeader>
+      <SidebarHeader className="gap-0">
         <div className="flex items-center justify-between gap-2  py-2">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <span className="text-sm font-bold group-data-[collapsible=icon]:text-xs">FC</span>
+              <span className="group-data-[collapsible=icon]:text-xs">
+                <Image width={24} height={24} alt="sidebar icon" src={'/assets/icon/sidebar-header-icon.svg'} />
+              </span>
             </div>
-            <span className="font-semibold group-data-[collapsible=icon]:hidden">FlashCareAI</span>
+            <h3 className=" text-2xl text-white group-data-[collapsible=icon]:hidden">FlashCare AI</h3>
           </div>
-          <Button variant="ghost" size="icon" className="h-7 w-7 " onClick={toggleSidebar}>
-            <PanelLeftClose className="h-4 w-4" />
-          </Button>
         </div>
+        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-green1">Crisis Management Platform</p>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
