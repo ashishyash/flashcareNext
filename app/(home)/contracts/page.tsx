@@ -3,35 +3,24 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Calendar, DollarSign, FileArchive, FileStack, MapPin } from "lucide-react";
 
 const ContractGeneration = () => {
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-6">
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900">
+            <h1 className="text-3xl font-normal ">
               Contract Generation
             </h1>
-            <p className="text-gray-600 mt-1">
+            <p className="text-base font-normal mt-1">
               Automated contract creation and management
             </p>
           </div>
-          <Button className="bg-teal-600 hover:bg-teal-700">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
+          <Button className="text-base font-normal py-2 bg-teal-600 hover:bg-teal-700">
+            <FileStack />
             Generate Bulk Contracts
           </Button>
         </div>
@@ -56,18 +45,18 @@ const ContractGeneration = () => {
               </svg>
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">
+              <h3 className="text-lg font-normall">
                 Contract Generated Successfully
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm font-normal">
                 Auto-generated preview on Feb 11, 2026 • Contract ID:
                 CON-2026-1847
               </p>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-gray-600">Estimated completion</p>
-            <p className="font-semibold text-gray-900">2 minutes</p>
+            <p className="text-sm font-normal">Estimated completion</p>
+            <p className="text-lg font-normal">2 minutes</p>
           </div>
           </CardContent>
         </Card>
@@ -78,202 +67,148 @@ const ContractGeneration = () => {
             {/* Contract Header */}
             <CardHeader className="bg-teal-600 text-white rounded-t-lg flex-row justify-between items-start">
               <div>
-                <h2 className="text-2xl font-semibold mb-2">
+                <h2 className="text-2xl font-normal mb-2">
                   Nursing Contract Agreement
                 </h2>
-                <p className="text-teal-100 mb-6">Contract ID: CON-2026-1847</p>
+                <p className="text-sm font-normal mb-6">Contract ID: CON-2026-1847</p>
                 <div className="grid grid-cols-2 gap-8">
                   <div>
-                    <p className="text-teal-100 text-sm">Generated Date</p>
-                    <p className="font-medium">Feb 11, 2026</p>
+                    <p className=" text-sm">Generated Date</p>
+                    <p className="text-sm font-medium">Feb 11, 2026</p>
                   </div>
                   <div>
-                    <p className="text-teal-100 text-sm">Duration</p>
-                    <p className="font-medium">
+                    <p className=" text-sm">Duration</p>
+                    <p className="text-sm font-medium">
                       Duration of strike - Starts Tomorrow 7 AM
                     </p>
                   </div>
                 </div>
               </div>
-              <svg
-                className="w-16 h-16"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
+              <FileArchive className="w-12 h-12" />
             </CardHeader>
 
             {/* Contract Body */}
-            <CardContent className="bg-white rounded-b-lg p-8">
+            <CardContent className="bg-white rounded-b-xl p-8 shadow-md">
               {/* Parties */}
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
-                  <p className="text-sm text-gray-500 mb-2">NURSE (Employee)</p>
+                  <p className="text-sm mb-2">NURSE (Employee)</p>
                   <h3 className="text-xl font-semibold mb-3">Sarah Chen</h3>
-                  <p className="text-gray-700 mb-1">
+                  <p className=" mb-1">
                     123 Main St, Los Angeles, CA 90001
                   </p>
-                  <p className="text-gray-700 mb-1">License: RN-CA-485692</p>
-                  <p className="text-gray-700">sarah.chen@email.com</p>
+                  <p className=" mb-1">License: RN-CA-485692</p>
+                  <p className="">sarah.chen@email.com</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-2">
+                  <p className="text-sm mb-2">
                     FACILITY (Employer)
                   </p>
                   <h3 className="text-xl font-semibold mb-3">
                     Memorial Hospital
                   </h3>
-                  <p className="text-gray-700 mb-1">Houston, TX</p>
-                  <p className="text-gray-700 mb-1">Contact: HR Department</p>
-                  <p className="text-gray-700">hr@memorialhospital.org</p>
+                  <p className=" mb-1">Houston, TX</p>
+                  <p className=" mb-1">Contact: HR Department</p>
+                  <p className="">hr@memorialhospital.org</p>
                 </div>
               </div>
 
               {/* Assignment Terms */}
               <h3 className="text-xl font-semibold mb-4">Assignment Terms</h3>
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                <Card className="bg-green-50 border-green-200">
-                  <CardContent className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <svg
-                      className="w-5 h-5 text-teal-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
+              <div className="flex gap-4 mb-8">
+                <Card className="bg-green-50 flex-auto border-green-200">
+                  <CardContent className="flex justify-between p-4">
+                    <Calendar />
+                  <div className=" items-center gap-2 mb-2">
                     <span className="text-sm font-medium text-gray-700">
                       Duration
                     </span>
-                  </div>
                   <p className="font-semibold text-gray-900">1 weeks</p>
                   <p className="text-sm text-gray-600">Duration of Strike</p>
+                  </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-green-50 border-green-200">
-                  <CardContent className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <svg
-                      className="w-5 h-5 text-teal-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                <Card className="bg-green-50 flex-auto border-green-200">
+                  <CardContent className="flex p-4">
+                    <DollarSign />
+                  <div className=" gap-2 mb-2">
                     <span className="text-sm font-medium text-gray-700">
                       Compensation
                     </span>
-                  </div>
                   <p className="font-semibold text-gray-900">
                     $75/hour + $150/day Housing
                   </p>
                   <p className="text-sm text-gray-600">40 hours/week</p>
+                  </div>
                   </CardContent>
                 </Card>
-                <Card className="bg-green-50 border-green-200">
-                  <CardContent className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <svg
-                      className="w-5 h-5 text-teal-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                    </svg>
+                <Card className="bg-green-50 flex-auto border-green-200">
+                  <CardContent className="flex p-4">
+                    <MapPin/>
+                  <div className=" gap-2 mb-2">
                     <span className="text-sm font-medium text-gray-700">
                       Unit
                     </span>
-                  </div>
                   <p className="font-semibold text-gray-900">ICU</p>
                   <p className="text-sm text-gray-600">Memorial Hospital</p>
+                  </div>
                 </CardContent>
                 </Card>
               </div>
 
               {/* Terms & Conditions */}
-              <h3 className="text-xl font-semibold mb-4">Terms & Conditions</h3>
-              <div className="space-y-4 mb-8 text-gray-700">
-                <p>
-                  <span className="font-semibold">1. Employment Status:</span>{" "}
+              <h3 className="text-lg font-normal mb-4">Terms & Conditions</h3>
+              <div className="space-y-4 border-b pb-5 text-gray-700">
+                <p className="text-sm font-normal">
+                  <span className="text-sm font-bold">1. Employment Status:</span>{" "}
                   This agreement establishes a temporary employment relationship
                   for the duration specified above.
                 </p>
-                <p>
-                  <span className="font-semibold">
+                <p  className="text-sm font-normal">
+                  <span className="text-sm font-bold">
                     2. Duties & Responsibilities:
                   </span>{" "}
                   The Nurse agrees to perform professional nursing services in
                   accordance with facility policies and applicable state
                   regulations.
                 </p>
-                <p>
-                  <span className="font-semibold">3. Termination:</span> Either
+                <p  className="text-sm font-normal">
+                  <span className="text-sm font-bold">3. Termination:</span> Either
                   party may terminate this agreement with 72 hours written
                   notice. Immediate termination may occur for cause.
                 </p>
-                <p>
-                  <span className="font-semibold">4. Compliance:</span> The
+                <p  className="text-sm font-normal">
+                  <span className="text-sm font-bold">4. Compliance:</span> The
                   Nurse certifies all credentials, certifications, and licenses
                   are current and valid.
                 </p>
               </div>
 
               {/* Signatures */}
-              <h3 className="text-xl font-semibold mb-4">Signatures</h3>
+              <h3 className="text-lg font-normal mb-4">Signatures</h3>
               <div className="grid grid-cols-2 gap-8">
                 <div>
-                  <p className="text-sm text-gray-600 mb-4">Nurse Signature</p>
-                  <div className="border-b border-gray-300 pb-2 mb-2">
+                  <p className="text-sm  mb-6">Nurse Signature</p>
+                  <div className="border-t border-gray-300 pb-2 pt-2 mb-2">
                     <p className="text-gray-900">Sarah Chen</p>
                   </div>
-                  <p className="text-sm text-gray-600">Date: _______________</p>
+                  <p className="text-sm ">Date: _______________</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-4">
+                  <p className="text-sm  mb-6">
                     Facility Representative
                   </p>
-                  <div className="border-b border-gray-300 pb-2 mb-2">
-                    <p className="text-gray-900">HR Department</p>
+                  <div className="border-t border-gray-300 pb-2 pt-2 mb-2">
+                    <p className="">HR Department</p>
                   </div>
-                  <p className="text-sm text-gray-600">Date: _______________</p>
+                  <p className="text-sm ">Date: _______________</p>
                 </div>
               </div>
             </CardContent>
           </div>
 
           {/* Sidebar */}
-          <div className="w-80 space-y-6">
+          <div className="w-1/4 space-y-6">
             {/* Quick Actions */}
             <Card>
               <CardContent className="p-6">

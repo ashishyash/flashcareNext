@@ -3,509 +3,254 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { Grid, LayoutGrid, LocateIcon, MapPin } from "lucide-react";
+
+// Deployments Data
+const deploymentsData = [
+  {
+    id: "1",
+    name: "Sarah Chen",
+    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    status: {
+      label: "Ready to Deploy",
+      badgeClass: "text-xs font-normal bg-orange-100 rounded-full text-orange-700 hover:bg-orange-100"
+    },
+    hospital: "Memorial Hospital",
+    location: "Houston, TX",
+    startDate: "Feb 8, 2026",
+    endDate: "Mar 8, 2026",
+    timeToDeploy: "12 hours to deploy",
+    progress: 100,
+    icon: {
+      path: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+      color: "text-orange-500"
+    }
+  },
+  {
+    id: "2",
+    name: "Michael Rodriguez",
+    avatar:"https://randomuser.me/api/portraits/men/1.jpg",
+    status: {
+      label: "Travel/Housing",
+      badgeClass: "text-xs font-normal rounded-full bg-cyan-100 text-cyan-700 hover:bg-cyan-100"
+    },
+    hospital: "Memorial Hospital",
+    location: "Houston, TX",
+    startDate: "Feb 13, 2026",
+    endDate: "Mar 8, 2026",
+    timeToDeploy: "18 hours to deploy",
+    progress: 80,
+    icon: {
+      path: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+      color: "text-green-500"
+    }
+  },
+  {
+    id: "3",
+    name: "James Chen",
+    avatar:"https://randomuser.me/api/portraits/men/1.jpg",
+    status: {
+      label: "Ready to Deploy",
+      badgeClass: "text-xs font-normal rounded-full bg-orange-100 text-orange-700 hover:bg-orange-100"
+    },
+    hospital: "Memorial Hospital",
+    location: "Houston, TX",
+    startDate: "Feb 11, 2026",
+    endDate: "Mar 8, 2026",
+    timeToDeploy: "12 hours to deploy",
+    progress: 65,
+    icon: {
+      path: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+      color: "text-orange-500"
+    }
+  },
+  {
+    id: "4",
+    name: "Emily Thompson",
+    avatar:"https://randomuser.me/api/portraits/men/1.jpg",
+    status: {
+      label: "Credentialing",
+      badgeClass: "text-xs font-normal rounded-full bg-yellow-100 text-yellow-700 hover:bg-yellow-100"
+    },
+    hospital: "Memorial Hospital",
+    location: "Houston, TX",
+    startDate: "Feb 12, 2026",
+    endDate: "Mar 8, 2026",
+    timeToDeploy: "2 days to deploy",
+    progress: 45,
+    icon: {
+      path: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+      color: "text-green-500"
+    }
+  },
+  {
+    id: "5",
+    name: "Amanda Lewis",
+    avatar:"https://randomuser.me/api/portraits/men/1.jpg",
+    status: {
+      label: "Travel/Housing",
+      badgeClass: "text-xs font-normal rounded-full bg-cyan-100 text-cyan-700 hover:bg-cyan-100"
+    },
+    hospital: "Memorial Hospital",
+    location: "Houston, TX",
+    startDate: "Feb 11, 2026",
+    endDate: "Mar 8, 2026",
+    timeToDeploy: "3 days to deploy",
+    progress: 25,
+    icon: {
+      path: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+      color: "text-green-500"
+    }
+  }
+];
+
+// Stats Cards Data
+const statsCardsData = [
+  {
+    id: "credentialing",
+    title: "Credentialing",
+    count: 28,
+    progress: 65,
+    iconPath: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+    iconColor: "text-green-500"
+  },
+  {
+    id: "travel-housing",
+    title: "Travel/ Housing",
+    count: 18,
+    progress: 40,
+    iconPath: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6",
+    iconColor: "text-green-500"
+  },
+  {
+    id: "ready-deployed",
+    title: "Ready to Deployed",
+    count: 17,
+    progress: 100,
+    iconPath: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+    iconColor: "text-orange-500"
+  }
+];
 
 const DeploymentPipeline =() => {
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen p-6">
       {/* Main Content */}
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+        <h1 className="text-3xl font-normal mb-2">
           Deployment Pipeline
         </h1>
-        <p className="text-gray-600 mb-8">
+        <p className="text-base font-normal mb-6">
           Operational oversight of all active deployments
         </p>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-3 gap-6 mb-8">
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-gray-600">Credentialing</span>
-                <svg
-                  className="w-6 h-6 text-green-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </div>
-              <div className="flex items-end justify-between mb-4">
-                <span className="text-4xl font-semibold text-gray-900">28</span>
-                <span className="text-gray-600">65% Completed</span>
-              </div>
-              <Progress value={65} className="bg-gray-200" />
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-gray-600">Travel/ Housing</span>
-                <svg
-                  className="w-6 h-6 text-green-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-              </div>
-              <div className="flex items-end justify-between mb-4">
-                <span className="text-4xl font-semibold text-gray-900">18</span>
-                <span className="text-gray-600">40% Completed</span>
-              </div>
-              <Progress value={40} className="bg-gray-200" />
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-gray-600">Ready to Deployed</span>
-                <svg
-                  className="w-6 h-6 text-orange-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                  />
-                </svg>
-              </div>
-              <div className="flex items-end justify-between mb-4">
-                <span className="text-4xl font-semibold text-gray-900">17</span>
-                <span className="text-gray-600">100% Completed</span>
-              </div>
-              <Progress value={100} className="bg-gray-200" />
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-3 gap-6 mb-6">
+          {statsCardsData.map((card) => (
+            <Card key={card.id} className="border-slate-200 rounded-2xl">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-base font-normal">{card.title}</span>
+                  <svg
+                    className={`w-6 h-6 ${card.iconColor}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d={card.iconPath}
+                    />
+                  </svg>
+                </div>
+                <div className="flex items-end justify-between mb-4">
+                  <span className="text-4xl font-semibold text-gray-900">{card.count}</span>
+                  <span className="text-gray-600">{card.progress}% Completed</span>
+                </div>
+                <Progress value={card.progress} className="bg-gray-200" />
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* All Deployments Section */}
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-            <CardTitle className="text-xl">All Deployments</CardTitle>
+        <Card className="border-slate-200 rounded-2xl">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 p-4 border-b">
+            <CardTitle className="text-xl font-normal">All Deployments</CardTitle>
             <div className="flex gap-2">
               <Button
                 variant="ghost"
                 size="icon"
-                className="bg-cyan-50 text-cyan-600 hover:bg-cyan-100"
+                className="bg-cyan-50 text-cyan-600"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                  />
-                </svg>
+               <Grid />
               </Button>
               <Button variant="ghost" size="icon">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                  />
-                </svg>
+               <LayoutGrid />
               </Button>
             </div>
           </CardHeader>
 
           <CardContent className="divide-y p-0">
-            {/* Sarah Chen */}
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=1"
-                    alt="Sarah Chen"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        Sarah Chen
-                      </span>
-                      <Badge className="bg-orange-100 text-orange-700 hover:bg-orange-100">
-                        Ready to Deploy
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Memorial Hospital</span>
-                      <span>•</span>
-                      <span>Houston, TX</span>
-                      <span>•</span>
-                      <span>Start: Feb 8, 2026</span>
-                      <span>End: Mar 8, 2026</span>
+            {deploymentsData.map((deployment) => (
+              <div key={deployment.id} className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={deployment.avatar}
+                      alt={deployment.name}
+                      className="w-12 h-12 rounded-full"
+                    />
+                    <div>
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="text-lg font-semibold text-gray-900">
+                          {deployment.name}
+                        </span>
+                        <Badge className={deployment.status.badgeClass}>
+                          {deployment.status.label}
+                        </Badge>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-gray-600">
+                       <MapPin className="w-4"/>
+                        <span className="text-sm font-normal">{deployment.hospital}</span>
+                        <span>•</span>
+                        <span>{deployment.location}</span>
+                        <span>•</span>
+                        <span>Start: {deployment.startDate}</span>
+                        <span>End: {deployment.endDate}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="text-right flex items-center gap-2">
-                  <span className="text-gray-600">12 hours to deploy</span>
-                  <svg
-                    className="w-5 h-5 text-orange-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">
-                  Deployment Progress
-                </span>
-                <Progress value={100} className="flex-1 bg-gray-200" />
-                <span className="text-sm font-semibold text-gray-900">
-                  100%
-                </span>
-              </div>
-            </div>
-
-            {/* Michael Rodriguez */}
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=12"
-                    alt="Michael Rodriguez"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        Michael Rodriguez
-                      </span>
-                      <Badge className="bg-cyan-100 text-cyan-700 hover:bg-cyan-100">
-                        Travel/Housing
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Memorial Hospital</span>
-                      <span>•</span>
-                      <span>Houston, TX</span>
-                      <span>•</span>
-                      <span>Start: Feb 13, 2026</span>
-                      <span>End: Mar 8, 2026</span>
-                    </div>
+                  <div className="text-right flex items-center gap-2">
+                    <span className="text-gray-600 text-sm font-normal">{deployment.timeToDeploy}</span>
+                    <svg
+                      className={`w-5 h-5 ${deployment.icon.color}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d={deployment.icon.path}
+                      />
+                    </svg>
                   </div>
                 </div>
-                <div className="text-right flex items-center gap-2">
-                  <span className="text-gray-600">18 hours to deploy</span>
-                  <svg
-                    className="w-5 h-5 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
+                <div className="flex items-center justify-between mb-2 gap-3">
+                  <span className="text-sm text-gray-600">
+                    Deployment Progress
+                  </span>
+                  <span className="text-sm font-semibold text-gray-900">
+                    {deployment.progress}%
+                  </span>
                 </div>
+                  <Progress value={deployment.progress} className="flex-1 bg-gray-200" />
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">
-                  Deployment Progress
-                </span>
-                <Progress value={80} className="flex-1 bg-gray-200" />
-                <span className="text-sm font-semibold text-gray-900">80%</span>
-              </div>
-            </div>
-
-            {/* James Chen */}
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=13"
-                    alt="James Chen"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        James Chen
-                      </span>
-                      <Badge className="bg-orange-100 text-orange-700 hover:bg-orange-100">
-                        Ready to Deploy
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Memorial Hospital</span>
-                      <span>•</span>
-                      <span>Houston, TX</span>
-                      <span>•</span>
-                      <span>Start: Feb 11, 2026</span>
-                      <span>End: Mar 8, 2026</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-right flex items-center gap-2">
-                  <span className="text-gray-600">12 hours to deploy</span>
-                  <svg
-                    className="w-5 h-5 text-orange-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">
-                  Deployment Progress
-                </span>
-                <Progress value={65} className="flex-1 bg-gray-200" />
-                <span className="text-sm font-semibold text-gray-900">65%</span>
-              </div>
-            </div>
-
-            {/* Emily Thompson */}
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=5"
-                    alt="Emily Thompson"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        Emily Thompson
-                      </span>
-                      <Badge className="bg-yellow-100 text-yellow-700 hover:bg-yellow-100">
-                        Credentialing
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Memorial Hospital</span>
-                      <span>•</span>
-                      <span>Houston, TX</span>
-                      <span>•</span>
-                      <span>Start: Feb 12, 2026</span>
-                      <span>End: Mar 8, 2026</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-right flex items-center gap-2">
-                  <span className="text-gray-600">2 days to deploy</span>
-                  <svg
-                    className="w-5 h-5 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">
-                  Deployment Progress
-                </span>
-                <Progress value={45} className="flex-1 bg-gray-200" />
-                <span className="text-sm font-semibold text-gray-900">45%</span>
-              </div>
-            </div>
-
-            {/* Amanda Lewis */}
-            <div className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-4">
-                  <img
-                    src="https://i.pravatar.cc/150?img=9"
-                    alt="Amanda Lewis"
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <span className="text-lg font-semibold text-gray-900">
-                        Amanda Lewis
-                      </span>
-                      <Badge className="bg-cyan-100 text-cyan-700 hover:bg-cyan-100">
-                        Travel/Housing
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      <span>Memorial Hospital</span>
-                      <span>•</span>
-                      <span>Houston, TX</span>
-                      <span>•</span>
-                      <span>Start: Feb 11, 2026</span>
-                      <span>End: Mar 8, 2026</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="text-right flex items-center gap-2">
-                  <span className="text-gray-600">3 days to deploy</span>
-                  <svg
-                    className="w-5 h-5 text-green-500"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-600">
-                  Deployment Progress
-                </span>
-                <Progress value={25} className="flex-1 bg-gray-200" />
-                <span className="text-sm font-semibold text-gray-900">25%</span>
-              </div>
-            </div>
+            ))}
           </CardContent>
         </Card>
       </div>
