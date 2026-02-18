@@ -1,4 +1,7 @@
 import React from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 
 const CredentialingQueue = () => {
   return (
@@ -16,133 +19,68 @@ const CredentialingQueue = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-5 gap-4 mb-8">
-          {/* Total Queue */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <Card className="p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-gray-600 text-sm">Total Queue</span>
-              <svg
-                className="w-5 h-5 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
+              <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
             <div className="text-4xl font-semibold text-gray-900">5</div>
-          </div>
+          </Card>
 
-          {/* Verified */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <Card className="p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-gray-600 text-sm">Verified</span>
-              <svg
-                className="w-5 h-5 text-green-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+              <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div className="text-4xl font-semibold text-teal-500">0</div>
-          </div>
+          </Card>
 
-          {/* Processing */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <Card className="p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-gray-600 text-sm">Processing</span>
-              <svg
-                className="w-5 h-5 text-teal-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+              <svg className="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div className="text-4xl font-semibold text-teal-500">1</div>
-          </div>
+          </Card>
 
-          {/* Review Needed */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <Card className="p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-gray-600 text-sm">Review Needed</span>
-              <svg
-                className="w-5 h-5 text-orange-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
+              <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div className="text-4xl font-semibold text-orange-500">1</div>
-          </div>
+          </Card>
 
-          {/* Avg Time */}
-          <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+          <Card className="p-6">
             <div className="flex items-center justify-between mb-3">
               <span className="text-gray-600 text-sm">Avg Time</span>
-              <svg
-                className="w-5 h-5 text-teal-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
+              <svg className="w-5 h-5 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <div className="text-4xl font-semibold text-teal-500">
-              8 minutes
-            </div>
-          </div>
+            <div className="text-4xl font-semibold text-teal-500">8 minutes</div>
+          </Card>
         </div>
 
         {/* Verification Queue Card */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          {/* Card Header */}
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-xl font-normal text-gray-900">
-              Verification Queue
-            </h2>
+        <Card className="p-6">
+          <CardHeader className="flex flex-row items-center justify-between p-0 mb-8">
+            <CardTitle className="text-xl font-normal">Verification Queue</CardTitle>
             <div className="flex gap-3">
-              <button className="px-6 py-2 border-2 border-teal-500 text-teal-500 rounded-lg hover:bg-teal-50 transition-colors font-medium">
-                View All
-              </button>
-              <button className="px-6 py-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-colors font-medium">
-                Expedite
-              </button>
+              <Button variant="outline" className="border-2 border-teal-500 text-teal-500 hover:bg-teal-50">View All</Button>
+              <Button className="bg-teal-500 hover:bg-teal-600">Expedite</Button>
             </div>
-          </div>
+          </CardHeader>
 
-          {/* Queue Item */}
-          <div className="mb-6">
+          <CardContent className="p-0">
             <div className="flex items-center justify-between mb-3">
               <div>
                 <h3 className="text-lg font-normal text-gray-900 mb-1">
@@ -158,18 +96,10 @@ const CredentialingQueue = () => {
               </div>
             </div>
 
-            {/* Progress Bar */}
-            <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
-              <div
-                className="bg-teal-500 h-2 rounded-full"
-                style={{ width: "85%" }}
-              ></div>
-            </div>
+            <Progress value={85} className="mb-6" indicatorClassName="bg-teal-500" />
 
-            {/* Verification Items Grid */}
             <div className="grid grid-cols-2 gap-4 mb-4">
-              {/* RN License */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
+              <Card className="bg-green-50 border-green-200 p-4 flex items-start gap-3">
                 <svg
                   className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5"
                   fill="none"
@@ -187,10 +117,9 @@ const CredentialingQueue = () => {
                   <div className="font-medium text-gray-900">RN License</div>
                   <div className="text-sm text-gray-600">AI System • 2 min</div>
                 </div>
-              </div>
+              </Card>
 
-              {/* PALS Certification */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
+              <Card className="bg-green-50 border-green-200 p-4 flex items-start gap-3">
                 <svg
                   className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5"
                   fill="none"
@@ -210,10 +139,9 @@ const CredentialingQueue = () => {
                   </div>
                   <div className="text-sm text-gray-600">AI System • 2 min</div>
                 </div>
-              </div>
+              </Card>
 
-              {/* Background Check */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
+              <Card className="bg-green-50 border-green-200 p-4 flex items-start gap-3">
                 <svg
                   className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5"
                   fill="none"
@@ -233,10 +161,9 @@ const CredentialingQueue = () => {
                   </div>
                   <div className="text-sm text-gray-600">AI System • 6 min</div>
                 </div>
-              </div>
+              </Card>
 
-              {/* References */}
-              <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
+              <Card className="bg-green-50 border-green-200 p-4 flex items-start gap-3">
                 <svg
                   className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5"
                   fill="none"
@@ -254,11 +181,10 @@ const CredentialingQueue = () => {
                   <div className="font-medium text-gray-900">References</div>
                   <div className="text-sm text-gray-600">AI System • 3 min</div>
                 </div>
-              </div>
+              </Card>
             </div>
 
-            {/* Hospital Privileges - In Progress */}
-            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-start gap-3">
+            <Card className="bg-orange-50 border-orange-200 p-4 flex items-start gap-3">
               <svg
                 className="w-6 h-6 text-orange-500 flex-shrink-0 mt-0.5 animate-spin"
                 fill="none"
@@ -277,49 +203,25 @@ const CredentialingQueue = () => {
                   Hospital Privileges - In Progress
                 </div>
               </div>
-            </div>
-          </div>
+            </Card>
 
-          {/* Footer Navigation */}
-          <div className="flex items-center justify-end gap-4 pt-4 border-t border-gray-200">
-            <button className="p-2 text-gray-400 hover:text-gray-600">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-            <span className="text-gray-600">
-              Next In Queue:{" "}
-              <span className="text-teal-500 font-medium">
-                Michael Rodriguez
+            <div className="flex items-center justify-end gap-4 pt-4 border-t border-gray-200">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-gray-600">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </Button>
+              <span className="text-gray-600">
+                Next In Queue: <span className="text-teal-500 font-medium">Michael Rodriguez</span>
               </span>
-            </span>
-            <button className="p-2 text-gray-600 hover:text-gray-800">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
+              <Button variant="ghost" size="icon" className="text-gray-600 hover:text-gray-800">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

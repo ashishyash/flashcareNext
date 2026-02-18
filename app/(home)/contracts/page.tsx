@@ -1,5 +1,8 @@
 "use client";
 import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const ContractGeneration = () => {
   return (
@@ -15,7 +18,7 @@ const ContractGeneration = () => {
               Automated contract creation and management
             </p>
           </div>
-          <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg flex items-center gap-2">
+          <Button className="bg-teal-600 hover:bg-teal-700">
             <svg
               className="w-5 h-5"
               fill="none"
@@ -30,11 +33,12 @@ const ContractGeneration = () => {
               />
             </svg>
             Generate Bulk Contracts
-          </button>
+          </Button>
         </div>
 
         {/* Success Banner */}
-        <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6 flex items-center justify-between">
+        <Card className="bg-green-50 border-green-200 mb-6">
+          <CardContent className="p-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="bg-teal-600 rounded-full p-2">
               <svg
@@ -65,13 +69,14 @@ const ContractGeneration = () => {
             <p className="text-sm text-gray-600">Estimated completion</p>
             <p className="font-semibold text-gray-900">2 minutes</p>
           </div>
-        </div>
+          </CardContent>
+        </Card>
 
         <div className="flex gap-6">
           {/* Main Content */}
           <div className="flex-1">
             {/* Contract Header */}
-            <div className="bg-teal-600 text-white rounded-t-lg p-6 flex justify-between items-start">
+            <CardHeader className="bg-teal-600 text-white rounded-t-lg flex-row justify-between items-start">
               <div>
                 <h2 className="text-2xl font-semibold mb-2">
                   Nursing Contract Agreement
@@ -103,10 +108,10 @@ const ContractGeneration = () => {
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 />
               </svg>
-            </div>
+            </CardHeader>
 
             {/* Contract Body */}
-            <div className="bg-white rounded-b-lg shadow-sm p-8">
+            <CardContent className="bg-white rounded-b-lg p-8">
               {/* Parties */}
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
@@ -134,7 +139,8 @@ const ContractGeneration = () => {
               {/* Assignment Terms */}
               <h3 className="text-xl font-semibold mb-4">Assignment Terms</h3>
               <div className="grid grid-cols-3 gap-4 mb-8">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <Card className="bg-green-50 border-green-200">
+                  <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <svg
                       className="w-5 h-5 text-teal-600"
@@ -155,8 +161,10 @@ const ContractGeneration = () => {
                   </div>
                   <p className="font-semibold text-gray-900">1 weeks</p>
                   <p className="text-sm text-gray-600">Duration of Strike</p>
-                </div>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  </CardContent>
+                </Card>
+                <Card className="bg-green-50 border-green-200">
+                  <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <svg
                       className="w-5 h-5 text-teal-600"
@@ -179,8 +187,10 @@ const ContractGeneration = () => {
                     $75/hour + $150/day Housing
                   </p>
                   <p className="text-sm text-gray-600">40 hours/week</p>
-                </div>
-                <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                  </CardContent>
+                </Card>
+                <Card className="bg-green-50 border-green-200">
+                  <CardContent className="p-4">
                   <div className="flex items-center gap-2 mb-2">
                     <svg
                       className="w-5 h-5 text-teal-600"
@@ -207,7 +217,8 @@ const ContractGeneration = () => {
                   </div>
                   <p className="font-semibold text-gray-900">ICU</p>
                   <p className="text-sm text-gray-600">Memorial Hospital</p>
-                </div>
+                </CardContent>
+                </Card>
               </div>
 
               {/* Terms & Conditions */}
@@ -258,52 +269,55 @@ const ContractGeneration = () => {
                   <p className="text-sm text-gray-600">Date: _______________</p>
                 </div>
               </div>
-            </div>
+            </CardContent>
           </div>
 
           {/* Sidebar */}
           <div className="w-80 space-y-6">
             {/* Quick Actions */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
-              <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
-              <div className="space-y-3">
-                <button className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50 px-4 py-3 rounded-lg flex items-center justify-center gap-2 font-medium">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-                    />
-                  </svg>
-                  Send for E-Signature
-                </button>
-                <button className="w-full border-2 border-gray-300 text-gray-700 hover:bg-gray-50 px-4 py-3 rounded-lg flex items-center justify-center gap-2 font-medium">
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                  Download PDF
-                </button>
-              </div>
-            </div>
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+                <div className="space-y-3">
+                  <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
+                      />
+                    </svg>
+                    Send for E-Signature
+                  </Button>
+                  <Button variant="outline" className="w-full">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Download PDF
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Generation Stats */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <Card>
+              <CardContent className="p-6">
               <h3 className="text-lg font-semibold mb-4">Generation Stats</h3>
               <div className="space-y-4">
                 <div>
@@ -325,10 +339,12 @@ const ContractGeneration = () => {
                   <p className="text-gray-900">Pre-approved template</p>
                 </div>
               </div>
-            </div>
+            </CardContent>
+            </Card>
 
             {/* Compliance Verified */}
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+            <Card className="bg-green-50 border-green-200">
+              <CardContent className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <svg
                   className="w-6 h-6 text-green-600"
@@ -421,7 +437,8 @@ const ContractGeneration = () => {
                   </span>
                 </div>
               </div>
-            </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>
