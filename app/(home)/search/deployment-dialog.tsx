@@ -8,7 +8,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle2, Clock, Loader2 } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { Nurse } from "./search.constant";
 
 interface DeploymentDialogProps {
@@ -240,42 +241,101 @@ export function DeploymentDialog({
         </DialogHeader>
 
         {!isComplete ? (
-          <div className="space-y-4 py-4">
-            {steps.map((step, index) => (
-              <div key={index} className="space-y-2">
-                <div className="flex items-center gap-3">
-                  {step.status === "complete" && (
-                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
-                  )}
-                  {step.status === "progress" && (
-                    <Loader2 className="w-5 h-5 text-cyan-600 animate-spin flex-shrink-0" />
-                  )}
-                  {step.status === "pending" && (
-                    <Clock className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                  )}
-                  <div className="flex-1">
-                    <p
-                      className={`text-sm font-medium ${
-                        step.status === "complete"
-                          ? "text-green-600"
-                          : step.status === "progress"
-                          ? "text-cyan-600"
-                          : "text-gray-400"
-                      }`}
-                    >
-                      {step.label}
-                      {step.status === "complete" && " ✓"}
-                      {step.status === "progress" && ` → ${step.progress}%`}
-                      {step.status === "pending" && " → Pending"}
-                    </p>
-                    {step.status === "progress" &&
-                      step.progress !== undefined && (
-                        <Progress value={step.progress} className="h-2 mt-2" />
-                      )}
-                  </div>
+          <div className="space-y-6 py-4">
+            {/* Header Section */}
+            <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-xl p-6 text-white flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <Loader2 className="w-8 h-8 animate-spin" />
+                <div>
+                  <h3 className="text-xl font-semibold">
+                    Deploying {nurses.length} Nurses to Memorial Hospital ICU
+                  </h3>
                 </div>
               </div>
-            ))}
+              <div className="text-right">
+                <div className="text-3xl font-bold">
+                  {Math.round(
+                    (steps.filter((s) => s.status === "complete").length /
+                      steps.length) *
+                      100
+                  )}
+                  %
+                </div>
+                <div className="text-sm opacity-90">Match Accuracy</div>
+              </div>
+            </div>
+
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* Selected Nurses */}
+              <Card className="p-4">
+                <h4 className="font-semibold text-lg mb-4 text-gray-700">
+                  Selected Nurses
+                </h4>
+                <div className="space-y-3">
+                  {nurses.map((nurse) => (
+                    <div key={nurse.id} className="flex items-center gap-3">
+                      <img
+                        src={nurse.photo}
+                        alt={nurse.name}
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                      <span className="text-gray-700">{nurse.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              {/* Deployment Progress */}
+              <Card className="p-4">
+                <h4 className="font-semibold text-lg mb-4 text-gray-700">
+                  Deployment - In Progress
+                </h4>
+                <div className="space-y-4">
+                  {steps.map((step, index) => (
+                    <div key={index} className="space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          {step.status === "complete" ? (
+                            <CheckCircle2 className="w-6 h-6 text-cyan-600 flex-shrink-0" />
+                          ) : step.status === "progress" ? (
+                            <Loader2 className="w-6 h-6 text-cyan-600 animate-spin flex-shrink-0" />
+                          ) : (
+                            <Loader2 className="w-6 h-6 text-orange-500 flex-shrink-0" />
+                          )}
+                          <span className="text-sm text-gray-700">
+                            {step.label}
+                          </span>
+                        </div>
+                        <span
+                          className={`text-sm font-medium ${
+                            step.status === "complete"
+                              ? "text-gray-700"
+                              : step.status === "progress"
+                              ? "text-gray-700"
+                              : "text-gray-500"
+                          }`}
+                        >
+                          {step.status === "complete"
+                            ? "Completed"
+                            : step.status === "progress"
+                            ? `${step.progress}%`
+                            : "Pending"}
+                        </span>
+                      </div>
+                      <Progress
+                        value={
+                          step.status === "complete"
+                            ? 100
+                            : step.progress || 0
+                        }
+                        className="h-1.5"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
           </div>
         ) : (
           <div className="space-y-4 py-4">
