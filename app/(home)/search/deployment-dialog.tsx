@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { CheckCircle2, Clock, Loader2 } from "lucide-react";
 import { Nurse } from "./search.constant";
@@ -20,53 +25,62 @@ interface DeploymentStep {
 
 const updateDashboardData = async (nurses: readonly Nurse[]) => {
   try {
-    console.log('Starting dashboard update for', nurses.length, 'nurses');
+    console.log("Starting dashboard update for", nurses.length, "nurses");
     const deployedCount = nurses.length;
-    
+
     // Update metrics - increment deployed nurses
-    const metricsRes = await fetch('/api/metrics');
+    const metricsRes = await fetch("/api/metrics");
     const metricsData = await metricsRes.json();
-    console.log('Metrics data:', metricsData);
-    
+    console.log("Metrics data:", metricsData);
+
     if (metricsData.success && metricsData.data) {
       // Update Deployed count
-      const deployedMetric = metricsData.data.find((m: any) => m.label === 'Deployed');
-      console.log('Found deployed metric:', deployedMetric);
-      
+      const deployedMetric = metricsData.data.find(
+        (m: any) => m.label === "Deployed"
+      );
+      console.log("Found deployed metric:", deployedMetric);
+
       if (deployedMetric) {
         const currentValue = Number.parseInt(deployedMetric.value);
         const newValue = currentValue + deployedCount;
-        console.log('Updating deployed from', currentValue, 'to', newValue);
-        
+        console.log("Updating deployed from", currentValue, "to", newValue);
+
         await fetch(`/api/metrics/${deployedMetric.id}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ value: String(newValue) })
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ value: String(newValue) }),
         });
       }
 
       // Update Nurses Needed count (decrease)
-      const neededMetric = metricsData.data.find((m: any) => m.label === 'Nurses Needed');
-      console.log('Found nurses needed metric:', neededMetric);
-      
+      const neededMetric = metricsData.data.find(
+        (m: any) => m.label === "Nurses Needed"
+      );
+      console.log("Found nurses needed metric:", neededMetric);
+
       if (neededMetric) {
         const currentValue = Number.parseInt(neededMetric.value);
         const newValue = Math.max(0, currentValue - deployedCount);
-        console.log('Updating nurses needed from', currentValue, 'to', newValue);
-        
+        console.log(
+          "Updating nurses needed from",
+          currentValue,
+          "to",
+          newValue
+        );
+
         await fetch(`/api/metrics/${neededMetric.id}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ value: String(newValue) })
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ value: String(newValue) }),
         });
       }
     }
 
     // Update units - increase staffed percentage based on specialty
-    const unitsRes = await fetch('/api/units');
+    const unitsRes = await fetch("/api/units");
     const unitsData = await unitsRes.json();
-    console.log('Units data:', unitsData);
-    
+    console.log("Units data:", unitsData);
+
     if (unitsData.success && unitsData.data) {
       // Group nurses by specialty
       const nursesBySpecialty = nurses.reduce((acc, nurse) => {
@@ -74,53 +88,67 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
         acc[specialty] = (acc[specialty] || 0) + 1;
         return acc;
       }, {} as Record<string, number>);
-      
-      console.log('Nurses by specialty:', nursesBySpecialty);
-      
+
+      console.log("Nurses by specialty:", nursesBySpecialty);
+
       // Update each unit based on matching specialty
       for (const unit of unitsData.data) {
         const matchingCount = nursesBySpecialty[unit.name] || 0;
-        
+
         if (matchingCount > 0) {
-          const newCurrent = Math.min(unit.capacity, unit.current + matchingCount);
+          const newCurrent = Math.min(
+            unit.capacity,
+            unit.current + matchingCount
+          );
           const newNeeded = Math.max(0, unit.capacity - newCurrent);
           const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
-          
-          console.log(`Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`);
-          
+
+          console.log(
+            `Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`
+          );
+
           await fetch(`/api/units/${unit.id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
               current: newCurrent,
               needed: newNeeded,
-              staffed: newStaffed 
-            })
+              staffed: newStaffed,
+            }),
           });
         }
       }
     }
 
     // Add activity
-    console.log('Adding activity');
-    const activityRes = await fetch('/api/activities', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    console.log("Adding activity");
+    const activityRes = await fetch("/api/activities", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        time: new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
-        text: `${deployedCount} nurse${deployedCount > 1 ? 's' : ''} deployed to Memorial Hospital`
-      })
+        time: new Date().toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+        text: `${deployedCount} nurse${
+          deployedCount > 1 ? "s" : ""
+        } deployed to Memorial Hospital`,
+      }),
     });
     const activityResult = await activityRes.json();
-    console.log('Activity result:', activityResult);
-    
-    console.log('Dashboard update complete');
+    console.log("Activity result:", activityResult);
+
+    console.log("Dashboard update complete");
   } catch (error) {
-    console.error('Failed to update dashboard:', error);
+    console.error("Failed to update dashboard:", error);
   }
 };
 
-export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialogProps) {
+export function DeploymentDialog({
+  nurses,
+  open,
+  onOpenChange,
+}: DeploymentDialogProps) {
   const [steps, setSteps] = useState<DeploymentStep[]>([
     { label: "Generate contracts", status: "complete" },
     { label: "Send to nurses for signature", status: "complete" },
@@ -151,21 +179,27 @@ export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialo
       setSteps((prev) => {
         const updated = [...prev];
         const progressIndex = updated.findIndex((s) => s.status === "progress");
-        
-        if (progressIndex !== -1 && updated[progressIndex].progress !== undefined) {
+
+        if (
+          progressIndex !== -1 &&
+          updated[progressIndex].progress !== undefined
+        ) {
           updated[progressIndex].progress! += 5;
-          
+
           if (updated[progressIndex].progress! >= 100) {
             updated[progressIndex].status = "complete";
             delete updated[progressIndex].progress;
-            
-            if (progressIndex + 1 < updated.length && updated[progressIndex + 1].status === "pending") {
+
+            if (
+              progressIndex + 1 < updated.length &&
+              updated[progressIndex + 1].status === "pending"
+            ) {
               updated[progressIndex + 1].status = "progress";
               updated[progressIndex + 1].progress = 0;
             }
           }
         }
-        
+
         return updated;
       });
     }, 200);
@@ -177,7 +211,7 @@ export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialo
   useEffect(() => {
     const allComplete = steps.every((s) => s.status === "complete");
     if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
-      console.log('Deployment complete, calling updateDashboardData once');
+      console.log("Deployment complete, calling updateDashboardData once");
       setIsComplete(true);
       hasUpdatedRef.current = true;
       updateDashboardData(nurses);
@@ -186,17 +220,25 @@ export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialo
 
   if (nurses.length === 0) return null;
 
-  const today = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  const today = new Date().toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl">
-            {isComplete ? "Deployment Confirmation" : `Deploying ${nurses.length} Nurse${nurses.length > 1 ? 's' : ''}`}
+            {isComplete
+              ? "Deployment Confirmation"
+              : `Deploying ${nurses.length} Nurse${
+                  nurses.length > 1 ? "s" : ""
+                }`}
           </DialogTitle>
         </DialogHeader>
-        
+
         {!isComplete ? (
           <div className="space-y-4 py-4">
             {steps.map((step, index) => (
@@ -212,19 +254,24 @@ export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialo
                     <Clock className="w-5 h-5 text-gray-400 flex-shrink-0" />
                   )}
                   <div className="flex-1">
-                    <p className={`text-sm font-medium ${
-                      step.status === "complete" ? "text-green-600" :
-                      step.status === "progress" ? "text-cyan-600" :
-                      "text-gray-400"
-                    }`}>
+                    <p
+                      className={`text-sm font-medium ${
+                        step.status === "complete"
+                          ? "text-green-600"
+                          : step.status === "progress"
+                          ? "text-cyan-600"
+                          : "text-gray-400"
+                      }`}
+                    >
                       {step.label}
                       {step.status === "complete" && " ✓"}
                       {step.status === "progress" && ` → ${step.progress}%`}
                       {step.status === "pending" && " → Pending"}
                     </p>
-                    {step.status === "progress" && step.progress !== undefined && (
-                      <Progress value={step.progress} className="h-2 mt-2" />
-                    )}
+                    {step.status === "progress" &&
+                      step.progress !== undefined && (
+                        <Progress value={step.progress} className="h-2 mt-2" />
+                      )}
                   </div>
                 </div>
               </div>
@@ -236,21 +283,27 @@ export function DeploymentDialog({ nurses, open, onOpenChange }: DeploymentDialo
               <div className="flex items-center gap-2 mb-2">
                 <CheckCircle2 className="w-6 h-6 text-green-600" />
                 <p className="text-lg font-semibold text-green-900">
-                  Deploying {nurses.length} nurse{nurses.length > 1 ? 's' : ''} to Memorial Hospital
+                  Deploying {nurses.length} nurse{nurses.length > 1 ? "s" : ""}{" "}
+                  to Memorial Hospital
                 </p>
               </div>
             </div>
-            
+
             <div className="space-y-3">
               <div className="max-h-60 overflow-y-auto space-y-2">
                 {nurses.map((nurse) => (
-                  <div key={nurse.id} className="bg-white border rounded-lg p-3">
+                  <div
+                    key={nurse.id}
+                    className="bg-white border rounded-lg p-3"
+                  >
                     <p className="font-medium text-gray-900">{nurse.name}</p>
-                    <p className="text-sm text-gray-600">{nurse.credentials} • {nurse.specialty}</p>
+                    <p className="text-sm text-gray-600">
+                      {nurse.credentials} • {nurse.specialty}
+                    </p>
                   </div>
                 ))}
               </div>
-              
+
               <div className="grid grid-cols-2 gap-3">
                 <div className="bg-gray-50 rounded-lg p-3">
                   <p className="text-xs text-gray-500 mb-1">Start Date</p>
