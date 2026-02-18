@@ -25,6 +25,8 @@ import { NurseDetailDialog } from "./nurse-detail-dialog";
 import { DeploymentDialog } from "./deployment-dialog";
 import { SearchClient } from "./search-client";
 import { MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import DeploymentPipeline from "./DeploymentPipeline";
+import AnalyticsDashboard from "./AnalyticsDashboard";
 
 interface NursesTableProps {
   readonly nurses: readonly Nurse[];
@@ -226,7 +228,8 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           Deploy ({checkedNurses.length})
         </Button>
       </div>
-
+      {/* <AnalyticsDashboard/> */}
+<DeploymentPipeline/>
       {/* Search Filters */}
       <SearchClient />
 
