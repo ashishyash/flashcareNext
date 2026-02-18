@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
-const DeploymentPipeline: React.FC = () => {
+const DeploymentPipeline =() => {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto mt-6">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-semibold text-gray-900 mb-2">
           Deployment Pipeline
         </h1>
