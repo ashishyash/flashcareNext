@@ -25,8 +25,6 @@ import { NurseDetailDialog } from "./nurse-detail-dialog";
 import { DeploymentDialog } from "./deployment-dialog";
 import { SearchClient } from "./search-client";
 import { MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
-import DeploymentPipeline from "./DeploymentPipeline";
-import AnalyticsDashboard from "./AnalyticsDashboard";
 
 interface NursesTableProps {
   readonly nurses: readonly Nurse[];
@@ -41,7 +39,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [deployingNurses, setDeployingNurses] = useState<Nurse[]>([]);
   const [isDeploymentOpen, setIsDeploymentOpen] = useState(false);
-  
+
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -75,7 +73,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
 
   // Pagination calculations
   const totalPages = Math.ceil(filteredAndSortedNurses.length / itemsPerPage);
-  
+
   const paginatedNurses = useMemo(() => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
@@ -107,7 +105,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
   const getPageNumbers = () => {
     const pages: (number | string)[] = [];
     const maxVisiblePages = 5;
-    
+
     if (totalPages <= maxVisiblePages) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
@@ -135,13 +133,13 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
         pages.push(totalPages);
       }
     }
-    
+
     return pages;
   };
 
   const checkedNurses = useMemo(
     () => filteredAndSortedNurses.filter((n) => checkedIds.has(n.id)),
-    [filteredAndSortedNurses, checkedIds]
+    [filteredAndSortedNurses, checkedIds],
   );
 
   const handleSelectAll = (checked: boolean) => {
@@ -228,8 +226,6 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           Deploy ({checkedNurses.length})
         </Button>
       </div>
-      {/* <AnalyticsDashboard/> */}
-<DeploymentPipeline/>
       {/* Search Filters */}
       <SearchClient />
 
@@ -293,7 +289,9 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                       className="object-cover"
                     />
                   </div>
-                  <span className="text-sm font-normal text-brand-green6">{nurse.name}</span>
+                  <span className="text-sm font-normal text-brand-green6">
+                    {nurse.name}
+                  </span>
                 </TableCell>
                 <TableCell className="text-sm">{nurse.credentials}</TableCell>
                 <TableCell className="text-sm">{nurse.specialty}</TableCell>
@@ -310,9 +308,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   {nurse.distance_miles.toFixed(1)} mi
                 </TableCell>
                 <TableCell className="text-center">
-                  <div
-                    className="text-sm font-normal px-5 py-1.5 rounded-full bg-brand-green2 text-brand-green3"
-                  >
+                  <div className="text-sm font-normal px-5 py-1.5 rounded-full bg-brand-green2 text-brand-green3">
                     {nurse.match_score}%
                   </div>
                 </TableCell>
@@ -366,7 +362,10 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
         <div className="flex items-center justify-between px-4 py-3 bg-gray-50 rounded-b-lg border-t">
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-600">Rows per page:</span>
-            <Select value={itemsPerPage.toString()} onValueChange={handleItemsPerPageChange}>
+            <Select
+              value={itemsPerPage.toString()}
+              onValueChange={handleItemsPerPageChange}
+            >
               <SelectTrigger className="w-[70px] h-8 text-sm">
                 <SelectValue />
               </SelectTrigger>
@@ -377,11 +376,16 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                 <SelectItem value="50">50</SelectItem>
               </SelectContent>
             </Select>
-             <div className="text-sm text-gray-600">
-            Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, filteredAndSortedNurses.length)} of {filteredAndSortedNurses.length} records
+            <div className="text-sm text-gray-600">
+              Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
+              {Math.min(
+                currentPage * itemsPerPage,
+                filteredAndSortedNurses.length,
+              )}{" "}
+              of {filteredAndSortedNurses.length} records
+            </div>
           </div>
-          </div>
-          
+
           <div className="flex items-center gap-1">
             <Button
               variant="ghost"
@@ -392,8 +396,8 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            
-            {getPageNumbers().map((page, index) => (
+
+            {getPageNumbers().map((page, index) =>
               typeof page === "number" ? (
                 <Button
                   key={index}
@@ -409,10 +413,12 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   {page}
                 </Button>
               ) : (
-                <span key={index} className="px-2 text-gray-400">...</span>
-              )
-            ))}
-            
+                <span key={index} className="px-2 text-gray-400">
+                  ...
+                </span>
+              ),
+            )}
+
             <Button
               variant="ghost"
               size="sm"
@@ -423,8 +429,6 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>
-          
-         
         </div>
       )}
 

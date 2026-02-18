@@ -1,16 +1,36 @@
-import React from 'react';
-import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Legend } from 'recharts';
-import { Users, Clock, Award, DollarSign, TrendingUp, TrendingDown, Download, Activity } from 'lucide-react';
+"use client";
+import React from "react";
+import {
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer,
+  Legend,
+} from "recharts";
+import {
+  Users,
+  Clock,
+  Award,
+  DollarSign,
+  TrendingUp,
+  TrendingDown,
+  Download,
+  Activity,
+} from "lucide-react";
 
 const AnalyticsDashboard = () => {
   const deploymentData = [
-    { month: 'Aug', Requested: 45, Fulfilled: 42 },
-    { month: 'Sep', Requested: 52, Fulfilled: 48 },
-    { month: 'Oct', Requested: 61, Fulfilled: 57 },
-    { month: 'Nov', Requested: 58, Fulfilled: 58 },
-    { month: 'Dec', Requested: 68, Fulfilled: 64 },
-    { month: 'Jan', Requested: 76, Fulfilled: 72 },
-    { month: 'Feb', Requested: 62, Fulfilled: 60 },
+    { month: "Aug", Requested: 45, Fulfilled: 42 },
+    { month: "Sep", Requested: 52, Fulfilled: 48 },
+    { month: "Oct", Requested: 61, Fulfilled: 57 },
+    { month: "Nov", Requested: 58, Fulfilled: 58 },
+    { month: "Dec", Requested: 68, Fulfilled: 64 },
+    { month: "Jan", Requested: 76, Fulfilled: 72 },
+    { month: "Feb", Requested: 62, Fulfilled: 60 },
   ];
 
   const strikeData = [
@@ -29,8 +49,12 @@ const AnalyticsDashboard = () => {
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900 mb-2">Analytics & Reporting</h1>
-            <p className="text-gray-600">Comprehensive insights and performance metrics</p>
+            <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+              Analytics & Reporting
+            </h1>
+            <p className="text-gray-600">
+              Comprehensive insights and performance metrics
+            </p>
           </div>
           <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 font-medium">
             <Download size={20} />
@@ -67,7 +91,9 @@ const AnalyticsDashboard = () => {
                 <span>-23%</span>
               </div>
             </div>
-            <div className="text-gray-600 text-sm mb-1">Avg Deployment Time</div>
+            <div className="text-gray-600 text-sm mb-1">
+              Avg Deployment Time
+            </div>
             <div className="text-4xl font-semibold text-gray-900 mb-1">22h</div>
             <div className="text-gray-500 text-xs">Time to deployment</div>
           </div>
@@ -83,7 +109,9 @@ const AnalyticsDashboard = () => {
                 <span>+5%</span>
               </div>
             </div>
-            <div className="text-gray-600 text-sm mb-1">Placement Success Rate</div>
+            <div className="text-gray-600 text-sm mb-1">
+              Placement Success Rate
+            </div>
             <div className="text-4xl font-semibold text-gray-900 mb-1">94%</div>
             <div className="text-gray-500 text-xs">Assignment completion</div>
           </div>
@@ -100,7 +128,9 @@ const AnalyticsDashboard = () => {
               </div>
             </div>
             <div className="text-gray-600 text-sm mb-1">Cost Savings</div>
-            <div className="text-4xl font-semibold text-gray-900 mb-1">$147K</div>
+            <div className="text-4xl font-semibold text-gray-900 mb-1">
+              $147K
+            </div>
             <div className="text-gray-500 text-xs">vs traditional staffing</div>
           </div>
         </div>
@@ -109,70 +139,104 @@ const AnalyticsDashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Deployment Timeline Graph */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Deployment Timeline Graph</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">
+              Deployment Timeline Graph
+            </h2>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={deploymentData} barGap={4}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" vertical={false} />
-                <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6b7280', fontSize: 12 }} domain={[0, 80]} />
-                <Legend 
-                  verticalAlign="bottom" 
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="#e5e7eb"
+                  vertical={false}
+                />
+                <XAxis
+                  dataKey="month"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#6b7280", fontSize: 12 }}
+                />
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#6b7280", fontSize: 12 }}
+                  domain={[0, 80]}
+                />
+                <Legend
+                  verticalAlign="bottom"
                   height={36}
                   iconType="circle"
-                  formatter={(value:any) => <span className="text-sm text-gray-700">{value}</span>}
+                  formatter={(value: any) => (
+                    <span className="text-sm text-gray-700">{value}</span>
+                  )}
                 />
-                <Bar dataKey="Fulfilled" fill="#14b8a6" radius={[4, 4, 0, 0]} barSize={20} />
-                <Bar dataKey="Requested" fill="#475569" radius={[4, 4, 0, 0]} barSize={20} />
+                <Bar
+                  dataKey="Fulfilled"
+                  fill="#14b8a6"
+                  radius={[4, 4, 0, 0]}
+                  barSize={20}
+                />
+                <Bar
+                  dataKey="Requested"
+                  fill="#475569"
+                  radius={[4, 4, 0, 0]}
+                  barSize={20}
+                />
               </BarChart>
             </ResponsiveContainer>
           </div>
 
           {/* Strike Duration vs Response Time */}
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Strike Duration vs Response Time</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-6">
+              Strike Duration vs Response Time
+            </h2>
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={strikeData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis 
-                  dataKey="x" 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{ fill: '#6b7280', fontSize: 12 }}
+                <XAxis
+                  dataKey="x"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#6b7280", fontSize: 12 }}
                   domain={[0, 360]}
                   ticks={[0, 60, 120, 180, 240, 300, 360]}
                 />
-                <YAxis 
-                  axisLine={false} 
-                  tickLine={false} 
-                  tick={{ fill: '#6b7280', fontSize: 12 }}
+                <YAxis
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{ fill: "#6b7280", fontSize: 12 }}
                   domain={[0, 48]}
                   ticks={[0, 12, 24, 36, 48]}
-                  tickFormatter={(value:any) => `${value}h`}
+                  tickFormatter={(value: any) => `${value}h`}
                 />
-                <Legend 
-                  verticalAlign="bottom" 
+                <Legend
+                  verticalAlign="bottom"
                   height={36}
                   iconType="circle"
-                  formatter={(value:any) => (
-                    <span className={`text-sm ${value === 'responseTime' ? 'text-teal-600' : 'text-red-400'}`}>
-                      {value === 'responseTime' ? 'Response Time' : 'Strike Duration'}
+                  formatter={(value: any) => (
+                    <span
+                      className={`text-sm ${value === "responseTime" ? "text-teal-600" : "text-red-400"}`}
+                    >
+                      {value === "responseTime"
+                        ? "Response Time"
+                        : "Strike Duration"}
                     </span>
                   )}
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="responseTime" 
-                  stroke="#14b8a6" 
+                <Line
+                  type="monotone"
+                  dataKey="responseTime"
+                  stroke="#14b8a6"
                   strokeWidth={2}
-                  dot={{ fill: '#14b8a6', r: 4 }}
+                  dot={{ fill: "#14b8a6", r: 4 }}
                   name="responseTime"
                 />
-                <Line 
-                  type="monotone" 
-                  dataKey="strikeDuration" 
-                  stroke="#f87171" 
+                <Line
+                  type="monotone"
+                  dataKey="strikeDuration"
+                  stroke="#f87171"
                   strokeWidth={2}
-                  dot={{ fill: '#f87171', r: 4 }}
+                  dot={{ fill: "#f87171", r: 4 }}
                   name="strikeDuration"
                 />
               </LineChart>
@@ -187,8 +251,12 @@ const AnalyticsDashboard = () => {
               <Activity className="text-white" size={28} />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-white mb-1">Predictive Analysis</h3>
-              <p className="text-teal-50">3 hospitals at high strike risk next month</p>
+              <h3 className="text-xl font-semibold text-white mb-1">
+                Predictive Analysis
+              </h3>
+              <p className="text-teal-50">
+                3 hospitals at high strike risk next month
+              </p>
             </div>
           </div>
         </div>
