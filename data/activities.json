@@ -1,44 +1,20 @@
 [
   {
-    "time": "06:03 PM",
-    "text": "3 nurses deployed to Memorial Hospital",
-    "id": 1,
-    "createdAt": "2026-02-17T12:33:32.761Z"
+    "time": "2:34 PM",
+    "text": "5 ICU nurses deployed",
+    "color": "text-amber-300",
+    "status": "Emergency"
   },
   {
-    "time": "06:03 PM",
-    "text": "3 nurses deployed to Memorial Hospital",
-    "id": 2,
-    "createdAt": "2026-02-17T12:33:32.878Z"
+    "time": "2:28 PM",
+    "text": "Emergency credentials completed for 12 nurses",
+    "color": "text-amber-300",
+    "status": "Emergency"
   },
   {
-    "time": "06:03 PM",
-    "text": "3 nurses deployed to Memorial Hospital",
-    "id": 3,
-    "createdAt": "2026-02-17T12:33:32.898Z"
-  },
-  {
-    "time": "09:01 PM",
-    "text": "1 nurse deployed to Memorial Hospital",
-    "id": 4,
-    "createdAt": "2026-02-17T15:31:41.096Z"
-  },
-  {
-    "time": "09:06 PM",
-    "text": "3 nurses deployed to Memorial Hospital",
-    "id": 5,
-    "createdAt": "2026-02-17T15:36:33.750Z"
-  },
-  {
-    "time": "09:08 PM",
-    "text": "7 nurses deployed to Memorial Hospital",
-    "id": 6,
-    "createdAt": "2026-02-17T15:38:20.784Z"
-  },
-  {
-    "time": "09:21 PM",
-    "text": "3 nurses deployed to Memorial Hospital",
-    "id": 7,
-    "createdAt": "2026-02-17T15:51:03.106Z"
+    "time": "2:15 PM",
+    "text": "Strike alert activated",
+    "color": "text-red-500",
+    "status": "Critical"
   }
 ]
