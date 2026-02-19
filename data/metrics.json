@@ -2,21 +2,21 @@
   {
     "id": 1,
     "label": "Nurses Needed",
-    "value": "131",
+    "value": "119",
     "icon": "Users",
     "color": "text-red-600",
     "bg": "bg-red-50",
-    "updatedAt": "2026-02-18T07:36:02.393Z",
+    "updatedAt": "2026-02-18T13:26:19.350Z",
     "statusMsg": "Across all facilities"
   },
   {
     "id": 2,
     "label": "Deployed",
-    "value": "41",
+    "value": "53",
     "icon": "TrendingUp",
     "color": "text-blue-600",
     "bg": "bg-blue-50",
-    "updatedAt": "2026-02-18T07:36:01.969Z",
+    "updatedAt": "2026-02-18T13:26:19.242Z",
     "statusMsg": "32% fulfillment"
   },
   {
