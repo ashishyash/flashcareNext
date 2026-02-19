@@ -74,11 +74,11 @@ const ContractGeneration = () => {
                 <div className="grid grid-cols-2 gap-8">
                   <div>
                     <p className=" text-sm">Generated Date</p>
-                    <p className="text-sm font-medium">Feb 11, 2026</p>
+                    <p className="text-sm font-normal">Feb 11, 2026</p>
                   </div>
                   <div>
                     <p className=" text-sm">Duration</p>
-                    <p className="text-sm font-medium">
+                    <p className="text-sm font-normal">
                       Duration of strike - Starts Tomorrow 7 AM
                     </p>
                   </div>
@@ -88,12 +88,12 @@ const ContractGeneration = () => {
             </CardHeader>
 
             {/* Contract Body */}
-            <CardContent className="bg-white rounded-b-xl p-8 shadow-md">
+            <CardContent className="bg-white rounded-b-xl p-8 pb-9 shadow-md">
               {/* Parties */}
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
                   <p className="text-sm mb-2">NURSE (Employee)</p>
-                  <h3 className="text-xl font-semibold mb-3">Sarah Chen</h3>
+                  <h3 className="text-xl font-normal mb-3">Sarah Chen</h3>
                   <p className=" mb-1">
                     123 Main St, Los Angeles, CA 90001
                   </p>
@@ -104,7 +104,7 @@ const ContractGeneration = () => {
                   <p className="text-sm mb-2">
                     FACILITY (Employer)
                   </p>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-xl font-normal mb-3">
                     Memorial Hospital
                   </h3>
                   <p className=" mb-1">Houston, TX</p>
@@ -114,28 +114,28 @@ const ContractGeneration = () => {
               </div>
 
               {/* Assignment Terms */}
-              <h3 className="text-xl font-semibold mb-4">Assignment Terms</h3>
+              <h3 className="text-lg font-normal mb-4">Assignment Terms</h3>
               <div className="flex gap-4 mb-8">
                 <Card className="bg-green-50 flex-auto border-green-200">
                   <CardContent className="flex justify-between p-4">
-                    <Calendar />
+                    <Calendar  className="w-5 h-5"/>
                   <div className=" items-center gap-2 mb-2">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-normal text-gray-700">
                       Duration
                     </span>
-                  <p className="font-semibold text-gray-900">1 weeks</p>
+                  <p className="text-base font-normal text-gray-900">1 weeks</p>
                   <p className="text-sm text-gray-600">Duration of Strike</p>
                   </div>
                   </CardContent>
                 </Card>
                 <Card className="bg-green-50 flex-auto border-green-200">
                   <CardContent className="flex p-4">
-                    <DollarSign />
+                    <DollarSign  className="w-5 h-5"/>
                   <div className=" gap-2 mb-2">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-normal text-gray-700">
                       Compensation
                     </span>
-                  <p className="font-semibold text-gray-900">
+                  <p className="text-base font-normal text-gray-900">
                     $75/hour + $150/day Housing
                   </p>
                   <p className="text-sm text-gray-600">40 hours/week</p>
@@ -144,12 +144,12 @@ const ContractGeneration = () => {
                 </Card>
                 <Card className="bg-green-50 flex-auto border-green-200">
                   <CardContent className="flex p-4">
-                    <MapPin/>
+                    <MapPin className="w-5 h-5"/>
                   <div className=" gap-2 mb-2">
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-normal text-gray-700">
                       Unit
                     </span>
-                  <p className="font-semibold text-gray-900">ICU</p>
+                  <p className="text-base font-normal text-gray-900">ICU</p>
                   <p className="text-sm text-gray-600">Memorial Hospital</p>
                   </div>
                 </CardContent>
@@ -158,7 +158,7 @@ const ContractGeneration = () => {
 
               {/* Terms & Conditions */}
               <h3 className="text-lg font-normal mb-4">Terms & Conditions</h3>
-              <div className="space-y-4 border-b pb-5 text-gray-700">
+              <div className="space-y-4 border-b pb-7 text-gray-700">
                 <p className="text-sm font-normal">
                   <span className="text-sm font-bold">1. Employment Status:</span>{" "}
                   This agreement establishes a temporary employment relationship
@@ -185,7 +185,7 @@ const ContractGeneration = () => {
               </div>
 
               {/* Signatures */}
-              <h3 className="text-lg font-normal mb-4">Signatures</h3>
+              <h3 className="text-lg font-normal mt-6 mb-4">Signatures</h3>
               <div className="grid grid-cols-2 gap-8">
                 <div>
                   <p className="text-sm  mb-6">Nurse Signature</p>
@@ -210,11 +210,11 @@ const ContractGeneration = () => {
           {/* Sidebar */}
           <div className="w-1/4 space-y-6">
             {/* Quick Actions */}
-            <Card>
+            <Card className="border border-sidebar-border">
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+                <h3 className="text-lg font-normal mb-4">Quick Actions</h3>
                 <div className="space-y-3">
-                  <Button variant="outline" className="w-full border-2 border-teal-600 text-teal-600 hover:bg-teal-50">
+                  <Button variant="outline" className="w-full text-base font-normal border py-5 rounded-lg border-teal-600 text-teal-600">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -230,7 +230,7 @@ const ContractGeneration = () => {
                     </svg>
                     Send for E-Signature
                   </Button>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full text-base font-normal border py-5 rounded-lg border-teal-600 text-teal-600">
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -251,23 +251,23 @@ const ContractGeneration = () => {
             </Card>
 
             {/* Generation Stats */}
-            <Card>
+            <Card className="border border-sidebar-border">
               <CardContent className="p-6">
-              <h3 className="text-lg font-semibold mb-4">Generation Stats</h3>
+              <h3 className="text-lg font-normal mb-4">Generation Stats</h3>
               <div className="space-y-4">
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Generation Time</p>
-                  <p className="text-2xl font-semibold text-gray-900">
+                  <p className="text-2xl font-normal text-gray-900">
                     2.3 sec
                   </p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Automation Rate</p>
-                  <p className="text-2xl font-semibold text-green-600">100%</p>
+                  <p className="text-2xl font-normal text-green-600">100%</p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Pages</p>
-                  <p className="text-2xl font-semibold text-gray-900">4</p>
+                  <p className="text-2xl font-normal text-gray-900">4</p>
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 mb-1">Legal Review</p>
@@ -294,7 +294,7 @@ const ContractGeneration = () => {
                     d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
                   />
                 </svg>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-normal text-gray-900">
                   Compliance Verified
                 </h3>
               </div>
