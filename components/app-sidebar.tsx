@@ -1,5 +1,7 @@
 "use client"
 
+import { usePathname } from "next/navigation"
+
 import { Home, Search, GitBranch, FileCheck, FileText, BarChart3, LogOut} from "lucide-react"
 import {
   Sidebar,
@@ -49,6 +51,7 @@ const items = [
 ]
 
 export function AppSidebar() {
+  const pathname = usePathname()
   
   return (
     <Sidebar variant="inset" collapsible="icon">
@@ -81,9 +84,9 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild isActive={pathname === item.url} className={pathname === item.url ? "!bg-brand-cyan2/20 !text-brand-cyan2 font-medium" : ""}>
                     <a href={item.url} className="py-6">
-                      <item.icon className="w-5 h-5" />
+                      <item.icon className={pathname === item.url ? "w-5 h-5 " : "w-5 h-5"} />
                       <span className="text-base">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
