@@ -57,25 +57,34 @@ export function AppSidebar() {
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
               <span className="group-data-[collapsible=icon]:text-xs">
-                <Image width={24} height={24} alt="sidebar icon" src={'/assets/icon/sidebar-header-icon.svg'} />
+                <Image
+                  width={24}
+                  height={24}
+                  alt="sidebar icon"
+                  src={"/assets/icon/sidebar-header-icon.svg"}
+                />
               </span>
             </div>
-            <h3 className=" text-2xl text-white group-data-[collapsible=icon]:hidden">FlashCare AI</h3>
+            <h3 className=" text-2xl text-white group-data-[collapsible=icon]:hidden">
+              FlashCare AI
+            </h3>
           </div>
         </div>
-        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-green1">Crisis Management Platform</p>
+        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-green1">
+          Crisis Management Platform
+        </p>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
+          {/* <SidebarGroupLabel>Navigation</SidebarGroupLabel> */}
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
+                    <a href={item.url} className="py-6">
+                      <item.icon className="w-5 h-5" />
+                      <span className="text-base">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -95,5 +104,5 @@ export function AppSidebar() {
         </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }

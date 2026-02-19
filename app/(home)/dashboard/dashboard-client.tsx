@@ -174,7 +174,7 @@ export default function DashboardClient(): JSX.Element {
                   </span>
                   <span className="flex items-center text-3xl">
                     {/* <Users className="w-4 h-4 mr-1" /> */}
-                    {metrics[0]?.value || 0} Nurses Needed
+                    172 Nurses Needed
                   </span>
                 </div>
               </div>
@@ -292,7 +292,7 @@ export default function DashboardClient(): JSX.Element {
                       : "border-b border-b-sidebar-border"
                   }
                 >
-                  <div className={`flex items-center px-2 py-1`}>
+                  <div className={`flex items-center px-4 py-1`}>
                     <div
                       className={`w-2 h-5 ${activity.bg2} rounded-full mr-3 flex-shrink-0`}
                     />
@@ -307,7 +307,7 @@ export default function DashboardClient(): JSX.Element {
                       </div>
                     </div>
                   </div>
-                  <div className="text-xs font-normal text-brand-gray1 mb-1 pl-7">
+                  <div className="text-xs font-normal text-brand-gray1 mb-1 pl-9">
                     {activity.time}
                   </div>
                 </div>

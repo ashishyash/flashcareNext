@@ -255,12 +255,12 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
               <TableHead>Name</TableHead>
               <TableHead>Credentials</TableHead>
               <TableHead>Specialty</TableHead>
-              <TableHead className="text-right">Experience</TableHead>
+              <TableHead className="">Experience</TableHead>
               <TableHead>Location</TableHead>
-              <TableHead className="text-right">Distance</TableHead>
+              <TableHead className="">Distance</TableHead>
               <TableHead className="text-center">Match Score</TableHead>
               <TableHead>Availability</TableHead>
-              <TableHead className="text-right">Rating</TableHead>
+              <TableHead className="">Rating</TableHead>
               <TableHead className="text-center">Action</TableHead>
             </TableRow>
           </TableHeader>
