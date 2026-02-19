@@ -17,11 +17,16 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
           <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <SidebarTrigger />
+                <SidebarTrigger className="hover:bg-transparent hover:text-current" />
               </div>
               <div className="flex items-center space-x-4">
-                <span className="text-sm text-gray-600">
-                  {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                <span className="text-sm text-brand-black2">
+                  {new Date().toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
                 </span>
                 <div className="relative">
                   {" "}
@@ -30,28 +35,33 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                 </div>
                 <HelpCircle className="h-6 w-6 text-gray-700" />
                 <div className="flex flex-col text-right">
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-sm font-medium text-brand-black1">
                     {" "}
-                    User Name{" "}
+                    Laura Gardner{" "}
                   </div>
-                  <div className="text-xs font-normal text-gray-500">
+                  <div className="text-xs font-normal text-brand-black3">
                     {" "}
                     Admin{" "}
                   </div>
                 </div>
 
-                <Link href="/">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="hover:bg-white w-full"
-                  >
-                    {/* <LogOut className="w-5 h-5" /> */}
-                    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-700 text-white font-semibold">
-                      UN
-                    </div>
-                  </Button>
-                </Link>
+                {/* <Link href="/">
+                <Button variant="ghost" size="icon" className="hover:bg-white ">
+                  <LogOut className="w-5 h-5" />
+                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-brand-black2 text-white font-semibold">
+                    UN
+                  </div>
+                </Button>
+                </Link> */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="shrink-0 size-10 p-0 hover:bg-transparent"
+                >
+                  <div className="flex items-center justify-center size-10 rounded-full bg-brand-black2 text-white font-semibold">
+                    LG
+                  </div>
+                </Button>
               </div>
             </div>
           </div>
