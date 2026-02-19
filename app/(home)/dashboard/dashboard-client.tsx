@@ -329,7 +329,7 @@ export default function DashboardClient(): JSX.Element {
                     key={index}
                     className="hover:shadow-md transition border-brand-cyan1"
                   >
-                    <CardContent className="p-4">
+                    <CardContent className="p-4 px-3">
                       <div className="flex items-center justify-between mb-2">
                         <div className="text-lg font-normal leading-tight text-brand-black1">
                           {action.label}

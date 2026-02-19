@@ -20,11 +20,62 @@ import {
   TrendingDown,
   Download,
   Activity,
+  Sparkles,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const AnalyticsDashboard = () => {
+  const statsCards = [
+    {
+      id: 1,
+      title: "Total Deployments",
+      value: "418",
+      subtitle: "Last 6 months",
+      icon: Users,
+      iconBg: "bg-teal-100",
+      iconColor: "text-teal-600",
+      trend: TrendingUp,
+      trendValue: "+12%",
+      trendColor: "text-teal-600",
+    },
+    {
+      id: 2,
+      title: "Avg Deployment Time",
+      value: "22h",
+      subtitle: "Time to deployment",
+      icon: Clock,
+      iconBg: "bg-cyan-100",
+      iconColor: "text-cyan-600",
+      trend: TrendingDown,
+      trendValue: "-23%",
+      trendColor: "text-teal-600",
+    },
+    {
+      id: 3,
+      title: "Placement Success Rate",
+      value: "94%",
+      subtitle: "Assignment completion",
+      icon: Award,
+      iconBg: "bg-teal-100",
+      iconColor: "text-teal-600",
+      trend: TrendingUp,
+      trendValue: "+5%",
+      trendColor: "text-teal-600",
+    },
+    {
+      id: 4,
+      title: "Cost Savings",
+      value: "$147K",
+      subtitle: "vs traditional staffing",
+      icon: DollarSign,
+      iconBg: "bg-orange-100",
+      iconColor: "text-orange-600",
+      trend: TrendingDown,
+      trendValue: "-25%",
+      trendColor: "text-teal-600",
+    },
+  ];
   const deploymentData = [
     { month: "Aug", Requested: 45, Fulfilled: 42 },
     { month: "Sep", Requested: 52, Fulfilled: 48 },
@@ -46,15 +97,15 @@ const AnalyticsDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="min-h-screen bg-gray-50 p-8 pt-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+            <h1 className="text-3xl font-normal text-gray-900 mb-2">
               Analytics & Reporting
             </h1>
-            <p className="text-gray-600">
+            <p className="text-base font-normal">
               Comprehensive insights and performance metrics
             </p>
           </div>
@@ -66,91 +117,32 @@ const AnalyticsDashboard = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {/* Total Deployments */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="bg-teal-100 p-3 rounded-lg">
-                  <Users className="text-teal-600" size={24} />
+          {statsCards.map((stat) => (
+            <Card key={stat.id} className="rounded-2xl border-sidebar-border">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`${stat.iconBg} p-3 rounded-lg`}>
+                    <stat.icon className={stat.iconColor} size={24} />
+                  </div>
+                  <div className={`flex items-center gap-1 ${stat.trendColor} text-base font-normal`}>
+                    <stat.trend size={16} />
+                    <span>{stat.trendValue}</span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
-                  <TrendingUp size={16} />
-                  <span>+12%</span>
-                </div>
-              </div>
-              <div className="text-gray-600 text-sm mb-1">Total Deployments</div>
-              <div className="text-4xl font-semibold text-gray-900 mb-1">418</div>
-              <div className="text-gray-500 text-xs">Last 6 months</div>
-            </CardContent>
-          </Card>
-
-          {/* Avg Deployment Time */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="bg-cyan-100 p-3 rounded-lg">
-                  <Clock className="text-cyan-600" size={24} />
-                </div>
-                <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
-                  <TrendingDown size={16} />
-                  <span>-23%</span>
-                </div>
-              </div>
-              <div className="text-gray-600 text-sm mb-1">
-                Avg Deployment Time
-              </div>
-              <div className="text-4xl font-semibold text-gray-900 mb-1">22h</div>
-              <div className="text-gray-500 text-xs">Time to deployment</div>
-            </CardContent>
-          </Card>
-
-          {/* Placement Success Rate */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="bg-teal-100 p-3 rounded-lg">
-                  <Award className="text-teal-600" size={24} />
-                </div>
-                <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
-                  <TrendingUp size={16} />
-                  <span>+5%</span>
-                </div>
-              </div>
-              <div className="text-gray-600 text-sm mb-1">
-                Placement Success Rate
-              </div>
-              <div className="text-4xl font-semibold text-gray-900 mb-1">94%</div>
-              <div className="text-gray-500 text-xs">Assignment completion</div>
-            </CardContent>
-          </Card>
-
-          {/* Cost Savings */}
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="bg-orange-100 p-3 rounded-lg">
-                  <DollarSign className="text-orange-600" size={24} />
-                </div>
-                <div className="flex items-center gap-1 text-teal-600 text-sm font-medium">
-                  <TrendingDown size={16} />
-                  <span>-25%</span>
-                </div>
-              </div>
-              <div className="text-gray-600 text-sm mb-1">Cost Savings</div>
-              <div className="text-4xl font-semibold text-gray-900 mb-1">
-                $147K
-              </div>
-              <div className="text-gray-500 text-xs">vs traditional staffing</div>
-            </CardContent>
-          </Card>
+                <div className=" text-base font-normal mb-1">{stat.title}</div>
+                <div className="text-3xl font-normal  mb-1">{stat.value}</div>
+                <div className="font-normal text-xs">{stat.subtitle}</div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Deployment Timeline Graph */}
-          <Card>
+          <Card className="border-sidebar-border"> 
             <CardHeader>
-              <CardTitle className="text-xl">Deployment Timeline Graph</CardTitle>
+              <CardTitle className="text-xl font-normal">Deployment Timeline Graph</CardTitle>
             </CardHeader>
             <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -198,9 +190,9 @@ const AnalyticsDashboard = () => {
           </Card>
 
           {/* Strike Duration vs Response Time */}
-          <Card>
+          <Card className="border-sidebar-border"> 
             <CardHeader>
-              <CardTitle className="text-xl">Strike Duration vs Response Time</CardTitle>
+              <CardTitle className="text-xl font-normal">Strike Duration vs Response Time</CardTitle>
             </CardHeader>
             <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -261,14 +253,14 @@ const AnalyticsDashboard = () => {
         {/* Predictive Analysis Banner */}
         <div className="bg-gradient-to-r from-teal-600 to-teal-500 rounded-xl p-6 shadow-sm">
           <div className="flex items-center gap-4">
-            <div className="bg-white/20 p-3 rounded-lg">
-              <Activity className="text-white" size={28} />
+            <div className="bg-white/20 p-3 rounded-full">
+              <Sparkles className="text-white" size={28} />
             </div>
             <div>
-              <h3 className="text-xl font-semibold text-white mb-1">
+              <h3 className="text-2xl font-normal text-white mb-1">
                 Predictive Analysis
               </h3>
-              <p className="text-teal-50">
+              <p className="text-teal-50 text-base font-normal">
                 3 hospitals at high strike risk next month
               </p>
             </div>

@@ -21,7 +21,7 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
               </div>
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-600">
-                  Wednesday, February 11, 2026
+                  {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
                 </span>
                 <div className="relative">
                   {" "}
