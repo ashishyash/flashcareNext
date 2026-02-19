@@ -215,7 +215,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           <h1 className="text-[32px] font-normal text-brand-black1">
             Nurse Search & AI Matching
           </h1>
-          <p className="text-base font-normal mt-1">
+          <p className="text-base font-normal mt-1 text-brand-black2">
             Find and deploy qualified nurses with intelligent matching
           </p>
         </div>
@@ -223,13 +223,13 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           onClick={handleBulkDeploy}
           disabled={checkedNurses.length === 0}
           data-testid="deploy-selected-btn"
-          className="flex items-center gap-1 px-5 py-5 rounded-md text-sm font-semibold text-white transition-all hover:opacity-90"
+          className="flex items-center gap-1 px-5 py-5 rounded-md text-base font-bold text-white transition-all hover:opacity-90 bg-brand-cyan1"
         >
           Deploy ({checkedNurses.length})
         </Button>
       </div>
       {/* Search Filters */}
-      <SearchClient />
+      <SearchClient filteredNursesCount={filteredAndSortedNurses?.length} />
 
       {/* <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
         <p className="text-sm text-slate-700">
@@ -241,7 +241,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       {/* Table */}
       <div className="rounded-lg border overflow-hidden">
         <Table>
-          <TableHeader>
+          <TableHeader className="text-xs font-bold text-brand-black2">
             <TableRow className="">
               <TableHead className="">
                 <Checkbox
@@ -254,16 +254,16 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   aria-label="Select all nurses"
                 />
               </TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Credentials</TableHead>
-              <TableHead>Specialty</TableHead>
-              <TableHead className="">Experience</TableHead>
+              <TableHead>NAME</TableHead>
+              <TableHead>CREDENTIALS</TableHead>
+              <TableHead>SPECIALTY</TableHead>
+              <TableHead className="">EXPERIENCE</TableHead>
               <TableHead>Location</TableHead>
-              <TableHead className="">Distance</TableHead>
-              <TableHead className="text-center">Match Score</TableHead>
-              <TableHead>Availability</TableHead>
-              <TableHead className="">Rating</TableHead>
-              <TableHead className="text-center">Action</TableHead>
+              <TableHead className=""> DISTANCE</TableHead>
+              <TableHead className="text-center"> MATCH SCORE</TableHead>
+              <TableHead> AVAILABILITY</TableHead>
+              <TableHead className=""> RATING</TableHead>
+              <TableHead className="text-center"> ACTION</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -271,7 +271,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
               <TableRow key={nurse.id} className="hover:bg-slate-50">
                 <TableCell>
                   <Checkbox
-                    className="rounded-md"
+                    className="rounded-md border-brand-cyan1"
                     checked={checkedIds.has(nurse.id)}
                     onCheckedChange={(checked) =>
                       handleCheckboxChange(nurse.id, checked as boolean)
@@ -280,33 +280,38 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   />
                 </TableCell>
                 <TableCell
-                  className="flex items-center font-medium cursor-pointer text-cyan-600 hover:text-cyan-700"
                   onClick={() => handleNurseClick(nurse)}
+                  className="text-sm font-normal cursor-pointer text-brand-cyan1 hover:text-brand-cyan2"
                 >
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0 mr-2">
+                  <div className="relative flex items-center">
                     <Image
                       src={nurse.photo}
                       alt={nurse.name}
-                      fill
-                      className="object-cover"
+                      width={24}
+                      height={24}
+                      className="object-cover rounded-full w-6 h-6 mr-2"
                     />
+                    <span className="text-sm font-normal text-brand-cyan1">
+                      {nurse.name}
+                    </span>
                   </div>
-                  <span className="text-sm font-normal text-brand-green6">
-                    {nurse.name}
-                  </span>
                 </TableCell>
-                <TableCell className="text-sm">{nurse.credentials}</TableCell>
-                <TableCell className="text-sm">{nurse.specialty}</TableCell>
-                <TableCell className=" text-sm">
+                <TableCell className="text-sm text-brand-black2">
+                  {nurse.credentials}
+                </TableCell>
+                <TableCell className="text-sm text-brand-black2">
+                  {nurse.specialty}
+                </TableCell>
+                <TableCell className=" text-sm text-brand-black2">
                   {nurse.experience_years} yrs
                 </TableCell>
                 <TableCell className="text-sm font-normal">
-                  <div className="flex items-center">
+                  <div className="flex items-center text-brand-black2">
                     <MapPin className="w-4 mr-1" />
                     {nurse.location}
                   </div>
                 </TableCell>
-                <TableCell className=" text-sm">
+                <TableCell className=" text-sm text-brand-black2">
                   {nurse.distance_miles.toFixed(1)} mi
                 </TableCell>
                 <TableCell className="text-center">
@@ -332,7 +337,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                 </TableCell>
 
                 <TableCell className="text-right text-sm ">
-                  <div className="flex items-center">
+                  <div className="flex items-center text-brand-black2">
                     <Star className="w-4 mr-1 text-yellow-400 fill-yellow-400" />{" "}
                     {nurse.previous_rating}
                   </div>
@@ -342,7 +347,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   <Button
                     size="sm"
                     onClick={() => handleDeploy(nurse)}
-                    className="px-4 py-1.5 text-sm font-normal rounded-full border text-brand-green6 border-brand-green6 bg-white shadow-none hover:bg-green-50 hover:text-green-800"
+                    className="px-4 py-1.5 text-sm font-normal rounded-full border text-brand-cyan1 border-brand-cyan1 bg-white shadow-none hover:bg-brand-green2 hover:text-green-800"
                   >
                     Deploy
                   </Button>
@@ -363,22 +368,42 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       {filteredAndSortedNurses.length > 0 && (
         <div className="flex items-center justify-between px-4 py-3 bg-gray-50 rounded-b-lg border-t">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-600">Rows per page:</span>
+            <span className="text-sm text-brand-black2">Rows per page:</span>
             <Select
               value={itemsPerPage.toString()}
               onValueChange={handleItemsPerPageChange}
             >
-              <SelectTrigger className="w-[70px] h-8 text-sm">
+              <SelectTrigger className="w-[70px] h-8 text-sm text-brand-black2 border-sidebar-border">
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="5">5</SelectItem>
-                <SelectItem value="10">10</SelectItem>
-                <SelectItem value="20">20</SelectItem>
-                <SelectItem value="50">50</SelectItem>
+              <SelectContent className="text-brand-black2">
+                <SelectItem
+                  value="5"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  5
+                </SelectItem>
+                <SelectItem
+                  value="10"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  10
+                </SelectItem>
+                <SelectItem
+                  value="20"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  20
+                </SelectItem>
+                <SelectItem
+                  value="50"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  50
+                </SelectItem>
               </SelectContent>
             </Select>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-brand-black2">
               Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
               {Math.min(
                 currentPage * itemsPerPage,
@@ -394,7 +419,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
               size="sm"
               onClick={handlePrevious}
               disabled={currentPage === 1}
-              className="h-8 w-8 p-0 text-gray-600 hover:text-gray-900 hover:bg-gray-100 disabled:opacity-50"
+              className="h-8 w-8 p-0 text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -408,8 +433,8 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   onClick={() => handlePageChange(page)}
                   className={`h-8 w-8 p-0 text-sm ${
                     currentPage === page
-                      ? "bg-gray-600 text-white hover:bg-cyan-700"
-                      : "text-brand-green6"
+                      ? "bg-brand-black2 text-white hover:bg-brand-cyan1"
+                      : "text-brand-cyan3  hover:bg-brand-cyan1"
                   }`}
                 >
                   {page}
@@ -426,7 +451,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
               size="sm"
               onClick={handleNext}
               disabled={currentPage === totalPages}
-              className="h-8 w-8 p-0 text-gray-600 hover:text-gray-900 hover:bg-gray-100 disabled:opacity-50"
+              className="h-8 w-8 p-0 text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>

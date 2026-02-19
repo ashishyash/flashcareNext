@@ -11,11 +11,11 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Funnel } from "lucide-react";
 import searchFilters from "@/data/search-filters.json";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export const SearchClient = () => {
+export const SearchClient = ({ filteredNursesCount = 0 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(true);
@@ -43,13 +43,14 @@ export const SearchClient = () => {
       className="bg-white border border-[#E5E7EB] rounded-lg"
     >
       <div className="flex items-center justify-between px-5 py-4">
-        <h3 className="text-lg font-normal">Filters</h3>
+        <h3 className="text-lg font-normal text-brand-black1">Filters</h3>
         <button
           data-testid="toggle-filters-btn"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-1.5 text-sm font-medium text-[#009689] hover:text-[#007A55] transition-colors"
+          className="flex items-center gap-1.5 text-base font-normal text-brand-cyan3 hover:opacity-90 transition-opacity"
         >
           {/* <Filter className="w-4 h-4" /> */}
+          <Funnel className="text-brand-cyan3 w-5 h-5 hover:opacity-90 transition-opacity" />{" "}
           {isOpen ? "Hide Filters" : "Show Filters"}
         </button>
       </div>
@@ -58,7 +59,7 @@ export const SearchClient = () => {
         <>
           <div className="px-5 pb-3 grid grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-normal mb-1.5">
+              <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Location
               </label>
               <Select
@@ -69,13 +70,17 @@ export const SearchClient = () => {
               >
                 <SelectTrigger
                   data-testid="filter-location"
-                  className="h-10 bg-white border-[#E5E7EB] text-sm"
+                  className="h-10 bg-white border-sidebar-border text-sm font-normal "
                 >
                   <SelectValue placeholder="All Locations" />
                 </SelectTrigger>
                 <SelectContent>
                   {searchFilters.location.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
+                    <SelectItem
+                      key={item.value}
+                      value={item.value}
+                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                    >
                       {item.label}
                     </SelectItem>
                   ))}
@@ -84,7 +89,7 @@ export const SearchClient = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-normal mb-1.5">
+              <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Specialty
               </label>
               <Select
@@ -101,7 +106,11 @@ export const SearchClient = () => {
                 </SelectTrigger>
                 <SelectContent>
                   {searchFilters.specialization.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
+                    <SelectItem
+                      key={item.value}
+                      value={item.value}
+                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                    >
                       {item.label}
                     </SelectItem>
                   ))}
@@ -110,7 +119,7 @@ export const SearchClient = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-normal mb-1.5">
+              <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Experience
               </label>
               <Select
@@ -127,7 +136,11 @@ export const SearchClient = () => {
                 </SelectTrigger>
                 <SelectContent>
                   {searchFilters.experience.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
+                    <SelectItem
+                      key={item.value}
+                      value={item.value}
+                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                    >
                       {item.label}
                     </SelectItem>
                   ))}
@@ -136,7 +149,7 @@ export const SearchClient = () => {
             </div>
 
             <div className="">
-              <label className="block text-sm font-normal mb-1.5">
+              <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Availability
               </label>
               <Select
@@ -153,7 +166,11 @@ export const SearchClient = () => {
                 </SelectTrigger>
                 <SelectContent>
                   {searchFilters.availability.map((item) => (
-                    <SelectItem key={item.value} value={item.value}>
+                    <SelectItem
+                      key={item.value}
+                      value={item.value}
+                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                    >
                       {item.label}
                     </SelectItem>
                   ))}
@@ -164,7 +181,7 @@ export const SearchClient = () => {
           <div className="px-5 pb-2 flex justify-end">
             <Button
               onClick={handleSubmit}
-              className="bg-cyan-600 hover:bg-cyan-700"
+              className="bg-brand-cyan3 hover:opacity-90"
             >
               Apply Filters
             </Button>
@@ -173,9 +190,9 @@ export const SearchClient = () => {
           {/* Results count */}
           <p
             data-testid="results-count"
-            className=" px-5 pb-3 text-sm font-normal"
+            className=" px-5 pb-3 text-sm font-normal text-brand-black2"
           >
-            00 nurses match your criteria
+            {filteredNursesCount} nurses match your criteria
           </p>
         </>
       )}
