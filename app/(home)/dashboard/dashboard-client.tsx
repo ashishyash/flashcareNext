@@ -69,6 +69,8 @@ interface Activity_Item {
   text: string;
   color: string;
   status: string;
+  bg: string;
+  bg2: string;
 }
 
 interface DashboardState {
@@ -134,11 +136,11 @@ export default function DashboardClient(): JSX.Element {
           <div className="flex items-center justify-between">
             <div className="flex items-start">
               <div>
-                <h2 className="text-[32px] font-normal mb-2 text-gray-900">
+                <h2 className="text-[32px] font-normal mb-2 text-brand-black1">
                   Crisis Dashboard
                 </h2>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <span className="flex items-center text-base text-gray-700">
+                  <span className="flex items-center text-base text-brand-gray1">
                     Real-time crisis management and deployment oversight
                   </span>
                 </div>
@@ -147,7 +149,7 @@ export default function DashboardClient(): JSX.Element {
             <div className="text-right ">
               <Button
                 onClick={search}
-                className="bg-cyan-600 hover:bg-cyan-700 text-white"
+                className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white"
               >
                 <Users className="w-5 h-5 mr-2" />
                 Find Nurses
@@ -156,7 +158,7 @@ export default function DashboardClient(): JSX.Element {
           </div>
         </div>
 
-        <div className="bg-red-600 text-white rounded-lg p-6 mb-6 shadow-lg animate-pulse">
+        <div className="bg-brand-red1 text-white rounded-lg p-6 mb-6 shadow-lg animate-pulse">
           <div className="flex items-center justify-between">
             <div className="flex items-start">
               <div>
@@ -178,7 +180,7 @@ export default function DashboardClient(): JSX.Element {
               </div>
             </div>
             <div className="text-right">
-              <Button className="bg-white text-normal text-red-600 hover:bg-white-50 text-base">
+              <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-base">
                 Manage
               </Button>
             </div>
@@ -191,17 +193,17 @@ export default function DashboardClient(): JSX.Element {
             return (
               <Card
                 key={index}
-                className="hover:shadow-md transition border border-slate-200"
+                className="hover:shadow-md transition border border-sidebar-border"
               >
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-1">
-                    <div className="text-base text-gray-600">
+                    <div className="text-base text-brand-black1">
                       {metric.label}
                     </div>
 
                     <Icon className={`w-4 h-4 ${metric.color}`} />
                   </div>
-                  <div className="text-3xl font-normal text-gray-900 mb-1">
+                  <div className="text-3xl font-normal text-brand-black1 mb-1">
                     {metric.value}
                   </div>
                   <div className={`text-sm ${metric.color}`}>
@@ -214,8 +216,8 @@ export default function DashboardClient(): JSX.Element {
         </div>
 
         <div className="grid grid-cols-2  gap-6 mb-6">
-          <Card className="border border-slate-200">
-            <CardHeader className="border-b border-b-slate-200">
+          <Card className="border border-sidebar-border">
+            <CardHeader className="border-b border-b-sidebar-border">
               <CardTitle className="text-lg font-normal">
                 Unit Status Overview
               </CardTitle>
@@ -223,27 +225,30 @@ export default function DashboardClient(): JSX.Element {
             <CardContent className="space-y-4">
               <Table className="px-4">
                 <TableHeader>
-                  <TableRow className="border-b">
-                    <TableHead className="text-left text-gray-700 text-xs">
+                  <TableRow className="border-b border-b-sidebar-border">
+                    <TableHead className="text-left text-brand-black1 text-xs">
                       UNIT
                     </TableHead>
-                    <TableHead className="text-left text-gray-700 text-xs">
+                    <TableHead className="text-left text-brand-black1 text-xs">
                       CAPACITY
                     </TableHead>
-                    <TableHead className="text-left text-gray-700 text-xs">
+                    <TableHead className="text-left text-brand-black1 text-xs">
                       CURRENT
                     </TableHead>
-                    <TableHead className="text-left text-gray-700 text-xs">
+                    <TableHead className="text-left text-brand-black1 text-xs">
                       NEEDED
                     </TableHead>
-                    <TableHead className="text-left text-gray-700 text-xs">
+                    <TableHead className="text-left text-brand-black1 text-xs">
                       STATUS
                     </TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {units.map((unit, index) => (
-                    <TableRow className="border-b" key={index}>
+                    <TableRow
+                      className="border-b border-b-sidebar-border"
+                      key={index}
+                    >
                       <TableCell className="text-sm font-normal ">
                         {unit.name}
                       </TableCell>
@@ -258,7 +263,7 @@ export default function DashboardClient(): JSX.Element {
                       </TableCell>
                       <TableCell className={unit.color}>
                         <div
-                          className={`text-xs text-center font-normal ${unit.color} bg-brand-green1 rounded-full py-1 px-2`}
+                          className={`text-xs text-center font-normal ${unit.color} ${unit.bg}  rounded-full py-1 px-2`}
                         >
                           {unit.status}
                         </div>
@@ -270,13 +275,13 @@ export default function DashboardClient(): JSX.Element {
             </CardContent>
           </Card>
 
-          <Card className="border border-slate-200">
+          <Card className="border border-sidebar-border">
             <CardHeader>
               <CardTitle className="text-lg font-normal">
                 Recent Activity
               </CardTitle>
             </CardHeader>
-            <div className="border-b border-b-slate-200"></div>
+            <div className="border-b border-b-sidebar-border"></div>
             <CardContent className="p-0">
               {activities.map((activity, index) => (
                 <div
@@ -284,23 +289,25 @@ export default function DashboardClient(): JSX.Element {
                   className={
                     index === activities.length - 1
                       ? ""
-                      : "border-b border-b-slate-200"
+                      : "border-b border-b-sidebar-border"
                   }
                 >
                   <div className={`flex items-center px-2 py-1`}>
-                    <div className="w-2 h-5 bg-cyan-600 rounded-full mr-3 flex-shrink-0" />
+                    <div
+                      className={`w-2 h-5 ${activity.bg2} rounded-full mr-3 flex-shrink-0`}
+                    />
                     <div className="flex justify-between w-full">
-                      <div className="text-sm font-normal text-gray-900">
+                      <div className="text-sm font-normal text-brand-black1">
                         {activity.text}
                       </div>
                       <div
-                        className={`text-sm font-normal ${activity.color} bg-brand-green1 rounded-sm p-1 `}
+                        className={`text-xs font-normal ${activity.color} ${activity.bg} rounded-sm p-1 `}
                       >
                         {activity.status || "Stable"}
                       </div>
                     </div>
                   </div>
-                  <div className="text-xs font-normal text-gray-500 mb-1 pl-7">
+                  <div className="text-xs font-normal text-brand-gray1 mb-1 pl-7">
                     {activity.time}
                   </div>
                 </div>
@@ -309,8 +316,8 @@ export default function DashboardClient(): JSX.Element {
           </Card>
         </div>
 
-        <Card className="border border-slate-200">
-          <CardHeader className="border-b border-b-slate-200 mb-6">
+        <Card className="border border-sidebar-border">
+          <CardHeader className="border-b border-b-sidebar-border mb-6">
             <CardTitle className="font-regular text-xl">Quick Links</CardTitle>
           </CardHeader>
 
@@ -320,20 +327,20 @@ export default function DashboardClient(): JSX.Element {
                 return (
                   <Card
                     key={index}
-                    className="hover:shadow-md transition border-brand-green1"
+                    className="hover:shadow-md transition border-brand-cyan1"
                   >
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between mb-2">
-                        <div className="text-lg font-normal leading-tight text-black-900">
+                        <div className="text-lg font-normal leading-tight text-brand-black1">
                           {action.label}
                         </div>
                       </div>
-                      <div className="text-sm font-normal leading-tight text-black-500">
+                      <div className="text-sm font-normal leading-tight text-brand-black1">
                         {action.description}
                       </div>
                       <Button
                         variant="outline"
-                        className="text-base font-normal bg-cyan-600 hover:bg-cyan-700 text-white w-full mt-2"
+                        className="text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-2"
                       >
                         {action.btn_label}
                       </Button>
