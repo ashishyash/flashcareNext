@@ -58,11 +58,11 @@ export function AppSidebar() {
       <SidebarHeader className="gap-0">
         <div className="flex items-center justify-between gap-2  py-2">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg  text-primary-foreground">
               <span className="group-data-[collapsible=icon]:text-xs">
                 <Image
-                  width={24}
-                  height={24}
+                  width={32}
+                  height={32}
                   alt="sidebar icon"
                   src={"/assets/icon/sidebar-header-icon.svg"}
                 />
@@ -78,7 +78,7 @@ export function AppSidebar() {
         </p>
       </SidebarHeader>
       <hr className="mt-2 border-brand-cyan1" />
-      <SidebarContent>
+      <SidebarContent className="pt-4">
         <SidebarGroup className="pt-0">
           {/* <SidebarGroupLabel>Navigation</SidebarGroupLabel> */}
           <SidebarGroupContent>
