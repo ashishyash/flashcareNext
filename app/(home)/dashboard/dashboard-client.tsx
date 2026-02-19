@@ -240,7 +240,7 @@ export default function DashboardClient(): JSX.Element {
                 </TableHeader>
                 <TableBody>
                   {units.map((unit, index) => (
-                    <TableRow className="border-b">
+                    <TableRow key={index} className="border-b">
                       <TableCell className="text-sm font-normal ">
                         {unit.name}
                       </TableCell>
