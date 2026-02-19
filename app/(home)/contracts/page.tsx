@@ -253,24 +253,24 @@ const ContractGeneration = () => {
             {/* Generation Stats */}
             <Card className="border border-sidebar-border">
               <CardContent className="p-6">
-              <h3 className="text-lg font-normal mb-4">Generation Stats</h3>
+              <h3 className="text-lg font-normal text-brand-black1 mb-4">Generation Stats</h3>
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Generation Time</p>
+                  <p className="text-sm text-brand-black2 mb-1">Generation Time</p>
                   <p className="text-2xl font-normal text-brand-black1">
                     2.3 sec
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Automation Rate</p>
-                  <p className="text-2xl font-normal text-green-600">100%</p>
+                  <p className="text-sm text-brand-black2 mb-1">Automation Rate</p>
+                  <p className="text-2xl font-normal text-brand-cyan1">100%</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Pages</p>
+                  <p className="text-sm text-brand-black2 mb-1">Pages</p>
                   <p className="text-2xl font-normal text-brand-black1">4</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Legal Review</p>
+                  <p className="text-sm text-brand-black2 mb-1">Legal Review</p>
                   <p className="text-brand-black1">Pre-approved template</p>
                 </div>
               </div>
@@ -282,7 +282,7 @@ const ContractGeneration = () => {
               <CardContent className="p-6">
               <div className="flex items-center gap-2 mb-4">
                 <svg
-                  className="w-6 h-6 text-green-600"
+                  className="w-6 h-6 text-brand-cyan1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -301,7 +301,7 @@ const ContractGeneration = () => {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-5 h-5 text-green-600"
+                    className="w-5 h-5 text-brand-cyan1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -319,7 +319,7 @@ const ContractGeneration = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-5 h-5 text-green-600"
+                    className="w-5 h-5 text-brand-cyan1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -337,7 +337,7 @@ const ContractGeneration = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-5 h-5 text-green-600"
+                    className="w-5 h-5 text-brand-cyan1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -355,7 +355,7 @@ const ContractGeneration = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <svg
-                    className="w-5 h-5 text-green-600"
+                    className="w-5 h-5 text-brand-cyan1"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

@@ -102,14 +102,14 @@ const AnalyticsDashboard = () => {
         {/* Header */}
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h1 className="text-3xl font-normal text-gray-900 mb-2">
+            <h1 className="text-3xl font-normal text-brand-black1 mb-2">
               Analytics & Reporting
             </h1>
-            <p className="text-base font-normal">
+            <p className="text-base text-brand-black2 font-normal">
               Comprehensive insights and performance metrics
             </p>
           </div>
-          <Button className="bg-teal-600 hover:bg-teal-700">
+          <Button className="bg-brand-cyan1 hover:bg-brand-cyan1">
             <Download size={20} />
             Export Report
           </Button>
@@ -124,14 +124,14 @@ const AnalyticsDashboard = () => {
                   <div className={`${stat.iconBg} p-3 rounded-lg`}>
                     <stat.icon className={stat.iconColor} size={24} />
                   </div>
-                  <div className={`flex items-center gap-1 ${stat.trendColor} text-base font-normal`}>
+                  <div className={`flex items-center text-brand-cyan1 gap-1 ${stat.trendColor} text-base font-normal`}>
                     <stat.trend size={16} />
                     <span>{stat.trendValue}</span>
                   </div>
                 </div>
-                <div className=" text-base font-normal mb-1">{stat.title}</div>
-                <div className="text-3xl font-normal  mb-1">{stat.value}</div>
-                <div className="font-normal text-xs">{stat.subtitle}</div>
+                <div className=" text-base font-normal text-brand-black2 mb-1">{stat.title}</div>
+                <div className="text-3xl font-normal text-brand-black1 mb-1">{stat.value}</div>
+                <div className="font-normal text-xs text-brand-black2">{stat.subtitle}</div>
               </CardContent>
             </Card>
           ))}
@@ -142,7 +142,7 @@ const AnalyticsDashboard = () => {
           {/* Deployment Timeline Graph */}
           <Card className="border-sidebar-border"> 
             <CardHeader>
-              <CardTitle className="text-xl font-normal">Deployment Timeline Graph</CardTitle>
+              <CardTitle className="text-xl font-normal text-brand-black1">Deployment Timeline Graph</CardTitle>
             </CardHeader>
             <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -192,7 +192,7 @@ const AnalyticsDashboard = () => {
           {/* Strike Duration vs Response Time */}
           <Card className="border-sidebar-border"> 
             <CardHeader>
-              <CardTitle className="text-xl font-normal">Strike Duration vs Response Time</CardTitle>
+              <CardTitle className="text-xl font-normal text-brand-black1">Strike Duration vs Response Time</CardTitle>
             </CardHeader>
             <CardContent>
             <ResponsiveContainer width="100%" height={300}>
@@ -251,7 +251,7 @@ const AnalyticsDashboard = () => {
         </div>
 
         {/* Predictive Analysis Banner */}
-        <div className="bg-gradient-to-r from-teal-600 to-teal-500 rounded-xl p-6 shadow-sm">
+        <div className="bg-brand-greengradient1 rounded-xl p-6 shadow-sm">
           <div className="flex items-center gap-4">
             <div className="bg-white/20 p-3 rounded-full">
               <Sparkles className="text-white" size={28} />
