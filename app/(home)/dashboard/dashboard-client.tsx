@@ -140,7 +140,7 @@ export default function DashboardClient(): JSX.Element {
                   Crisis Dashboard
                 </h2>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <span className="flex items-center text-base text-brand-gray1">
+                  <span className="flex items-center text-base text-brand-black2">
                     Real-time crisis management and deployment oversight
                   </span>
                 </div>
@@ -307,7 +307,7 @@ export default function DashboardClient(): JSX.Element {
                       </div>
                     </div>
                   </div>
-                  <div className="text-xs font-normal text-brand-gray1 mb-1 pl-9">
+                  <div className="text-xs font-normal text-brand-black2 mb-1 pl-9">
                     {activity.time}
                   </div>
                 </div>

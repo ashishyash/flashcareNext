@@ -212,7 +212,9 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
         className="flex items-start justify-between mb-6"
       >
         <div>
-          <h1 className="text-3xl font-normal">Nurse Search & AI Matching</h1>
+          <h1 className="text-[32px] font-normal text-brand-black1">
+            Nurse Search & AI Matching
+          </h1>
           <p className="text-base font-normal mt-1">
             Find and deploy qualified nurses with intelligent matching
           </p>
