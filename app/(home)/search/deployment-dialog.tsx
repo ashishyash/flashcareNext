@@ -229,47 +229,49 @@ export function DeploymentDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="text-xl">
-            {isComplete
-              ? "Deployment Confirmation"
-              : `Deploying ${nurses.length} Nurse${
-                  nurses.length > 1 ? "s" : ""
-                }`}
-          </DialogTitle>
-        </DialogHeader>
+      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto [&>button]:hidden">
+        {isComplete && (
+          <DialogHeader>
+            <DialogTitle className="text-xl">
+              {isComplete ? "Deployment Confirmation" : ""}
+            </DialogTitle>
+          </DialogHeader>
+        )}
 
         {!isComplete ? (
-          <div className="space-y-6 py-4">
+          <div className="space-y-6 pb-2 pt-0">
             {/* Header Section */}
             <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-xl p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <Loader2 className="w-8 h-8 animate-spin" />
+                <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
+                  <Loader2 className="w-8 h-8 animate-spin" />
+                </div>
                 <div>
-                  <h3 className="text-xl font-semibold">
+                  <h3 className="text-2xl font-bold">
                     Deploying {nurses.length} Nurses to Memorial Hospital ICU
                   </h3>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-3xl font-bold">
+                <div className="text-2xl font-normal">
                   {Math.round(
                     (steps.filter((s) => s.status === "complete").length /
                       steps.length) *
-                      100
+                      100,
                   )}
                   %
                 </div>
-                <div className="text-sm opacity-90">Match Accuracy</div>
+                <div className="text-sm opacity-90 font-normal">
+                  Match Accuracy
+                </div>
               </div>
             </div>
 
             {/* Two Column Layout */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-4 gap-6">
               {/* Selected Nurses */}
-              <Card className="p-4">
-                <h4 className="font-semibold text-lg mb-4 text-gray-700">
+              <Card className="p-4 col-span-1 border-slate-200">
+                <h4 className="font-normal text-xl mb-4 text-gray-800">
                   Selected Nurses
                 </h4>
                 <div className="space-y-3">
@@ -278,17 +280,19 @@ export function DeploymentDialog({
                       <img
                         src={nurse.photo}
                         alt={nurse.name}
-                        className="w-10 h-10 rounded-full object-cover"
+                        className="w-6 h-6 rounded-full object-cover"
                       />
-                      <span className="text-gray-700">{nurse.name}</span>
+                      <span className="text-gray-700 font-normal text-base">
+                        {nurse.name}
+                      </span>
                     </div>
                   ))}
                 </div>
               </Card>
 
               {/* Deployment Progress */}
-              <Card className="p-4">
-                <h4 className="font-semibold text-lg mb-4 text-gray-700">
+              <Card className="p-4 col-span-3 border-slate-200">
+                <h4 className="font-normal text-xl mb-4 text-gray-800">
                   Deployment - In Progress
                 </h4>
                 <div className="space-y-4">
@@ -303,33 +307,31 @@ export function DeploymentDialog({
                           ) : (
                             <Loader2 className="w-6 h-6 text-orange-500 flex-shrink-0" />
                           )}
-                          <span className="text-sm text-gray-700">
+                          <span className="text-base text-gray-700">
                             {step.label}
                           </span>
                         </div>
                         <span
-                          className={`text-sm font-medium ${
+                          className={`text-base font-normal ${
                             step.status === "complete"
                               ? "text-gray-700"
                               : step.status === "progress"
-                              ? "text-gray-700"
-                              : "text-gray-500"
+                                ? "text-gray-700"
+                                : "text-gray-500"
                           }`}
                         >
                           {step.status === "complete"
                             ? "Completed"
                             : step.status === "progress"
-                            ? `${step.progress}%`
-                            : "Pending"}
+                              ? `${step.progress}%`
+                              : "Pending"}
                         </span>
                       </div>
                       <Progress
                         value={
-                          step.status === "complete"
-                            ? 100
-                            : step.progress || 0
+                          step.status === "complete" ? 100 : step.progress || 0
                         }
-                        className="h-1.5"
+                        className="h-2"
                       />
                     </div>
                   ))}

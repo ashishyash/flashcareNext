@@ -172,7 +172,7 @@ export default function DashboardClient(): JSX.Element {
                   </span>
                   <span className="flex items-center text-3xl">
                     {/* <Users className="w-4 h-4 mr-1" /> */}
-                    147 nurses needed
+                    {metrics[0]?.value || 0} Nurses Needed
                   </span>
                 </div>
               </div>
@@ -189,7 +189,10 @@ export default function DashboardClient(): JSX.Element {
           {metrics.map((metric, index) => {
             const Icon = metric.icon;
             return (
-              <Card key={index} className="hover:shadow-md transition">
+              <Card
+                key={index}
+                className="hover:shadow-md transition border border-slate-200"
+              >
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between mb-1">
                     <div className="text-base text-gray-600">
@@ -201,7 +204,7 @@ export default function DashboardClient(): JSX.Element {
                   <div className="text-3xl font-normal text-gray-900 mb-1">
                     {metric.value}
                   </div>
-                  <div className={`text-sm  ${metric.color}`}>
+                  <div className={`text-sm ${metric.color}`}>
                     {metric.statusMsg}
                   </div>
                 </CardContent>
@@ -211,8 +214,8 @@ export default function DashboardClient(): JSX.Element {
         </div>
 
         <div className="grid grid-cols-2  gap-6 mb-6">
-          <Card className="border border-gray-300">
-            <CardHeader className="border-b border-b-gray-300">
+          <Card className="border border-slate-200">
+            <CardHeader className="border-b border-b-slate-200">
               <CardTitle className="text-lg font-normal">
                 Unit Status Overview
               </CardTitle>
@@ -240,7 +243,7 @@ export default function DashboardClient(): JSX.Element {
                 </TableHeader>
                 <TableBody>
                   {units.map((unit, index) => (
-                    <TableRow className="border-b">
+                    <TableRow className="border-b" key={index}>
                       <TableCell className="text-sm font-normal ">
                         {unit.name}
                       </TableCell>
@@ -255,7 +258,7 @@ export default function DashboardClient(): JSX.Element {
                       </TableCell>
                       <TableCell className={unit.color}>
                         <div
-                          className={`text-xs font-normal ${unit.color} bg-brand-green1 rounded-full py-1 px-2`}
+                          className={`text-xs text-center font-normal ${unit.color} bg-brand-green1 rounded-full py-1 px-2`}
                         >
                           {unit.status}
                         </div>
@@ -267,13 +270,13 @@ export default function DashboardClient(): JSX.Element {
             </CardContent>
           </Card>
 
-          <Card className="border border-gray-300">
+          <Card className="border border-slate-200">
             <CardHeader>
               <CardTitle className="text-lg font-normal">
                 Recent Activity
               </CardTitle>
             </CardHeader>
-            <div className="border-b border-b-gray-300"></div>
+            <div className="border-b border-b-slate-200"></div>
             <CardContent className="p-0">
               {activities.map((activity, index) => (
                 <div
@@ -281,7 +284,7 @@ export default function DashboardClient(): JSX.Element {
                   className={
                     index === activities.length - 1
                       ? ""
-                      : "border-b border-b-gray-300"
+                      : "border-b border-b-slate-200"
                   }
                 >
                   <div className={`flex items-center px-2 py-1`}>
@@ -293,7 +296,7 @@ export default function DashboardClient(): JSX.Element {
                       <div
                         className={`text-sm font-normal ${activity.color} bg-brand-green1 rounded-sm p-1 `}
                       >
-                        {activity.status}
+                        {activity.status || "Stable"}
                       </div>
                     </div>
                   </div>
@@ -306,8 +309,8 @@ export default function DashboardClient(): JSX.Element {
           </Card>
         </div>
 
-        <Card className="border-gray-300">
-          <CardHeader className="border-b border-b-gray-300 mb-6">
+        <Card className="border border-slate-200">
+          <CardHeader className="border-b border-b-slate-200 mb-6">
             <CardTitle className="font-regular text-xl">Quick Links</CardTitle>
           </CardHeader>
 
