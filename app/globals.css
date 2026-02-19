@@ -41,10 +41,12 @@
     --brand-black1:220 43% 11%;
     --brand-black2:216 15% 34%;
     --brand-black3:220 10% 46%;
+    --brand-black4:217 21 27%;
     --brand-red1:344 100% 46%;
     --brand-cyan1:175 100% 29%;
     --brand-cyan2:183 97% 36%;
     --brand-cyan3:193 100% 29%;
+    --brand-amber1:30 100% 44%;
 
     /* Custom Gradients */
     --gradient-primary: linear-gradient(135deg, #009689 0%, #007595 100%);

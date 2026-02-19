@@ -83,10 +83,13 @@ const config = {
           black1: "hsl(var(--brand-black1))",
           black2: "hsl(var(--brand-black2))",
           black3: "hsl(var(--brand-black3))",
+          black4: "hsl(var(--brand-black4))",
           red1: "hsl(var(--brand-red1))",
           cyan1: "hsl(var(--brand-cyan1))",
           cyan2: "hsl(var(--brand-cyan2))",
           cyan3: "hsl(var(--brand-cyan3))",
+          amber1: "hsl(var(--brand-amber1))",
+          greengradient: "var(--brand-greengradient)",
         },
       },
       borderRadius: {
@@ -115,6 +118,11 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      backgroundImage: {
+        "brand-greengradient1": "linear-gradient(90deg, #009689 0%, #0092B8 100%)",
+        "brand-greengradient2": "linear-gradient(90deg, #ECFDF5 0%, #F0FDFA 100%)",
+        "sidebar-gradient": "linear-gradient(180deg, #007D92 0%, #006576 100%)",
       },
     },
   },
