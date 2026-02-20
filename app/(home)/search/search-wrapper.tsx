@@ -209,7 +209,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       {/* header */}
       <div
         data-testid="page-header"
-        className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6"
+        className="flex flex-col sm:flex-row sm:items-start md:items-center sm:justify-between gap-4 mb-6"
       >
         <div>
           <h1 className="text-2xl sm:text-[32px] font-normal text-brand-black1">
@@ -223,7 +223,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           onClick={handleBulkDeploy}
           disabled={checkedNurses.length === 0}
           data-testid="deploy-selected-btn"
-          className="flex items-center justify-center gap-1 px-5 py-5 rounded-md text-base font-bold text-white transition-all hover:opacity-90 bg-brand-cyan1 w-full sm:w-auto"
+          className="flex items-center justify-center gap-1 px-5 py-1 rounded-md text-base font-bold text-white transition-all hover:opacity-90 bg-brand-cyan1 w-full sm:w-auto"
         >
           Deploy ({checkedNurses.length})
         </Button>
@@ -242,120 +242,120 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       <div className="rounded-lg border overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
-          <TableHeader className="text-xs font-bold text-brand-black2">
-            <TableRow className="">
-              <TableHead className="">
-                <Checkbox
-                  className="rounded-md"
-                  checked={
-                    filteredAndSortedNurses.length > 0 &&
-                    checkedIds.size === filteredAndSortedNurses.length
-                  }
-                  onCheckedChange={toggleSelectAll}
-                  aria-label="Select all nurses"
-                />
-              </TableHead>
-              <TableHead>NAME</TableHead>
-              <TableHead>CREDENTIALS</TableHead>
-              <TableHead>SPECIALTY</TableHead>
-              <TableHead className="">EXPERIENCE</TableHead>
-              <TableHead>Location</TableHead>
-              <TableHead className=""> DISTANCE</TableHead>
-              <TableHead className="text-center"> MATCH SCORE</TableHead>
-              <TableHead> AVAILABILITY</TableHead>
-              <TableHead className=""> RATING</TableHead>
-              <TableHead className="text-center"> ACTION</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {paginatedNurses.map((nurse) => (
-              <TableRow key={nurse.id} className="hover:bg-slate-50">
-                <TableCell>
+            <TableHeader className="text-xs font-bold text-brand-black2">
+              <TableRow className="">
+                <TableHead className="">
                   <Checkbox
-                    className="rounded-md border-brand-cyan1"
-                    checked={checkedIds.has(nurse.id)}
-                    onCheckedChange={(checked) =>
-                      handleCheckboxChange(nurse.id, checked as boolean)
+                    className="rounded-md"
+                    checked={
+                      filteredAndSortedNurses.length > 0 &&
+                      checkedIds.size === filteredAndSortedNurses.length
                     }
-                    aria-label={`Select ${nurse.name}`}
+                    onCheckedChange={toggleSelectAll}
+                    aria-label="Select all nurses"
                   />
-                </TableCell>
-                <TableCell
-                  onClick={() => handleNurseClick(nurse)}
-                  className="text-sm font-normal cursor-pointer text-brand-cyan1 hover:text-brand-cyan2"
-                >
-                  <div className="relative flex items-center">
-                    <Image
-                      src={nurse.photo}
-                      alt={nurse.name}
-                      width={24}
-                      height={24}
-                      className="object-cover rounded-full w-6 h-6 mr-2"
-                    />
-                    <span className="text-sm font-normal text-brand-cyan1">
-                      {nurse.name}
-                    </span>
-                  </div>
-                </TableCell>
-                <TableCell className="text-sm text-brand-black2">
-                  {nurse.credentials}
-                </TableCell>
-                <TableCell className="text-sm text-brand-black2">
-                  {nurse.specialty}
-                </TableCell>
-                <TableCell className=" text-sm text-brand-black2">
-                  {nurse.experience_years} yrs
-                </TableCell>
-                <TableCell className="text-sm font-normal">
-                  <div className="flex items-center text-brand-black2">
-                    <MapPin className="w-4 mr-1" />
-                    {nurse.location}
-                  </div>
-                </TableCell>
-                <TableCell className=" text-sm text-brand-black2">
-                  {nurse.distance_miles.toFixed(1)} mi
-                </TableCell>
-                <TableCell className="text-center">
-                  <div className="text-sm font-normal px-5 py-1.5 rounded-full bg-brand-green2 text-brand-green3">
-                    {nurse.match_score}%
-                  </div>
-                </TableCell>
-                <TableCell>
-                  <Badge
-                    variant={
-                      nurse.availability_status === "Available"
-                        ? "default"
-                        : "secondary"
-                    }
-                    className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
-                      nurse.availability_status === "Available"
-                        ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
-                        : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
-                    }`}
-                  >
-                    {nurse.availability_status}
-                  </Badge>
-                </TableCell>
-
-                <TableCell className="text-right text-sm ">
-                  <div className="flex items-center text-brand-black2">
-                    <Star className="w-4 mr-1 text-yellow-400 fill-yellow-400" />{" "}
-                    {nurse.previous_rating}
-                  </div>
-                </TableCell>
-
-                <TableCell className="text-center">
-                  <Button
-                    size="sm"
-                    onClick={() => handleDeploy(nurse)}
-                    className="px-4 py-1.5 text-sm font-normal rounded-full border text-brand-cyan1 border-brand-cyan1 bg-white shadow-none hover:bg-brand-green2 hover:text-green-800"
-                  >
-                    Deploy
-                  </Button>
-                </TableCell>
+                </TableHead>
+                <TableHead>NAME</TableHead>
+                <TableHead>CREDENTIALS</TableHead>
+                <TableHead>SPECIALTY</TableHead>
+                <TableHead className="">EXPERIENCE</TableHead>
+                <TableHead>Location</TableHead>
+                <TableHead className=""> DISTANCE</TableHead>
+                <TableHead className="text-center"> MATCH SCORE</TableHead>
+                <TableHead> AVAILABILITY</TableHead>
+                <TableHead className=""> RATING</TableHead>
+                <TableHead className="text-center"> ACTION</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
+            </TableHeader>
+            <TableBody>
+              {paginatedNurses.map((nurse) => (
+                <TableRow key={nurse.id} className="hover:bg-slate-50">
+                  <TableCell>
+                    <Checkbox
+                      className="rounded-md border-brand-cyan1"
+                      checked={checkedIds.has(nurse.id)}
+                      onCheckedChange={(checked) =>
+                        handleCheckboxChange(nurse.id, checked as boolean)
+                      }
+                      aria-label={`Select ${nurse.name}`}
+                    />
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleNurseClick(nurse)}
+                    className="text-sm font-normal cursor-pointer text-brand-cyan1 hover:text-brand-cyan2"
+                  >
+                    <div className="relative flex items-center">
+                      <Image
+                        src={nurse.photo}
+                        alt={nurse.name}
+                        width={24}
+                        height={24}
+                        className="object-cover rounded-full w-6 h-6 mr-2"
+                      />
+                      <span className="text-sm font-normal text-brand-cyan1">
+                        {nurse.name}
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-sm text-brand-black2">
+                    {nurse.credentials}
+                  </TableCell>
+                  <TableCell className="text-sm text-brand-black2">
+                    {nurse.specialty}
+                  </TableCell>
+                  <TableCell className=" text-sm text-brand-black2">
+                    {nurse.experience_years} yrs
+                  </TableCell>
+                  <TableCell className="text-sm font-normal">
+                    <div className="flex items-center text-brand-black2">
+                      <MapPin className="w-4 mr-1" />
+                      {nurse.location}
+                    </div>
+                  </TableCell>
+                  <TableCell className=" text-sm text-brand-black2">
+                    {nurse.distance_miles.toFixed(1)} mi
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <div className="text-sm font-normal px-5 py-1.5 rounded-full bg-brand-green2 text-brand-green3">
+                      {nurse.match_score}%
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      variant={
+                        nurse.availability_status === "Available"
+                          ? "default"
+                          : "secondary"
+                      }
+                      className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
+                        nurse.availability_status === "Available"
+                          ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
+                          : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
+                      }`}
+                    >
+                      {nurse.availability_status}
+                    </Badge>
+                  </TableCell>
+
+                  <TableCell className="text-right text-sm ">
+                    <div className="flex items-center text-brand-black2">
+                      <Star className="w-4 mr-1 text-yellow-400 fill-yellow-400" />{" "}
+                      {nurse.previous_rating}
+                    </div>
+                  </TableCell>
+
+                  <TableCell className="text-center">
+                    <Button
+                      size="sm"
+                      onClick={() => handleDeploy(nurse)}
+                      className="px-4 py-1.5 text-sm font-normal rounded-full border text-brand-cyan1 border-brand-cyan1 bg-white shadow-none hover:bg-brand-green2 hover:text-green-800"
+                    >
+                      Deploy
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           </Table>
         </div>
       </div>
@@ -370,7 +370,9 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       {filteredAndSortedNurses.length > 0 && (
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 py-3 bg-gray-50 rounded-b-lg border-t">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
-            <span className="text-sm text-brand-black2 whitespace-nowrap">Rows per page:</span>
+            <span className="text-sm text-brand-black2 whitespace-nowrap">
+              Rows per page:
+            </span>
             <Select
               value={itemsPerPage.toString()}
               onValueChange={handleItemsPerPageChange}

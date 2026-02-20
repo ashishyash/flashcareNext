@@ -149,7 +149,7 @@ export default function DashboardClient(): JSX.Element {
             <div className="text-left sm:text-right">
               <Button
                 onClick={search}
-                className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-6 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
+                className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
               >
                 <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                 <span className="sm:hidden">Find</span>

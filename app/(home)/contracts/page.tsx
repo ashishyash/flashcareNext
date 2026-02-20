@@ -28,24 +28,28 @@ const ContractGeneration = () => {
         {/* Success Banner */}
         <Card className="!bg-brand-greengradient2 border-green-200 mb-6">
           <CardContent className="p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="bg-brand-green3 rounded-full p-2">
-              <CircleCheckBig className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <div className="flex items-center gap-3">
+              <div className="bg-brand-green3 rounded-full p-2">
+                <CircleCheckBig className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg text-brand-black1 font-normall">
+                  Contract Generated Successfully
+                </h3>
+                <p className="text-xs sm:text-sm text-brand-black2 font-normal">
+                  Auto-generated preview on Feb 11, 2026 • Contract ID:
+                  CON-2026-1847
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-base sm:text-lg text-brand-black1 font-normall">
-                Contract Generated Successfully
-              </h3>
-              <p className="text-xs sm:text-sm text-brand-black2 font-normal">
-                Auto-generated preview on Feb 11, 2026 • Contract ID:
-                CON-2026-1847
+            <div className="text-left sm:text-right ml-9 sm:ml-0">
+              <p className="text-xs sm:text-sm font-normal text-brand-black2">
+                Estimated completion
+              </p>
+              <p className="text-base sm:text-lg font-normal text-brand-black1">
+                2 minutes
               </p>
             </div>
-          </div>
-          <div className="text-left sm:text-right ml-9 sm:ml-0">
-            <p className="text-xs sm:text-sm font-normal text-brand-black2">Estimated completion</p>
-            <p className="text-base sm:text-lg font-normal text-brand-black1">2 minutes</p>
-          </div>
           </CardContent>
         </Card>
 
@@ -58,7 +62,9 @@ const ContractGeneration = () => {
                 <h2 className="text-xl sm:text-2xl font-normal mb-2">
                   Nursing Contract Agreement
                 </h2>
-                <p className="text-xs sm:text-sm font-normal mb-4 sm:mb-6">Contract ID: CON-2026-1847</p>
+                <p className="text-xs sm:text-sm font-normal mb-4 sm:mb-6">
+                  Contract ID: CON-2026-1847
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
                   <div>
                     <p className="text-sm">Generated Date</p>
@@ -80,13 +86,21 @@ const ContractGeneration = () => {
               {/* Parties */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-8">
                 <div>
-                  <p className="text-sm text-brand-black2 mb-2">NURSE (Employee)</p>
-                  <h3 className="text-lg sm:text-xl font-normal text-brand-black1 mb-3">Sarah Chen</h3>
+                  <p className="text-sm text-brand-black2 mb-2">
+                    NURSE (Employee)
+                  </p>
+                  <h3 className="text-lg sm:text-xl font-normal text-brand-black1 mb-3">
+                    Sarah Chen
+                  </h3>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
                     123 Main St, Los Angeles, CA 90001
                   </p>
-                  <p className="text-sm sm:text-base text-brand-black2 mb-1">License: RN-CA-485692</p>
-                  <p className="text-sm sm:text-base text-brand-black2">sarah.chen@email.com</p>
+                  <p className="text-sm sm:text-base text-brand-black2 mb-1">
+                    License: RN-CA-485692
+                  </p>
+                  <p className="text-sm sm:text-base text-brand-black2">
+                    sarah.chen@email.com
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-brand-black2 mb-2">
@@ -95,30 +109,42 @@ const ContractGeneration = () => {
                   <h3 className="text-lg sm:text-xl text-brand-black1 font-normal mb-3">
                     Memorial Hospital
                   </h3>
-                  <p className="text-sm sm:text-base text-brand-black2 mb-1">Houston, TX</p>
-                  <p className="text-sm sm:text-base text-brand-black2 mb-1">Contact: HR Department</p>
-                  <p className="text-sm sm:text-base text-brand-black2">hr@memorialhospital.org</p>
+                  <p className="text-sm sm:text-base text-brand-black2 mb-1">
+                    Houston, TX
+                  </p>
+                  <p className="text-sm sm:text-base text-brand-black2 mb-1">
+                    Contact: HR Department
+                  </p>
+                  <p className="text-sm sm:text-base text-brand-black2">
+                    hr@memorialhospital.org
+                  </p>
                 </div>
               </div>
 
               {/* Assignment Terms */}
-              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">Assignment Terms</h3>
+              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
+                Assignment Terms
+              </h3>
               <div className="md:flex grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="flex p-4 items-start md:gap-0.5 px-3 gap-3">
-                    <Calendar className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5"/>
+                    <Calendar className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5" />
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
                         Duration
                       </span>
-                      <p className="text-sm sm:text-base font-normal text-brand-black1">1 weeks</p>
-                      <p className="text-xs sm:text-sm text-brand-black2">Duration of Strike</p>
+                      <p className="text-sm sm:text-base font-normal text-brand-black1">
+                        1 weeks
+                      </p>
+                      <p className="text-xs sm:text-sm text-brand-black2">
+                        Duration of Strike
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="flex p-4 items-start md:gap-0.5 px-3 gap-3">
-                    <DollarSign className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5"/>
+                    <DollarSign className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5" />
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
                         Compensation
@@ -126,29 +152,39 @@ const ContractGeneration = () => {
                       <p className="text-sm sm:text-base font-normal text-brand-black1">
                         $75/hour + $150/day Housing
                       </p>
-                      <p className="text-xs sm:text-sm text-gray-600">40 hours/week</p>
+                      <p className="text-xs sm:text-sm text-gray-600">
+                        40 hours/week
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="flex p-4 items-start md:gap-0.5 px-3 gap-3">
-                    <MapPin className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5"/>
+                    <MapPin className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5" />
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
                         Unit
                       </span>
-                      <p className="text-sm sm:text-base font-normal text-brand-black1">ICU</p>
-                      <p className="text-xs sm:text-sm text-gray-600">Memorial Hospital</p>
+                      <p className="text-sm sm:text-base font-normal text-brand-black1">
+                        ICU
+                      </p>
+                      <p className="text-xs sm:text-sm text-gray-600">
+                        Memorial Hospital
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Terms & Conditions */}
-              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">Terms & Conditions</h3>
+              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
+                Terms & Conditions
+              </h3>
               <div className="space-y-4 border-b pb-7 text-brand-black2">
                 <p className="text-sm font-normal text-brand-black2">
-                  <span className="text-sm font-bold text-brand-black4">1. Employment Status:</span>{" "}
+                  <span className="text-sm font-bold text-brand-black4">
+                    1. Employment Status:
+                  </span>{" "}
                   This agreement establishes a temporary employment relationship
                   for the duration specified above.
                 </p>
@@ -161,26 +197,36 @@ const ContractGeneration = () => {
                   regulations.
                 </p>
                 <p className="text-sm font-normal text-brand-black4">
-                  <span className="text-sm font-bold text-brand-black4">3. Termination:</span> Either
-                  party may terminate this agreement with 72 hours written
-                  notice. Immediate termination may occur for cause.
+                  <span className="text-sm font-bold text-brand-black4">
+                    3. Termination:
+                  </span>{" "}
+                  Either party may terminate this agreement with 72 hours
+                  written notice. Immediate termination may occur for cause.
                 </p>
                 <p className="text-sm font-normal text-brand-black4">
-                  <span className="text-sm font-bold text-brand-black4">4. Compliance:</span> The
-                  Nurse certifies all credentials, certifications, and licenses
-                  are current and valid.
+                  <span className="text-sm font-bold text-brand-black4">
+                    4. Compliance:
+                  </span>{" "}
+                  The Nurse certifies all credentials, certifications, and
+                  licenses are current and valid.
                 </p>
               </div>
 
               {/* Signatures */}
-              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mt-6 mb-4">Signatures</h3>
+              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mt-6 mb-4">
+                Signatures
+              </h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
                 <div>
-                  <p className="text-sm text-brand-black2 mb-6">Nurse Signature</p>
+                  <p className="text-sm text-brand-black2 mb-6">
+                    Nurse Signature
+                  </p>
                   <div className="border-t border-gray-300 pb-2 pt-2 mb-2">
                     <p className="text-brand-black2">Sarah Chen</p>
                   </div>
-                  <p className="text-sm text-brand-black2 ">Date: _______________</p>
+                  <p className="text-sm text-brand-black2 ">
+                    Date: _______________
+                  </p>
                 </div>
                 <div>
                   <p className="text-sm text-brand-black2 mb-6">
@@ -189,7 +235,9 @@ const ContractGeneration = () => {
                   <div className="border-t border-gray-300 pb-2 pt-2 mb-2">
                     <p className="text-brand-black2">HR Department</p>
                   </div>
-                  <p className="text-sm text-brand-black2">Date: _______________</p>
+                  <p className="text-sm text-brand-black2">
+                    Date: _______________
+                  </p>
                 </div>
               </div>
             </CardContent>
@@ -200,13 +248,21 @@ const ContractGeneration = () => {
             {/* Quick Actions */}
             <Card className="border border-sidebar-border">
               <CardContent className="p-4 sm:p-6">
-                <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">Quick Actions</h3>
+                <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
+                  Quick Actions
+                </h3>
                 <div className="space-y-3">
-                  <Button variant="outline" className="w-full text-sm sm:text-base font-normal border py-4 sm:py-5 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white">
+                  <Button
+                    variant="outline"
+                    className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
+                  >
                     <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span className="ml-2">Send for E-Signature</span>
                   </Button>
-                  <Button variant="outline" className="w-full text-sm sm:text-base font-normal border py-4 sm:py-5 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white">
+                  <Button
+                    variant="outline"
+                    className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
+                  >
                     <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                     <span className="ml-2">Download PDF</span>
                   </Button>
@@ -217,65 +273,81 @@ const ContractGeneration = () => {
             {/* Generation Stats */}
             <Card className="border border-sidebar-border">
               <CardContent className="p-4 sm:p-6">
-              <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">Generation Stats</h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs sm:text-sm text-brand-black2 mb-1">Generation Time</p>
-                  <p className="text-xl sm:text-2xl font-normal text-brand-black1">
-                    2.3 sec
-                  </p>
+                <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
+                  Generation Stats
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-xs sm:text-sm text-brand-black2 mb-1">
+                      Generation Time
+                    </p>
+                    <p className="text-xl sm:text-2xl font-normal text-brand-black1">
+                      2.3 sec
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-brand-black2 mb-1">
+                      Automation Rate
+                    </p>
+                    <p className="text-xl sm:text-2xl font-normal text-brand-cyan1">
+                      100%
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-brand-black2 mb-1">
+                      Pages
+                    </p>
+                    <p className="text-xl sm:text-2xl font-normal text-brand-black1">
+                      4
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs sm:text-sm text-brand-black2 mb-1">
+                      Legal Review
+                    </p>
+                    <p className="text-sm sm:text-base text-brand-black1">
+                      Pre-approved template
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs sm:text-sm text-brand-black2 mb-1">Automation Rate</p>
-                  <p className="text-xl sm:text-2xl font-normal text-brand-cyan1">100%</p>
-                </div>
-                <div>
-                  <p className="text-xs sm:text-sm text-brand-black2 mb-1">Pages</p>
-                  <p className="text-xl sm:text-2xl font-normal text-brand-black1">4</p>
-                </div>
-                <div>
-                  <p className="text-xs sm:text-sm text-brand-black2 mb-1">Legal Review</p>
-                  <p className="text-sm sm:text-base text-brand-black1">Pre-approved template</p>
-                </div>
-              </div>
-            </CardContent>
+              </CardContent>
             </Card>
 
             {/* Compliance Verified */}
             <Card className="bg-green-50 border-green-200">
               <CardContent className="p-4 sm:p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <CircleCheckBig className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan1"/>
-                <h3 className="text-base sm:text-lg font-normal text-brand-black1">
-                  Compliance Verified
-                </h3>
-              </div>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0"/>
-                  <span className="text-xs sm:text-sm text-brand-black2">
-                    State regulations met
-                  </span>
+                <div className="flex items-center gap-2 mb-4">
+                  <CircleCheckBig className="w-5 h-5 sm:w-6 sm:h-6 text-brand-cyan1" />
+                  <h3 className="text-base sm:text-lg font-normal text-brand-black1">
+                    Compliance Verified
+                  </h3>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0"/>
-                  <span className="text-xs sm:text-sm text-brand-black2">
-                    Fair labor standards
-                  </span>
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-brand-black2">
+                      State regulations met
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-brand-black2">
+                      Fair labor standards
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-brand-black2">
+                      Insurance requirements
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm text-brand-black2">
+                      Legal template approved
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0"/>
-                  <span className="text-xs sm:text-sm text-brand-black2">
-                    Insurance requirements
-                  </span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CircleCheckBig className="w-4 h-4 text-brand-cyan1 flex-shrink-0"/>
-                  <span className="text-xs sm:text-sm text-brand-black2">
-                    Legal template approved
-                  </span>
-                </div>
-              </div>
               </CardContent>
             </Card>
           </div>
