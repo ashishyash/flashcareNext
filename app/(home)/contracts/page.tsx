@@ -103,9 +103,9 @@ const ContractGeneration = () => {
 
               {/* Assignment Terms */}
               <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">Assignment Terms</h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="md:flex grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 <Card className="bg-green-50 border-green-200">
-                  <CardContent className="flex p-4 items-start gap-3">
+                  <CardContent className="flex p-4 items-start md:gap-0.5 px-3 gap-3">
                     <Calendar className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5"/>
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
@@ -117,7 +117,7 @@ const ContractGeneration = () => {
                   </CardContent>
                 </Card>
                 <Card className="bg-green-50 border-green-200">
-                  <CardContent className="flex p-4 items-start gap-3">
+                  <CardContent className="flex p-4 items-start md:gap-0.5 px-3 gap-3">
                     <DollarSign className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5"/>
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
@@ -131,7 +131,7 @@ const ContractGeneration = () => {
                   </CardContent>
                 </Card>
                 <Card className="bg-green-50 border-green-200">
-                  <CardContent className="flex p-4 items-start gap-3">
+                  <CardContent className="flex p-4 items-start md:gap-0.5 px-3 gap-3">
                     <MapPin className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5"/>
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">

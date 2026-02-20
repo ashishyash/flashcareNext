@@ -205,17 +205,17 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
   //   }
 
   return (
-    <div className="w-full space-y-4 p-4">
+    <div className="w-full space-y-4 p-4 md:p-6">
       {/* header */}
       <div
         data-testid="page-header"
-        className="flex items-start justify-between mb-6"
+        className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6"
       >
         <div>
-          <h1 className="text-[32px] font-normal text-brand-black1">
+          <h1 className="text-2xl sm:text-[32px] font-normal text-brand-black1">
             Nurse Search & AI Matching
           </h1>
-          <p className="text-base font-normal mt-1 text-brand-black2">
+          <p className="text-sm sm:text-base font-normal mt-1 text-brand-black2">
             Find and deploy qualified nurses with intelligent matching
           </p>
         </div>
@@ -223,7 +223,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           onClick={handleBulkDeploy}
           disabled={checkedNurses.length === 0}
           data-testid="deploy-selected-btn"
-          className="flex items-center gap-1 px-5 py-5 rounded-md text-base font-bold text-white transition-all hover:opacity-90 bg-brand-cyan1"
+          className="flex items-center justify-center gap-1 px-5 py-5 rounded-md text-base font-bold text-white transition-all hover:opacity-90 bg-brand-cyan1 w-full sm:w-auto"
         >
           Deploy ({checkedNurses.length})
         </Button>
@@ -240,7 +240,8 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
 
       {/* Table */}
       <div className="rounded-lg border overflow-hidden">
-        <Table>
+        <div className="overflow-x-auto">
+          <Table>
           <TableHeader className="text-xs font-bold text-brand-black2">
             <TableRow className="">
               <TableHead className="">
@@ -355,7 +356,8 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
               </TableRow>
             ))}
           </TableBody>
-        </Table>
+          </Table>
+        </div>
       </div>
 
       {filteredAndSortedNurses.length === 0 && (
@@ -366,9 +368,9 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
 
       {/* Pagination */}
       {filteredAndSortedNurses.length > 0 && (
-        <div className="flex items-center justify-between px-4 py-3 bg-gray-50 rounded-b-lg border-t">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-brand-black2">Rows per page:</span>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 py-3 bg-gray-50 rounded-b-lg border-t">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <span className="text-sm text-brand-black2 whitespace-nowrap">Rows per page:</span>
             <Select
               value={itemsPerPage.toString()}
               onValueChange={handleItemsPerPageChange}
@@ -403,7 +405,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                 </SelectItem>
               </SelectContent>
             </Select>
-            <div className="text-sm text-brand-black2">
+            <div className="text-sm text-brand-black2 mt-2 sm:mt-0">
               Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
               {Math.min(
                 currentPage * itemsPerPage,
@@ -413,7 +415,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 w-full sm:w-auto justify-between sm:justify-end">
             <Button
               variant="ghost"
               size="sm"
@@ -464,7 +466,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
           <h3 className="font-semibold mb-3 text-slate-900">
             Selected Nurses ({checkedNurses.length})
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {checkedNurses.map((nurse) => (
               <div
                 key={nurse.id}
