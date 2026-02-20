@@ -213,7 +213,7 @@ export function DeploymentDialog({
     const allComplete = steps.every((s) => s.status === "complete");
     if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
       console.log("Deployment complete, calling updateDashboardData once");
-      setIsComplete(true);
+      // setIsComplete(true);
       hasUpdatedRef.current = true;
       updateDashboardData(nurses);
     }
@@ -243,8 +243,8 @@ export function DeploymentDialog({
             {/* Header Section */}
             <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-xl p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center">
-                  <Loader2 className="w-8 h-8 animate-spin" />
+                <div className="w-12 h-12 bg-brand-cyan2 rounded-full flex items-center justify-center">
+                  <Loader2 className="w-5 h-5 animate-spin" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">
@@ -271,7 +271,7 @@ export function DeploymentDialog({
             <div className="grid grid-cols-4 gap-6">
               {/* Selected Nurses */}
               <Card className="p-4 col-span-1 border-slate-200">
-                <h4 className="font-normal text-xl mb-4 text-gray-800">
+                <h4 className="font-normal text-xl mb-4 text-brand-black1">
                   Selected Nurses
                 </h4>
                 <div className="space-y-3">
@@ -282,7 +282,7 @@ export function DeploymentDialog({
                         alt={nurse.name}
                         className="w-6 h-6 rounded-full object-cover"
                       />
-                      <span className="text-gray-700 font-normal text-base">
+                      <span className="text-brand-black2 font-normal text-base">
                         {nurse.name}
                       </span>
                     </div>
@@ -292,7 +292,7 @@ export function DeploymentDialog({
 
               {/* Deployment Progress */}
               <Card className="p-4 col-span-3 border-slate-200">
-                <h4 className="font-normal text-xl mb-4 text-gray-800">
+                <h4 className="font-normal text-xl mb-4 text-brand-black1">
                   Deployment - In Progress
                 </h4>
                 <div className="space-y-4">
@@ -307,17 +307,17 @@ export function DeploymentDialog({
                           ) : (
                             <Loader2 className="w-6 h-6 text-orange-500 flex-shrink-0" />
                           )}
-                          <span className="text-base text-gray-700">
+                          <span className="text-base text-brand-black4">
                             {step.label}
                           </span>
                         </div>
                         <span
                           className={`text-base font-normal ${
                             step.status === "complete"
-                              ? "text-gray-700"
+                              ? "text-brand-black1"
                               : step.status === "progress"
-                                ? "text-gray-700"
-                                : "text-gray-500"
+                                ? "text-brand-black1"
+                                : "text-brand-black1"
                           }`}
                         >
                           {step.status === "complete"

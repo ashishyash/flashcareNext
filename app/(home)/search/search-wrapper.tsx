@@ -326,10 +326,10 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                         ? "default"
                         : "secondary"
                     }
-                    className={`text-xs font-normal px-2 py-1.5 bg-brand-green4 rounded-full shadow-none ${
+                    className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
                       nurse.availability_status === "Available"
-                        ? "bg-green-100 text-brand-green5 hover:bg-green-200"
-                        : "bg-amber-100 text-amber-800 hover:bg-amber-200"
+                        ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
+                        : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
                     }`}
                   >
                     {nurse.availability_status}
