@@ -97,40 +97,41 @@ const AnalyticsDashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8 pt-6">
+    <div className="min-h-screen bg-gray-50 p-4 md:p-6 lg:p-8 pt-4 md:pt-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex justify-between items-start mb-8">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6 md:mb-8">
           <div>
-            <h1 className="text-3xl font-normal text-brand-black1 mb-2">
+            <h1 className="text-2xl md:text-3xl font-normal text-brand-black1 mb-2">
               Analytics & Reporting
             </h1>
-            <p className="text-base text-brand-black2 font-normal">
+            <p className="text-sm md:text-base text-brand-black2 font-normal">
               Comprehensive insights and performance metrics
             </p>
           </div>
-          <Button className="bg-brand-cyan1 hover:bg-brand-cyan1">
+          <Button className="bg-brand-cyan1 hover:bg-brand-cyan1 w-full sm:w-auto flex items-center justify-center gap-2">
             <Download size={20} />
-            Export Report
+            <span className="hidden sm:inline">Export Report</span>
+            <span className="sm:hidden">Export</span>
           </Button>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
           {statsCards.map((stat) => (
             <Card key={stat.id} className="rounded-2xl border-sidebar-border">
-              <CardContent className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`${stat.iconBg} p-3 rounded-lg`}>
-                    <stat.icon className={stat.iconColor} size={24} />
+              <CardContent className="p-4 md:p-6">
+                <div className="flex items-start justify-between mb-3 md:mb-4">
+                  <div className={`${stat.iconBg} p-2 md:p-3 rounded-lg`}>
+                    <stat.icon className={`${stat.iconColor} md:size-6`} size={20} />
                   </div>
-                  <div className={`flex items-center text-brand-cyan1 gap-1 ${stat.trendColor} text-base font-normal`}>
-                    <stat.trend size={16} />
+                  <div className={`flex items-center text-brand-cyan1 gap-1 ${stat.trendColor} text-sm md:text-base font-normal`}>
+                    <stat.trend size={14} className="md:w-4 md:h-4" />
                     <span>{stat.trendValue}</span>
                   </div>
                 </div>
-                <div className=" text-base font-normal text-brand-black2 mb-1">{stat.title}</div>
-                <div className="text-3xl font-normal text-brand-black1 mb-1">{stat.value}</div>
+                <div className="text-sm md:text-base font-normal text-brand-black2 mb-1">{stat.title}</div>
+                <div className="text-2xl md:text-3xl font-normal text-brand-black1 mb-1">{stat.value}</div>
                 <div className="font-normal text-xs text-brand-black2">{stat.subtitle}</div>
               </CardContent>
             </Card>
@@ -138,14 +139,14 @@ const AnalyticsDashboard = () => {
         </div>
 
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
           {/* Deployment Timeline Graph */}
           <Card className="border-sidebar-border"> 
-            <CardHeader>
-              <CardTitle className="text-xl font-normal text-brand-black1">Deployment Timeline Graph</CardTitle>
+            <CardHeader className="pb-2 md:pb-4">
+              <CardTitle className="text-lg md:text-xl font-normal text-brand-black1">Deployment Timeline Graph</CardTitle>
             </CardHeader>
             <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250} className="md:height-[300px]">
               <BarChart data={deploymentData} barGap={4}>
                 <CartesianGrid
                   strokeDasharray="3 3"
@@ -156,33 +157,33 @@ const AnalyticsDashboard = () => {
                   dataKey="month"
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: "#6b7280", fontSize: 12 }}
+                  tick={{ fill: "#6b7280", fontSize: 11 }}
                 />
                 <YAxis
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: "#6b7280", fontSize: 12 }}
+                  tick={{ fill: "#6b7280", fontSize: 11 }}
                   domain={[0, 80]}
                 />
                 <Legend
                   verticalAlign="bottom"
-                  height={36}
+                  height={32}
                   iconType="circle"
                   formatter={(value: any) => (
-                    <span className="text-sm text-gray-700">{value}</span>
+                    <span className="text-xs md:text-sm text-gray-700">{value}</span>
                   )}
                 />
                 <Bar
                   dataKey="Fulfilled"
                   fill="#14b8a6"
                   radius={[4, 4, 0, 0]}
-                  barSize={20}
+                  barSize={16}
                 />
                 <Bar
                   dataKey="Requested"
                   fill="#475569"
                   radius={[4, 4, 0, 0]}
-                  barSize={20}
+                  barSize={16}
                 />
               </BarChart>
             </ResponsiveContainer>
@@ -191,36 +192,36 @@ const AnalyticsDashboard = () => {
 
           {/* Strike Duration vs Response Time */}
           <Card className="border-sidebar-border"> 
-            <CardHeader>
-              <CardTitle className="text-xl font-normal text-brand-black1">Strike Duration vs Response Time</CardTitle>
+            <CardHeader className="pb-2 md:pb-4">
+              <CardTitle className="text-lg md:text-xl font-normal text-brand-black1">Strike Duration vs Response Time</CardTitle>
             </CardHeader>
             <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer width="100%" height={250} className="md:height-[300px]">
               <LineChart data={strikeData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                 <XAxis
                   dataKey="x"
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: "#6b7280", fontSize: 12 }}
+                  tick={{ fill: "#6b7280", fontSize: 11 }}
                   domain={[0, 360]}
                   ticks={[0, 60, 120, 180, 240, 300, 360]}
                 />
                 <YAxis
                   axisLine={false}
                   tickLine={false}
-                  tick={{ fill: "#6b7280", fontSize: 12 }}
+                  tick={{ fill: "#6b7280", fontSize: 11 }}
                   domain={[0, 48]}
                   ticks={[0, 12, 24, 36, 48]}
                   tickFormatter={(value: any) => `${value}h`}
                 />
                 <Legend
                   verticalAlign="bottom"
-                  height={36}
+                  height={32}
                   iconType="circle"
                   formatter={(value: any) => (
                     <span
-                      className={`text-sm ${value === "responseTime" ? "text-teal-600" : "text-red-400"}`}
+                      className={`text-xs md:text-sm ${value === "responseTime" ? "text-teal-600" : "text-red-400"}`}
                     >
                       {value === "responseTime"
                         ? "Response Time"
@@ -233,7 +234,7 @@ const AnalyticsDashboard = () => {
                   dataKey="responseTime"
                   stroke="#14b8a6"
                   strokeWidth={2}
-                  dot={{ fill: "#14b8a6", r: 4 }}
+                  dot={{ fill: "#14b8a6", r: 3 }}
                   name="responseTime"
                 />
                 <Line
@@ -241,7 +242,7 @@ const AnalyticsDashboard = () => {
                   dataKey="strikeDuration"
                   stroke="#f87171"
                   strokeWidth={2}
-                  dot={{ fill: "#f87171", r: 4 }}
+                  dot={{ fill: "#f87171", r: 3 }}
                   name="strikeDuration"
                 />
               </LineChart>
@@ -251,16 +252,16 @@ const AnalyticsDashboard = () => {
         </div>
 
         {/* Predictive Analysis Banner */}
-        <div className="bg-brand-greengradient1 rounded-xl p-6 shadow-sm">
-          <div className="flex items-center gap-4">
-            <div className="bg-white/20 p-3 rounded-full">
-              <Sparkles className="text-white" size={28} />
+        <div className="bg-brand-greengradient1 rounded-xl p-4 md:p-6 shadow-sm">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+            <div className="bg-white/20 p-2 md:p-3 rounded-full flex-shrink-0">
+              <Sparkles className="text-white" size={22} />
             </div>
-            <div>
-              <h3 className="text-2xl font-normal text-white mb-1">
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg md:text-2xl font-normal text-white mb-1">
                 Predictive Analysis
               </h3>
-              <p className="text-teal-50 text-base font-normal">
+              <p className="text-teal-50 text-sm md:text-base font-normal">
                 3 hospitals at high strike risk next month
               </p>
             </div>
