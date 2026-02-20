@@ -165,7 +165,9 @@ export default function DashboardClient(): JSX.Element {
               <div>
                 <h2 className="flex items-center text-base sm:text-xl font-normal">
                   <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
-                  <span className="hidden sm:inline">ACTIVE STRIKE: Memorial Hospital</span>
+                  <span className="hidden sm:inline">
+                    ACTIVE STRIKE: Memorial Hospital
+                  </span>
                   <span className="sm:hidden">ACTIVE STRIKE</span>
                 </h2>
 
@@ -217,7 +219,7 @@ export default function DashboardClient(): JSX.Element {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
           <Card className="border border-sidebar-border overflow-hidden">
-            <CardHeader className="border-b border-b-sidebar-border">
+            <CardHeader className="border-b border-b-sidebar-border py-3">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Unit Status Overview
               </CardTitle>
@@ -278,7 +280,7 @@ export default function DashboardClient(): JSX.Element {
           </Card>
 
           <Card className="border border-sidebar-border">
-            <CardHeader>
+            <CardHeader className="py-3">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Recent Activity
               </CardTitle>
@@ -294,7 +296,9 @@ export default function DashboardClient(): JSX.Element {
                       : "border-b border-b-sidebar-border"
                   }
                 >
-                  <div className={`flex items-center px-2 sm:px-4 py-2 sm:py-1`}>
+                  <div
+                    className={`flex items-center px-2 sm:px-4 py-2 sm:py-1`}
+                  >
                     <div
                       className={`w-1.5 h-4 sm:w-2 sm:h-5 ${activity.bg2} rounded-full mr-2 sm:mr-3 flex-shrink-0`}
                     />
@@ -303,7 +307,7 @@ export default function DashboardClient(): JSX.Element {
                         {activity.text}
                       </div>
                       <div
-                        className={`text-[10px] sm:text-xs font-normal ${activity.color} ${activity.bg} rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
+                        className={`text-[10px] sm:text-xs font-normal  ${activity.color ? activity.color : "bg-green-100 text-green-600"} ${activity.bg} rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
                       >
                         {activity.status || "Stable"}
                       </div>
@@ -319,8 +323,10 @@ export default function DashboardClient(): JSX.Element {
         </div>
 
         <Card className="border border-sidebar-border">
-          <CardHeader className="border-b border-b-sidebar-border mb-4 sm:mb-6">
-            <CardTitle className="font-regular text-base sm:text-xl">Quick Links</CardTitle>
+          <CardHeader className="border-b border-b-sidebar-border mb-4 sm:mb-6 py-3">
+            <CardTitle className="font-regular text-base sm:text-xl">
+              Quick Links
+            </CardTitle>
           </CardHeader>
 
           <CardContent>

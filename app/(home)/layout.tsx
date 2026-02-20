@@ -30,10 +30,10 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                 </span>
                 <div className="relative">
                   {" "}
-                  <Bell className="h-6 w-6 text-gray-700" />{" "}
+                  <Bell className="h-6 w-6 text-brand-black2 cursor-pointer" />
                   <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500" />{" "}
                 </div>
-                <HelpCircle className="h-6 w-6 text-gray-700" />
+                <HelpCircle className="h-6 w-6 text-brand-black2 cursor-pointer" />
                 <div className="flex flex-col text-right">
                   <div className="text-sm font-medium text-brand-black1">
                     {" "}

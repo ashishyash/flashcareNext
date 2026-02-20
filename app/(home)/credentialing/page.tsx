@@ -84,10 +84,19 @@ const CredentialingQueue = () => {
           {statsCards.map((stat, index) => (
             <Card key={index} className="p-3 border-slate-200">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-sm sm:text-base font-normal text-brand-black2">{stat.label}</span>
-                <Icon name={stat.iconName} className={`w-4 h-4 sm:w-5 sm:h-5 ${stat.iconColor}`} />
+                <span className="text-sm sm:text-base font-normal text-brand-black2">
+                  {stat.label}
+                </span>
+                <Icon
+                  name={stat.iconName}
+                  className={`w-4 h-4 sm:w-5 sm:h-5 ${stat.iconColor}`}
+                />
               </div>
-              <div className={`text-2xl sm:text-3xl font-normal ${stat.textColor}`}>{stat.value}</div>
+              <div
+                className={`text-2xl sm:text-3xl font-normal ${stat.textColor}`}
+              >
+                {stat.value}
+              </div>
             </Card>
           ))}
         </div>
@@ -95,10 +104,19 @@ const CredentialingQueue = () => {
         {/* Verification Queue Card */}
         <Card className="p-4 sm:p-6 border-slate-200">
           <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-0 pb-4 sm:pb-6 border-b">
-            <CardTitle className="text-lg sm:text-xl font-normal text-brand-black1">Verification Queue</CardTitle>
+            <CardTitle className="text-lg sm:text-xl font-normal text-brand-black1">
+              Verification Queue
+            </CardTitle>
             <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto">
-              <Button variant="outline" className="flex-1 sm:flex-none text-sm sm:text-base font-normal border py-2 sm:py-3 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white">View All</Button>
-              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-teal-600 text-sm sm:text-base py-2 sm:py-3">Expedite</Button>
+              <Button
+                variant="outline"
+                className="flex-1 sm:flex-none text-sm sm:text-base font-normal border py-2 sm:py-3 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
+              >
+                View All
+              </Button>
+              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-teal-600 text-sm sm:text-base py-2 sm:py-3">
+                Expedite
+              </Button>
             </div>
           </CardHeader>
 
@@ -108,32 +126,47 @@ const CredentialingQueue = () => {
                 <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-1">
                   Sarah Chen
                 </h3>
-                <p className="text-xs sm:text-sm font-normal text-brand-black2">Submitted: Feb 10, 2026</p>
+                <p className="text-xs sm:text-sm font-normal text-brand-black2">
+                  Submitted: Feb 10, 2026
+                </p>
               </div>
               <div className="text-left sm:text-right">
                 <div className="text-xl sm:text-2xl font-normal text-brand-black1 mb-1">
                   85%
                 </div>
-                <p className="text-xs sm:text-sm font-normal text-brand-black2">Complete</p>
+                <p className="text-xs sm:text-sm font-normal text-brand-black2">
+                  Complete
+                </p>
               </div>
             </div>
 
-            <Progress value={85} className="mb-4 sm:mb-6" indicatorClassName="bg-brand-cyan1" />
+            <Progress
+              value={85}
+              className="mb-4 sm:mb-6"
+              indicatorClassName="bg-brand-cyan1"
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4">
               {verifiedCredentials.map((credential, index) => (
-                <Card key={index} className="bg-green-50 border-green-200 p-3 sm:p-4 flex items-start gap-3">
+                <Card
+                  key={index}
+                  className="bg-green-50 border-green-200 p-3 sm:p-4 flex items-center gap-3"
+                >
                   <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500 flex-shrink-0" />
                   <div>
-                    <div className="text-sm font-normal text-brand-black1">{credential.title}</div>
-                    <div className="text-xs font-normal text-brand-black2">{credential.source} • {credential.duration}</div>
+                    <div className="text-sm font-normal text-brand-black1">
+                      {credential.title}
+                    </div>
+                    <div className="text-xs font-normal text-brand-black2">
+                      {credential.source} • {credential.duration}
+                    </div>
                   </div>
                 </Card>
               ))}
             </div>
 
             <Card className="bg-orange-50 border-orange-200 p-3 sm:p-4 flex items-start gap-3 mb-4 sm:mb-0">
-               <Loader2 className="w-5 h-6 sm:w-6 sm:h-6 animate-spin text-brand-amber1 flex-shrink-0" />
+              <Loader2 className="w-5 h-6 sm:w-6 sm:h-6 animate-spin text-brand-amber1 flex-shrink-0" />
               <div>
                 <div className="text-sm font-normal text-brand-black1">
                   Hospital Privileges - In Progress
@@ -142,13 +175,24 @@ const CredentialingQueue = () => {
             </Card>
 
             <div className="flex items-center justify-center sm:justify-end gap-2 sm:gap-4 pt-4 border-t border-gray-200">
-              <Button variant="ghost" size="icon" className="text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50"
+              >
                 <Icon name="chevronLeft" className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
               <span className="text-xs sm:text-lg font-normal text-brand-black1">
-                Next In Queue: <span className="text-brand-cyan1 font-medium">Michael Rodriguez</span>
+                Next In Queue:{" "}
+                <span className="text-brand-cyan1 font-medium">
+                  Michael Rodriguez
+                </span>
               </span>
-              <Button variant="ghost" size="icon" className="text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50"
+              >
                 <Icon name="chevronRight" className="w-4 h-4 sm:w-5 sm:h-5" />
               </Button>
             </div>

@@ -213,7 +213,7 @@ export function DeploymentDialog({
     const allComplete = steps.every((s) => s.status === "complete");
     if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
       console.log("Deployment complete, calling updateDashboardData once");
-      // setIsComplete(true);
+      setIsComplete(true);
       hasUpdatedRef.current = true;
       updateDashboardData(nurses);
     }
