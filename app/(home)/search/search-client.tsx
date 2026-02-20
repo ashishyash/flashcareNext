@@ -42,12 +42,12 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
       data-testid="filters-section"
       className="bg-white border border-[#E5E7EB] rounded-lg"
     >
-      <div className="flex items-center justify-between px-5 py-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4">
         <h3 className="text-lg font-normal text-brand-black1">Filters</h3>
         <button
           data-testid="toggle-filters-btn"
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center gap-1.5 text-base font-normal text-brand-cyan3 hover:opacity-90 transition-opacity"
+          className="flex items-center gap-1.5 text-base font-normal text-brand-cyan3 hover:opacity-90 transition-opacity justify-start sm:justify-end"
         >
           {/* <Filter className="w-4 h-4" /> */}
           <Funnel className="text-brand-cyan3 w-5 h-5 hover:opacity-90 transition-opacity" />{" "}
@@ -57,7 +57,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
 
       {isOpen && (
         <>
-          <div className="px-5 pb-3 grid grid-cols-4 gap-4">
+          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Location
@@ -181,7 +181,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
           <div className="px-5 pb-2 flex justify-end">
             <Button
               onClick={handleSubmit}
-              className="bg-brand-cyan3 hover:opacity-90"
+              className="bg-brand-cyan3 hover:opacity-90 w-full sm:w-auto"
             >
               Apply Filters
             </Button>
@@ -190,7 +190,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
           {/* Results count */}
           <p
             data-testid="results-count"
-            className=" px-5 pb-3 text-sm font-normal text-brand-black2"
+            className="px-5 pb-3 text-sm font-normal text-brand-black2"
           >
             {filteredNursesCount} nurses match your criteria
           </p>
