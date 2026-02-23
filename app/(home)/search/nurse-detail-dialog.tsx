@@ -18,7 +18,6 @@ import {
   DollarSign,
   Clock,
   CheckCircle2,
-  User,
   TrendingUp,
   Award,
 } from "lucide-react";

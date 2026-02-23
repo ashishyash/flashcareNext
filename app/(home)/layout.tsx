@@ -6,7 +6,7 @@ import {
 import { AppSidebar } from "@/components/app-sidebar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Bell, HelpCircle, LogOut } from "lucide-react";
+import { Bell, HelpCircle } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,

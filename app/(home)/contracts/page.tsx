@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Calendar, Check, CircleCheckBig, DollarSign, Download, FileArchive, FileStack, FileText, MapPin, Send } from "lucide-react";
+import { Calendar,  CircleCheckBig, DollarSign, Download , FileStack, FileText, MapPin, Send } from "lucide-react";
 
 const ContractGeneration = () => {
   return (

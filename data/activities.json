@@ -42,5 +42,11 @@
     "color": "text-green-600",
     "bg2": "bg-green-600",
     "status": "Deployment"
+  },
+  {
+    "time": "01:06 PM",
+    "text": "1 nurse deployed to Memorial Hospital",
+    "id": 3,
+    "createdAt": "2026-02-23T07:36:11.306Z"
   }
 ]
