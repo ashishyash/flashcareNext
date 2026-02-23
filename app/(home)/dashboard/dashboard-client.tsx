@@ -143,7 +143,7 @@ export default function DashboardClient(): JSX.Element {
               >
                 <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                 <span className="sm:hidden">Find</span>
-                <span className="hidden sm:inline">Find Nurses</span>
+                <span className="hidden sm:inline">Search Nurses</span>
               </Button>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function DashboardClient(): JSX.Element {
                     Started {state.elapsedTime} -
                   </span>
                   <span className="flex items-center text-lg sm:text-3xl">
-                    172 Nurses Needed
+                    {`${metrics[0]?.value || 0} Nurses Needed`}
                   </span>
                 </div>
               </div>
