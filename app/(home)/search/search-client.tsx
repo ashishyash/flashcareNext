@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState } from "react";
 import {
   Select,
   SelectContent,
@@ -9,9 +8,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { ChevronDown, ChevronUp, Funnel } from "lucide-react";
+import { Funnel } from "lucide-react";
 import searchFilters from "@/data/search-filters.json";
 import { useRouter, useSearchParams } from "next/navigation";
 

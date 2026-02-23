@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAll, create } from '@/lib/fileManager';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const data = await getAll('activities');
     return NextResponse.json({ success: true, data });

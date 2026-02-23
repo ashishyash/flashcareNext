@@ -33,8 +33,8 @@ interface NursesTableProps {
 
 export function SearchWrapper({ nurses }: NursesTableProps) {
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set());
-  const [sortBy, setSortBy] = useState<string>("name");
-  const [filterAvailability, setFilterAvailability] = useState<string>("all");
+  const [sortBy, _setSortBy] = useState<string>("name");
+  const [filterAvailability, _setFilterAvailability] = useState<string>("all");
   const [selectedNurse, setSelectedNurse] = useState<Nurse | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [deployingNurses, setDeployingNurses] = useState<Nurse[]>([]);
