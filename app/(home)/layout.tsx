@@ -4,7 +4,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import Link from "next/link";
+import Link from "next/link"; 
 import { Button } from "@/components/ui/button";
 import { Bell, HelpCircle, LogOut } from "lucide-react";
 
