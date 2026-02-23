@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Need Immediate Help?",
+    "btn_label": "Emergency Activation",
+    "description": "Activate emergency deployment protocols"
+  },
+  {
+    "label": "View Deployment Map",
+    "description": "428 nurses ready for immediate deployment",
+    "btn_label": "View Available Staff"
+  },
+  {
+    "label": "Generate Report",
+    "btn_label": "Generate Report",
+    "description": "Generate custom reports for your organization"
+  },
+  {
+    "label": "AI Recommendation",
+    "description": "12 optimal matching suggestions available",
+    "btn_label": "View Suggestions"
+  }
+]
