@@ -89,7 +89,7 @@ export function AppSidebar() {
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={pathname === item.url} className={pathname === item.url ? "!bg-brand-cyan2 !text-brand-cyan2 font-normal" : ""}>
-                    <a href={item.url} className="py-6">
+                    <a href={item.url} className="py-6 group-data-[collapsible=icon]:justify-center">
                      <Tooltip>
       <TooltipTrigger asChild>
                       <item.icon className={pathname === item.url ? "!w-5 !h-5 " : "!w-5 !h-5"} />
