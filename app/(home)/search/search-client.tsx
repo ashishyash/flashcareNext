@@ -16,7 +16,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 export const SearchClient = ({ filteredNursesCount = 0 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [filters, setFilters] = useState({
     location: searchParams.get("location") || "100",
@@ -41,7 +41,17 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
       className="bg-white border border-[#E5E7EB] rounded-lg"
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4">
-        <h3 className="text-lg font-normal text-brand-black1">Filters</h3>
+        <div className="flex flex-col">
+          <h3 className="text-lg font-normal text-brand-black1">Filters</h3>
+          <hr />
+          {/* Results count */}
+          <p
+            data-testid="results-count"
+            className=" pb-1 text-sm font-normal text-brand-black2"
+          >
+            {filteredNursesCount} nurses match your criteria
+          </p>
+        </div>{" "}
         <button
           data-testid="toggle-filters-btn"
           onClick={() => setIsOpen(!isOpen)}
@@ -55,7 +65,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
 
       {isOpen && (
         <>
-          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             <div>
               <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Location
@@ -175,23 +185,16 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
                 </SelectContent>
               </Select>
             </div>
+
+            <div className="flex  items-end">
+              <Button
+                onClick={handleSubmit}
+                className="bg-brand-cyan3 hover:opacity-90  sm:w-auto"
+              >
+                Apply Filters
+              </Button>
+            </div>
           </div>
-          <div className="px-5 pb-2 flex justify-end">
-            <Button
-              onClick={handleSubmit}
-              className="bg-brand-cyan3 hover:opacity-90 w-full sm:w-auto"
-            >
-              Apply Filters
-            </Button>
-          </div>
-          <hr className="mx-5" />
-          {/* Results count */}
-          <p
-            data-testid="results-count"
-            className="px-5 pb-3 text-sm font-normal text-brand-black2"
-          >
-            {filteredNursesCount} nurses match your criteria
-          </p>
         </>
       )}
     </div>
