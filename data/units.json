@@ -2,15 +2,15 @@
   {
     "id": 1,
     "name": "ICU",
-    "current": 45,
+    "current": 50,
     "capacity": 50,
-    "needed": 5,
-    "staffed": 90,
+    "needed": 0,
+    "staffed": 100,
     "status": "Critical",
     "color": "text-red-600",
     "bg": "bg-red-100",
     "border": "border-red-300",
-    "updatedAt": "2026-02-23T05:14:10.436Z"
+    "updatedAt": "2026-02-24T09:28:25.205Z"
   },
   {
     "id": 2,

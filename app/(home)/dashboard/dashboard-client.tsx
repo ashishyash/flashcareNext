@@ -1,14 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  AlertTriangle,
-  Users,
-  TrendingUp,
-  Clock,
-  MapPin,
-  FileText,
-} from "lucide-react";
+import { AlertTriangle, Users, TrendingUp, Clock } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -20,12 +13,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useApiData } from "@/hooks/useApiData";
-import metricsData from "@/data/metrics.json";
-import unitsData from "@/data/units.json";
+
 import quickActionsData from "@/data/quick-actions.json";
-import activitiesData from "@/data/activities.json";
 import { useRouter } from "next/navigation";
-import { Separator } from "@/components/ui/separator";
 
 interface Metric {
   label: string;
@@ -56,12 +46,12 @@ interface QuickAction {
   btn_label: string;
 }
 
-const getBarColor = (color: string): string => {
-  if (color.includes("red")) return "#dc2626";
-  if (color.includes("amber")) return "#d97706";
-  if (color.includes("green")) return "#16a34a";
-  return "#dc2626";
-};
+// const getBarColor = (color: string): string => {
+//   if (color.includes("red")) return "#dc2626";
+//   if (color.includes("amber")) return "#d97706";
+//   if (color.includes("green")) return "#16a34a";
+//   return "#dc2626";
+// };
 
 interface Activity_Item {
   id: number;
@@ -104,11 +94,11 @@ export default function DashboardClient(): JSX.Element {
     return () => clearInterval(timer);
   }, []);
 
-  const formatCountdown = (minutes: number, seconds: number): string => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours}h ${mins}m ${seconds}s remaining`;
-  };
+  // const formatCountdown = (minutes: number, seconds: number): string => {
+  //   const hours = Math.floor(minutes / 60);
+  //   const mins = minutes % 60;
+  //   return `${hours}h ${mins}m ${seconds}s remaining`;
+  // };
 
   const iconMap = {
     Users,
@@ -153,7 +143,7 @@ export default function DashboardClient(): JSX.Element {
               >
                 <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                 <span className="sm:hidden">Find</span>
-                <span className="hidden sm:inline">Find Nurses</span>
+                <span className="hidden sm:inline">Search Nurses</span>
               </Button>
             </div>
           </div>
@@ -176,7 +166,7 @@ export default function DashboardClient(): JSX.Element {
                     Started {state.elapsedTime} -
                   </span>
                   <span className="flex items-center text-lg sm:text-3xl">
-                    172 Nurses Needed
+                    {`${metrics[0]?.value || 0} Nurses Needed`}
                   </span>
                 </div>
               </div>
@@ -307,7 +297,13 @@ export default function DashboardClient(): JSX.Element {
                         {activity.text}
                       </div>
                       <div
-                        className={`text-[10px] sm:text-xs font-normal  ${activity.color ? activity.color : "bg-green-100 text-green-600"} ${activity.bg} rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
+                        className={`text-[10px] sm:text-xs font-normal  ${
+                          activity.color
+                            ? activity.color
+                            : "bg-green-100 text-green-600"
+                        } ${
+                          activity.bg
+                        } rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
                       >
                         {activity.status || "Stable"}
                       </div>

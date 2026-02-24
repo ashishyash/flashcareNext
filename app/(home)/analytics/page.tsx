@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import {
   BarChart,
   Bar,
@@ -19,7 +18,6 @@ import {
   TrendingUp,
   TrendingDown,
   Download,
-  Activity,
   Sparkles,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

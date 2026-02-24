@@ -9,8 +9,17 @@ import {
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, Check } from "lucide-react";
 import { Nurse } from "./search.constant";
+import Image from "next/image";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface DeploymentDialogProps {
   readonly nurses: readonly Nurse[];
@@ -37,7 +46,7 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
     if (metricsData.success && metricsData.data) {
       // Update Deployed count
       const deployedMetric = metricsData.data.find(
-        (m: any) => m.label === "Deployed"
+        (m: any) => m.label === "Deployed",
       );
       console.log("Found deployed metric:", deployedMetric);
 
@@ -55,7 +64,7 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
 
       // Update Nurses Needed count (decrease)
       const neededMetric = metricsData.data.find(
-        (m: any) => m.label === "Nurses Needed"
+        (m: any) => m.label === "Nurses Needed",
       );
       console.log("Found nurses needed metric:", neededMetric);
 
@@ -66,7 +75,7 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
           "Updating nurses needed from",
           currentValue,
           "to",
-          newValue
+          newValue,
         );
 
         await fetch(`/api/metrics/${neededMetric.id}`, {
@@ -84,11 +93,14 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
 
     if (unitsData.success && unitsData.data) {
       // Group nurses by specialty
-      const nursesBySpecialty = nurses.reduce((acc, nurse) => {
-        const specialty = nurse.specialty;
-        acc[specialty] = (acc[specialty] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>);
+      const nursesBySpecialty = nurses.reduce(
+        (acc, nurse) => {
+          const specialty = nurse.specialty;
+          acc[specialty] = (acc[specialty] || 0) + 1;
+          return acc;
+        },
+        {} as Record<string, number>,
+      );
 
       console.log("Nurses by specialty:", nursesBySpecialty);
 
@@ -99,13 +111,13 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
         if (matchingCount > 0) {
           const newCurrent = Math.min(
             unit.capacity,
-            unit.current + matchingCount
+            unit.current + matchingCount,
           );
           const newNeeded = Math.max(0, unit.capacity - newCurrent);
           const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
 
           console.log(
-            `Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`
+            `Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`,
           );
 
           await fetch(`/api/units/${unit.id}`, {
@@ -229,17 +241,21 @@ export function DeploymentDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto [&>button]:hidden">
+      <DialogContent
+        className={`max-w-4xl max-h-[80vh] overflow-y-auto py-2 ${!isComplete ? "[&>button]:hidden" : ""}`}
+      >
         {isComplete && (
-          <DialogHeader>
-            <DialogTitle className="text-xl">
-              {isComplete ? "Deployment Confirmation" : ""}
-            </DialogTitle>
+          <DialogHeader className="border-b  border-sidebar-border">
+            {isComplete && (
+              <DialogTitle className="text-2xl pb-2 font-normal text-brand-black1">
+                Deployment Confirmation
+              </DialogTitle>
+            )}
           </DialogHeader>
         )}
 
         {!isComplete ? (
-          <div className="space-y-6 pb-2 pt-0">
+          <div className="space-y-4 py-4 pt-0">
             {/* Header Section */}
             <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-xl p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -340,41 +356,64 @@ export function DeploymentDialog({
             </div>
           </div>
         ) : (
-          <div className="space-y-4 py-4">
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle2 className="w-6 h-6 text-green-600" />
-                <p className="text-lg font-semibold text-green-900">
-                  Deploying {nurses.length} nurse{nurses.length > 1 ? "s" : ""}{" "}
-                  to Memorial Hospital
-                </p>
+          <div className="space-y-2 py-2">
+            <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-xl p-6 text-white flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-brand-cyan2 rounded-full flex items-center justify-center">
+                  <Check className="w-5 h-5 " />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold">
+                    {`${nurses.length} Nurses deployed successfully to Memorial Hospital ICU`}
+                  </h3>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <div className="max-h-60 overflow-y-auto space-y-2">
-                {nurses.map((nurse) => (
-                  <div
-                    key={nurse.id}
-                    className="bg-white border rounded-lg p-3"
-                  >
-                    <p className="font-medium text-gray-900">{nurse.name}</p>
-                    <p className="text-sm text-gray-600">
-                      {nurse.credentials} • {nurse.specialty}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-500 mb-1">Start Date</p>
-                  <p className="font-medium text-gray-900">{today}</p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-3">
-                  <p className="text-xs text-gray-500 mb-1">Shift</p>
-                  <p className="font-medium text-gray-900">7a-7p</p>
-                </div>
+            <div className="rounded-lg border overflow-hidden">
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader className="text-xs font-bold text-brand-black2">
+                    <TableRow className="">
+                      <TableHead>Nurse</TableHead>
+                      <TableHead>CREDENTIALS</TableHead>
+                      <TableHead>START DATE</TableHead>
+                      <TableHead>SHIFT TIMINGS</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {nurses.map((nurse) => (
+                      <TableRow key={nurse.id} className="hover:bg-slate-50">
+                        <TableCell
+                          // onClick={() => handleNurseClick(nurse)}
+                          className="text-sm font-normal cursor-pointer text-brand-cyan1 hover:text-brand-cyan2"
+                        >
+                          <div className="relative flex items-center">
+                            <Image
+                              src={nurse.photo}
+                              alt={nurse.name}
+                              width={24}
+                              height={24}
+                              className="object-cover rounded-full w-6 h-6 mr-2"
+                            />
+                            <span className="text-sm font-normal text-brand-black2">
+                              {nurse.name}
+                            </span>
+                          </div>
+                        </TableCell>
+                        <TableCell className="text-sm text-brand-black2">
+                          {`${nurse.credentials}, ${nurse.specialty}`}
+                        </TableCell>
+                        <TableCell className="text-sm text-brand-black2">
+                          {today}
+                        </TableCell>
+                        <TableCell className=" text-sm text-brand-black2">
+                          7a-7p
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
               </div>
             </div>
           </div>
