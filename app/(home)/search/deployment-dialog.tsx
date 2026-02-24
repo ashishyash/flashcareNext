@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import { Card } from "@/components/ui/card";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, Check } from "lucide-react";
 import { Nurse } from "./search.constant";
 import Image from "next/image";
 import {
@@ -360,7 +360,7 @@ export function DeploymentDialog({
             <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-xl p-6 text-white flex items-center justify-between">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-brand-cyan2 rounded-full flex items-center justify-center">
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Check className="w-5 h-5 " />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold">
