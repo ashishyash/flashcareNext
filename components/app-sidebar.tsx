@@ -13,8 +13,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar"
 import Image from "next/image"
+import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
 
 const items = [
   {
@@ -51,6 +53,8 @@ const items = [
 
 export function AppSidebar() {
   const pathname = usePathname()
+      const { state } = useSidebar()
+      console.log(state)
   
   return (
     <Sidebar variant="inset" collapsible="icon">
@@ -86,8 +90,18 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild isActive={pathname === item.url} className={pathname === item.url ? "!bg-brand-cyan2 !text-brand-cyan2 font-normal" : ""}>
                     <a href={item.url} className="py-6">
-                      <item.icon className={pathname === item.url ? "w-5 h-5 " : "w-5 h-5"} />
-                      <span className="text-base font-normal">{item.title}</span>
+                     <Tooltip>
+      <TooltipTrigger asChild>
+                      <item.icon className={pathname === item.url ? "!w-5 !h-5 " : "!w-5 !h-5"} />
+      </TooltipTrigger>
+      {}
+      {state === "collapsed" && (
+        <TooltipContent side="right" className="mx-2 group-data-[collapsible=icon]:hidden">
+          <p>{item.title}</p>
+        </TooltipContent>
+      )}
+    </Tooltip>
+                      <span className="text-base font-normal group-data-[collapsible=icon]:hidden">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
