@@ -18,13 +18,13 @@
     --destructive-foreground: 0 0% 100%;
     --border: 210 14% 90%;
     --input: 210 14% 96%;
-    --primary: 174 71% 45%;
+    --primary: 174 71% 30%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 14% 83%;
-    --secondary-foreground: 210 12% 20%;
+    --secondary: 195 100% 29%;
+    --secondary-foreground: 0 0% 100%;
     --ring: 174 71% 50%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 174 71% 30%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -32,6 +32,38 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Colors */
+    --brand-blue: 214 95% 50%;
+    --brand-green: 142 76% 36%;
+    --brand-green1: 168, 86%, 78%;
+    --brand-green2:152 81% 96%;
+    --brand-green3:160 100% 30%;
+    --brand-green4:150 81% 90%;
+    --brand-green5:162 100% 24%;
+    --brand-orange: 25 95% 53%;
+    --brand-black1:220 43% 11%;
+    --brand-black2:216 15% 34%;
+    --brand-black3:220 10% 46%;
+    --brand-black4:217 21 27%;
+    --brand-red1:344 100% 46%;
+    --brand-cyan1:175 100% 29%;
+    --brand-cyan2:183 97% 36%;
+    --brand-cyan3:193 100% 29%;
+    --brand-amber1:30 100% 44%;
+
+    /* Custom Gradients */
+    --gradient-primary: linear-gradient(135deg, #009689 0%, #007595 100%);
+    --gradient-sunset: linear-gradient(
+      135deg,
+      hsl(25 95% 53%) 0%,
+      hsl(340 82% 52%) 100%
+    );
+    --gradient-ocean: linear-gradient(
+      135deg,
+      hsl(214 95% 50%) 0%,
+      hsl(174 71% 45%) 100%
+    );
   }
 
   .dark {
@@ -49,10 +81,10 @@
     --destructive-foreground: 210 12% 15%;
     --border: 210 12% 25%;
     --input: 210 12% 20%;
-    --primary: 174 71% 55%;
-    --primary-foreground: 210 12% 15%;
-    --secondary: 210 30% 40%;
-    --secondary-foreground: 0 0% 98%;
+    --primary: 174 71% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 195 100% 34%;
+    --secondary-foreground: 0 0% 100%;
     --ring: 174 71% 55%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -62,6 +94,44 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Colors - Dark Mode */
+    --brand-blue: 214 95% 60%;
+    --brand-green1: 168, 86%, 78%;
+    --brand-orange: 25 95% 63%;
+    --brand-green: 142 76% 36%;
+    --brand-green2:152 81% 96%;
+    --brand-green3:160 100% 30%;
+    --brand-green4:150 81% 90%;
+    --brand-green5:162 100% 24%;
+    --brand-orange: 25 95% 53%;
+    --brand-black1:220 43% 11%;
+    --brand-black2:216 15% 34%;
+    --brand-black3:220 10% 46%;
+    --brand-black4:217 21 27%;
+    --brand-red1:344 100% 46%;
+    --brand-cyan1:175 100% 29%;
+    --brand-cyan2:183 97% 36%;
+    --brand-cyan3:193 100% 29%;
+    --brand-amber1:30 100% 44%;
+    
+
+    /* Custom Gradients - Dark Mode */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(174 71% 55%) 0%,
+      hsl(214 95% 60%) 100%
+    );
+    --gradient-sunset: linear-gradient(
+      135deg,
+      hsl(25 95% 63%) 0%,
+      hsl(340 82% 62%) 100%
+    );
+    --gradient-ocean: linear-gradient(
+      135deg,
+      hsl(214 95% 60%) 0%,
+      hsl(174 71% 55%) 100%
+    );
   }
 }
 
@@ -71,5 +141,26 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  [data-sidebar="sidebar"] {
+    color: white;
+  }
+
+  [data-sidebar="sidebar"] [data-sidebar="group-label"],
+  [data-sidebar="sidebar"] [data-sidebar="menu-button"],
+  [data-sidebar="sidebar"] span,
+  [data-sidebar="sidebar"] svg {
+    color: white;
+  }
+
+  [data-sidebar="sidebar"] [data-sidebar="menu-button"]:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  [data-sidebar="sidebar"] [data-sidebar="menu-button"]:hover svg {
+    color: white;
   }
 }

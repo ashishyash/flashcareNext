@@ -8,48 +8,55 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
+import Image from 'next/image'
 
 export function LoginForm() {
-  const [email, setEmail] = useState('admin@flashcare.ai')
-  const [password, setPassword] = useState('admin@1234')
-  const [showPassword, setShowPassword] = useState(false)
-  const [rememberMe, setRememberMe] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
-  const router = useRouter()
+  const [email, setEmail] = useState("Laura@FlashCareAI.com");
+  const [password, setPassword] = useState("admin@1234");
+  const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
-    setIsLoading(true)
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       if (!email || !password) {
-        setError('Please fill in all fields')
-        return
+        setError("Please fill in all fields");
+        return;
       }
 
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        setError('Please enter a valid email address')
-        return
+        setError("Please enter a valid email address");
+        return;
       }
 
-      console.log('Login attempt:', { email, password, rememberMe })
-      router.push('/dashboard')
+      console.log("Login attempt:", { email, password, rememberMe });
+      router.push("/dashboard");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader className="space-y-2">
-        <CardTitle className="text-2xl">Welcome back</CardTitle>
-        <CardDescription>
-          Enter your credentials to access your account
+      <CardHeader className="space-y-2 items-center">
+        <Image
+          alt="login-icon"
+          src="/assets/icon/login-icon.svg"
+          width={64}
+          height={64}
+        />
+        <CardTitle className="text-2xl">FlashCare AI</CardTitle>
+        <CardDescription className="text-black-400">
+          Crisis Management & Deployment System
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -70,8 +77,8 @@ export function LoginForm() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-10"
-                disabled={isLoading}
+                className="pl-10 border-sidebar-border"
+                disabled={true}
               />
             </div>
           </div>
@@ -82,12 +89,12 @@ export function LoginForm() {
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
                 id="password"
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="pl-10 pr-10"
-                disabled={isLoading}
+                className="pl-10 pr-10 border-sidebar-border"
+                disabled={true}
               />
               <button
                 type="button"
@@ -122,12 +129,10 @@ export function LoginForm() {
           </div>
 
           <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? 'Signing in...' : 'Sign in'}
+            {isLoading ? "Signing in..." : "Sign in"}
           </Button>
-
-         
         </form>
       </CardContent>
     </Card>
-  )
+  );
 }

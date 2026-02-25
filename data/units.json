@@ -1,22 +1,35 @@
 [
   {
+    "id": 1,
     "name": "ICU",
-    "staffed": 40,
+    "current": 50,
+    "capacity": 50,
+    "needed": 0,
+    "staffed": 100,
     "status": "Critical",
     "color": "text-red-600",
     "bg": "bg-red-100",
-    "border": "border-red-300"
+    "border": "border-red-300",
+    "updatedAt": "2026-02-25T05:40:56.239Z"
   },
   {
+    "id": 2,
     "name": "Emergency",
-    "staffed": 65,
+    "current": 32,
+    "capacity": 50,
+    "needed": 18,
+    "staffed": 64,
     "status": "Warning",
     "color": "text-amber-600",
     "bg": "bg-amber-100",
     "border": "border-amber-300"
   },
   {
+    "id": 3,
     "name": "Med-Surg",
+    "current": 40,
+    "capacity": 50,
+    "needed": 10,
     "staffed": 80,
     "status": "Stable",
     "color": "text-green-600",
