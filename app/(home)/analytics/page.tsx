@@ -107,7 +107,7 @@ const AnalyticsDashboard = () => {
               Comprehensive insights and performance metrics
             </p>
           </div>
-          <Button className="bg-brand-cyan1 hover:bg-brand-cyan1 w-full sm:w-auto flex items-center justify-center gap-2">
+          <Button className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto">
             <Download size={20} />
             <span className="hidden sm:inline">Export Report</span>
             <span className="sm:hidden">Export</span>
@@ -117,7 +117,7 @@ const AnalyticsDashboard = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
           {statsCards.map((stat) => (
-            <Card key={stat.id} className="rounded-2xl border-sidebar-border">
+            <Card key={stat.id} className="rounded-2xl border-sidebar-border hover:shadow-lg">
               <CardContent className="p-4 md:p-6">
                 <div className="flex items-start justify-between mb-3 md:mb-4">
                   <div className={`${stat.iconBg} p-2 md:p-3 rounded-lg`}>

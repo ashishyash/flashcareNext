@@ -82,7 +82,7 @@ const CredentialingQueue = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {statsCards.map((stat, index) => (
-            <Card key={index} className="p-3 border-slate-200">
+            <Card key={index} className="p-3 border-slate-200 hover:shadow-lg">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm sm:text-base font-normal text-brand-black2">
                   {stat.label}
