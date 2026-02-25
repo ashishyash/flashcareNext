@@ -12,11 +12,13 @@ import { Button } from "@/components/ui/button";
 import { Funnel } from "lucide-react";
 import searchFilters from "@/data/search-filters.json";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useSidebar } from "@/components/ui/sidebar";
 
 export const SearchClient = ({ filteredNursesCount = 0 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isOpen, setIsOpen] = useState(false);
+  const { showFilter, setShowFilter } = useSidebar();
+  const [isOpen, setIsOpen] = useState(showFilter);
 
   const [filters, setFilters] = useState({
     location: searchParams.get("location") || "100",
@@ -53,7 +55,10 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
         </div>{" "}
         <button
           data-testid="toggle-filters-btn"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setShowFilter(!showFilter);
+          }}
           className="flex items-center gap-1.5 text-base font-normal text-brand-cyan3 hover:opacity-90 transition-opacity justify-start sm:justify-end"
         >
           {/* <Filter className="w-4 h-4" /> */}
@@ -64,7 +69,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
 
       {isOpen && (
         <>
-          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]  gap-4">
             <div>
               <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Location
