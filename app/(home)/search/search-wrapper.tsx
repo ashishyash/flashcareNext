@@ -28,10 +28,10 @@ import { MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface NursesTableProps {
   readonly nurses: readonly Nurse[];
-  // readonly onCheckedNursesChange?: (nurses: Nurse[]) => void;
+  readonly onDeploymentComplete?: () => void;
 }
 
-export function SearchWrapper({ nurses }: NursesTableProps) {
+export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps) {
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set());
   const [sortBy, _setSortBy] = useState<string>("name");
   const [filterAvailability, _setFilterAvailability] = useState<string>("all");
@@ -192,6 +192,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
   const handleDeploymentComplete = () => {
     setCheckedIds(new Set());
     setIsDeploymentOpen(false);
+    onDeploymentComplete?.();
   };
 
   const handleNurseClick = (nurse: Nurse) => {

@@ -9,7 +9,7 @@ import { Loader2 } from "lucide-react";
 
  const NurseSearchPageInner = () => {
   const searchParams = useSearchParams();
-  const { data: nursesData, loading: apiLoading } = useApiData<Nurse>('nurses');
+  const { data: nursesData, loading: apiLoading, refetch } = useApiData<Nurse>('nurses');
   const [isLoading, setIsLoading] = useState(false);
   const [displayedNurses, setDisplayedNurses] = useState<Nurse[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -79,7 +79,7 @@ import { Loader2 } from "lucide-react";
   
   return (
     <div>
-      <SearchWrapper nurses={displayedNurses} />
+      <SearchWrapper nurses={displayedNurses} onDeploymentComplete={refetch} />
     </div>
   );
 };
