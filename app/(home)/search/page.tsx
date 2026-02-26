@@ -26,6 +26,8 @@ import { Loader2 } from "lucide-react";
     const experienceYears = Number.parseInt(experience);
     
     return nursesData.filter((nurse) => {
+      if (nurse.deployed) return false;
+      
       const matchesLocation = nurse.distance_miles <= locationMiles;
       const matchesSpecialization = nurse.specialty.toLowerCase() === specialization.toLowerCase();
       const matchesExperience = nurse.experience_years >= experienceYears;
@@ -61,7 +63,7 @@ import { Loader2 } from "lucide-react";
     "Searching 2,847 registered nurses...",
     "Analyzing qualifications...",
     "Calculating match scores...",
-    `Found ${filteredNurses.length} qualified nurses`
+    `Found ${filteredNurses?.length} qualified nurses`
   ];
   
   if (isLoading || apiLoading) {
