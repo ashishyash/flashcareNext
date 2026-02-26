@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/sidebar"
 import Image from "next/image"
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip"
+import Link from "next/link"
 
 const items = [
   {
@@ -25,7 +26,7 @@ const items = [
     icon: Home,
   },
   {
-    title: "Nurse Search",
+    title: "Search Nurse",
     url: "/search",
     icon: Search,
   },
@@ -114,8 +115,10 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton>
-              <LogOut />
+              <Link href="/" className="flex cursor-pointer">
+              <LogOut className="w-5 h-5 mr-2" />
               <span>Sign Out</span>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

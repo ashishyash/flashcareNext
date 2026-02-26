@@ -17,7 +17,7 @@ const ContractGeneration = () => {
               Automated contract creation and management
             </p>
           </div>
-          <Button className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan1 w-full sm:w-auto">
+          <Button className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan2 w-full sm:w-auto">
             <FileStack className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="ml-2">Generate Bulk Contracts</span>
           </Button>
