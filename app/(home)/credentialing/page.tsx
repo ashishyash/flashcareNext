@@ -114,7 +114,7 @@ const CredentialingQueue = () => {
               >
                 View All
               </Button>
-              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-teal-600 font-normal text-sm sm:text-base py-2 sm:py-3">
+              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3">
                 Expedite
               </Button>
             </div>
