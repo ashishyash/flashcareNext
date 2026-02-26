@@ -1,13 +1,13 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, Suspense } from "react";
 import { SearchWrapper } from "./search-wrapper";
 import { useApiData } from "@/hooks/useApiData";
 import { Nurse } from "./search.constant";
 import { Loader2 } from "lucide-react";
 
-export const NurseSearchPage = () => {
+ const NurseSearchPageInner = () => {
   const searchParams = useSearchParams();
   const { data: nursesData, loading: apiLoading } = useApiData<Nurse>('nurses');
   const [isLoading, setIsLoading] = useState(false);
@@ -82,4 +82,10 @@ export const NurseSearchPage = () => {
   );
 };
 
-export default NurseSearchPage;
+export default function NurseSearchPage() {
+  return (
+    <Suspense>
+      <NurseSearchPageInner />
+    </Suspense>
+  );
+}

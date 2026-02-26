@@ -24,32 +24,33 @@ import { Nurse } from "./search.constant";
 import { NurseDetailDialog } from "./nurse-detail-dialog";
 import { DeploymentDialog } from "./deployment-dialog";
 import { SearchClient } from "./search-client";
-
+import { MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface NursesTableProps {
   readonly nurses: readonly Nurse[];
   // readonly onCheckedNursesChange?: (nurses: Nurse[]) => void;
 }
 
-export function SearchWrapper({
-  nurses
-}: NursesTableProps) {
+export function SearchWrapper({ nurses }: NursesTableProps) {
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set());
-  const [sortBy, setSortBy] = useState<string>("name");
-  const [filterAvailability, setFilterAvailability] = useState<string>("all");
+  const [sortBy, _setSortBy] = useState<string>("name");
+  const [filterAvailability, _setFilterAvailability] = useState<string>("all");
   const [selectedNurse, setSelectedNurse] = useState<Nurse | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [deployingNurses, setDeployingNurses] = useState<Nurse[]>([]);
   const [isDeploymentOpen, setIsDeploymentOpen] = useState(false);
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   const filteredAndSortedNurses = useMemo(() => {
     let filtered = nurses.filter((nurse) => {
- 
+      console.log(nurse);
       const availabilityMatch =
         filterAvailability === "all" ||
         nurse.availability_status === filterAvailability;
-      return  availabilityMatch;
+      return availabilityMatch;
     });
 
     return filtered.sort((a, b) => {
@@ -70,16 +71,80 @@ export function SearchWrapper({
     });
   }, [nurses, sortBy, filterAvailability]);
 
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredAndSortedNurses.length / itemsPerPage);
+
+  const paginatedNurses = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return filteredAndSortedNurses.slice(startIndex, endIndex);
+  }, [filteredAndSortedNurses, currentPage, itemsPerPage]);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handlePrevious = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handleItemsPerPageChange = (value: string) => {
+    setItemsPerPage(parseInt(value));
+    setCurrentPage(1); // Reset to first page when changing items per page
+  };
+
+  // Generate page numbers to display
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisiblePages = 5;
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) {
+          pages.push(i);
+        }
+        pages.push("...");
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push("...");
+        for (let i = totalPages - 3; i <= totalPages; i++) {
+          pages.push(i);
+        }
+      } else {
+        pages.push(1);
+        pages.push("...");
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+          pages.push(i);
+        }
+        pages.push("...");
+        pages.push(totalPages);
+      }
+    }
+
+    return pages;
+  };
+
   const checkedNurses = useMemo(
     () => filteredAndSortedNurses.filter((n) => checkedIds.has(n.id)),
-    [filteredAndSortedNurses, checkedIds]
+    [filteredAndSortedNurses, checkedIds],
   );
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
-      const newSet = new Set(
-        filteredAndSortedNurses.map((n) => n.id)
-      );
+      const newSet = new Set(filteredAndSortedNurses.map((n) => n.id));
       setCheckedIds(newSet);
     } else {
       setCheckedIds(new Set());
@@ -100,18 +165,18 @@ export function SearchWrapper({
     handleSelectAll(checkedIds.size !== filteredAndSortedNurses.length);
   };
 
-//   const exportCheckedData = () => {
-//     const dataStr = JSON.stringify(checkedNurses, null, 2);
-//     const dataBlob = new Blob([dataStr], { type: "application/json" });
-//     const url = URL.createObjectURL(dataBlob);
-//     const link = document.createElement("a");
-//     link.href = url;
-//     link.download = `checked-nurses-${new Date().toISOString().split("T")[0]}.json`;
-//     document.body.appendChild(link);
-//     link.click();
-//     document.body.removeChild(link);
-//     URL.revokeObjectURL(url);
-//   };
+  //   const exportCheckedData = () => {
+  //     const dataStr = JSON.stringify(checkedNurses, null, 2);
+  //     const dataBlob = new Blob([dataStr], { type: "application/json" });
+  //     const url = URL.createObjectURL(dataBlob);
+  //     const link = document.createElement("a");
+  //     link.href = url;
+  //     link.download = `checked-nurses-${new Date().toISOString().split("T")[0]}.json`;
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     document.body.removeChild(link);
+  //     URL.revokeObjectURL(url);
+  //   };
 
   const handleDeploy = (nurse: Nurse) => {
     setDeployingNurses([nurse]);
@@ -135,184 +200,164 @@ export function SearchWrapper({
   };
 
   // Call the callback when checked nurses change
-//   if (onCheckedNursesChange) {
-//     // onCheckedNursesChange(checkedNurses);
-//   }
+  //   if (onCheckedNursesChange) {
+  //     // onCheckedNursesChange(checkedNurses);
+  //   }
 
   return (
-    <div className="w-full space-y-4 p-4">
-      <div className="flex flex-wrap items-center gap-4 bg-slate-50 p-4 rounded-lg">
-        <div className="flex-1 min-w-[200px]">
-          <label htmlFor="sort-by" className="text-sm font-medium text-slate-700 block mb-2">
-            Sort By
-          </label>
-          <Select value={sortBy} onValueChange={setSortBy}>
-            <SelectTrigger id="sort-by">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="name">Name</SelectItem>
-              <SelectItem value="experience">Experience</SelectItem>
-              <SelectItem value="rating">Rating</SelectItem>
-              <SelectItem value="match_score">Match Score</SelectItem>
-              <SelectItem value="rate">Hourly Rate</SelectItem>
-            </SelectContent>
-          </Select>
+    <div className="w-full space-y-4 p-4 md:p-6">
+      {/* header */}
+      <div
+        data-testid="page-header"
+        className="flex flex-col sm:flex-row sm:items-start md:items-center sm:justify-between gap-4 mb-6"
+      >
+        <div>
+          <h1 className="text-2xl sm:text-[32px] font-normal text-brand-black1">
+            Nurse Search & AI Matching
+          </h1>
+          <p className="text-sm sm:text-base font-normal mt-1 text-brand-black2">
+            Find and deploy qualified nurses with intelligent matching
+          </p>
         </div>
-
-        <div className="flex-1 min-w-[200px]">
-          <label htmlFor="availability" className="text-sm font-medium text-slate-700 block mb-2">
-            Availability
-          </label>
-          <Select
-            value={filterAvailability}
-            onValueChange={setFilterAvailability}
-          >
-            <SelectTrigger id="availability">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All</SelectItem>
-              <SelectItem value="Available">Available</SelectItem>
-              <SelectItem value="Busy">Busy</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="pt-6">
-          <Button
-            onClick={handleBulkDeploy}
-            disabled={checkedNurses.length === 0}
-            className="w-full bg-cyan-600 hover:bg-cyan-700"
-          >
-            Deploy ({checkedNurses.length})
-          </Button>
-        </div>
+        <Button
+          onClick={handleBulkDeploy}
+          disabled={checkedNurses.length === 0}
+          data-testid="deploy-selected-btn"
+          className="flex items-center justify-center gap-1 px-5 py-1 rounded-md text-base font-bold text-white transition-all hover:opacity-90 bg-brand-cyan1 w-full sm:w-auto"
+        >
+          Deploy ({checkedNurses.length})
+        </Button>
       </div>
-      <SearchClient/>
+      {/* Search Filters */}
+      <SearchClient filteredNursesCount={filteredAndSortedNurses?.length} />
 
-      <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+      {/* <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
         <p className="text-sm text-slate-700">
           Selected: <strong>{checkedNurses.length}</strong> of{" "}
           <strong>{filteredAndSortedNurses.length}</strong> nurses
         </p>
-      </div>
+      </div> */}
 
+      {/* Table */}
       <div className="rounded-lg border overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-slate-100">
-              <TableHead className="w-12">
-                <Checkbox
-                  checked={
-                    filteredAndSortedNurses.length > 0 &&
-                    checkedIds.size === filteredAndSortedNurses.length
-                  }
-                  onCheckedChange={toggleSelectAll}
-                  aria-label="Select all nurses"
-                />
-              </TableHead>
-              <TableHead>Photo</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Credentials</TableHead>
-              <TableHead>Specialty</TableHead>
-              <TableHead className="text-right">Experience</TableHead>
-              <TableHead>Location</TableHead>
-              <TableHead className="text-right">Distance (mi)</TableHead>
-              <TableHead className="text-center">Match Score</TableHead>
-              <TableHead>Availability</TableHead>
-              <TableHead className="text-right">Rate/hr</TableHead>
-              <TableHead className="text-right">Rating</TableHead>
-              <TableHead>Certifications</TableHead>
-              <TableHead className="text-center">Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {filteredAndSortedNurses.map((nurse) => (
-              <TableRow key={nurse.id} className="hover:bg-slate-50">
-                <TableCell>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader className="text-xs font-bold text-brand-black2">
+              <TableRow className="">
+                <TableHead className="">
                   <Checkbox
-                    checked={checkedIds.has(nurse.id)}
-                    onCheckedChange={(checked) =>
-                      handleCheckboxChange(nurse.id, checked as boolean)
+                    className="rounded-md"
+                    checked={
+                      filteredAndSortedNurses.length > 0 &&
+                      checkedIds.size === filteredAndSortedNurses.length
                     }
-                    aria-label={`Select ${nurse.name}`}
+                    onCheckedChange={toggleSelectAll}
+                    aria-label="Select all nurses"
                   />
-                </TableCell>
-                <TableCell>
-                  <div className="relative w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
-                    <Image
-                      src={nurse.photo}
-                      alt={nurse.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </TableCell>
-                <TableCell className="font-medium cursor-pointer text-cyan-600 hover:text-cyan-700" onClick={() => handleNurseClick(nurse)}>{nurse.name}</TableCell>
-                <TableCell className="text-sm">{nurse.credentials}</TableCell>
-                <TableCell className="text-sm">{nurse.specialty}</TableCell>
-                <TableCell className="text-right text-sm">
-                  {nurse.experience_years} yrs
-                </TableCell>
-                <TableCell className="text-sm">{nurse.location}</TableCell>
-                <TableCell className="text-right text-sm">
-                  {nurse.distance_miles.toFixed(1)}
-                </TableCell>
-                <TableCell className="text-center">
-                  <Badge
-                    variant={
-                      nurse.match_score >= 90 ? "default" : "secondary"
-                    }
-                    className="text-xs"
-                  >
-                    {nurse.match_score}%
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge
-                    variant={
-                      nurse.availability_status === "Available"
-                        ? "default"
-                        : "secondary"
-                    }
-                    className={`text-xs ${
-                      nurse.availability_status === "Available"
-                        ? "bg-green-100 text-green-800 hover:bg-green-200"
-                        : "bg-amber-100 text-amber-800 hover:bg-amber-200"
-                    }`}
-                  >
-                    {nurse.availability_status}
-                  </Badge>
-                </TableCell>
-                <TableCell className="text-right text-sm font-medium">
-                  ${nurse.rate_per_hour}
-                </TableCell>
-                <TableCell className="text-right text-sm">
-                  ⭐ {nurse.previous_rating}
-                </TableCell>
-                <TableCell>
-                  <div className="flex flex-wrap gap-1">
-                    {nurse.certifications.map((cert) => (
-                      <Badge key={cert} variant="outline" className="text-xs">
-                        {cert}
-                      </Badge>
-                    ))}
-                  </div>
-                </TableCell>
-                <TableCell className="text-center">
-                  <Button 
-                    size="sm" 
-                    onClick={() => handleDeploy(nurse)}
-                    className="bg-cyan-600 hover:bg-cyan-700"
-                  >
-                    Deploy
-                  </Button>
-                </TableCell>
+                </TableHead>
+                <TableHead>NAME</TableHead>
+                <TableHead>CREDENTIALS</TableHead>
+                <TableHead>SPECIALTY</TableHead>
+                <TableHead className="">EXPERIENCE</TableHead>
+                <TableHead>Location</TableHead>
+                <TableHead className=""> DISTANCE</TableHead>
+                <TableHead className="text-center"> MATCH SCORE</TableHead>
+                <TableHead> AVAILABILITY</TableHead>
+                <TableHead className=""> RATING</TableHead>
+                <TableHead className="text-center"> ACTION</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {paginatedNurses.map((nurse) => (
+                <TableRow key={nurse.id} className="hover:bg-slate-50">
+                  <TableCell>
+                    <Checkbox
+                      className="rounded-md border-brand-cyan1"
+                      checked={checkedIds.has(nurse.id)}
+                      onCheckedChange={(checked) =>
+                        handleCheckboxChange(nurse.id, checked as boolean)
+                      }
+                      aria-label={`Select ${nurse.name}`}
+                    />
+                  </TableCell>
+                  <TableCell
+                    onClick={() => handleNurseClick(nurse)}
+                    className="text-sm font-normal cursor-pointer text-brand-cyan1 hover:text-brand-cyan2"
+                  >
+                    <div className="relative flex items-center">
+                      <Image
+                        src={nurse.photo}
+                        alt={nurse.name}
+                        width={24}
+                        height={24}
+                        className="object-cover rounded-full w-6 h-6 mr-2"
+                      />
+                      <span className="text-sm font-normal text-brand-cyan1">
+                        {nurse.name}
+                      </span>
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-sm text-brand-black2">
+                    {nurse.credentials}
+                  </TableCell>
+                  <TableCell className="text-sm text-brand-black2">
+                    {nurse.specialty}
+                  </TableCell>
+                  <TableCell className=" text-sm text-brand-black2">
+                    {nurse.experience_years} yrs
+                  </TableCell>
+                  <TableCell className="text-sm font-normal">
+                    <div className="flex items-center text-brand-black2">
+                      <MapPin className="w-4 mr-1" />
+                      {nurse.location}
+                    </div>
+                  </TableCell>
+                  <TableCell className=" text-sm text-brand-black2">
+                    {nurse.distance_miles.toFixed(1)} mi
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <div className="text-sm font-normal px-5 py-1.5 rounded-full bg-brand-green2 text-brand-green3">
+                      {nurse.match_score}%
+                    </div>
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      variant={
+                        nurse.availability_status === "Available"
+                          ? "default"
+                          : "secondary"
+                      }
+                      className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
+                        nurse.availability_status === "Available"
+                          ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
+                          : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
+                      }`}
+                    >
+                      {nurse.availability_status}
+                    </Badge>
+                  </TableCell>
+
+                  <TableCell className="text-right text-sm ">
+                    <div className="flex items-center text-brand-black2">
+                      <Star className="w-4 mr-1 text-yellow-400 fill-yellow-400" />{" "}
+                      {nurse.previous_rating}
+                    </div>
+                  </TableCell>
+
+                  <TableCell className="text-center">
+                    <Button
+                      size="sm"
+                      onClick={() => handleDeploy(nurse)}
+                      className="px-4 py-1.5 text-sm font-normal rounded-full border text-brand-cyan1 border-brand-cyan1 bg-white shadow-none hover:bg-brand-green2 hover:text-green-800"
+                    >
+                      Deploy
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
 
       {filteredAndSortedNurses.length === 0 && (
@@ -321,12 +366,109 @@ export function SearchWrapper({
         </div>
       )}
 
-      {checkedNurses.length > 0 && (
+      {/* Pagination */}
+      {filteredAndSortedNurses.length > 0 && (
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 px-4 py-3 bg-gray-50 rounded-b-lg border-t">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+            <span className="text-sm text-brand-black2 whitespace-nowrap">
+              Rows per page:
+            </span>
+            <Select
+              value={itemsPerPage.toString()}
+              onValueChange={handleItemsPerPageChange}
+            >
+              <SelectTrigger className="w-[70px] h-8 text-sm text-brand-black2 border-sidebar-border">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="text-brand-black2">
+                <SelectItem
+                  value="5"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  5
+                </SelectItem>
+                <SelectItem
+                  value="10"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  10
+                </SelectItem>
+                <SelectItem
+                  value="20"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  20
+                </SelectItem>
+                <SelectItem
+                  value="50"
+                  className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                >
+                  50
+                </SelectItem>
+              </SelectContent>
+            </Select>
+            <div className="text-sm text-brand-black2 mt-2 sm:mt-0">
+              Showing {(currentPage - 1) * itemsPerPage + 1} to{" "}
+              {Math.min(
+                currentPage * itemsPerPage,
+                filteredAndSortedNurses.length,
+              )}{" "}
+              of {filteredAndSortedNurses.length} records
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1 w-full sm:w-auto justify-between sm:justify-end">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handlePrevious}
+              disabled={currentPage === 1}
+              className="h-8 w-8 p-0 text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+
+            {getPageNumbers().map((page, index) =>
+              typeof page === "number" ? (
+                <Button
+                  key={index}
+                  variant={currentPage === page ? "default" : "ghost"}
+                  size="sm"
+                  onClick={() => handlePageChange(page)}
+                  className={`h-8 w-8 p-0 text-sm ${
+                    currentPage === page
+                      ? "bg-brand-black2 text-white hover:bg-brand-cyan1"
+                      : "text-brand-cyan3  hover:bg-brand-cyan1"
+                  }`}
+                >
+                  {page}
+                </Button>
+              ) : (
+                <span key={index} className="px-2 text-gray-400">
+                  ...
+                </span>
+              ),
+            )}
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="h-8 w-8 p-0 text-brand-black2 hover:text-white hover:bg-brand-cyan1 disabled:opacity-50"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      )}
+
+      {/* {checkedNurses.length > 0 && (
         <div className="mt-6 p-4 bg-slate-50 rounded-lg border">
           <h3 className="font-semibold mb-3 text-slate-900">
             Selected Nurses ({checkedNurses.length})
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {checkedNurses.map((nurse) => (
               <div
                 key={nurse.id}
@@ -341,15 +483,15 @@ export function SearchWrapper({
             ))}
           </div>
         </div>
-      )}
+      )} */}
 
-      <NurseDetailDialog 
+      <NurseDetailDialog
         nurse={selectedNurse}
         open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         onDeploy={handleDeploy}
       />
-      
+
       <DeploymentDialog
         nurses={deployingNurses}
         open={isDeploymentOpen}
