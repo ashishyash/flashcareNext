@@ -9,10 +9,11 @@ import { Loader2 } from "lucide-react";
 
  const NurseSearchPageInner = () => {
   const searchParams = useSearchParams();
-  const { data: nursesData, loading: apiLoading } = useApiData<Nurse>('nurses');
+  const { data: nursesData, loading: apiLoading, refetch } = useApiData<Nurse>('nurses');
   const [isLoading, setIsLoading] = useState(false);
   const [displayedNurses, setDisplayedNurses] = useState<Nurse[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   
   const filteredNurses = useMemo(() => {
     if (!nursesData || nursesData.length === 0) return [];
@@ -26,6 +27,8 @@ import { Loader2 } from "lucide-react";
     const experienceYears = Number.parseInt(experience);
     
     return nursesData.filter((nurse) => {
+      if (nurse.deployed) return false;
+      
       const matchesLocation = nurse.distance_miles <= locationMiles;
       const matchesSpecialization = nurse.specialty.toLowerCase() === specialization.toLowerCase();
       const matchesExperience = nurse.experience_years >= experienceYears;
@@ -38,30 +41,35 @@ import { Loader2 } from "lucide-react";
   }, [searchParams, nursesData]);
 
   useEffect(() => {
-    setIsLoading(true);
-    setLoadingStep(0);
-    
-    const step1 = setTimeout(() => setLoadingStep(1), 1000);
-    const step2 = setTimeout(() => setLoadingStep(2), 2000);
-    const step3 = setTimeout(() => setLoadingStep(3), 3000);
-    const final = setTimeout(() => {
+    if (isInitialLoad) {
+      setIsLoading(true);
+      setLoadingStep(0);
+      
+      const step1 = setTimeout(() => setLoadingStep(1), 1000);
+      const step2 = setTimeout(() => setLoadingStep(2), 2000);
+      const step3 = setTimeout(() => setLoadingStep(3), 3000);
+      const final = setTimeout(() => {
+        setDisplayedNurses(filteredNurses);
+        setIsLoading(false);
+        setIsInitialLoad(false);
+      }, 4000);
+      
+      return () => {
+        clearTimeout(step1);
+        clearTimeout(step2);
+        clearTimeout(step3);
+        clearTimeout(final);
+      };
+    } else {
       setDisplayedNurses(filteredNurses);
-      setIsLoading(false);
-    }, 4000);
-    
-    return () => {
-      clearTimeout(step1);
-      clearTimeout(step2);
-      clearTimeout(step3);
-      clearTimeout(final);
-    };
-  }, [filteredNurses]);
+    }
+  }, [filteredNurses, isInitialLoad]);
   
   const loadingMessages = [
     "Searching 2,847 registered nurses...",
     "Analyzing qualifications...",
     "Calculating match scores...",
-    `Found ${filteredNurses.length} qualified nurses`
+    `Found ${filteredNurses?.length} qualified nurses`
   ];
   
   if (isLoading || apiLoading) {
@@ -77,7 +85,7 @@ import { Loader2 } from "lucide-react";
   
   return (
     <div>
-      <SearchWrapper nurses={displayedNurses} />
+      <SearchWrapper nurses={displayedNurses} onDeploymentComplete={refetch} />
     </div>
   );
 };

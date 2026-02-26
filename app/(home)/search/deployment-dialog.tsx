@@ -39,6 +39,15 @@ const updateDashboardData = async (nurses: readonly Nurse[]) => {
     const deployedCount = nurses.length;
     const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
 
+    // Mark nurses as deployed
+    for (const nurse of nurses) {
+      await fetch(`${baseUrl}/api/nurses/${nurse.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ deployed: true }),
+      });
+    }
+
     // Update metrics - increment deployed nurses
     const metricsRes = await fetch(`${baseUrl}/api/metrics`);
     const metricsData = await metricsRes.json();
