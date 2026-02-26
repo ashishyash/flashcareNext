@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react";
   const [isLoading, setIsLoading] = useState(false);
   const [displayedNurses, setDisplayedNurses] = useState<Nurse[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   
   const filteredNurses = useMemo(() => {
     if (!nursesData || nursesData.length === 0) return [];
@@ -40,24 +41,29 @@ import { Loader2 } from "lucide-react";
   }, [searchParams, nursesData]);
 
   useEffect(() => {
-    setIsLoading(true);
-    setLoadingStep(0);
-    
-    const step1 = setTimeout(() => setLoadingStep(1), 1000);
-    const step2 = setTimeout(() => setLoadingStep(2), 2000);
-    const step3 = setTimeout(() => setLoadingStep(3), 3000);
-    const final = setTimeout(() => {
+    if (isInitialLoad) {
+      setIsLoading(true);
+      setLoadingStep(0);
+      
+      const step1 = setTimeout(() => setLoadingStep(1), 1000);
+      const step2 = setTimeout(() => setLoadingStep(2), 2000);
+      const step3 = setTimeout(() => setLoadingStep(3), 3000);
+      const final = setTimeout(() => {
+        setDisplayedNurses(filteredNurses);
+        setIsLoading(false);
+        setIsInitialLoad(false);
+      }, 4000);
+      
+      return () => {
+        clearTimeout(step1);
+        clearTimeout(step2);
+        clearTimeout(step3);
+        clearTimeout(final);
+      };
+    } else {
       setDisplayedNurses(filteredNurses);
-      setIsLoading(false);
-    }, 4000);
-    
-    return () => {
-      clearTimeout(step1);
-      clearTimeout(step2);
-      clearTimeout(step3);
-      clearTimeout(final);
-    };
-  }, [filteredNurses]);
+    }
+  }, [filteredNurses, isInitialLoad]);
   
   const loadingMessages = [
     "Searching 2,847 registered nurses...",
