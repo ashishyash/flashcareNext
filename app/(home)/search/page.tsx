@@ -62,6 +62,7 @@ import { Loader2 } from "lucide-react";
       };
     } else {
       setDisplayedNurses(filteredNurses);
+      return undefined;
     }
   }, [filteredNurses, isInitialLoad]);
   
