@@ -13,6 +13,7 @@ export interface Nurse {
   certifications: string[];
   previous_rating: number;
   work_history: string;
+  deployed?: boolean;
 }
 
 export interface CheckedNurse extends Nurse {
