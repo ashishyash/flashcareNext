@@ -82,7 +82,7 @@ const CredentialingQueue = () => {
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {statsCards.map((stat, index) => (
-            <Card key={index} className="p-3 border-slate-200">
+            <Card key={index} className="p-3 border-slate-200 hover:shadow-lg">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-sm sm:text-base font-normal text-brand-black2">
                   {stat.label}
@@ -114,7 +114,7 @@ const CredentialingQueue = () => {
               >
                 View All
               </Button>
-              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-teal-600 font-normal text-sm sm:text-base py-2 sm:py-3">
+              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3">
                 Expedite
               </Button>
             </div>

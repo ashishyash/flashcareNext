@@ -463,7 +463,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
         </div>
       )}
 
-      {checkedNurses.length > 0 && (
+      {/* {checkedNurses.length > 0 && (
         <div className="mt-6 p-4 bg-slate-50 rounded-lg border">
           <h3 className="font-semibold mb-3 text-slate-900">
             Selected Nurses ({checkedNurses.length})
@@ -483,7 +483,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
             ))}
           </div>
         </div>
-      )}
+      )} */}
 
       <NurseDetailDialog
         nurse={selectedNurse}

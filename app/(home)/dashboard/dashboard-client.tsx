@@ -143,7 +143,7 @@ export default function DashboardClient(): JSX.Element {
               >
                 <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                 <span className="sm:hidden">Find</span>
-                <span className="hidden sm:inline">Search Nurses</span>
+                <span className="hidden sm:inline">Search Nurse</span>
               </Button>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function DashboardClient(): JSX.Element {
             return (
               <Card
                 key={index}
-                className="hover:shadow-md transition border border-sidebar-border"
+                className="hover:shadow-md transition border border-sidebar-border hover:shadow-lg"
               >
                 <CardContent className="p-3 sm:p-4">
                   <div className="flex items-center justify-between mb-1">
@@ -290,7 +290,7 @@ export default function DashboardClient(): JSX.Element {
                     className={`flex items-center px-2 sm:px-4 py-2 sm:py-1`}
                   >
                     <div
-                      className={`w-1.5 h-4 sm:w-2 sm:h-5 ${activity.bg2} rounded-full mr-2 sm:mr-3 flex-shrink-0`}
+                      className={`w-1.5 h-4 sm:w-2 sm:h-5 ${activity.bg2} ${!activity.status ? "bg-green-600" : ""} rounded-full mr-2 sm:mr-3 flex-shrink-0`}
                     />
                     <div className="flex justify-between w-full items-start gap-2">
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
