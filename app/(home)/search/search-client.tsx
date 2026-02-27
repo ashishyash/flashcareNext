@@ -34,7 +34,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
 
   const handleSubmit = () => {
     const params = new URLSearchParams(filters);
-    router.push(`/search?${params.toString()}`);
+    router.replace(`/search?${params.toString()}`);
   };
 
   return (
