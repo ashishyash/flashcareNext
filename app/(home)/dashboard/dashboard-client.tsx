@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { AlertTriangle, Users, TrendingUp, Clock } from "lucide-react";
 import {
   Table,
@@ -12,10 +12,9 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useApiData } from "@/hooks/useApiData";
-
+import { useAppData } from "@/contexts/AppDataContext";
 import quickActionsData from "@/data/quick-actions.json";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface Metric {
   label: string;
@@ -70,17 +69,13 @@ interface DashboardState {
 }
 
 export default function DashboardClient(): JSX.Element {
-  const { data: metricsData } = useApiData<any>("metrics");
-  const { data: unitsData } = useApiData<Unit>("units");
-  const { data: activitiesData } = useApiData<Activity_Item>("activities");
+  const { metrics: metricsData, units: unitsData, activities: activitiesData } = useAppData();
 
   const [state, setState] = useState<DashboardState>({
     elapsedTime: "2 hours ago",
     countdown: 120,
     seconds: 0,
   });
-
-  const router = useRouter();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -94,30 +89,21 @@ export default function DashboardClient(): JSX.Element {
     return () => clearInterval(timer);
   }, []);
 
-  // const formatCountdown = (minutes: number, seconds: number): string => {
-  //   const hours = Math.floor(minutes / 60);
-  //   const mins = minutes % 60;
-  //   return `${hours}h ${mins}m ${seconds}s remaining`;
-  // };
-
   const iconMap = {
     Users,
     TrendingUp,
     Clock,
   };
 
-  const metrics: Metric[] = metricsData.map((metric) => ({
+  const metrics: Metric[] = useMemo(() => metricsData.map((metric: any) => ({
     ...metric,
     icon: iconMap[metric.icon as keyof typeof iconMap],
-  }));
+  })), [metricsData]);
   const quickActions: QuickAction[] = quickActionsData;
 
-  const units: Unit[] = unitsData || [];
+  const units: Unit[] = unitsData as any || [];
 
-  const activities: Activity_Item[] = activitiesData || [];
-  const search = () => {
-    router.push("/search");
-  };
+  const activities: Activity_Item[] = activitiesData as any || [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -137,14 +123,15 @@ export default function DashboardClient(): JSX.Element {
               </div>
             </div>
             <div className="text-left sm:text-right">
-              <Button
-                onClick={search}
-                className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
-              >
-                <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                <span className="sm:hidden">Find</span>
-                <span className="hidden sm:inline">Search Nurse</span>
-              </Button>
+              <Link href="/search">
+                <Button
+                  className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
+                >
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                  <span className="sm:hidden">Find</span>
+                  <span className="hidden sm:inline">Search Nurse</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
