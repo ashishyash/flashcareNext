@@ -3,13 +3,13 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useEffect, Suspense } from "react";
 import { SearchWrapper } from "./search-wrapper";
-import { useApiData } from "@/hooks/useApiData";
 import { Nurse } from "./search.constant";
 import { Loader2 } from "lucide-react";
+import { useAppData } from "@/contexts/AppDataContext";
 
  const NurseSearchPageInner = () => {
   const searchParams = useSearchParams();
-  const { data: nursesData, loading: apiLoading, refetch } = useApiData<Nurse>('nurses');
+  const { nurses: nursesData } = useAppData();
   const [isLoading, setIsLoading] = useState(false);
   const [displayedNurses, setDisplayedNurses] = useState<Nurse[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -73,7 +73,7 @@ import { Loader2 } from "lucide-react";
     `Found ${filteredNurses?.length} qualified nurses`
   ];
   
-  if (isLoading || apiLoading) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
@@ -86,7 +86,7 @@ import { Loader2 } from "lucide-react";
   
   return (
     <div>
-      <SearchWrapper nurses={displayedNurses} onDeploymentComplete={refetch} />
+      <SearchWrapper nurses={displayedNurses} />
     </div>
   );
 };
