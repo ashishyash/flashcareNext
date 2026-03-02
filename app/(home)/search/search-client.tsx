@@ -27,6 +27,8 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
     availability: searchParams.get("availability") || "immediate",
   });
 
+  console.log("filters", searchFilters.specialization, filters);
+
   // useEffect(() => {
   //   const params = new URLSearchParams(filters);
   //   router.replace(`/search?${params.toString()}`);

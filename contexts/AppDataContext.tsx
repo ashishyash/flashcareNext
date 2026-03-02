@@ -51,7 +51,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     console.log('deployNurses called with:', nurseIds);
     const deployedNurses = nurses.filter(n => nurseIds.includes(n.id));
     const deployedCount = deployedNurses.length;
-    console.log('Deploying', deployedCount, 'nurses');
+    console.log("Deploying", deployedCount, "nurses", deployedNurses);
 
     setNurses(prev => prev.map(n => 
       nurseIds.includes(n.id) ? { ...n, deployed: true } : n
@@ -75,21 +75,36 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       return updated;
     });
 
-    const nursesBySpecialty = deployedNurses.reduce((acc, nurse) => {
-      acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-
-    setUnits(prev => prev.map(unit => {
-      const matchingCount = nursesBySpecialty[unit.name] || 0;
-      if (matchingCount > 0) {
-        const newCurrent = Math.min(unit.capacity, unit.current + matchingCount);
+    setUnits(prev => {
+      const nursesPerUnit = Math.floor(deployedCount / prev.length);
+      const remainder = deployedCount % prev.length;
+      
+      return prev.map((unit, index) => {
+        const additionalNurses = nursesPerUnit + (index < remainder ? 1 : 0);
+        const newCurrent = Math.min(unit.capacity, unit.current + additionalNurses);
         const newNeeded = Math.max(0, unit.capacity - newCurrent);
         const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
-        return { ...unit, current: newCurrent, needed: newNeeded, staffed: newStaffed };
-      }
-      return unit;
-    }));
+        
+        let status = "Critical";
+        let color = "text-red-600";
+        let bg = "bg-red-100";
+        let border = "border-red-300";
+        
+        if (newStaffed >= 80) {
+          status = "Stable";
+          color = "text-green-600";
+          bg = "bg-green-100";
+          border = "border-green-300";
+        } else if (newStaffed >= 50) {
+          status = "Warning";
+          color = "text-amber-600";
+          bg = "bg-amber-100";
+          border = "border-amber-300";
+        }
+        
+        return { ...unit, current: newCurrent, needed: newNeeded, staffed: newStaffed, status, color, bg, border };
+      });
+    });
 
     const time = new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",

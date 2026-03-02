@@ -15,6 +15,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import CurrentDate from "./CurrentDate";
 
 const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -29,12 +30,7 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
               </div>
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-brand-black2">
-                  {new Date().toLocaleDateString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  <CurrentDate />
                 </span>
                 <div className="relative">
                   {" "}
@@ -61,36 +57,33 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                   </div>
                 </Button>
                 </Link> */}
-               
-                 
-                  <DropdownMenu >
-                    <DropdownMenuTrigger asChild>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="rounded-full hover:bg-white w-10 h-10"
-                      >
-                        <div className="flex items-center justify-center size-10 rounded-full bg-brand-black2 text-white font-semibold">
-                          LG
-                        </div>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuGroup>
-                        <DropdownMenuItem 
-                       className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
-                        >Profile</DropdownMenuItem>
-                      </DropdownMenuGroup>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
-                      >
-                         <Link href="/" className="w-full cursor-pointer">
-                        Sign Out
-                         </Link>
+
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="rounded-full hover:bg-white w-10 h-10"
+                    >
+                      <div className="flex items-center justify-center size-10 rounded-full bg-brand-black2 text-white font-semibold">
+                        LG
+                      </div>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white">
+                        Profile
                       </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                    </DropdownMenuGroup>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white">
+                      <Link href="/" className="w-full cursor-pointer">
+                        Sign Out
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
             </div>
           </div>
