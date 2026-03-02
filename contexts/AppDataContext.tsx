@@ -75,12 +75,14 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       return updated;
     });
 
-    setUnits(prev => {
-      const nursesPerUnit = Math.floor(deployedCount / prev.length);
-      const remainder = deployedCount % prev.length;
-      
-      return prev.map((unit, index) => {
-        const additionalNurses = nursesPerUnit + (index < remainder ? 1 : 0);
+    const nursesBySpecialty = deployedNurses.reduce((acc, nurse) => {
+      acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    setUnits(prev => prev.map(unit => {
+      const additionalNurses = nursesBySpecialty[unit.name] || 0;
+      if (additionalNurses > 0) {
         const newCurrent = Math.min(unit.capacity, unit.current + additionalNurses);
         const newNeeded = Math.max(0, unit.capacity - newCurrent);
         const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
@@ -103,8 +105,9 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
         }
         
         return { ...unit, current: newCurrent, needed: newNeeded, staffed: newStaffed, status, color, bg, border };
-      });
-    });
+      }
+      return unit;
+    }));
 
     const time = new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",
