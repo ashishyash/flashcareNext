@@ -80,16 +80,23 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       return acc;
     }, {} as Record<string, number>);
 
-    setUnits(prev => prev.map(unit => {
-      const matchingCount = nursesBySpecialty[unit.name] || 0;
-      if (matchingCount > 0) {
-        const newCurrent = Math.min(unit.capacity, unit.current + matchingCount);
-        const newNeeded = Math.max(0, unit.capacity - newCurrent);
-        const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
-        return { ...unit, current: newCurrent, needed: newNeeded, staffed: newStaffed };
-      }
-      return unit;
-    }));
+    console.log('Nurses by specialty:', nursesBySpecialty);
+
+    setUnits(prev => {
+      const updated = prev.map(unit => {
+        const matchingCount = nursesBySpecialty[unit.name] || 0;
+        if (matchingCount > 0) {
+          const newCurrent = Math.min(unit.capacity, unit.current + matchingCount);
+          const newNeeded = Math.max(0, unit.capacity - newCurrent);
+          const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
+          console.log(`Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`);
+          return { ...unit, current: newCurrent, needed: newNeeded, staffed: newStaffed };
+        }
+        return unit;
+      });
+      console.log('Updated units:', updated);
+      return updated;
+    });
 
     const time = new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",
@@ -104,6 +111,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       bg: "",
       bg2: "bg-green-600"
     };
+    console.log('Adding new activity:', newActivity);
     setActivities(prev => [newActivity, ...prev]);
   };
 
