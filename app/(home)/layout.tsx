@@ -1,10 +1,12 @@
+"use client";
+
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
-import Link from "next/link"; 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Bell, HelpCircle } from "lucide-react";
 import {
@@ -16,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import CurrentDate from "./CurrentDate";
+import { toast } from "sonner";
 
 const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -34,10 +37,16 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                 </span>
                 <div className="relative">
                   {" "}
-                  <Bell className="h-6 w-6 text-brand-black2 cursor-pointer" />
+                  <Bell
+                    className="h-6 w-6 text-brand-black2 cursor-pointer"
+                    onClick={() => toast("Notifications is coming soon")}
+                  />
                   <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500" />{" "}
                 </div>
-                <HelpCircle className="h-6 w-6 text-brand-black2 cursor-pointer" />
+                <HelpCircle
+                  className="h-6 w-6 text-brand-black2 cursor-pointer"
+                  onClick={() => toast("Help is coming soon")}
+                />
                 <div className="flex flex-col text-right">
                   <div className="text-sm font-medium text-brand-black1">
                     {" "}
@@ -70,15 +79,22 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                       </div>
                     </Button>
                   </DropdownMenuTrigger>
+
                   <DropdownMenuContent align="end">
                     <DropdownMenuGroup>
-                      <DropdownMenuItem className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white">
+                      <DropdownMenuItem
+                        onClick={() => toast("Profile is coming soon")}
+                        className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                      >
                         Profile
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white">
-                      <Link href="/" className="w-full cursor-pointer">
+                    <DropdownMenuItem
+                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white cursor-pointer"
+                      asChild
+                    >
+                      <Link href="/" className="w-full">
                         Sign Out
                       </Link>
                     </DropdownMenuItem>

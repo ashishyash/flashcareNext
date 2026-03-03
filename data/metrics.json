@@ -2,7 +2,7 @@
   {
     "id": 1,
     "label": "Nurses Needed",
-    "value": "172",
+    "value": "132",
     "icon": "Users",
     "color": "text-red-600",
     "bg": "bg-red-50",
@@ -12,17 +12,17 @@
   {
     "id": 2,
     "label": "Deployed",
-    "value": "0",
+    "value": "40",
     "icon": "TrendingUp",
     "color": "text-blue-600",
     "bg": "bg-blue-50",
     "updatedAt": "2026-02-25T12:37:47.589Z",
-    "statusMsg": "32% fulfillment"
+    "statusMsg": "fulfillment"
   },
   {
     "id": 3,
     "label": "In Process",
-    "value": "80",
+    "value": "20",
     "icon": "Clock",
     "color": "text-amber-600",
     "bg": "bg-amber-50",
