@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { AppDataProvider } from "@/contexts/AppDataContext";
+import { Toaster } from "sonner";
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['400', '500', '700'], variable: '--font-roboto' });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         <AppDataProvider>
           {children}
         </AppDataProvider>
+        <Toaster position="bottom-right" toastOptions={{ style: { background: '#3b82f6', color: 'white' } }} />
       </body>
     </html>
   );

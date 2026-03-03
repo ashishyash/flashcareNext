@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { AlertTriangle, Users, TrendingUp, Clock } from "lucide-react";
+import { toast } from "sonner";
 import {
   Table,
   TableBody,
@@ -69,7 +70,11 @@ interface DashboardState {
 }
 
 export default function DashboardClient(): JSX.Element {
-  const { metrics: metricsData, units: unitsData, activities: activitiesData } = useAppData();
+  const {
+    metrics: metricsData,
+    units: unitsData,
+    activities: activitiesData,
+  } = useAppData();
 
   const [state, setState] = useState<DashboardState>({
     elapsedTime: "2 hours ago",
@@ -95,15 +100,19 @@ export default function DashboardClient(): JSX.Element {
     Clock,
   };
 
-  const metrics: Metric[] = useMemo(() => metricsData.map((metric: any) => ({
-    ...metric,
-    icon: iconMap[metric.icon as keyof typeof iconMap],
-  })), [metricsData]);
+  const metrics: Metric[] = useMemo(
+    () =>
+      metricsData.map((metric: any) => ({
+        ...metric,
+        icon: iconMap[metric.icon as keyof typeof iconMap],
+      })),
+    [metricsData],
+  );
   const quickActions: QuickAction[] = quickActionsData;
 
-  const units: Unit[] = unitsData as any || [];
+  const units: Unit[] = (unitsData as any) || [];
 
-  const activities: Activity_Item[] = activitiesData as any || [];
+  const activities: Activity_Item[] = (activitiesData as any) || [];
 
   const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
   const totalNurseNeeded = Number(metrics[0]?.value) || 0;
@@ -339,6 +348,9 @@ export default function DashboardClient(): JSX.Element {
                       </div>
                       <Button
                         variant="outline"
+                        onClick={() =>
+                          toast(`${action.btn_label} will be coming soon`)
+                        }
                         className="text-xs sm:text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-1 sm:mt-2 py-1.5 sm:py-2"
                       >
                         {action.btn_label}
