@@ -24,9 +24,11 @@ export default function RootLayout({
           position="bottom-right"
           toastOptions={{
             style: {
-              background: "#3b82f6",
+              background: "#007595",
               color: "white",
               width: "fit-content",
+              fontWeight: 400,
+              fontSize: "0.75rem",
             },
           }}
         />
