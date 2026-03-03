@@ -19,10 +19,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.variable} overflow-hidden`}>
-        <AppDataProvider>
-          {children}
-        </AppDataProvider>
-        <Toaster position="bottom-right" toastOptions={{ style: { background: '#3b82f6', color: 'white' } }} />
+        <AppDataProvider>{children}</AppDataProvider>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            style: {
+              background: "#3b82f6",
+              color: "white",
+              width: "fit-content",
+            },
+          }}
+        />
       </body>
     </html>
   );
