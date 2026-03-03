@@ -109,7 +109,7 @@ const AnalyticsDashboard = () => {
             </p>
           </div>
           <Button
-            onClick={() => toast(`Export Report will be coming soon`)}
+            onClick={() => toast(`Export Report is coming soon`)}
             className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
           >
             <Download size={20} />

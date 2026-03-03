@@ -122,13 +122,13 @@ const CredentialingQueue = () => {
             <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto">
               <Button
                 variant="outline"
-                onClick={() => toast(`View All will be coming soon`)}
+                onClick={() => toast(`View All is coming soon`)}
                 className="flex-1 sm:flex-none text-sm sm:text-base font-normal border py-2 sm:py-3 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
               >
                 View All
               </Button>
               <Button
-                onClick={() => toast(`Expedite will be coming soon`)}
+                onClick={() => toast(`Expedite is coming soon`)}
                 className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3"
               >
                 Expedite

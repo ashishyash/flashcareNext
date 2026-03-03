@@ -349,7 +349,7 @@ export default function DashboardClient(): JSX.Element {
                       <Button
                         variant="outline"
                         onClick={() =>
-                          toast(`${action.btn_label} will be coming soon`)
+                          toast(`${action.btn_label} is coming soon`)
                         }
                         className="text-xs sm:text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-1 sm:mt-2 py-1.5 sm:py-2"
                       >

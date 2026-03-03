@@ -39,13 +39,13 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                   {" "}
                   <Bell
                     className="h-6 w-6 text-brand-black2 cursor-pointer"
-                    onClick={() => toast("Notifications will be coming soon")}
+                    onClick={() => toast("Notifications is coming soon")}
                   />
                   <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500" />{" "}
                 </div>
                 <HelpCircle
                   className="h-6 w-6 text-brand-black2 cursor-pointer"
-                  onClick={() => toast("Help will be coming soon")}
+                  onClick={() => toast("Help is coming soon")}
                 />
                 <div className="flex flex-col text-right">
                   <div className="text-sm font-medium text-brand-black1">
@@ -83,7 +83,7 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                   <DropdownMenuContent align="end">
                     <DropdownMenuGroup>
                       <DropdownMenuItem
-                        onClick={() => toast("Profile will be coming soon")}
+                        onClick={() => toast("Profile is coming soon")}
                         className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
                       >
                         Profile

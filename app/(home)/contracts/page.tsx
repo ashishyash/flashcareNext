@@ -19,7 +19,7 @@ const ContractGeneration = () => {
             </p>
           </div>
           <Button
-            onClick={() => toast(`Generate Bulk Contracts will be coming soon`)}
+            onClick={() => toast(`Generate Bulk Contracts is coming soon`)}
             className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan2 w-full sm:w-auto"
           >
             <FileStack className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -256,9 +256,7 @@ const ContractGeneration = () => {
                 <div className="space-y-3">
                   <Button
                     variant="outline"
-                    onClick={() =>
-                      toast(`Send for E-Signature will be coming soon`)
-                    }
+                    onClick={() => toast(`Send for E-Signature is coming soon`)}
                     className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                   >
                     <Send className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -266,7 +264,7 @@ const ContractGeneration = () => {
                   </Button>
                   <Button
                     variant="outline"
-                    onClick={() => toast(`Download PDF will be coming soon`)}
+                    onClick={() => toast(`Download PDF is coming soon`)}
                     className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                   >
                     <Download className="w-4 h-4 sm:w-5 sm:h-5" />
