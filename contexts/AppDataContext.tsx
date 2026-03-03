@@ -84,27 +84,28 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       const additionalNurses = nursesBySpecialty[unit.name] || 0;
       if (additionalNurses > 0) {
         const newCurrent = Math.min(unit.capacity, unit.current + additionalNurses);
-        const newNeeded = Math.max(0, unit.capacity - newCurrent);
-        const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
+        const newNeeded = Math.max(0, unit.needed - additionalNurses);
+        const originalNeeded = unit.needed + unit.current;
+        const fulfilledPercentage = Math.round((newCurrent / originalNeeded) * 100);
         
         let status = "Critical";
         let color = "text-red-600";
         let bg = "bg-red-100";
         let border = "border-red-300";
         
-        if (newStaffed >= 80) {
+        if (fulfilledPercentage >= 100) {
           status = "Stable";
           color = "text-green-600";
           bg = "bg-green-100";
           border = "border-green-300";
-        } else if (newStaffed >= 50) {
+        } else if (fulfilledPercentage >= 50) {
           status = "Warning";
           color = "text-amber-600";
           bg = "bg-amber-100";
           border = "border-amber-300";
         }
         
-        return { ...unit, current: newCurrent, needed: newNeeded, staffed: newStaffed, status, color, bg, border };
+        return { ...unit, current: newCurrent, needed: newNeeded, staffed: fulfilledPercentage, status, color, bg, border };
       }
       return unit;
     }));

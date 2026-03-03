@@ -105,6 +105,12 @@ export default function DashboardClient(): JSX.Element {
 
   const activities: Activity_Item[] = activitiesData as any || [];
 
+  const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
+  const totalNurseNeeded = Number(metrics[0]?.value) || 0;
+  const fulfillmentPercentage =
+    totalNurseNeeded > 0
+      ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
+      : 0;
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6">
@@ -124,9 +130,7 @@ export default function DashboardClient(): JSX.Element {
             </div>
             <div className="text-left sm:text-right">
               <Link href="/search">
-                <Button
-                  className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
-                >
+                <Button className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                   <span className="sm:hidden">Find</span>
                   <span className="hidden sm:inline">Search Nurse</span>
@@ -159,9 +163,9 @@ export default function DashboardClient(): JSX.Element {
               </div>
             </div>
             <div className="text-left sm:text-right mt-2 sm:mt-0">
-              <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4">
+              {/* <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4">
                 Manage
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -186,7 +190,9 @@ export default function DashboardClient(): JSX.Element {
                     {metric.value}
                   </div>
                   <div className={`text-xs sm:text-sm ${metric.color}`}>
-                    {metric.statusMsg}
+                    {index === 1
+                      ? `${fulfillmentPercentage}% ${metric.statusMsg}`
+                      : metric.statusMsg}
                   </div>
                 </CardContent>
               </Card>
