@@ -109,7 +109,9 @@ export default function DashboardClient(): JSX.Element {
   const totalNurseNeeded = Number(metrics[0]?.value) || 0;
   const fulfillmentPercentage =
     totalNurseNeeded > 0
-      ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
+      ? Math.floor(
+          (fulfillmentCount / (totalNurseNeeded + fulfillmentCount)) * 100,
+        )
       : 0;
   return (
     <div className="min-h-screen bg-gray-50">
@@ -289,7 +291,7 @@ export default function DashboardClient(): JSX.Element {
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
                         {activity.text}
                       </div>
-                      <div
+                      {/* <div
                         className={`text-[10px] sm:text-xs font-normal  ${
                           activity.color
                             ? activity.color
@@ -299,7 +301,7 @@ export default function DashboardClient(): JSX.Element {
                         } rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
                       >
                         {activity.status || "Stable"}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="text-[10px] sm:text-xs font-normal text-brand-black2 mb-1 pl-6 sm:pl-9">
