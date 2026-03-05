@@ -75,9 +75,9 @@
   {
     "id": 7,
     "name": "NICU",
-    "current": 5,
-    "capacity": 16,
-    "needed": 11,
+    "current": 10,
+    "capacity": 25,
+    "needed": 15,
     "staffed": 0,
     "status": "Critical",
     "color": "text-red-600",
