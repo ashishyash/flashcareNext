@@ -23,8 +23,8 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
   const [filters, setFilters] = useState({
     location: searchParams.get("location") || "100",
     specialization: searchParams.get("specialization") || "icu",
-    experience: searchParams.get("experience") || "5+",
-    availability: searchParams.get("availability") || "immediate",
+    experience: searchParams.get("experience") || "3+",
+    availability: searchParams.get("availability") || "week",
   });
 
   console.log("filters", searchFilters.specialization, filters);
