@@ -16,6 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppData } from "@/contexts/AppDataContext";
 import quickActionsData from "@/data/quick-actions.json";
 import Link from "next/link";
+import { DeploymentMapDialog } from "./deployment-map-dialog";
 
 interface Metric {
   label: string;
@@ -81,6 +82,7 @@ export default function DashboardClient(): JSX.Element {
     countdown: 120,
     seconds: 0,
   });
+  const [isMapOpen, setIsMapOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -336,9 +338,13 @@ export default function DashboardClient(): JSX.Element {
                       </div>
                       <Button
                         variant="outline"
-                        onClick={() =>
-                          toast(`${action.btn_label} is coming soon`)
-                        }
+                        onClick={() => {
+                          if (action.label === "View Deployment Map") {
+                            setIsMapOpen(true);
+                          } else {
+                            toast(`${action.btn_label} is coming soon`);
+                          }
+                        }}
                         className="text-xs sm:text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-1 sm:mt-2 py-1.5 sm:py-2"
                       >
                         {action.btn_label}
@@ -351,6 +357,8 @@ export default function DashboardClient(): JSX.Element {
           </CardContent>
         </Card>
       </div>
+      
+      <DeploymentMapDialog open={isMapOpen} onOpenChange={setIsMapOpen} />
     </div>
   );
 }
