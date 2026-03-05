@@ -27,6 +27,8 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
     availability: searchParams.get("availability") || "immediate",
   });
 
+  console.log("filters", searchFilters.specialization, filters);
+
   // useEffect(() => {
   //   const params = new URLSearchParams(filters);
   //   router.replace(`/search?${params.toString()}`);
@@ -44,13 +46,16 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4">
         <div className="flex items-center">
-          <h3 className="text-lg font-normal text-brand-black1">Filters</h3>
+          <h3 className="text-lg font-normal text-brand-black1">
+            Search Results
+          </h3>
           {/* Results count */}
           <p
             data-testid="results-count"
             className="ml-8 text-sm font-normal text-brand-black2"
           >
-            {filteredNursesCount} nurses match your criteria
+            {`Found ${filteredNursesCount} qualified nurses matching Memorial
+            Hospital's needs`}
           </p>
         </div>{" "}
         <button

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from "react";
 import { AlertTriangle, Users, TrendingUp, Clock } from "lucide-react";
+import { toast } from "sonner";
 import {
   Table,
   TableBody,
@@ -69,7 +70,11 @@ interface DashboardState {
 }
 
 export default function DashboardClient(): JSX.Element {
-  const { metrics: metricsData, units: unitsData, activities: activitiesData } = useAppData();
+  const {
+    metrics: metricsData,
+    units: unitsData,
+    activities: activitiesData,
+  } = useAppData();
 
   const [state, setState] = useState<DashboardState>({
     elapsedTime: "2 hours ago",
@@ -95,16 +100,26 @@ export default function DashboardClient(): JSX.Element {
     Clock,
   };
 
-  const metrics: Metric[] = useMemo(() => metricsData.map((metric: any) => ({
-    ...metric,
-    icon: iconMap[metric.icon as keyof typeof iconMap],
-  })), [metricsData]);
+  const metrics: Metric[] = useMemo(
+    () =>
+      metricsData.map((metric: any) => ({
+        ...metric,
+        icon: iconMap[metric.icon as keyof typeof iconMap],
+      })),
+    [metricsData],
+  );
   const quickActions: QuickAction[] = quickActionsData;
 
-  const units: Unit[] = unitsData as any || [];
+  const units: Unit[] = (unitsData as any) || [];
 
-  const activities: Activity_Item[] = activitiesData as any || [];
+  const activities: Activity_Item[] = (activitiesData as any) || [];
 
+  const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
+  const totalNurseNeeded = Number(metrics[0]?.value) || 0;
+  const fulfillmentPercentage =
+    totalNurseNeeded > 0
+      ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
+      : 0;
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6">
@@ -124,9 +139,7 @@ export default function DashboardClient(): JSX.Element {
             </div>
             <div className="text-left sm:text-right">
               <Link href="/search">
-                <Button
-                  className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
-                >
+                <Button className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                   <span className="sm:hidden">Find</span>
                   <span className="hidden sm:inline">Search Nurse</span>
@@ -159,9 +172,9 @@ export default function DashboardClient(): JSX.Element {
               </div>
             </div>
             <div className="text-left sm:text-right mt-2 sm:mt-0">
-              <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4">
+              {/* <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4">
                 Manage
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -186,7 +199,9 @@ export default function DashboardClient(): JSX.Element {
                     {metric.value}
                   </div>
                   <div className={`text-xs sm:text-sm ${metric.color}`}>
-                    {metric.statusMsg}
+                    {index === 1
+                      ? `${fulfillmentPercentage}% ${metric.statusMsg}`
+                      : metric.statusMsg}
                   </div>
                 </CardContent>
               </Card>
@@ -283,7 +298,7 @@ export default function DashboardClient(): JSX.Element {
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
                         {activity.text}
                       </div>
-                      <div
+                      {/* <div
                         className={`text-[10px] sm:text-xs font-normal  ${
                           activity.color
                             ? activity.color
@@ -293,7 +308,7 @@ export default function DashboardClient(): JSX.Element {
                         } rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
                       >
                         {activity.status || "Stable"}
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="text-[10px] sm:text-xs font-normal text-brand-black2 mb-1 pl-6 sm:pl-9">
@@ -331,6 +346,9 @@ export default function DashboardClient(): JSX.Element {
                       </div>
                       <Button
                         variant="outline"
+                        onClick={() =>
+                          toast(`${action.btn_label} is coming soon`)
+                        }
                         className="text-xs sm:text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-1 sm:mt-2 py-1.5 sm:py-2"
                       >
                         {action.btn_label}
