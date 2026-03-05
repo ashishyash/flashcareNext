@@ -1,7 +1,7 @@
 [
   {
     "time": "2:34 PM",
-    "text": "5 ICU nurses deployed",
+    "text": "Emergency credentials completed for 12 nurses",
     "color": "text-amber-600",
     "bg2": "bg-amber-600",
     "bg": "bg-amber-100",
@@ -9,7 +9,7 @@
   },
   {
     "time": "2:28 PM",
-    "text": "Emergency credentials completed for 12 nurses",
+    "text": "Strike alert activated",
     "color": "text-amber-600",
     "bg2": "bg-amber-600",
     "bg": "bg-amber-100",
