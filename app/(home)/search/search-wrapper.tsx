@@ -257,7 +257,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                 <TableHead>CREDENTIALS</TableHead>
                 <TableHead>SPECIALTY</TableHead>
                 <TableHead className="">EXPERIENCE</TableHead>
-                <TableHead>Location</TableHead>
+                <TableHead>LOCATION</TableHead>
                 <TableHead className=""> DISTANCE</TableHead>
                 <TableHead className="text-center"> MATCH SCORE</TableHead>
                 <TableHead> AVAILABILITY</TableHead>
