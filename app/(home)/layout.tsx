@@ -83,11 +83,10 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                       </DropdownMenuGroup>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem
-                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                      className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white cursor-pointer"
+                      asChild
                       >
-                         <Link href="/" className="w-full cursor-pointer">
-                        Sign Out
-                         </Link>
+                        <Link href="/" className="w-full">Sign Out</Link>
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
