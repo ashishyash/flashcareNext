@@ -11,7 +11,11 @@
     "match_score": 93,
     "availability_status": "Available",
     "rate_per_hour": 49,
-    "certifications": ["BLS", "NRP", "ACLS"],
+    "certifications": [
+      "BLS",
+      "NRP",
+      "ACLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -25,9 +29,13 @@
     "location": "Dallas, TX, USA",
     "distance_miles": 9.3,
     "match_score": 85,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 49,
-    "certifications": ["NRP", "BLS", "PALS"],
+    "certifications": [
+      "NRP",
+      "BLS",
+      "PALS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -41,9 +49,13 @@
     "location": "Miami, FL, USA",
     "distance_miles": 11.5,
     "match_score": 94,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 57,
-    "certifications": ["BLS", "ACLS", "PALS"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "PALS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -57,9 +69,13 @@
     "location": "Los Angeles, CA, USA",
     "distance_miles": 5.8,
     "match_score": 87,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 68,
-    "certifications": ["ACLS", "NRP", "PALS"],
+    "certifications": [
+      "ACLS",
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -75,7 +91,11 @@
     "match_score": 90,
     "availability_status": "Busy",
     "rate_per_hour": 58,
-    "certifications": ["ACLS", "BLS", "PALS"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -91,7 +111,10 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 70,
-    "certifications": ["NRP", "BLS"],
+    "certifications": [
+      "NRP",
+      "BLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -107,7 +130,10 @@
     "match_score": 96,
     "availability_status": "Available",
     "rate_per_hour": 68,
-    "certifications": ["BLS", "ACLS"],
+    "certifications": [
+      "BLS",
+      "ACLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -123,7 +149,9 @@
     "match_score": 87,
     "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 5.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -139,7 +167,10 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 56,
-    "certifications": ["BLS", "ACLS"],
+    "certifications": [
+      "BLS",
+      "ACLS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -155,7 +186,9 @@
     "match_score": 89,
     "availability_status": "Available",
     "rate_per_hour": 54,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -171,7 +204,11 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 63,
-    "certifications": ["NRP", "ACLS", "BLS"],
+    "certifications": [
+      "NRP",
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -185,9 +222,11 @@
     "location": "San Diego, CA, USA",
     "distance_miles": 9.6,
     "match_score": 90,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 67,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -203,7 +242,10 @@
     "match_score": 95,
     "availability_status": "Available",
     "rate_per_hour": 51,
-    "certifications": ["NRP", "PALS"],
+    "certifications": [
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -219,7 +261,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["PALS", "ACLS", "BLS"],
+    "certifications": [
+      "PALS",
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -235,7 +281,11 @@
     "match_score": 95,
     "availability_status": "Available",
     "rate_per_hour": 64,
-    "certifications": ["PALS", "NRP", "ACLS"],
+    "certifications": [
+      "PALS",
+      "NRP",
+      "ACLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -251,7 +301,9 @@
     "match_score": 95,
     "availability_status": "Busy",
     "rate_per_hour": 63,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -267,7 +319,9 @@
     "match_score": 93,
     "availability_status": "Available",
     "rate_per_hour": 47,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -281,9 +335,11 @@
     "location": "Portland, OR, USA",
     "distance_miles": 3.9,
     "match_score": 97,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 50,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -299,7 +355,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 47,
-    "certifications": ["BLS", "ACLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -315,7 +375,10 @@
     "match_score": 86,
     "availability_status": "Available",
     "rate_per_hour": 68,
-    "certifications": ["PALS", "NRP"],
+    "certifications": [
+      "PALS",
+      "NRP"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -329,9 +392,12 @@
     "location": "Denver, CO, USA",
     "distance_miles": 3.8,
     "match_score": 96,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 50,
-    "certifications": ["ACLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -345,9 +411,11 @@
     "location": "Portland, OR, USA",
     "distance_miles": 11.3,
     "match_score": 92,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 43,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -363,7 +431,10 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 66,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -377,9 +448,11 @@
     "location": "Denver, CO, USA",
     "distance_miles": 5.1,
     "match_score": 93,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 65,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -393,9 +466,12 @@
     "location": "San Diego, CA, USA",
     "distance_miles": 1.2,
     "match_score": 96,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 47,
-    "certifications": ["PALS", "BLS"],
+    "certifications": [
+      "PALS",
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -411,7 +487,11 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 45,
-    "certifications": ["NRP", "ACLS", "BLS"],
+    "certifications": [
+      "NRP",
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -425,9 +505,12 @@
     "location": "Chicago, IL, USA",
     "distance_miles": 12.3,
     "match_score": 92,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 68,
-    "certifications": ["NRP", "PALS"],
+    "certifications": [
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -441,9 +524,11 @@
     "location": "Boston, MA, USA",
     "distance_miles": 14.3,
     "match_score": 91,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 42,
-    "certifications": ["PALS"],
+    "certifications": [
+      "PALS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -459,7 +544,11 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["BLS", "ACLS", "PALS"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "PALS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -473,9 +562,13 @@
     "location": "Denver, CO, USA",
     "distance_miles": 4.5,
     "match_score": 96,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 47,
-    "certifications": ["ACLS", "PALS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "PALS",
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -491,7 +584,10 @@
     "match_score": 92,
     "availability_status": "Available",
     "rate_per_hour": 67,
-    "certifications": ["ACLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -507,7 +603,9 @@
     "match_score": 87,
     "availability_status": "Available",
     "rate_per_hour": 69,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -521,9 +619,11 @@
     "location": "Dallas, TX, USA",
     "distance_miles": 13.2,
     "match_score": 95,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 63,
-    "certifications": ["PALS"],
+    "certifications": [
+      "PALS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -539,7 +639,9 @@
     "match_score": 85,
     "availability_status": "Available",
     "rate_per_hour": 40,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -555,7 +657,10 @@
     "match_score": 89,
     "availability_status": "Available",
     "rate_per_hour": 49,
-    "certifications": ["NRP", "BLS"],
+    "certifications": [
+      "NRP",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -571,7 +676,9 @@
     "match_score": 97,
     "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -587,7 +694,9 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 69,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -601,9 +710,12 @@
     "location": "Atlanta, GA, USA",
     "distance_miles": 2.1,
     "match_score": 98,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 49,
-    "certifications": ["ACLS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -619,7 +731,9 @@
     "match_score": 97,
     "availability_status": "Available",
     "rate_per_hour": 51,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -635,7 +749,11 @@
     "match_score": 85,
     "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["BLS", "ACLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 5.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -649,9 +767,12 @@
     "location": "Dallas, TX, USA",
     "distance_miles": 11.8,
     "match_score": 87,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 59,
-    "certifications": ["ACLS", "PALS"],
+    "certifications": [
+      "ACLS",
+      "PALS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -667,7 +788,11 @@
     "match_score": 97,
     "availability_status": "Available",
     "rate_per_hour": 47,
-    "certifications": ["BLS", "NRP", "PALS"],
+    "certifications": [
+      "BLS",
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -683,7 +808,9 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 67,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -697,9 +824,11 @@
     "location": "Los Angeles, CA, USA",
     "distance_miles": 9.8,
     "match_score": 97,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 62,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -715,7 +844,9 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 46,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -729,9 +860,13 @@
     "location": "Atlanta, GA, USA",
     "distance_miles": 11.7,
     "match_score": 94,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 69,
-    "certifications": ["NRP", "PALS", "ACLS"],
+    "certifications": [
+      "NRP",
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -747,7 +882,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 41,
-    "certifications": ["ACLS", "PALS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "PALS",
+      "NRP"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -761,9 +900,12 @@
     "location": "Portland, OR, USA",
     "distance_miles": 10.1,
     "match_score": 91,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 47,
-    "certifications": ["NRP", "BLS"],
+    "certifications": [
+      "NRP",
+      "BLS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -777,9 +919,13 @@
     "location": "San Antonio, TX, USA",
     "distance_miles": 9.6,
     "match_score": 89,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["BLS", "ACLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -795,7 +941,9 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 63,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -811,7 +959,11 @@
     "match_score": 95,
     "availability_status": "Available",
     "rate_per_hour": 70,
-    "certifications": ["NRP", "PALS", "ACLS"],
+    "certifications": [
+      "NRP",
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -825,9 +977,12 @@
     "location": "Chicago, IL, USA",
     "distance_miles": 7.1,
     "match_score": 90,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 59,
-    "certifications": ["PALS", "NRP"],
+    "certifications": [
+      "PALS",
+      "NRP"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -843,7 +998,11 @@
     "match_score": 86,
     "availability_status": "Available",
     "rate_per_hour": 48,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -859,7 +1018,10 @@
     "match_score": 93,
     "availability_status": "Available",
     "rate_per_hour": 46,
-    "certifications": ["NRP", "BLS"],
+    "certifications": [
+      "NRP",
+      "BLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -873,9 +1035,13 @@
     "location": "Dallas, TX, USA",
     "distance_miles": 11.2,
     "match_score": 88,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 58,
-    "certifications": ["NRP", "ACLS", "PALS"],
+    "certifications": [
+      "NRP",
+      "ACLS",
+      "PALS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -889,9 +1055,12 @@
     "location": "Las Vegas, NV, USA",
     "distance_miles": 14.5,
     "match_score": 87,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["NRP", "PALS"],
+    "certifications": [
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -907,7 +1076,11 @@
     "match_score": 85,
     "availability_status": "Available",
     "rate_per_hour": 50,
-    "certifications": ["BLS", "ACLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -923,7 +1096,9 @@
     "match_score": 85,
     "availability_status": "Available",
     "rate_per_hour": 48,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -939,7 +1114,10 @@
     "match_score": 86,
     "availability_status": "Available",
     "rate_per_hour": 42,
-    "certifications": ["PALS", "ACLS"],
+    "certifications": [
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -955,7 +1133,11 @@
     "match_score": 85,
     "availability_status": "Busy",
     "rate_per_hour": 50,
-    "certifications": ["ACLS", "NRP", "PALS"],
+    "certifications": [
+      "ACLS",
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -971,7 +1153,9 @@
     "match_score": 98,
     "availability_status": "Available",
     "rate_per_hour": 70,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -985,9 +1169,11 @@
     "location": "Denver, CO, USA",
     "distance_miles": 9.0,
     "match_score": 98,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 46,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1003,7 +1189,9 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 53,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1019,7 +1207,9 @@
     "match_score": 91,
     "availability_status": "Busy",
     "rate_per_hour": 70,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1033,9 +1223,13 @@
     "location": "Los Angeles, CA, USA",
     "distance_miles": 9.0,
     "match_score": 91,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 68,
-    "certifications": ["BLS", "ACLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1051,7 +1245,11 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 59,
-    "certifications": ["PALS", "NRP", "ACLS"],
+    "certifications": [
+      "PALS",
+      "NRP",
+      "ACLS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1067,7 +1265,10 @@
     "match_score": 94,
     "availability_status": "Busy",
     "rate_per_hour": 62,
-    "certifications": ["PALS", "ACLS"],
+    "certifications": [
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1081,9 +1282,13 @@
     "location": "Dallas, TX, USA",
     "distance_miles": 1.3,
     "match_score": 90,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 69,
-    "certifications": ["ACLS", "BLS", "PALS"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1099,7 +1304,11 @@
     "match_score": 89,
     "availability_status": "Available",
     "rate_per_hour": 57,
-    "certifications": ["BLS", "ACLS", "PALS"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "PALS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1113,9 +1322,11 @@
     "location": "Las Vegas, NV, USA",
     "distance_miles": 4.7,
     "match_score": 98,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 63,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1131,7 +1342,10 @@
     "match_score": 95,
     "availability_status": "Available",
     "rate_per_hour": 54,
-    "certifications": ["PALS", "NRP"],
+    "certifications": [
+      "PALS",
+      "NRP"
+    ],
     "previous_rating": 5.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1147,7 +1361,11 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["BLS", "NRP", "PALS"],
+    "certifications": [
+      "BLS",
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1163,7 +1381,9 @@
     "match_score": 85,
     "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["PALS"],
+    "certifications": [
+      "PALS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1177,9 +1397,12 @@
     "location": "Chicago, IL, USA",
     "distance_miles": 4.5,
     "match_score": 97,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 61,
-    "certifications": ["NRP", "ACLS"],
+    "certifications": [
+      "NRP",
+      "ACLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1195,7 +1418,11 @@
     "match_score": 94,
     "availability_status": "Busy",
     "rate_per_hour": 49,
-    "certifications": ["ACLS", "NRP", "PALS"],
+    "certifications": [
+      "ACLS",
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1211,7 +1438,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 69,
-    "certifications": ["NRP", "PALS", "ACLS"],
+    "certifications": [
+      "NRP",
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1225,9 +1456,13 @@
     "location": "San Antonio, TX, USA",
     "distance_miles": 10.0,
     "match_score": 92,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["BLS", "PALS", "ACLS"],
+    "certifications": [
+      "BLS",
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1243,7 +1478,10 @@
     "match_score": 96,
     "availability_status": "Available",
     "rate_per_hour": 44,
-    "certifications": ["NRP", "ACLS"],
+    "certifications": [
+      "NRP",
+      "ACLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1259,7 +1497,9 @@
     "match_score": 91,
     "availability_status": "Busy",
     "rate_per_hour": 52,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 5.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1273,9 +1513,12 @@
     "location": "Austin, TX, USA",
     "distance_miles": 1.8,
     "match_score": 87,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 57,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1291,7 +1534,11 @@
     "match_score": 91,
     "availability_status": "Busy",
     "rate_per_hour": 69,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1307,7 +1554,9 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1321,9 +1570,11 @@
     "location": "Seattle, WA, USA",
     "distance_miles": 7.7,
     "match_score": 98,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 62,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1337,9 +1588,12 @@
     "location": "Austin, TX, USA",
     "distance_miles": 10.6,
     "match_score": 92,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 49,
-    "certifications": ["ACLS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1355,7 +1609,10 @@
     "match_score": 92,
     "availability_status": "Available",
     "rate_per_hour": 62,
-    "certifications": ["BLS", "PALS"],
+    "certifications": [
+      "BLS",
+      "PALS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1371,7 +1628,9 @@
     "match_score": 96,
     "availability_status": "Available",
     "rate_per_hour": 59,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 5.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1387,7 +1646,10 @@
     "match_score": 95,
     "availability_status": "Available",
     "rate_per_hour": 54,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1403,7 +1665,11 @@
     "match_score": 87,
     "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["NRP", "PALS", "ACLS"],
+    "certifications": [
+      "NRP",
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1419,7 +1685,10 @@
     "match_score": 86,
     "availability_status": "Available",
     "rate_per_hour": 58,
-    "certifications": ["ACLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1435,7 +1704,10 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 56,
-    "certifications": ["NRP", "BLS"],
+    "certifications": [
+      "NRP",
+      "BLS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1451,7 +1723,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 61,
-    "certifications": ["PALS", "BLS", "NRP"],
+    "certifications": [
+      "PALS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1467,7 +1743,9 @@
     "match_score": 87,
     "availability_status": "Available",
     "rate_per_hour": 70,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1481,9 +1759,11 @@
     "location": "Atlanta, GA, USA",
     "distance_miles": 7.2,
     "match_score": 87,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 63,
-    "certifications": ["NRP"],
+    "certifications": [
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1499,7 +1779,10 @@
     "match_score": 92,
     "availability_status": "Available",
     "rate_per_hour": 66,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1515,7 +1798,11 @@
     "match_score": 92,
     "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["BLS", "ACLS", "PALS"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "PALS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1529,9 +1816,12 @@
     "location": "Denver, CO, USA",
     "distance_miles": 1.4,
     "match_score": 95,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["PALS", "BLS"],
+    "certifications": [
+      "PALS",
+      "BLS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1547,7 +1837,11 @@
     "match_score": 96,
     "availability_status": "Busy",
     "rate_per_hour": 56,
-    "certifications": ["NRP", "PALS", "ACLS"],
+    "certifications": [
+      "NRP",
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1561,9 +1855,12 @@
     "location": "Atlanta, GA, USA",
     "distance_miles": 9.8,
     "match_score": 98,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 52,
-    "certifications": ["PALS", "ACLS"],
+    "certifications": [
+      "PALS",
+      "ACLS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1579,7 +1876,11 @@
     "match_score": 90,
     "availability_status": "Available",
     "rate_per_hour": 43,
-    "certifications": ["NRP", "BLS", "ACLS"],
+    "certifications": [
+      "NRP",
+      "BLS",
+      "ACLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1593,9 +1894,11 @@
     "location": "Los Angeles, CA, USA",
     "distance_miles": 8.7,
     "match_score": 93,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 45,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1611,7 +1914,9 @@
     "match_score": 97,
     "availability_status": "Busy",
     "rate_per_hour": 53,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1625,9 +1930,13 @@
     "location": "Boston, MA, USA",
     "distance_miles": 5.6,
     "match_score": 88,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 45,
-    "certifications": ["BLS", "NRP", "PALS"],
+    "certifications": [
+      "BLS",
+      "NRP",
+      "PALS"
+    ],
     "previous_rating": 4.1,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1643,7 +1952,9 @@
     "match_score": 88,
     "availability_status": "Busy",
     "rate_per_hour": 49,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1659,7 +1970,9 @@
     "match_score": 89,
     "availability_status": "Busy",
     "rate_per_hour": 44,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1673,9 +1986,12 @@
     "location": "Los Angeles, CA, USA",
     "distance_miles": 6.4,
     "match_score": 86,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 52,
-    "certifications": ["ACLS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1691,7 +2007,9 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 66,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1707,7 +2025,9 @@
     "match_score": 98,
     "availability_status": "Available",
     "rate_per_hour": 59,
-    "certifications": ["BLS"],
+    "certifications": [
+      "BLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1721,9 +2041,13 @@
     "location": "Las Vegas, NV, USA",
     "distance_miles": 12.1,
     "match_score": 97,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 57,
-    "certifications": ["BLS", "ACLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "NRP"
+    ],
     "previous_rating": 4.0,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1739,7 +2063,9 @@
     "match_score": 86,
     "availability_status": "Available",
     "rate_per_hour": 43,
-    "certifications": ["ACLS"],
+    "certifications": [
+      "ACLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1753,9 +2079,12 @@
     "location": "Phoenix, AZ, USA",
     "distance_miles": 5.0,
     "match_score": 97,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 56,
-    "certifications": ["NRP", "BLS"],
+    "certifications": [
+      "NRP",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in major hospital providing specialized patient care."
   },
@@ -1771,7 +2100,10 @@
     "match_score": 92,
     "availability_status": "Available",
     "rate_per_hour": 120,
-    "certifications": ["Board Certified in Cardiology", "ACLS"],
+    "certifications": [
+      "Board Certified in Cardiology",
+      "ACLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Served as lead cardiologist in a regional medical center."
   },
@@ -1787,7 +2119,10 @@
     "match_score": 87,
     "availability_status": "Busy",
     "rate_per_hour": 75,
-    "certifications": ["NCCPA Certified", "BLS"],
+    "certifications": [
+      "NCCPA Certified",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in orthopedic clinics assisting with surgical procedures and patient recovery."
   },
@@ -1803,7 +2138,10 @@
     "match_score": 89,
     "availability_status": "Available",
     "rate_per_hour": 62,
-    "certifications": ["PALS", "BLS"],
+    "certifications": [
+      "PALS",
+      "BLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Provided pediatric nursing care in children’s hospitals and outpatient clinics."
   },
@@ -1819,7 +2157,10 @@
     "match_score": 95,
     "availability_status": "Available",
     "rate_per_hour": 150,
-    "certifications": ["Board Certified in Neurology", "ACLS"],
+    "certifications": [
+      "Board Certified in Neurology",
+      "ACLS"
+    ],
     "previous_rating": 4.9,
     "work_history": "Renowned neurologist with extensive experience in clinical research and patient care."
   },
@@ -1835,7 +2176,10 @@
     "match_score": 88,
     "availability_status": "Busy",
     "rate_per_hour": 70,
-    "certifications": ["FNP-C", "BLS"],
+    "certifications": [
+      "FNP-C",
+      "BLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in family practice clinics providing comprehensive care to patients of all ages."
   },
@@ -1851,7 +2195,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["ACLS", "BLS", "TNCC"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "TNCC"
+    ],
     "previous_rating": 4.4,
     "work_history": "Provided critical care in emergency departments and trauma centers."
   },
@@ -1867,7 +2215,10 @@
     "match_score": 93,
     "availability_status": "Busy",
     "rate_per_hour": 72,
-    "certifications": ["AGNP-C", "BLS"],
+    "certifications": [
+      "AGNP-C",
+      "BLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Worked in nursing homes and geriatric clinics providing elderly patient care."
   },
@@ -1883,7 +2234,9 @@
     "match_score": 90,
     "availability_status": "Available",
     "rate_per_hour": 110,
-    "certifications": ["Board Certified in Dermatology"],
+    "certifications": [
+      "Board Certified in Dermatology"
+    ],
     "previous_rating": 4.6,
     "work_history": "Specialized in dermatological treatments and cosmetic procedures."
   },
@@ -1897,9 +2250,13 @@
     "location": "Chicago, IL, USA",
     "distance_miles": 9.3,
     "match_score": 94,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 65,
-    "certifications": ["BLS", "ACLS", "ONS"],
+    "certifications": [
+      "BLS",
+      "ACLS",
+      "ONS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Provided oncology nursing care in cancer treatment centers."
   },
@@ -1915,7 +2272,10 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 78,
-    "certifications": ["NCCPA Certified", "BLS"],
+    "certifications": [
+      "NCCPA Certified",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in respiratory clinics and assisted in pulmonary procedures."
   },
@@ -1931,7 +2291,10 @@
     "match_score": 90,
     "availability_status": "Available",
     "rate_per_hour": 74,
-    "certifications": ["WHNP-BC", "BLS"],
+    "certifications": [
+      "WHNP-BC",
+      "BLS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Provided care in women's health clinics focusing on reproductive and preventive health."
   },
@@ -1947,7 +2310,9 @@
     "match_score": 92,
     "availability_status": "Busy",
     "rate_per_hour": 125,
-    "certifications": ["Board Certified in Endocrinology"],
+    "certifications": [
+      "Board Certified in Endocrinology"
+    ],
     "previous_rating": 4.8,
     "work_history": "Specialized in managing diabetes and hormonal disorders in large medical centers."
   },
@@ -1963,7 +2328,10 @@
     "match_score": 89,
     "availability_status": "Available",
     "rate_per_hour": 64,
-    "certifications": ["BLS", "PMHN-BC"],
+    "certifications": [
+      "BLS",
+      "PMHN-BC"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in psychiatric hospitals and outpatient mental health clinics."
   },
@@ -1979,7 +2347,10 @@
     "match_score": 87,
     "availability_status": "Busy",
     "rate_per_hour": 82,
-    "certifications": ["NCCPA Certified", "BLS"],
+    "certifications": [
+      "NCCPA Certified",
+      "BLS"
+    ],
     "previous_rating": 4.3,
     "work_history": "Assisted in gastroenterology clinics and endoscopic procedures."
   },
@@ -1995,11 +2366,12 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 118,
-    "certifications": ["Board Certified in Rheumatology"],
+    "certifications": [
+      "Board Certified in Rheumatology"
+    ],
     "previous_rating": 4.7,
     "work_history": "Provided specialized care for autoimmune and musculoskeletal disorders."
   },
-
   {
     "id": 126,
     "name": "Sophia Ramirez",
@@ -2012,7 +2384,10 @@
     "match_score": 89,
     "availability_status": "Available",
     "rate_per_hour": 70,
-    "certifications": ["ACLS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Provided intensive care in trauma and surgical ICUs."
   },
@@ -2028,7 +2403,11 @@
     "match_score": 92,
     "availability_status": "Busy",
     "rate_per_hour": 72,
-    "certifications": ["ACLS", "PALS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "PALS",
+      "BLS"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in critical care units managing ventilated patients."
   },
@@ -2044,7 +2423,10 @@
     "match_score": 87,
     "availability_status": "Available",
     "rate_per_hour": 66,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.5,
     "work_history": "Provided ICU nursing care in neonatal and surgical units."
   },
@@ -2060,7 +2442,11 @@
     "match_score": 90,
     "availability_status": "Busy",
     "rate_per_hour": 69,
-    "certifications": ["ACLS", "BLS", "PALS"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
     "previous_rating": 4.6,
     "work_history": "Handled critical patients in medical and surgical ICUs."
   },
@@ -2076,7 +2462,11 @@
     "match_score": 94,
     "availability_status": "Available",
     "rate_per_hour": 75,
-    "certifications": ["ACLS", "BLS", "CCRN"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "CCRN"
+    ],
     "previous_rating": 4.9,
     "work_history": "Senior ICU nurse specializing in cardiovascular intensive care."
   },
@@ -2092,7 +2482,10 @@
     "match_score": 88,
     "availability_status": "Busy",
     "rate_per_hour": 67,
-    "certifications": ["ACLS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in ICU units focusing on post-operative recovery."
   },
@@ -2108,7 +2501,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 71,
-    "certifications": ["ACLS", "PALS", "BLS"],
+    "certifications": [
+      "ACLS",
+      "PALS",
+      "BLS"
+    ],
     "previous_rating": 4.7,
     "work_history": "Provided ICU care in respiratory and cardiac units."
   },
@@ -2124,7 +2521,11 @@
     "match_score": 93,
     "availability_status": "Busy",
     "rate_per_hour": 74,
-    "certifications": ["ACLS", "BLS", "CCRN"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "CCRN"
+    ],
     "previous_rating": 4.8,
     "work_history": "Led ICU teams in managing complex trauma cases."
   },
@@ -2140,7 +2541,10 @@
     "match_score": 85,
     "availability_status": "Available",
     "rate_per_hour": 65,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in ICU units providing neonatal intensive care."
   },
@@ -2156,11 +2560,14 @@
     "match_score": 95,
     "availability_status": "Busy",
     "rate_per_hour": 78,
-    "certifications": ["ACLS", "BLS", "CCRN"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "CCRN"
+    ],
     "previous_rating": 4.9,
     "work_history": "Veteran ICU nurse with expertise in multi-organ failure management."
   },
-
   {
     "id": 136,
     "name": "Ella Martinez",
@@ -2173,7 +2580,10 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 55,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.6,
     "work_history": "Provided maternity care in labor and delivery units."
   },
@@ -2187,9 +2597,13 @@
     "location": "Houston, TX, USA",
     "distance_miles": 10.1,
     "match_score": 93,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 60,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.8,
     "work_history": "Worked in high-risk maternity wards providing specialized care."
   },
@@ -2205,7 +2619,10 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 65,
-    "certifications": ["FNP-C", "BLS"],
+    "certifications": [
+      "FNP-C",
+      "BLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Provided prenatal and postnatal care in maternity clinics."
   },
@@ -2219,9 +2636,12 @@
     "location": "Los Angeles, CA, USA",
     "distance_miles": 9.4,
     "match_score": 90,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 58,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.4,
     "work_history": "Assisted in labor and delivery units with patient monitoring."
   },
@@ -2237,7 +2657,11 @@
     "match_score": 92,
     "availability_status": "Available",
     "rate_per_hour": 62,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Provided care for mothers and newborns in maternity hospitals."
   },
@@ -2253,7 +2677,10 @@
     "match_score": 87,
     "availability_status": "Available",
     "rate_per_hour": 54,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.3,
     "work_history": "Worked in maternity wards assisting with deliveries and newborn care."
   },
@@ -2267,9 +2694,13 @@
     "location": "Seattle, WA, USA",
     "distance_miles": 6.9,
     "match_score": 89,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 57,
-    "certifications": ["BLS", "NRP", "ACLS"],
+    "certifications": [
+      "BLS",
+      "NRP",
+      "ACLS"
+    ],
     "previous_rating": 4.5,
     "work_history": "Provided maternity care in urban hospitals and clinics."
   },
@@ -2285,7 +2716,11 @@
     "match_score": 91,
     "availability_status": "Available",
     "rate_per_hour": 61,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.6,
     "work_history": "Worked in maternity ICUs providing specialized care for mothers."
   },
@@ -2301,7 +2736,10 @@
     "match_score": 86,
     "availability_status": "Available",
     "rate_per_hour": 63,
-    "certifications": ["FNP-C", "BLS"],
+    "certifications": [
+      "FNP-C",
+      "BLS"
+    ],
     "previous_rating": 4.2,
     "work_history": "Provided prenatal and postpartum care in maternity clinics."
   },
@@ -2315,9 +2753,13 @@
     "location": "San Francisco, CA, USA",
     "distance_miles": 7.1,
     "match_score": 94,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 68,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.9,
     "work_history": "Senior maternity nurse with extensive experience in delivery units."
   },
@@ -2333,7 +2775,10 @@
     "match_score": 90,
     "availability_status": "Available",
     "rate_per_hour": 59,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.5,
     "work_history": "Worked in maternity wards providing care for mothers and newborns."
   },
@@ -2347,9 +2792,13 @@
     "location": "Atlanta, GA, USA",
     "distance_miles": 10.4,
     "match_score": 92,
-    "availability_status": "Busy",
+    "availability_status": "Available",
     "rate_per_hour": 64,
-    "certifications": ["ACLS", "BLS", "NRP"],
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.7,
     "work_history": "Provided maternity care in high-volume hospitals."
   },
@@ -2365,416 +2814,595 @@
     "match_score": 88,
     "availability_status": "Available",
     "rate_per_hour": 56,
-    "certifications": ["BLS", "NRP"],
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
     "previous_rating": 4.4,
     "work_history": "Worked in maternity clinics providing prenatal care."
   },
-  
-    {
-      "id": 149,
-      "name": "Zoe King",
-      "photo": "https://randomuser.me/api/portraits/women/49.jpg",
-      "credentials": "RN, BSN",
-      "specialty": "Maternity",
-      "experience_years": 10,
-      "location": "San Antonio, TX, USA",
-      "distance_miles": 8.7,
-      "match_score": 89,
-      "availability_status": "Available",
-      "rate_per_hour": 57,
-      "certifications": ["BLS", "NRP"],
-      "previous_rating": 4.5,
-      "work_history": "Worked in maternity wards assisting with labor and delivery."
-    },
-    {
-      "id": 150,
-      "name": "Matthew Young",
-      "photo": "https://randomuser.me/api/portraits/men/50.jpg",
-      "credentials": "RN, MSN",
-      "specialty": "Maternity",
-      "experience_years": 13,
-      "location": "Orlando, FL, USA",
-      "distance_miles": 9.2,
-      "match_score": 91,
-      "availability_status": "Busy",
-      "rate_per_hour": 62,
-      "certifications": ["ACLS", "BLS", "NRP"],
-      "previous_rating": 4.7,
-      "work_history": "Provided specialized maternity care in high-risk pregnancy units."
-    },
-    {
-      "id": 151,
-      "name": "Chloe Hernandez",
-      "photo": "https://randomuser.me/api/portraits/women/51.jpg",
-      "credentials": "NP",
-      "specialty": "Maternity",
-      "experience_years": 7,
-      "location": "Portland, OR, USA",
-      "distance_miles": 6.5,
-      "match_score": 87,
-      "availability_status": "Available",
-      "rate_per_hour": 64,
-      "certifications": ["FNP-C", "BLS"],
-      "previous_rating": 4.3,
-      "work_history": "Provided prenatal and postpartum care in maternity clinics."
-    },
-    {
-      "id": 152,
-      "name": "Elijah Robinson",
-      "photo": "https://randomuser.me/api/portraits/men/52.jpg",
-      "credentials": "RN, BSN",
-      "specialty": "Maternity",
-      "experience_years": 12,
-      "location": "Charlotte, NC, USA",
-      "distance_miles": 7.9,
-      "match_score": 90,
-      "availability_status": "Busy",
-      "rate_per_hour": 59,
-      "certifications": ["BLS", "NRP"],
-      "previous_rating": 4.6,
-      "work_history": "Worked in maternity hospitals providing care for mothers and newborns."
-    },
-    {
-      "id": 153,
-      "name": "Aria Lopez",
-      "photo": "https://randomuser.me/api/portraits/women/53.jpg",
-      "credentials": "RN, MSN",
-      "specialty": "Maternity",
-      "experience_years": 14,
-      "location": "Las Vegas, NV, USA",
-      "distance_miles": 10.4,
-      "match_score": 92,
-      "availability_status": "Available",
-      "rate_per_hour": 66,
-      "certifications": ["ACLS", "BLS", "NRP"],
-      "previous_rating": 4.8,
-      "work_history": "Senior maternity nurse with extensive experience in delivery and postpartum care."
-    },
-      {
-        "id": 154,
-        "name": "Lily Carter",
-        "photo": "https://randomuser.me/api/portraits/women/54.jpg",
-        "credentials": "RN, BSN",
-        "specialty": "Dialysis",
-        "experience_years": 11,
-        "location": "Houston, TX, USA",
-        "distance_miles": 7.8,
-        "match_score": 90,
-        "availability_status": "Available",
-        "rate_per_hour": 52,
-        "certifications": ["BLS", "ACLS"],
-        "previous_rating": 4.6,
-        "work_history": "Provided dialysis care in outpatient clinics and hospitals."
-      },
-      {
-        "id": 155,
-        "name": "Ethan Brooks",
-        "photo": "https://randomuser.me/api/portraits/men/55.jpg",
-        "credentials": "RN, MSN",
-        "specialty": "Dialysis",
-        "experience_years": 14,
-        "location": "Phoenix, AZ, USA",
-        "distance_miles": 9.1,
-        "match_score": 92,
-        "availability_status": "Busy",
-        "rate_per_hour": 55,
-        "certifications": ["ACLS", "BLS", "PALS"],
-        "previous_rating": 4.8,
-        "work_history": "Worked in dialysis units managing chronic kidney disease patients."
-      },
-      {
-        "id": 156,
-        "name": "Olivia Scott",
-        "photo": "https://randomuser.me/api/portraits/women/56.jpg",
-        "credentials": "NP",
-        "specialty": "Dialysis",
-        "experience_years": 9,
-        "location": "Chicago, IL, USA",
-        "distance_miles": 6.4,
-        "match_score": 88,
-        "availability_status": "Available",
-        "rate_per_hour": 60,
-        "certifications": ["FNP-C", "BLS"],
-        "previous_rating": 4.5,
-        "work_history": "Provided dialysis care and patient education in nephrology clinics."
-      },
-      {
-        "id": 157,
-        "name": "James Rivera",
-        "photo": "https://randomuser.me/api/portraits/men/57.jpg",
-        "credentials": "RN, BSN",
-        "specialty": "Dialysis",
-        "experience_years": 12,
-        "location": "Los Angeles, CA, USA",
-        "distance_miles": 8.9,
-        "match_score": 89,
-        "availability_status": "Busy",
-        "rate_per_hour": 53,
-        "certifications": ["BLS", "NRP"],
-        "previous_rating": 4.4,
-        "work_history": "Worked in dialysis centers providing patient monitoring and care."
-      },
-      {
-        "id": 158,
-        "name": "Sophia Turner",
-        "photo": "https://randomuser.me/api/portraits/women/58.jpg",
-        "credentials": "RN, MSN",
-        "specialty": "Dialysis",
-        "experience_years": 15,
-        "location": "New York, NY, USA",
-        "distance_miles": 5.7,
-        "match_score": 93,
-        "availability_status": "Available",
-        "rate_per_hour": 58,
-        "certifications": ["ACLS", "BLS", "PALS"],
-        "previous_rating": 4.7,
-        "work_history": "Senior dialysis nurse with experience in acute and chronic care units."
-      },
-      {
-        "id": 159,
-        "name": "William Adams",
-        "photo": "https://randomuser.me/api/portraits/men/59.jpg",
-        "credentials": "RN, BSN",
-        "specialty": "Dialysis",
-        "experience_years": 10,
-        "location": "Miami, FL, USA",
-        "distance_miles": 7.2,
-        "match_score": 87,
-        "availability_status": "Available",
-        "rate_per_hour": 51,
-        "certifications": ["BLS", "NRP"],
-        "previous_rating": 4.3,
-        "work_history": "Worked in dialysis wards assisting with patient treatments."
-      },
-      {
-        "id": 160,
-        "name": "Emma Hall",
-        "photo": "https://randomuser.me/api/portraits/women/60.jpg",
-        "credentials": "RN, BSN",
-        "specialty": "Dialysis",
-        "experience_years": 13,
-        "location": "Seattle, WA, USA",
-        "distance_miles": 6.8,
-        "match_score": 91,
-        "availability_status": "Busy",
-        "rate_per_hour": 56,
-        "certifications": ["ACLS", "BLS"],
-        "previous_rating": 4.6,
-        "work_history": "Provided dialysis care in hospital nephrology departments."
-      },
-      {
-        "id": 161,
-        "name": "Alexander Green",
-        "photo": "https://randomuser.me/api/portraits/men/61.jpg",
-        "credentials": "RN, MSN",
-        "specialty": "Dialysis",
-        "experience_years": 16,
-        "location": "Boston, MA, USA",
-        "distance_miles": 9.5,
-        "match_score": 94,
-        "availability_status": "Available",
-        "rate_per_hour": 59,
-        "certifications": ["ACLS", "BLS", "PALS"],
-        "previous_rating": 4.9,
-        "work_history": "Led dialysis teams in managing patients with end-stage renal disease."
-      },
-      {
-        "id": 162,
-        "name": "Ava Nelson",
-        "photo": "https://randomuser.me/api/portraits/women/62.jpg",
-        "credentials": "RN, BSN",
-        "specialty": "Dialysis",
-        "experience_years": 8,
-        "location": "Denver, CO, USA",
-        "distance_miles": 7.6,
-        "match_score": 86,
-        "availability_status": "Available",
-        "rate_per_hour": 50,
-        "certifications": ["BLS", "NRP"],
-        "previous_rating": 4.2,
-        "work_history": "Worked in dialysis clinics providing patient support and monitoring."
-      },
-      {
-        "id": 163,
-        "name": "Noah Wright",
-        "photo": "https://randomuser.me/api/portraits/men/63.jpg",
-        "credentials": "RN, MSN",
-        "specialty": "Dialysis",
-        "experience_years": 17,
-        "location": "San Francisco, CA, USA",
-        "distance_miles": 5.9,
-        "match_score": 95,
-        "availability_status": "Busy",
-        "rate_per_hour": 61,
-        "certifications": ["ACLS", "BLS", "PALS"],
-        "previous_rating": 4.8,
-        "work_history": "Veteran dialysis nurse with expertise in managing complex renal cases."
-      },
-      
-        {
-          "id": 164,
-          "name": "Ella Thompson",
-          "photo": "https://randomuser.me/api/portraits/women/64.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 6,
-          "location": "Houston, TX, USA",
-          "distance_miles": 8.4,
-          "match_score": 88,
-          "availability_status": "Available",
-          "rate_per_hour": 52,
-          "certifications": ["BLS", "ACLS"],
-          "previous_rating": 4.3,
-          "work_history": "Provided patient care in general medical wards."
-        },
-        {
-          "id": 165,
-          "name": "Mason Clark",
-          "photo": "https://randomuser.me/api/portraits/men/65.jpg",
-          "credentials": "RN, MSN",
-          "specialty": "General Ward",
-          "experience_years": 9,
-          "location": "Chicago, IL, USA",
-          "distance_miles": 7.2,
-          "match_score": 90,
-          "availability_status": "Busy",
-          "rate_per_hour": 55,
-          "certifications": ["ACLS", "BLS", "PALS"],
-          "previous_rating": 4.6,
-          "work_history": "Worked in general wards managing diverse patient needs."
-        },
-        {
-          "id": 166,
-          "name": "Olivia Lewis",
-          "photo": "https://randomuser.me/api/portraits/women/66.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 5,
-          "location": "Los Angeles, CA, USA",
-          "distance_miles": 9.5,
-          "match_score": 87,
-          "availability_status": "Available",
-          "rate_per_hour": 50,
-          "certifications": ["BLS", "NRP"],
-          "previous_rating": 4.2,
-          "work_history": "Provided bedside care in general hospital wards."
-        },
-        {
-          "id": 167,
-          "name": "Noah Walker",
-          "photo": "https://randomuser.me/api/portraits/men/67.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 7,
-          "location": "Phoenix, AZ, USA",
-          "distance_miles": 10.1,
-          "match_score": 89,
-          "availability_status": "Busy",
-          "rate_per_hour": 53,
-          "certifications": ["BLS", "ACLS"],
-          "previous_rating": 4.4,
-          "work_history": "Worked in general wards assisting with patient recovery."
-        },
-        {
-          "id": 168,
-          "name": "Sophia Allen",
-          "photo": "https://randomuser.me/api/portraits/women/68.jpg",
-          "credentials": "RN, MSN",
-          "specialty": "General Ward",
-          "experience_years": 10,
-          "location": "New York, NY, USA",
-          "distance_miles": 6.8,
-          "match_score": 91,
-          "availability_status": "Available",
-          "rate_per_hour": 58,
-          "certifications": ["ACLS", "BLS", "PALS"],
-          "previous_rating": 4.7,
-          "work_history": "Senior nurse in general wards with diverse patient care experience."
-        },
-        {
-          "id": 169,
-          "name": "James Hill",
-          "photo": "https://randomuser.me/api/portraits/men/69.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 4,
-          "location": "Miami, FL, USA",
-          "distance_miles": 11.3,
-          "match_score": 86,
-          "availability_status": "Available",
-          "rate_per_hour": 49,
-          "certifications": ["BLS", "NRP"],
-          "previous_rating": 4.1,
-          "work_history": "Worked in general wards providing routine patient care."
-        },
-        {
-          "id": 170,
-          "name": "Isabella Young",
-          "photo": "https://randomuser.me/api/portraits/women/70.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 8,
-          "location": "Seattle, WA, USA",
-          "distance_miles": 7.9,
-          "match_score": 89,
-          "availability_status": "Busy",
-          "rate_per_hour": 54,
-          "certifications": ["BLS", "ACLS"],
-          "previous_rating": 4.5,
-          "work_history": "Provided patient care in general wards focusing on recovery."
-        },
-        {
-          "id": 171,
-          "name": "Henry King",
-          "photo": "https://randomuser.me/api/portraits/men/71.jpg",
-          "credentials": "RN, MSN",
-          "specialty": "General Ward",
-          "experience_years": 11,
-          "location": "Boston, MA, USA",
-          "distance_miles": 8.6,
-          "match_score": 92,
-          "availability_status": "Available",
-          "rate_per_hour": 59,
-          "certifications": ["ACLS", "BLS", "PALS"],
-          "previous_rating": 4.8,
-          "work_history": "Led general ward teams in managing diverse patient cases."
-        },
-        {
-          "id": 172,
-          "name": "Grace Wright",
-          "photo": "https://randomuser.me/api/portraits/women/72.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 6,
-          "location": "Denver, CO, USA",
-          "distance_miles": 9.7,
-          "match_score": 88,
-          "availability_status": "Busy",
-          "rate_per_hour": 52,
-          "certifications": ["BLS", "NRP"],
-          "previous_rating": 4.3,
-          "work_history": "Worked in general wards providing bedside care."
-        },
-        {
-          "id": 173,
-          "name": "Daniel Lopez",
-          "photo": "https://randomuser.me/api/portraits/men/73.jpg",
-          "credentials": "RN, BSN",
-          "specialty": "General Ward",
-          "experience_years": 9,
-          "location": "San Francisco, CA, USA",
-          "distance_miles": 6.5,
-          "match_score": 90,
-          "availability_status": "Available",
-          "rate_per_hour": 56,
-          "certifications": ["ACLS", "BLS"],
-          "previous_rating": 4.6,
-          "work_history": "Provided general ward care in large hospitals."
-        }
-      
-
-    
-
-  
-
+  {
+    "id": 149,
+    "name": "Zoe King",
+    "photo": "https://randomuser.me/api/portraits/women/49.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Maternity",
+    "experience_years": 10,
+    "location": "San Antonio, TX, USA",
+    "distance_miles": 8.7,
+    "match_score": 89,
+    "availability_status": "Available",
+    "rate_per_hour": 57,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.5,
+    "work_history": "Worked in maternity wards assisting with labor and delivery."
+  },
+  {
+    "id": 150,
+    "name": "Matthew Young",
+    "photo": "https://randomuser.me/api/portraits/men/50.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "Maternity",
+    "experience_years": 13,
+    "location": "Orlando, FL, USA",
+    "distance_miles": 9.2,
+    "match_score": 91,
+    "availability_status": "Available",
+    "rate_per_hour": 62,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.7,
+    "work_history": "Provided specialized maternity care in high-risk pregnancy units."
+  },
+  {
+    "id": 151,
+    "name": "Chloe Hernandez",
+    "photo": "https://randomuser.me/api/portraits/women/51.jpg",
+    "credentials": "NP",
+    "specialty": "Maternity",
+    "experience_years": 7,
+    "location": "Portland, OR, USA",
+    "distance_miles": 6.5,
+    "match_score": 87,
+    "availability_status": "Available",
+    "rate_per_hour": 64,
+    "certifications": [
+      "FNP-C",
+      "BLS"
+    ],
+    "previous_rating": 4.3,
+    "work_history": "Provided prenatal and postpartum care in maternity clinics."
+  },
+  {
+    "id": 152,
+    "name": "Elijah Robinson",
+    "photo": "https://randomuser.me/api/portraits/men/52.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Maternity",
+    "experience_years": 12,
+    "location": "Charlotte, NC, USA",
+    "distance_miles": 7.9,
+    "match_score": 90,
+    "availability_status": "Busy",
+    "rate_per_hour": 59,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Worked in maternity hospitals providing care for mothers and newborns."
+  },
+  {
+    "id": 153,
+    "name": "Aria Lopez",
+    "photo": "https://randomuser.me/api/portraits/women/53.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "Maternity",
+    "experience_years": 14,
+    "location": "Las Vegas, NV, USA",
+    "distance_miles": 10.4,
+    "match_score": 92,
+    "availability_status": "Available",
+    "rate_per_hour": 66,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.8,
+    "work_history": "Senior maternity nurse with extensive experience in delivery and postpartum care."
+  },
+  {
+    "id": 154,
+    "name": "Lily Carter",
+    "photo": "https://randomuser.me/api/portraits/women/54.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Dialysis",
+    "experience_years": 11,
+    "location": "Houston, TX, USA",
+    "distance_miles": 7.8,
+    "match_score": 90,
+    "availability_status": "Available",
+    "rate_per_hour": 52,
+    "certifications": [
+      "BLS",
+      "ACLS"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Provided dialysis care in outpatient clinics and hospitals."
+  },
+  {
+    "id": 155,
+    "name": "Ethan Brooks",
+    "photo": "https://randomuser.me/api/portraits/men/55.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "Dialysis",
+    "experience_years": 14,
+    "location": "Phoenix, AZ, USA",
+    "distance_miles": 9.1,
+    "match_score": 92,
+    "availability_status": "Available",
+    "rate_per_hour": 55,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.8,
+    "work_history": "Worked in dialysis units managing chronic kidney disease patients."
+  },
+  {
+    "id": 156,
+    "name": "Olivia Scott",
+    "photo": "https://randomuser.me/api/portraits/women/56.jpg",
+    "credentials": "NP",
+    "specialty": "Dialysis",
+    "experience_years": 9,
+    "location": "Chicago, IL, USA",
+    "distance_miles": 6.4,
+    "match_score": 88,
+    "availability_status": "Available",
+    "rate_per_hour": 60,
+    "certifications": [
+      "FNP-C",
+      "BLS"
+    ],
+    "previous_rating": 4.5,
+    "work_history": "Provided dialysis care and patient education in nephrology clinics."
+  },
+  {
+    "id": 157,
+    "name": "James Rivera",
+    "photo": "https://randomuser.me/api/portraits/men/57.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Dialysis",
+    "experience_years": 12,
+    "location": "Los Angeles, CA, USA",
+    "distance_miles": 8.9,
+    "match_score": 89,
+    "availability_status": "Available",
+    "rate_per_hour": 53,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.4,
+    "work_history": "Worked in dialysis centers providing patient monitoring and care."
+  },
+  {
+    "id": 158,
+    "name": "Sophia Turner",
+    "photo": "https://randomuser.me/api/portraits/women/58.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "Dialysis",
+    "experience_years": 15,
+    "location": "New York, NY, USA",
+    "distance_miles": 5.7,
+    "match_score": 93,
+    "availability_status": "Available",
+    "rate_per_hour": 58,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.7,
+    "work_history": "Senior dialysis nurse with experience in acute and chronic care units."
+  },
+  {
+    "id": 159,
+    "name": "William Adams",
+    "photo": "https://randomuser.me/api/portraits/men/59.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Dialysis",
+    "experience_years": 10,
+    "location": "Miami, FL, USA",
+    "distance_miles": 7.2,
+    "match_score": 87,
+    "availability_status": "Available",
+    "rate_per_hour": 51,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.3,
+    "work_history": "Worked in dialysis wards assisting with patient treatments."
+  },
+  {
+    "id": 160,
+    "name": "Emma Hall",
+    "photo": "https://randomuser.me/api/portraits/women/60.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Dialysis",
+    "experience_years": 13,
+    "location": "Seattle, WA, USA",
+    "distance_miles": 6.8,
+    "match_score": 91,
+    "availability_status": "Available",
+    "rate_per_hour": 56,
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Provided dialysis care in hospital nephrology departments."
+  },
+  {
+    "id": 161,
+    "name": "Alexander Green",
+    "photo": "https://randomuser.me/api/portraits/men/61.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "Dialysis",
+    "experience_years": 16,
+    "location": "Boston, MA, USA",
+    "distance_miles": 9.5,
+    "match_score": 94,
+    "availability_status": "Available",
+    "rate_per_hour": 59,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.9,
+    "work_history": "Led dialysis teams in managing patients with end-stage renal disease."
+  },
+  {
+    "id": 162,
+    "name": "Ava Nelson",
+    "photo": "https://randomuser.me/api/portraits/women/62.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Dialysis",
+    "experience_years": 8,
+    "location": "Denver, CO, USA",
+    "distance_miles": 7.6,
+    "match_score": 86,
+    "availability_status": "Available",
+    "rate_per_hour": 50,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.2,
+    "work_history": "Worked in dialysis clinics providing patient support and monitoring."
+  },
+  {
+    "id": 163,
+    "name": "Noah Wright",
+    "photo": "https://randomuser.me/api/portraits/men/63.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "Dialysis",
+    "experience_years": 17,
+    "location": "San Francisco, CA, USA",
+    "distance_miles": 5.9,
+    "match_score": 95,
+    "availability_status": "Busy",
+    "rate_per_hour": 61,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.8,
+    "work_history": "Veteran dialysis nurse with expertise in managing complex renal cases."
+  },
+  {
+    "id": 164,
+    "name": "Ella Thompson",
+    "photo": "https://randomuser.me/api/portraits/women/64.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 6,
+    "location": "Houston, TX, USA",
+    "distance_miles": 8.4,
+    "match_score": 88,
+    "availability_status": "Available",
+    "rate_per_hour": 52,
+    "certifications": [
+      "BLS",
+      "ACLS"
+    ],
+    "previous_rating": 4.3,
+    "work_history": "Provided patient care in general medical wards."
+  },
+  {
+    "id": 165,
+    "name": "Mason Clark",
+    "photo": "https://randomuser.me/api/portraits/men/65.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "General Ward",
+    "experience_years": 9,
+    "location": "Chicago, IL, USA",
+    "distance_miles": 7.2,
+    "match_score": 90,
+    "availability_status": "Available",
+    "rate_per_hour": 55,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Worked in general wards managing diverse patient needs."
+  },
+  {
+    "id": 166,
+    "name": "Olivia Lewis",
+    "photo": "https://randomuser.me/api/portraits/women/66.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 5,
+    "location": "Los Angeles, CA, USA",
+    "distance_miles": 9.5,
+    "match_score": 87,
+    "availability_status": "Available",
+    "rate_per_hour": 50,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.2,
+    "work_history": "Provided bedside care in general hospital wards."
+  },
+  {
+    "id": 167,
+    "name": "Noah Walker",
+    "photo": "https://randomuser.me/api/portraits/men/67.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 7,
+    "location": "Phoenix, AZ, USA",
+    "distance_miles": 10.1,
+    "match_score": 89,
+    "availability_status": "Available",
+    "rate_per_hour": 53,
+    "certifications": [
+      "BLS",
+      "ACLS"
+    ],
+    "previous_rating": 4.4,
+    "work_history": "Worked in general wards assisting with patient recovery."
+  },
+  {
+    "id": 168,
+    "name": "Sophia Allen",
+    "photo": "https://randomuser.me/api/portraits/women/68.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "General Ward",
+    "experience_years": 10,
+    "location": "New York, NY, USA",
+    "distance_miles": 6.8,
+    "match_score": 91,
+    "availability_status": "Available",
+    "rate_per_hour": 58,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.7,
+    "work_history": "Senior nurse in general wards with diverse patient care experience."
+  },
+  {
+    "id": 169,
+    "name": "James Hill",
+    "photo": "https://randomuser.me/api/portraits/men/69.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 4,
+    "location": "Miami, FL, USA",
+    "distance_miles": 11.3,
+    "match_score": 86,
+    "availability_status": "Available",
+    "rate_per_hour": 49,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.1,
+    "work_history": "Worked in general wards providing routine patient care."
+  },
+  {
+    "id": 170,
+    "name": "Isabella Young",
+    "photo": "https://randomuser.me/api/portraits/women/70.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 8,
+    "location": "Seattle, WA, USA",
+    "distance_miles": 7.9,
+    "match_score": 89,
+    "availability_status": "Busy",
+    "rate_per_hour": 54,
+    "certifications": [
+      "BLS",
+      "ACLS"
+    ],
+    "previous_rating": 4.5,
+    "work_history": "Provided patient care in general wards focusing on recovery."
+  },
+  {
+    "id": 171,
+    "name": "Henry King",
+    "photo": "https://randomuser.me/api/portraits/men/71.jpg",
+    "credentials": "RN, MSN",
+    "specialty": "General Ward",
+    "experience_years": 11,
+    "location": "Boston, MA, USA",
+    "distance_miles": 8.6,
+    "match_score": 92,
+    "availability_status": "Available",
+    "rate_per_hour": 59,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.8,
+    "work_history": "Led general ward teams in managing diverse patient cases."
+  },
+  {
+    "id": 172,
+    "name": "Grace Wright",
+    "photo": "https://randomuser.me/api/portraits/women/72.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 6,
+    "location": "Denver, CO, USA",
+    "distance_miles": 9.7,
+    "match_score": 88,
+    "availability_status": "Busy",
+    "rate_per_hour": 52,
+    "certifications": [
+      "BLS",
+      "NRP"
+    ],
+    "previous_rating": 4.3,
+    "work_history": "Worked in general wards providing bedside care."
+  },
+  {
+    "id": 173,
+    "name": "Daniel Lopez",
+    "photo": "https://randomuser.me/api/portraits/men/73.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "General Ward",
+    "experience_years": 9,
+    "location": "San Francisco, CA, USA",
+    "distance_miles": 6.5,
+    "match_score": 90,
+    "availability_status": "Available",
+    "rate_per_hour": 56,
+    "certifications": [
+      "ACLS",
+      "BLS"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Provided general ward care in large hospitals."
+  },
+  {
+    "id": 174,
+    "name": "Riya Miller na",
+    "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Emergency",
+    "experience_years": 13,
+    "location": "Los Angeles, CA, USA",
+    "distance_miles": 5.8,
+    "match_score": 87,
+    "availability_status": "Available",
+    "rate_per_hour": 68,
+    "certifications": [
+      "ACLS",
+      "NRP",
+      "PALS"
+    ],
+    "previous_rating": 4.7,
+    "work_history": "Worked in major hospital providing specialized patient care."
+  },
+  {
+    "id": 175,
+    "name": "Jefer Miller",
+    "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Emergency",
+    "experience_years": 13,
+    "location": "Los Angeles, CA, USA",
+    "distance_miles": 5.8,
+    "match_score": 87,
+    "availability_status": "Available",
+    "rate_per_hour": 68,
+    "certifications": [
+      "ACLS",
+      "NRP",
+      "PALS"
+    ],
+    "previous_rating": 4.2,
+    "work_history": "Worked in major hospital providing specialized patient care."
+  },
+  {
+    "id": 176,
+    "name": "Lue Miller",
+    "photo": "https://randomuser.me/api/portraits/women/4.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Emergency",
+    "experience_years": 6,
+    "location": "Los Angeles, CA, USA",
+    "distance_miles": 5.4,
+    "match_score": 87,
+    "availability_status": "Available",
+    "rate_per_hour": 64,
+    "certifications": [
+      "ACLS",
+      "NRP",
+      "PALS"
+    ],
+    "previous_rating": 4.1,
+    "work_history": "Worked in major hospital providing specialized patient care."
+  },
+  {
+    "id": 178,
+    "name": "Lucas James",
+    "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Oncology",
+    "experience_years": 10,
+    "location": "San Antonio, TX, USA",
+    "distance_miles": 11.7,
+    "match_score": 90,
+    "availability_status": "Available",
+    "rate_per_hour": 58,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Worked in major hospital providing specialized patient care."
+  },
+  {
+    "id": 178,
+    "name": "James park",
+    "photo": "https://randomuser.me/api/portraits/men/7.jpg",
+    "credentials": "RN, BSN",
+    "specialty": "Oncology",
+    "experience_years": 12,
+    "location": "San Antonio, TX, USA",
+    "distance_miles": 11.7,
+    "match_score": 90,
+    "availability_status": "Available",
+    "rate_per_hour": 58,
+    "certifications": [
+      "ACLS",
+      "BLS",
+      "PALS"
+    ],
+    "previous_rating": 4.6,
+    "work_history": "Worked in major hospital providing specialized patient care."
+  }
 ]
