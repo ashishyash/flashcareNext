@@ -99,9 +99,11 @@ export function DeploymentDialog({
   useEffect(() => {
     const allComplete = steps.every((s) => s.status === "complete");
     if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
-      setIsComplete(true);
       hasUpdatedRef.current = true;
-      deployNurses(nurses.map(n => n.id));
+      setTimeout(() => {
+        setIsComplete(true);
+        deployNurses(nurses.map(n => n.id));
+      }, 2000);
     }
   }, [steps, isComplete, open, nurses, deployNurses]);
 
