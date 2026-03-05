@@ -1,8 +1,20 @@
+"use client";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { CheckCircle, Loader2, FileText, Clock, AlertCircle, ChevronLeft, ChevronRight, CircleCheckBig, Sparkles } from "lucide-react";
+import {
+  CheckCircle,
+  Loader2,
+  FileText,
+  Clock,
+  AlertCircle,
+  ChevronLeft,
+  ChevronRight,
+  CircleCheckBig,
+  Sparkles,
+} from "lucide-react";
+import { toast } from "sonner";
 
 // Icon component that renders Lucide icons based on name
 const Icon = ({ name, className }: { name: string; className?: string }) => {
@@ -13,7 +25,7 @@ const Icon = ({ name, className }: { name: string; className?: string }) => {
     alertCircle: AlertCircle,
     zap: Sparkles,
     chevronLeft: ChevronLeft,
-    chevronRight: ChevronRight
+    chevronRight: ChevronRight,
   };
   const IconComponent = icons[name];
   if (!IconComponent) return null;
@@ -26,43 +38,43 @@ const statsCards = [
     value: "5",
     iconColor: "text-brand-black2",
     textColor: "text-brand-black1",
-    iconName: "fileText"
+    iconName: "fileText",
   },
   {
     label: "Verified",
     value: "0",
     iconColor: "text-green-500",
     textColor: "text-brand-cyan1",
-    iconName: "shieldCheck"
+    iconName: "shieldCheck",
   },
   {
     label: "Processing",
     value: "1",
     iconColor: "text-brand-cyan1",
     textColor: "text-brand-cyan1",
-    iconName: "clock"
+    iconName: "clock",
   },
   {
     label: "Review Needed",
     value: "1",
     iconColor: "text-brand-amber1",
     textColor: "text-brand-amber1",
-    iconName: "alertCircle"
+    iconName: "alertCircle",
   },
   {
     label: "Avg Time",
     value: "8 minutes",
     iconColor: "text-brand-cyan1",
     textColor: "text-brand-cyan1",
-    iconName: "zap"
-  }
+    iconName: "zap",
+  },
 ];
 
 const verifiedCredentials = [
   { title: "RN License", source: "AI System", duration: "2 min" },
   { title: "PALS Certification", source: "AI System", duration: "2 min" },
   { title: "Background Check", source: "AI System", duration: "6 min" },
-  { title: "References", source: "AI System", duration: "3 min" }
+  { title: "References", source: "AI System", duration: "3 min" },
 ];
 
 const CredentialingQueue = () => {
@@ -110,11 +122,15 @@ const CredentialingQueue = () => {
             <div className="flex flex-row gap-2 sm:gap-3 w-full sm:w-auto">
               <Button
                 variant="outline"
+                onClick={() => toast(`View All is coming soon`)}
                 className="flex-1 sm:flex-none text-sm sm:text-base font-normal border py-2 sm:py-3 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
               >
                 View All
               </Button>
-              <Button className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3">
+              <Button
+                onClick={() => toast(`Expedite is coming soon`)}
+                className="flex-1 sm:flex-none bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3"
+              >
                 Expedite
               </Button>
             </div>

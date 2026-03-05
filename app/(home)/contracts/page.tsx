@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Calendar,  CircleCheckBig, DollarSign, Download , FileStack, FileText, MapPin, Send } from "lucide-react";
+import { toast } from "sonner";
 
 const ContractGeneration = () => {
   return (
@@ -17,7 +18,10 @@ const ContractGeneration = () => {
               Automated contract creation and management
             </p>
           </div>
-          <Button className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan2 w-full sm:w-auto">
+          <Button
+            onClick={() => toast(`Generate Bulk Contracts is coming soon`)}
+            className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan2 w-full sm:w-auto"
+          >
             <FileStack className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="ml-2">Generate Bulk Contracts</span>
           </Button>
@@ -252,6 +256,7 @@ const ContractGeneration = () => {
                 <div className="space-y-3">
                   <Button
                     variant="outline"
+                    onClick={() => toast(`Send for E-Signature is coming soon`)}
                     className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                   >
                     <Send className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -259,6 +264,7 @@ const ContractGeneration = () => {
                   </Button>
                   <Button
                     variant="outline"
+                    onClick={() => toast(`Download PDF is coming soon`)}
                     className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                   >
                     <Download className="w-4 h-4 sm:w-5 sm:h-5" />

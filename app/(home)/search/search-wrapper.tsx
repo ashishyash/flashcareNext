@@ -28,7 +28,6 @@ import { MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface NursesTableProps {
   readonly nurses: readonly Nurse[];
-  // readonly onCheckedNursesChange?: (nurses: Nurse[]) => void;
 }
 
 export function SearchWrapper({ nurses }: NursesTableProps) {
@@ -46,7 +45,6 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
 
   const filteredAndSortedNurses = useMemo(() => {
     let filtered = nurses.filter((nurse) => {
-      console.log(nurse);
       const availabilityMatch =
         filterAvailability === "all" ||
         nurse.availability_status === filterAvailability;
