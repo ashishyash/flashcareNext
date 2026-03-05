@@ -45,32 +45,36 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
   const [nurses, setNurses] = useState<Nurse[]>(nursesJson as any);
   const [metrics, setMetrics] = useState<Metric[]>(metricsJson as Metric[]);
   const [units, setUnits] = useState<Unit[]>(unitsJson as Unit[]);
-  const [activities, setActivities] = useState<Activity[]>(activitiesJson as Activity[]);
+  const [activities, setActivities] = useState<Activity[]>(
+    activitiesJson as Activity[]
+  );
 
   const deployNurses = (nurseIds: number[]) => {
-    const deployedNurses = nurses.filter(n => nurseIds.includes(n.id));
-    console.log('deployedNurses: ', deployedNurses);
+    const deployedNurses = nurses.filter((n) => nurseIds.includes(n.id));
+    console.log("deployedNurses: ", deployedNurses);
     const deployedCount = deployedNurses.length;
 
-    setNurses(prev => prev.map(n => 
-      nurseIds.includes(n.id) ? { ...n, deployed: true } : n
-    ));
+    setNurses((prev) =>
+      prev.map((n) => (nurseIds.includes(n.id) ? { ...n, deployed: true } : n))
+    );
 
-    setMetrics(prev => {
-      const updated = prev.map(m => {
+    setMetrics((prev) => {
+      const updated = prev.map((m) => {
         if (m.label === "Deployed") {
           const newValue = String(Number.parseInt(m.value) + deployedCount);
-          console.log('Updating Deployed from', m.value, 'to', newValue);
+          console.log("Updating Deployed from", m.value, "to", newValue);
           return { ...m, value: newValue };
         }
         if (m.label === "Nurses Needed") {
-          const newValue = String(Math.max(0, Number.parseInt(m.value) - deployedCount));
-          console.log('Updating Nurses Needed from', m.value, 'to', newValue);
+          const newValue = String(
+            Math.max(0, Number.parseInt(m.value) - deployedCount)
+          );
+          console.log("Updating Nurses Needed from", m.value, "to", newValue);
           return { ...m, value: newValue };
         }
         return m;
       });
-      console.log('Updated metrics:', updated);
+      console.log("Updated metrics:", updated);
       return updated;
     });
 
@@ -79,33 +83,47 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       return acc;
     }, {} as Record<string, number>);
 
-    setUnits(prev => prev.map(unit => {
-      const additionalNurses = nursesBySpecialty[unit.name] || 0;
-      if (additionalNurses > 0) {
-        const newCurrent = Math.min(unit.capacity, unit.current + additionalNurses);
-        const newNeeded = Math.max(0, unit.needed - additionalNurses);
-        
-        let status = "Critical";
-        let color = "text-red-600";
-        let bg = "bg-red-100";
-        let border = "border-red-300";
-        
-        if (newNeeded <= 2) {
-          status = "Stable";
-          color = "text-green-600";
-          bg = "bg-green-100";
-          border = "border-green-300";
-        } else if (newNeeded <= 5) {
-          status = "Warning";
-          color = "text-amber-600";
-          bg = "bg-amber-100";
-          border = "border-amber-300";
+    setUnits((prev) =>
+      prev.map((unit) => {
+        const additionalNurses = nursesBySpecialty[unit.name] || 0;
+        if (additionalNurses > 0) {
+          const newCurrent = Math.min(
+            unit.capacity,
+            unit.current + additionalNurses
+          );
+          const newNeeded = Math.max(0, unit.needed - additionalNurses);
+
+          let status = "Critical";
+          let color = "text-red-600";
+          let bg = "bg-red-100";
+          let border = "border-red-300";
+
+          if (newNeeded <= 2) {
+            status = "Stable";
+            color = "text-green-600";
+            bg = "bg-green-100";
+            border = "border-green-300";
+          } else if (newNeeded <= 5) {
+            status = "Warning";
+            color = "text-amber-600";
+            bg = "bg-amber-100";
+            border = "border-amber-300";
+          }
+
+          return {
+            ...unit,
+            current: newCurrent,
+            needed: newNeeded,
+            staffed: newCurrent,
+            status,
+            color,
+            bg,
+            border,
+          };
         }
-        
-        return { ...unit, current: newCurrent, needed: newNeeded, staffed: newCurrent, status, color, bg, border };
-      }
-      return unit;
-    }));
+        return unit;
+      })
+    );
 
     const time = new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",
@@ -114,17 +132,21 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     const newActivity = {
       id: activities.length + 1,
       time,
-      text: `${deployedCount} ${deployedNurses[0]?.specialty} nurse${deployedCount > 1 ? "s" : ""} deployed to Memorial Hospital`,
+      text: `${deployedCount} ${deployedNurses[0]?.specialty} nurse${
+        deployedCount > 1 ? "s" : ""
+      } deployed to Memorial Hospital`,
       color: "",
       status: "",
       bg: "",
-      bg2: "bg-green-600"
+      bg2: "bg-green-600",
     };
-    setActivities(prev => [newActivity, ...prev]);
+    setActivities((prev) => [newActivity, ...prev]);
   };
 
   return (
-    <AppDataContext.Provider value={{ nurses, metrics, units, activities, deployNurses }}>
+    <AppDataContext.Provider
+      value={{ nurses, metrics, units, activities, deployNurses }}
+    >
       {children}
     </AppDataContext.Provider>
   );
