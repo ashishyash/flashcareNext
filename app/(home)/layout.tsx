@@ -90,6 +90,19 @@ const DashoardLayout = ({ children }: { children: React.ReactNode }) => {
                       </DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
+                    {/* <DropdownMenuGroup>
+                      <DropdownMenuItem
+                        onClick={() => {
+                          if (window) {
+                            window?.location?.reload();
+                          }
+                        }}
+                        className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white"
+                      >
+                        Reset
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                    <DropdownMenuSeparator /> */}
                     <DropdownMenuItem
                       className="data-[highlighted]:bg-brand-cyan1 data-[highlighted]:text-white cursor-pointer"
                       asChild
