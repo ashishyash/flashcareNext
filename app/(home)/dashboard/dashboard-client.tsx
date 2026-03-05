@@ -118,9 +118,7 @@ export default function DashboardClient(): JSX.Element {
   const totalNurseNeeded = Number(metrics[0]?.value) || 0;
   const fulfillmentPercentage =
     totalNurseNeeded > 0
-      ? Math.floor(
-          (fulfillmentCount / (totalNurseNeeded + fulfillmentCount)) * 100,
-        )
+      ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
       : 0;
   return (
     <div className="min-h-screen bg-gray-50">
