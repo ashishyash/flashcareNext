@@ -60,9 +60,9 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
 
     setMetrics((prev) => {
       const updated = prev.map((m) => {
-        if (m.label === "Deployed") {
+        if (m.label === "In Process") {
           const newValue = String(Number.parseInt(m.value) + deployedCount);
-          console.log("Updating Deployed from", m.value, "to", newValue);
+          console.log("Updating In Process from", m.value, "to", newValue);
           return { ...m, value: newValue };
         }
         if (m.label === "Nurses Needed") {

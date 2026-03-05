@@ -20,21 +20,16 @@ import { useAppData } from "@/contexts/AppDataContext";
     
     const location = searchParams.get('location') || '100';
     const specialization = searchParams.get('specialization') || 'icu';
-    const experience = searchParams.get('experience') || '5+';
-    const availability = searchParams.get('availability') || 'immediate';
-    
-    const locationMiles = Number.parseInt(location);
-    const experienceYears = Number.parseInt(experience);
+    const experience = searchParams.get('experience') || 'all';
+    const availability = searchParams.get('availability') || 'all';
     
     return nursesData.filter((nurse) => {
       if (nurse.deployed) return false;
       
-      const matchesLocation = nurse.distance_miles <= locationMiles;
-      const matchesSpecialization = nurse.specialty.toLowerCase() === specialization.toLowerCase();
-      const matchesExperience = nurse.experience_years >= experienceYears;
-      const matchesAvailability = availability === 'immediate' 
-        ? nurse.availability_status === 'Available' 
-        : true;
+      const matchesLocation = location === 'all' || nurse.distance_miles <= Number.parseInt(location);
+      const matchesSpecialization = specialization === 'all' || nurse.specialty.toLowerCase() === specialization.toLowerCase();
+      const matchesExperience = experience === 'all' || nurse.experience_years >= Number.parseInt(experience);
+      const matchesAvailability = availability === 'all' || nurse.availability_status === availability;
       
       return matchesLocation && matchesSpecialization && matchesExperience && matchesAvailability;
     });

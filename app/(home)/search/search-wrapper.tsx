@@ -163,18 +163,6 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
     handleSelectAll(checkedIds.size !== filteredAndSortedNurses.length);
   };
 
-  //   const exportCheckedData = () => {
-  //     const dataStr = JSON.stringify(checkedNurses, null, 2);
-  //     const dataBlob = new Blob([dataStr], { type: "application/json" });
-  //     const url = URL.createObjectURL(dataBlob);
-  //     const link = document.createElement("a");
-  //     link.href = url;
-  //     link.download = `checked-nurses-${new Date().toISOString().split("T")[0]}.json`;
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //     URL.revokeObjectURL(url);
-  //   };
 
   const handleDeploy = (nurse: Nurse) => {
     setDeployingNurses([nurse]);
@@ -197,10 +185,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
     setIsDialogOpen(true);
   };
 
-  // Call the callback when checked nurses change
-  //   if (onCheckedNursesChange) {
-  //     // onCheckedNursesChange(checkedNurses);
-  //   }
+
 
   return (
     <div className="w-full space-y-4 p-4 md:p-6">
@@ -229,14 +214,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       {/* Search Filters */}
       <SearchClient filteredNursesCount={filteredAndSortedNurses?.length} />
 
-      {/* <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-        <p className="text-sm text-slate-700">
-          Selected: <strong>{checkedNurses.length}</strong> of{" "}
-          <strong>{filteredAndSortedNurses.length}</strong> nurses
-        </p>
-      </div> */}
-
-      {/* Table */}
+     {/* Table */}
       <div className="rounded-lg border overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
@@ -321,14 +299,16 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                   <TableCell>
                     <Badge
                       variant={
-                        nurse.availability_status === "Available"
+                        nurse.availability_status === "Immediate"
                           ? "default"
                           : "secondary"
                       }
                       className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
-                        nurse.availability_status === "Available"
+                        nurse.availability_status === "Immediate"
                           ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
-                          : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
+                          : nurse.availability_status === "24Hrs"
+                            ? "bg-blue-100 text-blue-800 hover:bg-hidden hover:text-blue-800"
+                            : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
                       }`}
                     >
                       {nurse.availability_status}

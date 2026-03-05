@@ -298,17 +298,7 @@ export default function DashboardClient(): JSX.Element {
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
                         {activity.text}
                       </div>
-                      {/* <div
-                        className={`text-[10px] sm:text-xs font-normal  ${
-                          activity.color
-                            ? activity.color
-                            : "bg-green-100 text-green-600"
-                        } ${
-                          activity.bg
-                        } rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
-                      >
-                        {activity.status || "Stable"}
-                      </div> */}
+                     
                     </div>
                   </div>
                   <div className="text-[10px] sm:text-xs font-normal text-brand-black2 mb-1 pl-6 sm:pl-9">

@@ -18,21 +18,16 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { showFilter, setShowFilter } = useSidebar();
-  const [isOpen, setIsOpen] = useState(showFilter);
+  const [isOpen, setIsOpen] = useState(true);
 
   const [filters, setFilters] = useState({
     location: searchParams.get("location") || "100",
     specialization: searchParams.get("specialization") || "icu",
-    experience: searchParams.get("experience") || "5+",
-    availability: searchParams.get("availability") || "immediate",
+    experience: searchParams.get("experience") || "all",
+    availability: searchParams.get("availability") || "all",
   });
 
   console.log("filters", searchFilters.specialization, filters);
-
-  // useEffect(() => {
-  //   const params = new URLSearchParams(filters);
-  //   router.replace(`/search?${params.toString()}`);
-  // }, []);
 
   const handleSubmit = () => {
     const params = new URLSearchParams(filters);
@@ -73,8 +68,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
       </div>
 
       {isOpen && (
-        <>
-          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]  gap-4">
+        <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]  gap-4">
             <div>
               <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Location
@@ -204,7 +198,6 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
               </Button>
             </div>
           </div>
-        </>
       )}
     </div>
   );
