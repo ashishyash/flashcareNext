@@ -341,7 +341,7 @@ export default function DashboardClient(): JSX.Element {
                           {action.label}
                         </div>
                       </div>
-                      <div className="text-xs sm:text-sm font-normal leading-tight text-brand-black1 mb-2">
+                      <div className="text-xs sm:text-sm font-normal leading-tight text-brand-black1 mb-2 min-h-[50px]">
                         {action.description}
                       </div>
                       <Button
