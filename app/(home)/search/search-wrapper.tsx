@@ -45,7 +45,6 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
 
   const filteredAndSortedNurses = useMemo(() => {
     let filtered = nurses.filter((nurse) => {
-      console.log(nurse);
       const availabilityMatch =
         filterAvailability === "all" ||
         nurse.availability_status === filterAvailability;
