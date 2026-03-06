@@ -66,7 +66,7 @@ import { useAppData } from "@/contexts/AppDataContext";
   const loadingMessages = [
     "Searching 2,847 registered nurses...",
     "Analyzing qualifications...",
-    "AI matching profiles to requirements...",
+    "Finding matching profiles using AI...",
     "Calculating match scores...",
     `Found ${filteredNurses?.length} qualified nurses`
   ];

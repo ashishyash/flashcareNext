@@ -196,7 +196,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
       >
         <div>
           <h1 className="text-2xl sm:text-[32px] font-normal text-brand-black1">
-            Nurse Search & AI Matching
+            Find Nurse & AI Matching
           </h1>
           <p className="text-sm sm:text-base font-normal mt-1 text-brand-black2">
             Find and deploy qualified nurses with intelligent matching
@@ -306,7 +306,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
                       className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
                         nurse.availability_status === "Immediate"
                           ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
-                          : nurse.availability_status === "24Hrs"
+                          : nurse.availability_status === "24 Hrs"
                             ? "bg-blue-100 text-blue-800 hover:bg-hidden hover:text-blue-800"
                             : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
                       }`}

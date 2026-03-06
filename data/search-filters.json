@@ -22,7 +22,7 @@
   "availability": [
     { "value": "all", "label": "All" },
     { "value": "Immediate", "label": "Immediate" },
-    { "value": "24Hrs", "label": "24 Hours" },
-    { "value": "48Hrs", "label": "48 Hours" }
+    { "value": "24 Hrs", "label": "24 Hours" },
+    { "value": "48 Hrs", "label": "48 Hours" }
   ]
 }

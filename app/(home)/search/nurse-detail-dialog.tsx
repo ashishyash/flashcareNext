@@ -101,9 +101,9 @@ export function NurseDetailDialog({
       icon: DollarSign,
     },
     {
-      label: "Match Score",
-      value: `${nurse.match_score}%`,
-      icon: CheckCircle2,
+      label: "Location",
+      value: `${nurse.location}`,
+      icon: MapPin,
     },
     {
       label: "Certifications",
@@ -142,8 +142,7 @@ export function NurseDetailDialog({
                   </p>
                   <div className="flex items-center gap-4 text-base text-brand-black2 mt-2">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      {nurse.location} ({nurse.distance_miles} Miles)
+                      Match Score : {nurse.match_score}
                     </span>
                     <span className="flex items-center gap-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -157,7 +156,7 @@ export function NurseDetailDialog({
                     </span>
                   </div>
                   <div className="flex gap-2  flex-wrap text-brand-black2 text-lg">
-                    Availability - {nurse.availability_status || "Immediate"}
+                    Availability : {nurse.availability_status || "Immediate"}
                   </div>
                 </div>
               </div>
@@ -171,14 +170,14 @@ export function NurseDetailDialog({
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={ () => toast("Shortlist feature coming soon!") }
+                  onClick={() => toast("Shortlist feature coming soon!")}
                   className="text-base font-normal border py-5 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                 >
                   Add to Shortlist
                 </Button>
                 <Button
                   variant="outline"
-                  onClick={ () => toast("Contact feature coming soon!") }
+                  onClick={() => toast("Contact feature coming soon!")}
                   className="text-base font-normal border py-5 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                 >
                   Contact Nurse

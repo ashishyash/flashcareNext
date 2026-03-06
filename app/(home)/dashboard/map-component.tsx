@@ -50,7 +50,7 @@ export default function MapComponent({ center, nurses }: MapComponentProps) {
           <div className="text-center">
             <strong className="text-base">Memorial Hospital</strong>
             <br />
-            <span className="text-sm">955 Powell Ave SW</span>
+            <span className="text-sm">Powell Ave SW</span>
             <br />
             <span className="text-sm">Renton, WA 98057</span>
           </div>

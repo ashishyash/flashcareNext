@@ -11,7 +11,7 @@ interface DeploymentMapDialogProps {
   readonly onOpenChange: (open: boolean) => void;
 }
 
-const RENTON_CENTER = [47.4829, -122.2171] as [number, number];
+const RENTON_CENTER = [47.4829, -122.2171] as [number, number]; // Powell Ave SW, Renton, WA
 
 const MapComponent = dynamic(
   () => import("./map-component"),

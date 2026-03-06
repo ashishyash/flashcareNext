@@ -163,12 +163,12 @@ export default function DashboardClient(): JSX.Element {
                   Memorial Hospital
                 </div>
                 <div className="text-xs sm:text-sm opacity-90">
-                  955 Powell Ave SW, Renton, WA 98057
+                  Powell Ave SW, Renton, WA 98057
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-2 sm:mt-3">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-0.25 sm:gap-1 text-sm mt-2 sm:mt-3">
                   <span className="flex items-center text-base sm:text-xl">
-                    Started {state.elapsedTime}
+                    Started {state.elapsedTime} -
                   </span>
                   <span className="flex items-center text-base sm:text-xl">
                     {`172 Nurses Needed`}
@@ -216,12 +216,12 @@ export default function DashboardClient(): JSX.Element {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
           <Card className="border border-sidebar-border overflow-hidden">
-            <CardHeader className="border-b border-b-sidebar-border py-3">
+            <CardHeader className="border-b border-b-sidebar-border py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Unit Status Overview
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent className="p-0 px-2">
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
@@ -277,7 +277,7 @@ export default function DashboardClient(): JSX.Element {
           </Card>
 
           <Card className="border border-sidebar-border">
-            <CardHeader className="py-3">
+            <CardHeader className="py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Recent Activity
               </CardTitle>
