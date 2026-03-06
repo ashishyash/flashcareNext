@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { MapPin, Package, Home, Activity } from "lucide-react";
+import { MapPin, Package, Home, Activity, AlertTriangle } from "lucide-react";
 
 // Deployments Data
 const deploymentsData = [
@@ -118,11 +118,19 @@ const statsCardsData = [
   },
   {
     id: "ready-deployed",
-    title: "Ready to Deployed",
+    title: "Ready to Deploy",
     count: 17,
     progress: 100,
     iconName: "package",
     iconColor: "text-orange-500",
+  },
+  {
+    id: "bottlenecks",
+    title: "Bottlenecks",
+    count: 2,
+    progress: 10,
+    iconName: "alert",
+    iconColor: "text-red-600",
   },
 ];
 
@@ -132,6 +140,7 @@ const Icon = ({ name, className }: { name: string; className?: string }) => {
     activity: Activity,
     home: Home,
     package: Package,
+    alert: AlertTriangle,
   };
   const IconComponent = icons[name];
   if (!IconComponent) return null;
@@ -151,7 +160,7 @@ const DeploymentPipeline = () => {
         </p>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
           {statsCardsData.map((card) => (
             <Card
               key={card.id}
@@ -169,11 +178,15 @@ const DeploymentPipeline = () => {
                   <span className="text-3xl md:text-3xl font-normal text-brand-black1">
                     {card.count}
                   </span>
-                  <span className="text-gray-600 text-sm">
-                    {card.progress}% Completed
-                  </span>
+                  {card.progress > 0 && (
+                    <span className="text-gray-600 text-sm">
+                      {card.progress}% Completed
+                    </span>
+                  )}
                 </div>
-                <Progress value={card.progress} className="bg-gray-200" />
+                {card.progress > 0 && (
+                  <Progress value={card.progress} className="bg-gray-200" />
+                )}
               </CardContent>
             </Card>
           ))}
