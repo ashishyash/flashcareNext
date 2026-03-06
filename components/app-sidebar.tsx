@@ -73,11 +73,11 @@ export function AppSidebar() {
               </span>
             </div>
             <h3 className=" text-[32px] text-white font-bold group-data-[collapsible=icon]:hidden">
-              FLASHCARE
+              FlashCareAI
             </h3>
           </div>
         </div>
-        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-white">
+        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-white tracking-[1.7px]">
           Hospital Crisis Management
         </p>
       </SidebarHeader>
