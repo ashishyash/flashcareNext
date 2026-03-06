@@ -19,6 +19,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useAppData } from "@/contexts/AppDataContext";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface DeploymentDialogProps {
   readonly nurses: readonly Nurse[];
@@ -37,6 +39,7 @@ export function DeploymentDialog({
   open,
   onOpenChange,
 }: DeploymentDialogProps) {
+  const router = useRouter();
   const { deployNurses } = useAppData();
   const [steps, setSteps] = useState<DeploymentStep[]>([
     { label: "Generate contracts", status: "complete" },
@@ -81,7 +84,8 @@ export function DeploymentDialog({
 
             if (
               progressIndex + 1 < updated.length &&
-              updated[progressIndex + 1].status === "pending"
+              updated[progressIndex + 1].status === "pending" &&
+              progressIndex + 1 < 4
             ) {
               updated[progressIndex + 1].status = "progress";
               updated[progressIndex + 1].progress = 0;
@@ -97,8 +101,8 @@ export function DeploymentDialog({
   }, [open]);
 
   useEffect(() => {
-    const allComplete = steps.every((s) => s.status === "complete");
-    if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
+    const firstFourComplete = steps.slice(0, 4).every((s) => s.status === "complete");
+    if (firstFourComplete && !isComplete && !hasUpdatedRef.current && open) {
       hasUpdatedRef.current = true;
       setTimeout(() => {
         setIsComplete(true);
@@ -124,7 +128,7 @@ export function DeploymentDialog({
           <DialogHeader className="border-b  border-sidebar-border">
             {isComplete && (
               <DialogTitle className="text-2xl pb-2 font-normal text-brand-black1">
-                Deployment Confirmation
+                 Deployment Initiation & Progress
               </DialogTitle>
             )}
           </DialogHeader>
@@ -239,8 +243,10 @@ export function DeploymentDialog({
                   <Check className="w-5 h-5 " />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">
-                    {`${nurses.length} Nurses deployed successfully to Memorial Hospital ICU`}
+                  <h3 className="text-2xl font-bold justify-between flex gap-4">
+                    {/* {`${nurses.length} Nurses deployed successfully to Memorial Hospital ICU`} */}
+                    <p className="text-lg">Estimated deployment : 18 hours</p>
+                    <p className="inline text-lg">Target : Nurses on-site by 8 AM tomorrow</p>
                   </h3>
                 </div>
               </div>
@@ -292,6 +298,49 @@ export function DeploymentDialog({
                 </Table>
               </div>
             </div>
+            {/* Next Steps */}
+            <div className="bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-lg p-6 border border-cyan-200">
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-brand-black2">
+                  Next Steps :-
+                </h3>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-brand-black2">
+                    Automated emails sent to nurses
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-brand-black2">
+                    Workday profiles being created
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-brand-black2">
+                    Housing arrangements in progress
+                  </span>
+                </div>
+              </div>
+            </div>
+            {/* next step buttons */}
+            <div className="flex justify-end gap-3">
+              <Button
+                variant="outline"
+                onClick={() => router.push("/dashboard")}
+                className="text-sm sm:text-base font-normal border py-2 sm:py-3 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
+              >
+                Go to Dashboard
+              </Button>
+              <Button
+                onClick={() => onOpenChange(false)}
+                className="bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3"
+              >
+                Close
+              </Button>
+            </div>
+            
           </div>
         )}
       </DialogContent>
