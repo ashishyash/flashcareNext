@@ -106,11 +106,11 @@ export function NurseDetailDialog({
       icon: CheckCircle2,
     },
     {
-      label: "Availability",
-      value: nurse.availability_status || "Immediate",
-      icon: Clock,
+      label: "Certifications",
+      value: nurse.certifications.join(", "),
+      icon: CheckCircle2,
     },
-    { label: "Completed", value: 47, icon: CheckCircle2 },
+    // { label: "Completed", value: 47, icon: CheckCircle2 },
   ];
 
   return (
@@ -156,16 +156,8 @@ export function NurseDetailDialog({
                       </span>
                     </span>
                   </div>
-                  <div className="flex gap-2 mt-3 flex-wrap">
-                    {nurse.certifications &&
-                      nurse.certifications.map((c) => (
-                        <Badge
-                          key={c}
-                          className="bg-brand-green1 text-brand-cyan1 px-3 py-1 text-sm font-normal rounded-full shadow-none hover:bg-hidden hover:text-brand-green5"
-                        >
-                          {c}
-                        </Badge>
-                      ))}
+                  <div className="flex gap-2  flex-wrap text-brand-black2 text-lg">
+                    Availability - {nurse.availability_status || "Immediate"}
                   </div>
                 </div>
               </div>
@@ -175,7 +167,7 @@ export function NurseDetailDialog({
                   onClick={() => onDeploy(nurse)}
                   className="text-base font-normal border py-5 rounded-lg  text-white hover:bg-brand-cyan1 hover:text-white"
                 >
-                  Deploy Nurse
+                  Deploy Now
                 </Button>
                 <Button
                   variant="outline"
@@ -227,7 +219,7 @@ export function NurseDetailDialog({
         </Card>
 
         {/* Skills & Metrics side-by-side */}
-        <div className="grid grid-cols-2 gap-6">
+        {/* <div className="grid grid-cols-2 gap-6">
           <Card className="border-sidebar-border">
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center gap-2 text-xl text-brand-black1 font-normal">
@@ -277,7 +269,7 @@ export function NurseDetailDialog({
               ))}
             </CardContent>
           </Card>
-        </div>
+        </div> */}
       </DialogContent>
     </Dialog>
   );
