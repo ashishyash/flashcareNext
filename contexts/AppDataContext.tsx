@@ -73,10 +73,31 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       day: "numeric",
     });
 
+    const credTimeGeneral = new Date(now.getTime() - 95 * 60 * 1000);
+    const credTimeStrGeneral = credTimeGeneral.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStrGeneral = credTimeGeneral.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    const credTimeMaternity = new Date(now.getTime() - 89 * 60 * 1000);
+    const credTimeStrMaternity = credTimeMaternity.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStrMaternity = credTimeMaternity.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
     return [
       {
         id: 1,
-        time: `${credDateStr}, ${credTimeStr}`,
+        time: `${credDateStrMaternity}, ${credTimeStrMaternity}`,
         text: "16 Maternity nurses deployed to Memorial Hospital",
         color: "text-amber-600",
         bg2: "bg-green-600",
@@ -85,7 +106,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       },
       {
         id: 2,
-        time: `${credDateStr}, ${credTimeStr}`,
+        time: `${credDateStrGeneral}, ${credTimeStrGeneral}`,
         text: "16 General Ward nurses deployed to Memorial Hospital",
         color: "text-amber-600",
         bg2: "bg-green-600",
