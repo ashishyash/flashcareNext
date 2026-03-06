@@ -118,10 +118,10 @@ export default function DashboardClient(): JSX.Element {
 
   const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
   const totalNurseNeeded = Number(metrics[0]?.value) || 0;
-  const fulfillmentPercentage =
-    totalNurseNeeded > 0
-      ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
-      : 0;
+  const fulfillmentPercentage = 30;
+  // totalNurseNeeded > 0
+  //   ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
+  //   : 0;
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6">
