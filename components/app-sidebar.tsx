@@ -26,7 +26,7 @@ const items = [
     icon: Home,
   },
   {
-    title: "Search Nurse",
+    title: "Find Nurse",
     url: "/search",
     icon: Search,
   },
@@ -50,7 +50,7 @@ const items = [
     url: "/analytics",
     icon: BarChart3,
   },
-]
+];
 
 export function AppSidebar() {
   const pathname = usePathname()
