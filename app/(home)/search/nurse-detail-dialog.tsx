@@ -141,7 +141,7 @@ export function NurseDetailDialog({
                     {nurse.specialty}
                   </p>
                   <div className="flex items-center gap-4 text-base text-brand-black2 mt-2">
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 text-brand-black2 text-lg">
                       Match Score : {nurse.match_score}%
                     </span>
                     <span className="flex items-center gap-1">
