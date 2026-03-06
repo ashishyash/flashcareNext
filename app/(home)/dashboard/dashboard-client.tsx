@@ -155,19 +155,22 @@ export default function DashboardClient(): JSX.Element {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div className="flex items-start">
               <div>
-                <h2 className="flex items-center text-base sm:text-xl font-normal">
+                <h2 className="flex items-center text-base sm:text-xl font-semibold mb-2">
                   <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
-                  <span className="hidden sm:inline">
-                    ACTIVE STRIKE: Memorial Hospital
-                  </span>
-                  <span className="sm:hidden">ACTIVE STRIKE</span>
+                  ACTIVE STRIKE
                 </h2>
+                <div className="text-lg sm:text-2xl font-bold mb-1">
+                  Memorial Hospital
+                </div>
+                <div className="text-xs sm:text-sm opacity-90">
+                  955 Powell Ave SW, Renton, WA 98057
+                </div>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-1 sm:mt-2">
-                  <span className="flex items-center text-lg sm:text-3xl">
-                    Started {state.elapsedTime} -
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-2 sm:mt-3">
+                  <span className="flex items-center text-base sm:text-xl">
+                    Started {state.elapsedTime}
                   </span>
-                  <span className="flex items-center text-lg sm:text-3xl">
+                  <span className="flex items-center text-base sm:text-xl">
                     {`${metrics[0]?.value || 0} Nurses Needed`}
                   </span>
                 </div>
