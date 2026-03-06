@@ -16,7 +16,6 @@ import {
   Star,
   Calendar,
   DollarSign,
-  Clock,
   CheckCircle2,
   TrendingUp,
   Award,

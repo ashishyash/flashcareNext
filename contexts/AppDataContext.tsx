@@ -4,16 +4,15 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import nursesJson from "@/data/nurses.json";
 import metricsJson from "@/data/metrics.json";
 import unitsJson from "@/data/units.json";
-import activitiesJson from "@/data/activities.json";
 import { Nurse } from "@/app/(home)/search/search.constant";
- 
+
 interface Metric {
   id: number;
   label: string;
   value: string;
   [key: string]: any;
 }
- 
+
 interface Unit {
   id: number;
   name: string;
@@ -23,7 +22,7 @@ interface Unit {
   staffed: number;
   [key: string]: any;
 }
- 
+
 interface Activity {
   id: number;
   time: string;
@@ -143,13 +142,13 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       return updated;
     });
 
-    const nursesBySpecialty = deployedNurses.reduce(
-      (acc, nurse) => {
-        acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
+    // const nursesBySpecialty = deployedNurses.reduce(
+    //   (acc, nurse) => {
+    //     acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
+    //     return acc;
+    //   },
+    //   {} as Record<string, number>,
+    // );
 
     // setUnits((prev) =>
     //   prev.map((unit) => {
