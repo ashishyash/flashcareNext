@@ -73,9 +73,9 @@ const ContractGeneration = () => {
                     <p className="text-sm font-normal">Feb 11, 2026</p>
                   </div>
                   <div>
-                    <p className="text-sm">Duration</p>
+                    <p className="text-sm">Duration : 1 Week</p>
                     <p className="text-sm font-normal">
-                      Duration of strike - Starts Tomorrow 7 AM
+                      Starts Date : Tomorrow 7 AM
                     </p>
                   </div>
                 </div>

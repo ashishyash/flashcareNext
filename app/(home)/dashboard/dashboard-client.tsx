@@ -216,12 +216,12 @@ export default function DashboardClient(): JSX.Element {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
           <Card className="border border-sidebar-border overflow-hidden">
-            <CardHeader className="border-b border-b-sidebar-border py-3">
+            <CardHeader className="border-b border-b-sidebar-border py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Unit Status Overview
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent className="p-0 px-2">
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
