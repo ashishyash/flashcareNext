@@ -163,7 +163,7 @@ export default function DashboardClient(): JSX.Element {
                   Memorial Hospital
                 </div>
                 <div className="text-xs sm:text-sm opacity-90">
-                  955 Powell Ave SW, Renton, WA 98057
+                  Powell Ave SW, Renton, WA 98057
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-2 sm:mt-3">
