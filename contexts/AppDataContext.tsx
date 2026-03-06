@@ -44,12 +44,12 @@ const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
 export function AppDataProvider({ children }: { children: ReactNode }) {
   const [nurses, setNurses] = useState<Nurse[]>(nursesJson as any);
   const [metrics, setMetrics] = useState<Metric[]>(metricsJson as Metric[]);
-  const [units, setUnits] = useState<Unit[]>(unitsJson as Unit[]);
-  
+  const [units, _setUnits] = useState<Unit[]>(unitsJson as Unit[]);
+
   // Initialize activities with dynamic timestamps
   const [activities, setActivities] = useState<Activity[]>(() => {
     const now = new Date();
-    
+
     // Strike alert - 30 minutes ago
     const strikeTime = new Date(now.getTime() - 30 * 60 * 1000);
     const strikeTimeStr = strikeTime.toLocaleTimeString("en-US", {
@@ -61,7 +61,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       month: "long",
       day: "numeric",
     });
-    
+
     // Emergency credentials - 20 minutes ago
     const credTime = new Date(now.getTime() - 20 * 60 * 1000);
     const credTimeStr = credTime.toLocaleTimeString("en-US", {
@@ -73,11 +73,11 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       month: "long",
       day: "numeric",
     });
-    
+
     return [
       {
         id: 1,
-        time: `${credTimeStr} ${credDateStr}`,
+        time: `${credDateStr}, ${credTimeStr}`,
         text: "Emergency credentials completed for 12 nurses",
         color: "text-amber-600",
         bg2: "bg-amber-600",
@@ -86,7 +86,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       },
       {
         id: 2,
-        time: `${strikeTimeStr} ${strikeDateStr}`,
+        time: `${strikeDateStr}, ${strikeTimeStr}`,
         text: "Strike alert activated",
         color: "text-amber-600",
         bg2: "bg-amber-600",
@@ -102,7 +102,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     const deployedCount = deployedNurses.length;
 
     setNurses((prev) =>
-      prev.map((n) => (nurseIds.includes(n.id) ? { ...n, deployed: true } : n))
+      prev.map((n) => (nurseIds.includes(n.id) ? { ...n, deployed: true } : n)),
     );
 
     setMetrics((prev) => {
@@ -114,7 +114,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
         }
         if (m.label === "Nurses Needed") {
           const newValue = String(
-            Math.max(0, Number.parseInt(m.value) - deployedCount)
+            Math.max(0, Number.parseInt(m.value) - deployedCount),
           );
           console.log("Updating Nurses Needed from", m.value, "to", newValue);
           return { ...m, value: newValue };
@@ -133,47 +133,47 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       {} as Record<string, number>,
     );
 
-    setUnits((prev) =>
-      prev.map((unit) => {
-        const additionalNurses = nursesBySpecialty[unit.name] || 0;
-        if (additionalNurses > 0) {
-          const newCurrent = Math.min(
-            unit.capacity,
-            unit.current + additionalNurses,
-          );
-          const newNeeded = Math.max(0, unit.needed - additionalNurses);
+    // setUnits((prev) =>
+    //   prev.map((unit) => {
+    //     const additionalNurses = nursesBySpecialty[unit.name] || 0;
+    //     if (additionalNurses > 0) {
+    //       const newCurrent = Math.min(
+    //         unit.capacity,
+    //         unit.current + additionalNurses,
+    //       );
+    //       const newNeeded = Math.max(0, unit.needed - additionalNurses);
 
-          let status = "Critical";
-          let color = "text-red-600";
-          let bg = "bg-red-100";
-          let border = "border-red-300";
+    //       let status = "Critical";
+    //       let color = "text-red-600";
+    //       let bg = "bg-red-100";
+    //       let border = "border-red-300";
 
-          if (newNeeded <= 2) {
-            status = "Stable";
-            color = "text-green-600";
-            bg = "bg-green-100";
-            border = "border-green-300";
-          } else if (newNeeded <= 5) {
-            status = "Warning";
-            color = "text-amber-600";
-            bg = "bg-amber-100";
-            border = "border-amber-300";
-          }
+    //       if (newNeeded <= 2) {
+    //         status = "Stable";
+    //         color = "text-green-600";
+    //         bg = "bg-green-100";
+    //         border = "border-green-300";
+    //       } else if (newNeeded <= 5) {
+    //         status = "Warning";
+    //         color = "text-amber-600";
+    //         bg = "bg-amber-100";
+    //         border = "border-amber-300";
+    //       }
 
-          return {
-            ...unit,
-            current: newCurrent,
-            needed: newNeeded,
-            staffed: newCurrent,
-            status,
-            color,
-            bg,
-            border,
-          };
-        }
-        return unit;
-      }),
-    );
+    //       return {
+    //         ...unit,
+    //         // current: newCurrent,
+    //         // needed: newNeeded,
+    //         // staffed: newCurrent,
+    //         status,
+    //         color,
+    //         bg,
+    //         border,
+    //       };
+    //     }
+    //     return unit;
+    //   }),
+    // );
 
     const now = new Date();
     const time = now.toLocaleTimeString("en-US", {
@@ -185,8 +185,8 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       month: "long",
       day: "numeric",
     });
-    const dateTime = `${time} ${date}`;
-    
+    const dateTime = `${date}, ${time}`;
+
     const newActivity = {
       id: activities.length + 1,
       time: dateTime,
