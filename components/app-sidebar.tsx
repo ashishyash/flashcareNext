@@ -77,7 +77,7 @@ export function AppSidebar() {
             </h3>
           </div>
         </div>
-        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-white tracking-[1.7px]">
+        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-white tracking-[1.4px]">
           Hospital Crisis Management
         </p>
       </SidebarHeader>

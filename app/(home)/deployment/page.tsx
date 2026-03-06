@@ -91,7 +91,7 @@ const deploymentsData = [
     location: "Houston, TX",
     startDate: "Feb 11, 2026",
     endDate: "Mar 8, 2026",
-    timeToDeploy: "3 days to deploy",
+    timeToDeploy: "2 days to deploy",
     progress: 25,
     iconName: "home",
     iconColor: "text-brand-cyan1",
