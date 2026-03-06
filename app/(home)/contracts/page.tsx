@@ -39,8 +39,11 @@ const ContractGeneration = () => {
                   Contract Generated Successfully
                 </h3>
                 <p className="text-xs sm:text-sm text-brand-black2 font-normal">
-                  Auto-generated preview on Feb 11, 2026 • Contract ID:
-                  CON-2026-1847
+                  {`Auto-generated preview on ${new Date().toLocaleDateString(
+                    "en-US",
+                    { month: "short", day: "numeric", year: "numeric" },
+                  )} • Contract ID:
+                  CON-2026-1847`}
                 </p>
               </div>
             </div>
@@ -70,7 +73,13 @@ const ContractGeneration = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
                   <div>
                     <p className="text-sm">Generated Date</p>
-                    <p className="text-sm font-normal">Feb 11, 2026</p>
+                    <p className="text-sm font-normal">
+                      {new Date().toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </p>
                   </div>
                   <div>
                     <p className="text-sm">Duration : 1 Week</p>
@@ -112,7 +121,7 @@ const ContractGeneration = () => {
                     Memorial Hospital
                   </h3>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
-                    955 Powell Ave SW Renton, WA 98057
+                    Powell Ave SW Renton, WA 98057
                   </p>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
                     Contact: HR Department

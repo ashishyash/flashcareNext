@@ -166,12 +166,12 @@ export default function DashboardClient(): JSX.Element {
                   Powell Ave SW, Renton, WA 98057
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-2 sm:mt-3">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-0.25 sm:gap-1 text-sm mt-2 sm:mt-3">
                   <span className="flex items-center text-base sm:text-xl">
-                    Started {state.elapsedTime}
+                    Started {state.elapsedTime} -
                   </span>
                   <span className="flex items-center text-base sm:text-xl">
-                    {`132 Nurses Needed`}
+                    {`172 Nurses Needed`}
                   </span>
                 </div>
               </div>
