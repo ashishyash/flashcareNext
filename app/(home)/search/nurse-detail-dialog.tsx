@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
 import { Progress } from "@/components/ui/progress";
 import {
   Dialog,
@@ -171,12 +171,14 @@ export function NurseDetailDialog({
                 </Button>
                 <Button
                   variant="outline"
+                  onClick={ () => toast("Shortlist feature coming soon!") }
                   className="text-base font-normal border py-5 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                 >
                   Add to Shortlist
                 </Button>
                 <Button
                   variant="outline"
+                  onClick={ () => toast("Contact feature coming soon!") }
                   className="text-base font-normal border py-5 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                 >
                   Contact Nurse
