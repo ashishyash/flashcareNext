@@ -118,10 +118,10 @@ export default function DashboardClient(): JSX.Element {
 
   const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
   const totalNurseNeeded = Number(metrics[0]?.value) || 0;
-  const fulfillmentPercentage =
-    totalNurseNeeded > 0
-      ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
-      : 0;
+  const fulfillmentPercentage = 30;
+  // totalNurseNeeded > 0
+  //   ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
+  //   : 0;
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6">
@@ -144,7 +144,7 @@ export default function DashboardClient(): JSX.Element {
                 <Button className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto">
                   <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
                   <span className="sm:hidden">Find</span>
-                  <span className="hidden sm:inline">Search Nurse</span>
+                  <span className="hidden sm:inline">Find Nurse</span>
                 </Button>
               </Link>
             </div>
@@ -171,7 +171,7 @@ export default function DashboardClient(): JSX.Element {
                     Started {state.elapsedTime}
                   </span>
                   <span className="flex items-center text-base sm:text-xl">
-                    {`${metrics[0]?.value || 0} Nurses Needed`}
+                    {`172 Nurses Needed`}
                   </span>
                 </div>
               </div>
@@ -250,7 +250,7 @@ export default function DashboardClient(): JSX.Element {
                         key={index}
                       >
                         <TableCell className="text-xs sm:text-sm font-normal whitespace-nowrap">
-                          {unit.name}
+                          {`${unit.name} (${Math.floor((unit.current / unit.capacity) * 100)}%)`}
                         </TableCell>
                         <TableCell className="text-xs sm:text-sm font-normal whitespace-nowrap">
                           {unit.capacity}
@@ -303,7 +303,6 @@ export default function DashboardClient(): JSX.Element {
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
                         {activity.text}
                       </div>
-                     
                     </div>
                   </div>
                   <div className="text-[10px] sm:text-xs font-normal text-brand-black2 mb-1 pl-6 sm:pl-9">
@@ -360,7 +359,7 @@ export default function DashboardClient(): JSX.Element {
           </CardContent>
         </Card>
       </div>
-      
+
       <DeploymentMapDialog open={isMapOpen} onOpenChange={setIsMapOpen} />
     </div>
   );

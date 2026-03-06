@@ -42,12 +42,12 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4">
         <div className="flex items-center">
           <h3 className="text-lg font-normal text-brand-black1">
-            Search Results
+            Search Results : 
           </h3>
           {/* Results count */}
           <p
             data-testid="results-count"
-            className="ml-8 text-sm font-normal text-brand-black2"
+            className="ml-2 text-sm font-normal text-brand-black2"
           >
             {`Found ${filteredNursesCount} qualified nurses matching Memorial
             Hospital's needs`}

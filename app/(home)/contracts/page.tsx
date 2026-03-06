@@ -95,7 +95,7 @@ const ContractGeneration = () => {
                     Sarah Chen
                   </h3>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
-                    123 Main St, Los Angeles, CA 90001
+                    Bellevue, WA
                   </p>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
                     License: RN-CA-485692
@@ -112,7 +112,7 @@ const ContractGeneration = () => {
                     Memorial Hospital
                   </h3>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
-                    Houston, TX
+                    955 Powell Ave SW Renton, WA 98057
                   </p>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
                     Contact: HR Department

@@ -26,7 +26,7 @@ const items = [
     icon: Home,
   },
   {
-    title: "Search Nurse",
+    title: "Find Nurse",
     url: "/search",
     icon: Search,
   },
@@ -50,7 +50,7 @@ const items = [
     url: "/analytics",
     icon: BarChart3,
   },
-]
+];
 
 export function AppSidebar() {
   const pathname = usePathname()
@@ -72,13 +72,13 @@ export function AppSidebar() {
                 />
               </span>
             </div>
-            <h3 className=" text-2xl text-white group-data-[collapsible=icon]:hidden">
-              FlashCare AI
+            <h3 className=" text-[32px] text-white font-bold group-data-[collapsible=icon]:hidden">
+              FLASHCARE
             </h3>
           </div>
         </div>
         <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-green1">
-          Crisis Management Platform
+          Hospital Crisis Management
         </p>
       </SidebarHeader>
       <hr className="mt-2 border-brand-cyan1" />
@@ -89,20 +89,40 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={pathname === item.url} className={pathname === item.url ? "!bg-brand-cyan2 !text-brand-cyan2 font-normal" : ""}>
-                    <Link href={item.url} className="py-6 group-data-[collapsible=icon]:justify-center">
-                     <Tooltip>
-      <TooltipTrigger asChild>
-                      <item.icon className={pathname === item.url ? "!w-5 !h-5 " : "!w-5 !h-5"} />
-      </TooltipTrigger>
-      {}
-      {state === "collapsed" && (
-        <TooltipContent side="right" className="mx-2 group-data-[collapsible=icon]:hidden">
-          <p>{item.title}</p>
-        </TooltipContent>
-      )}
-    </Tooltip>
-                      <span className="text-base font-normal group-data-[collapsible=icon]:hidden">{item.title}</span>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={pathname === item.url}
+                    className={
+                      pathname === item.url
+                        ? "!bg-brand-cyan2 !text-brand-cyan2 font-normal"
+                        : ""
+                    }
+                  >
+                    <Link
+                      href={item.url}
+                      className="py-6 group-data-[collapsible=icon]:justify-center"
+                    >
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <item.icon
+                            className={
+                              pathname === item.url ? "!w-5 !h-5 " : "!w-5 !h-5"
+                            }
+                          />
+                        </TooltipTrigger>
+                        {}
+                        {state === "collapsed" && (
+                          <TooltipContent
+                            side="right"
+                            className="mx-2 group-data-[collapsible=icon]:hidden"
+                          >
+                            <p>{item.title}</p>
+                          </TooltipContent>
+                        )}
+                      </Tooltip>
+                      <span className="text-base font-normal group-data-[collapsible=icon]:hidden">
+                        {item.title}
+                      </span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -116,8 +136,8 @@ export function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton>
               <Link href="/" className="flex cursor-pointer">
-              <LogOut className="w-5 h-5 mr-2" />
-              <span>Sign Out</span>
+                <LogOut className="w-5 h-5 mr-2" />
+                <span>Sign Out</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
