@@ -101,9 +101,10 @@ export function NurseDetailDialog({
       icon: DollarSign,
     },
     {
-      label: "Match Score",
-      value: `${nurse.match_score}%`,
-      icon: CheckCircle2,
+      label: "Location",
+      value: `${nurse.location}%`,
+      icon:MapPin,
+
     },
     {
       label: "Certifications",
@@ -142,8 +143,7 @@ export function NurseDetailDialog({
                   </p>
                   <div className="flex items-center gap-4 text-base text-brand-black2 mt-2">
                     <span className="flex items-center gap-1">
-                      <MapPin className="w-4 h-4" />
-                      {nurse.location} ({nurse.distance_miles} Miles)
+                      Match Score : {nurse.match_score}
                     </span>
                     <span className="flex items-center gap-1">
                       <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
