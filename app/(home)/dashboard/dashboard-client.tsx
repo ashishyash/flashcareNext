@@ -16,6 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppData } from "@/contexts/AppDataContext";
 import quickActionsData from "@/data/quick-actions.json";
 import Link from "next/link";
+import { DeploymentMapDialog } from "./deployment-map-dialog";
 
 interface Metric {
   label: string;
@@ -81,6 +82,7 @@ export default function DashboardClient(): JSX.Element {
     countdown: 120,
     seconds: 0,
   });
+  const [isMapOpen, setIsMapOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -153,19 +155,22 @@ export default function DashboardClient(): JSX.Element {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div className="flex items-start">
               <div>
-                <h2 className="flex items-center text-base sm:text-xl font-normal">
+                <h2 className="flex items-center text-base sm:text-xl font-semibold mb-2">
                   <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
-                  <span className="hidden sm:inline">
-                    ACTIVE STRIKE: Memorial Hospital
-                  </span>
-                  <span className="sm:hidden">ACTIVE STRIKE</span>
+                  ACTIVE STRIKE
                 </h2>
+                <div className="text-lg sm:text-2xl font-bold mb-1">
+                  Memorial Hospital
+                </div>
+                <div className="text-xs sm:text-sm opacity-90">
+                  955 Powell Ave SW, Renton, WA 98057
+                </div>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-1 sm:mt-2">
-                  <span className="flex items-center text-lg sm:text-3xl">
-                    Started {state.elapsedTime} -
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-2 sm:mt-3">
+                  <span className="flex items-center text-base sm:text-xl">
+                    Started {state.elapsedTime}
                   </span>
-                  <span className="flex items-center text-lg sm:text-3xl">
+                  <span className="flex items-center text-base sm:text-xl">
                     {`${metrics[0]?.value || 0} Nurses Needed`}
                   </span>
                 </div>
@@ -298,17 +303,7 @@ export default function DashboardClient(): JSX.Element {
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
                         {activity.text}
                       </div>
-                      {/* <div
-                        className={`text-[10px] sm:text-xs font-normal  ${
-                          activity.color
-                            ? activity.color
-                            : "bg-green-100 text-green-600"
-                        } ${
-                          activity.bg
-                        } rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
-                      >
-                        {activity.status || "Stable"}
-                      </div> */}
+                     
                     </div>
                   </div>
                   <div className="text-[10px] sm:text-xs font-normal text-brand-black2 mb-1 pl-6 sm:pl-9">
@@ -341,14 +336,18 @@ export default function DashboardClient(): JSX.Element {
                           {action.label}
                         </div>
                       </div>
-                      <div className="text-xs sm:text-sm font-normal leading-tight text-brand-black1 mb-2">
+                      <div className="text-xs sm:text-sm font-normal leading-tight text-brand-black1 mb-2 min-h-[50px]">
                         {action.description}
                       </div>
                       <Button
                         variant="outline"
-                        onClick={() =>
-                          toast(`${action.btn_label} is coming soon`)
-                        }
+                        onClick={() => {
+                          if (action.label === "View Deployment Map") {
+                            setIsMapOpen(true);
+                          } else {
+                            toast(`${action.btn_label} is coming soon`);
+                          }
+                        }}
                         className="text-xs sm:text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-1 sm:mt-2 py-1.5 sm:py-2"
                       >
                         {action.btn_label}
@@ -361,6 +360,8 @@ export default function DashboardClient(): JSX.Element {
           </CardContent>
         </Card>
       </div>
+      
+      <DeploymentMapDialog open={isMapOpen} onOpenChange={setIsMapOpen} />
     </div>
   );
 }

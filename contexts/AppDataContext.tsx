@@ -1,19 +1,19 @@
 "use client";
-
+ 
 import { createContext, useContext, useState, ReactNode } from "react";
 import nursesJson from "@/data/nurses.json";
 import metricsJson from "@/data/metrics.json";
 import unitsJson from "@/data/units.json";
 import activitiesJson from "@/data/activities.json";
 import { Nurse } from "@/app/(home)/search/search.constant";
-
+ 
 interface Metric {
   id: number;
   label: string;
   value: string;
   [key: string]: any;
 }
-
+ 
 interface Unit {
   id: number;
   name: string;
@@ -23,14 +23,14 @@ interface Unit {
   staffed: number;
   [key: string]: any;
 }
-
+ 
 interface Activity {
   id: number;
   time: string;
   text: string;
   [key: string]: any;
 }
-
+ 
 interface AppDataContextType {
   nurses: Nurse[];
   metrics: Metric[];
@@ -38,15 +38,15 @@ interface AppDataContextType {
   activities: Activity[];
   deployNurses: (nurseIds: number[]) => void;
 }
-
+ 
 const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
-
+ 
 export function AppDataProvider({ children }: { children: ReactNode }) {
   const [nurses, setNurses] = useState<Nurse[]>(nursesJson as any);
   const [metrics, setMetrics] = useState<Metric[]>(metricsJson as Metric[]);
   const [units, setUnits] = useState<Unit[]>(unitsJson as Unit[]);
   const [activities, setActivities] = useState<Activity[]>(
-    activitiesJson as Activity[]
+    activitiesJson as unknown as Activity[]
   );
 
   const deployNurses = (nurseIds: number[]) => {
@@ -60,9 +60,9 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
 
     setMetrics((prev) => {
       const updated = prev.map((m) => {
-        if (m.label === "Deployed") {
+        if (m.label === "In Process") {
           const newValue = String(Number.parseInt(m.value) + deployedCount);
-          console.log("Updating Deployed from", m.value, "to", newValue);
+          console.log("Updating In Process from", m.value, "to", newValue);
           return { ...m, value: newValue };
         }
         if (m.label === "Nurses Needed") {
@@ -77,7 +77,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       console.log("Updated metrics:", updated);
       return updated;
     });
-
+ 
     const nursesBySpecialty = deployedNurses.reduce((acc, nurse) => {
       acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
       return acc;
@@ -142,7 +142,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     };
     setActivities((prev) => [newActivity, ...prev]);
   };
-
+ 
   return (
     <AppDataContext.Provider
       value={{ nurses, metrics, units, activities, deployNurses }}
@@ -151,7 +151,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     </AppDataContext.Provider>
   );
 }
-
+ 
 export function useAppData() {
   const context = useContext(AppDataContext);
   if (!context) {
