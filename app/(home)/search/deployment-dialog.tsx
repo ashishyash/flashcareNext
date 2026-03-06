@@ -120,10 +120,12 @@ export function DeploymentDialog({
   });
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    
+    <Dialog  open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className={`max-w-4xl max-h-[80vh] overflow-y-auto py-2 ${!isComplete ? "[&>button]:hidden" : ""}`}
+        className={`max-w-4xl max-h-[80vh] overflow-hidden py-0 ${!isComplete ? "[&>button]:hidden" : ""}`}
       >
+        <div className="max-h-[80vh] overflow-y-auto py-6 pt-2 px-6 -mx-6">
         {isComplete && (
           <DialogHeader className="border-b  border-sidebar-border">
             {isComplete && (
@@ -343,6 +345,7 @@ export function DeploymentDialog({
             
           </div>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   );
