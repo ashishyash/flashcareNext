@@ -41,7 +41,7 @@ export function SearchWrapper({ nurses }: NursesTableProps) {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   const filteredAndSortedNurses = useMemo(() => {
     let filtered = nurses.filter((nurse) => {
