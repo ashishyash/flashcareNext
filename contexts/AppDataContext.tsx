@@ -50,8 +50,8 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
   const [activities, setActivities] = useState<Activity[]>(() => {
     const now = new Date();
 
-    // Strike alert - 30 minutes ago
-    const strikeTime = new Date(now.getTime() - 30 * 60 * 1000);
+    // Strike alert - 2 hours ago
+    const strikeTime = new Date(now.getTime() - 2 * 60 * 60 * 1000);
     const strikeTimeStr = strikeTime.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
@@ -62,8 +62,8 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       day: "numeric",
     });
 
-    // Emergency credentials - 20 minutes ago
-    const credTime = new Date(now.getTime() - 20 * 60 * 1000);
+    // Emergency credentials - 1 hour 40 minutes ago
+    const credTime = new Date(now.getTime() - 100 * 60 * 1000);
     const credTimeStr = credTime.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
@@ -78,14 +78,32 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       {
         id: 1,
         time: `${credDateStr}, ${credTimeStr}`,
-        text: "Emergency credentials completed for 12 nurses",
+        text: "16 Maternity nurses deployed to Memorial Hospital",
         color: "text-amber-600",
-        bg2: "bg-amber-600",
+        bg2: "bg-green-600",
         bg: "bg-amber-100",
         status: "Emergency",
       },
       {
         id: 2,
+        time: `${credDateStr}, ${credTimeStr}`,
+        text: "16 General Ward nurses deployed to Memorial Hospital",
+        color: "text-amber-600",
+        bg2: "bg-green-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+      {
+        id: 3,
+        time: `${credDateStr}, ${credTimeStr}`,
+        text: "8 ICU nurses deployed to Memorial Hospital",
+        color: "text-amber-600",
+        bg2: "bg-green-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+      {
+        id: 4,
         time: `${strikeDateStr}, ${strikeTimeStr}`,
         text: "Strike alert activated",
         color: "text-amber-600",
