@@ -219,7 +219,7 @@ export function NurseDetailDialog({
         </Card>
 
         {/* Skills & Metrics side-by-side */}
-        {/* <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-6">
           <Card className="border-sidebar-border">
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center gap-2 text-xl text-brand-black1 font-normal">
@@ -269,7 +269,7 @@ export function NurseDetailDialog({
               ))}
             </CardContent>
           </Card>
-        </div> */}
+        </div>
       </DialogContent>
     </Dialog>
   );

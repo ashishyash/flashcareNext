@@ -30,7 +30,7 @@ interface Activity {
   text: string;
   [key: string]: any;
 }
- 
+
 interface AppDataContextType {
   nurses: Nurse[];
   metrics: Metric[];
@@ -38,9 +38,9 @@ interface AppDataContextType {
   activities: Activity[];
   deployNurses: (nurseIds: number[]) => void;
 }
- 
+
 const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
- 
+
 export function AppDataProvider({ children }: { children: ReactNode }) {
   const [nurses, setNurses] = useState<Nurse[]>(nursesJson as any);
   const [metrics, setMetrics] = useState<Metric[]>(metricsJson as Metric[]);
@@ -77,11 +77,14 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       console.log("Updated metrics:", updated);
       return updated;
     });
- 
-    const nursesBySpecialty = deployedNurses.reduce((acc, nurse) => {
-      acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
+
+    const nursesBySpecialty = deployedNurses.reduce(
+      (acc, nurse) => {
+        acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
 
     setUnits((prev) =>
       prev.map((unit) => {
@@ -89,7 +92,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
         if (additionalNurses > 0) {
           const newCurrent = Math.min(
             unit.capacity,
-            unit.current + additionalNurses
+            unit.current + additionalNurses,
           );
           const newNeeded = Math.max(0, unit.needed - additionalNurses);
 
@@ -122,12 +125,18 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
           };
         }
         return unit;
-      })
+      }),
     );
 
     const time = new Date().toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
+    });
+    const date = new Date().toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
     const newActivity = {
       id: activities.length + 1,
@@ -142,7 +151,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
     };
     setActivities((prev) => [newActivity, ...prev]);
   };
- 
+
   return (
     <AppDataContext.Provider
       value={{ nurses, metrics, units, activities, deployNurses }}
