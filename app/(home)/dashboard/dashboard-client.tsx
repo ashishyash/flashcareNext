@@ -277,7 +277,7 @@ export default function DashboardClient(): JSX.Element {
           </Card>
 
           <Card className="border border-sidebar-border">
-            <CardHeader className="py-3 p-4">
+            <CardHeader className="py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Recent Activity
               </CardTitle>
