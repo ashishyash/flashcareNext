@@ -51,13 +51,13 @@ export function LoginForm() {
         <Image
           alt="login-icon"
           src="/assets/icon/login-icon.svg"
-          width={64}
-          height={64}
+          width={285}
+          height={106}
         />
-        <CardTitle className="text-2xl">FlashCare AI</CardTitle>
+        {/* <CardTitle className="text-2xl">FlashCare AI</CardTitle>
         <CardDescription className="text-black-400">
           Crisis Management & Deployment System
-        </CardDescription>
+        </CardDescription> */}
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
