@@ -46,10 +46,14 @@ export default function MapComponent({ center, nurses }: MapComponentProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       />
       <Marker position={center} icon={hospitalIcon}>
-        <Tooltip permanent direction="top" offset={[0, -40]}>
-          <strong>Memorial Hospital</strong>
-          <br />
-          Renton, WA
+        <Tooltip permanent direction="top" offset={[0, -40]} className="font-semibold">
+          <div className="text-center">
+            <strong className="text-base">Memorial Hospital</strong>
+            <br />
+            <span className="text-sm">955 Powell Ave SW</span>
+            <br />
+            <span className="text-sm">Renton, WA 98057</span>
+          </div>
         </Tooltip>
       </Marker>
       {nursePositions.map(({ nurse, lat, lng }, index) => (
