@@ -171,7 +171,7 @@ export default function DashboardClient(): JSX.Element {
                     Started {state.elapsedTime}
                   </span>
                   <span className="flex items-center text-base sm:text-xl">
-                    {`172 Nurses Needed`}
+                    {`132 Nurses Needed`}
                   </span>
                 </div>
               </div>
@@ -277,7 +277,7 @@ export default function DashboardClient(): JSX.Element {
           </Card>
 
           <Card className="border border-sidebar-border">
-            <CardHeader className="py-3">
+            <CardHeader className="py-3 p-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Recent Activity
               </CardTitle>
