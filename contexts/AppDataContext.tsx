@@ -45,9 +45,56 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
   const [nurses, setNurses] = useState<Nurse[]>(nursesJson as any);
   const [metrics, setMetrics] = useState<Metric[]>(metricsJson as Metric[]);
   const [units, setUnits] = useState<Unit[]>(unitsJson as Unit[]);
-  const [activities, setActivities] = useState<Activity[]>(
-    activitiesJson as unknown as Activity[]
-  );
+  
+  // Initialize activities with dynamic timestamps
+  const [activities, setActivities] = useState<Activity[]>(() => {
+    const now = new Date();
+    
+    // Strike alert - 30 minutes ago
+    const strikeTime = new Date(now.getTime() - 30 * 60 * 1000);
+    const strikeTimeStr = strikeTime.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const strikeDateStr = strikeTime.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    
+    // Emergency credentials - 20 minutes ago
+    const credTime = new Date(now.getTime() - 20 * 60 * 1000);
+    const credTimeStr = credTime.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStr = credTime.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    
+    return [
+      {
+        id: 1,
+        time: `${credTimeStr} ${credDateStr}`,
+        text: "Emergency credentials completed for 12 nurses",
+        color: "text-amber-600",
+        bg2: "bg-amber-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+      {
+        id: 2,
+        time: `${strikeTimeStr} ${strikeDateStr}`,
+        text: "Strike alert activated",
+        color: "text-amber-600",
+        bg2: "bg-amber-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+    ];
+  });
 
   const deployNurses = (nurseIds: number[]) => {
     const deployedNurses = nurses.filter((n) => nurseIds.includes(n.id));
@@ -128,19 +175,21 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       }),
     );
 
-    const time = new Date().toLocaleTimeString("en-US", {
+    const now = new Date();
+    const time = now.toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
     });
-    const date = new Date().toLocaleDateString("en-US", {
-      weekday: "long",
+    const date = now.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
+    const dateTime = `${time} ${date}`;
+    
     const newActivity = {
       id: activities.length + 1,
-      time,
+      time: dateTime,
       text: `${deployedCount} ${deployedNurses[0]?.specialty} nurse${
         deployedCount > 1 ? "s" : ""
       } deployed to Memorial Hospital`,
