@@ -250,7 +250,7 @@ export default function DashboardClient(): JSX.Element {
                         key={index}
                       >
                         <TableCell className="text-xs sm:text-sm font-normal whitespace-nowrap">
-                          {unit.name}
+                          {`${unit.name} (${Math.floor((unit.current / unit.capacity) * 100)}%)`}
                         </TableCell>
                         <TableCell className="text-xs sm:text-sm font-normal whitespace-nowrap">
                           {unit.capacity}
