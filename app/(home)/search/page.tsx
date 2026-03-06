@@ -40,19 +40,21 @@ import { useAppData } from "@/contexts/AppDataContext";
       setIsLoading(true);
       setLoadingStep(0);
       
-      const step1 = setTimeout(() => setLoadingStep(1), 1000);
-      const step2 = setTimeout(() => setLoadingStep(2), 2000);
-      const step3 = setTimeout(() => setLoadingStep(3), 3000);
+      const step1 = setTimeout(() => setLoadingStep(1), 1500);
+      const step2 = setTimeout(() => setLoadingStep(2), 3000);
+      const step3 = setTimeout(() => setLoadingStep(3), 4500);
+      const step4 = setTimeout(() => setLoadingStep(4), 6000);
       const final = setTimeout(() => {
         setDisplayedNurses(filteredNurses);
         setIsLoading(false);
         setIsInitialLoad(false);
-      }, 4000);
+      }, 7500);
       
       return () => {
         clearTimeout(step1);
         clearTimeout(step2);
         clearTimeout(step3);
+        clearTimeout(step4);
         clearTimeout(final);
       };
     } else {
@@ -64,6 +66,7 @@ import { useAppData } from "@/contexts/AppDataContext";
   const loadingMessages = [
     "Searching 2,847 registered nurses...",
     "Analyzing qualifications...",
+    "AI matching profiles to requirements...",
     "Calculating match scores...",
     `Found ${filteredNurses?.length} qualified nurses`
   ];
