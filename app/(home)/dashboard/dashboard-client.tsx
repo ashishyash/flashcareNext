@@ -151,7 +151,7 @@ export default function DashboardClient(): JSX.Element {
           </div>
         </div>
 
-        <div className="bg-brand-red1 text-white rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 shadow-lg animate-pulse">
+        <div className="bg-brand-red1 text-white rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 shadow-lg ">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div className="flex items-start">
               <div>
@@ -223,7 +223,7 @@ export default function DashboardClient(): JSX.Element {
             </CardHeader>
             <CardContent className="p-0 px-2">
               <div className="overflow-x-auto">
-                <Table >
+                <Table>
                   <TableHeader>
                     <TableRow className="border-b border-b-sidebar-border">
                       <TableHead className="text-left text-brand-black1 text-xs whitespace-nowrap">
