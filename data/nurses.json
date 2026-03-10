@@ -2871,13 +2871,13 @@
     "specialty": "Telemetry",
     "experience_years": 4,
     "location": "Portland, OR",
-    "distance_miles": 250.2,
+    "distance_miles": 300.2,
     "match_score": 91,
     "availability_status": "Night Shift",
     "rate_per_hour": 65,
     "certifications": ["BLS", "ACLS"],
     "previous_rating": 4.5,
-    "work_history": "Worked in cardiac care units managing post-op patients."
+    "work_history": "Worked in Telemetry care units managing post-op patients."
   },
   {
     "id": 203,
@@ -2893,7 +2893,7 @@
     "rate_per_hour": 68,
     "certifications": ["BLS", "PALS"],
     "previous_rating": 4.3,
-    "work_history": "Specialized in pediatric inpatient care and family support."
+    "work_history": "Specialized in Telemetry inpatient care and family support."
   },
   {
     "id": 204,
@@ -2903,12 +2903,12 @@
     "specialty": "Telemetry",
     "experience_years": 7,
     "location": "Boise, ID",
-    "distance_miles": 350.1,
+    "distance_miles": 349,
     "match_score": 90,
     "availability_status": "Weekend Coverage",
     "rate_per_hour": 75,
     "certifications": ["BLS", "Chemotherapy Certification"],
     "previous_rating": 4.7,
-    "work_history": "Experienced in oncology units providing chemotherapy and patient education."
+    "work_history": "Experienced in Telemetry units providing chemotherapy and patient education."
   }
 ]
