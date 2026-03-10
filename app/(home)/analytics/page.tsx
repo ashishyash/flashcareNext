@@ -86,13 +86,13 @@ const AnalyticsDashboard = () => {
   ];
 
   const strikeData = [
-    { x: 0, responseTime: 14, strikeDuration: 13 },
-    { x: 60, responseTime: 14.5, strikeDuration: 13.5 },
-    { x: 120, responseTime: 15.5, strikeDuration: 14 },
-    { x: 180, responseTime: 15, strikeDuration: 14.5 },
-    { x: 240, responseTime: 16, strikeDuration: 15 },
-    { x: 300, responseTime: 16.5, strikeDuration: 15.5 },
-    { x: 360, responseTime: 15.5, strikeDuration: 16 },
+    { hours: 12, travelRate: 82, strikeRate: 125 },
+    { hours: 18, travelRate: 84, strikeRate: 130 },
+    { hours: 24, travelRate: 85, strikeRate: 135 },
+    { hours: 36, travelRate: 87, strikeRate: 140 },
+    { hours: 48, travelRate: 88, strikeRate: 142 },
+    { hours: 72, travelRate: 89, strikeRate: 145 },
+    { hours: 96, travelRate: 90, strikeRate: 148 },
   ];
 
   return (
@@ -214,11 +214,11 @@ const AnalyticsDashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Strike Duration vs Response Time */}
+          {/* Travel vs Strike Clinician Bill Rate */}
           <Card className="border-sidebar-border">
             <CardHeader className="pb-2 md:pb-4">
               <CardTitle className="text-lg md:text-xl font-normal text-brand-black1">
-                Strike Duration vs Response Time
+                Travel Clinician Bill Rate vs Strike Clinician Bill Rate
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -230,50 +230,45 @@ const AnalyticsDashboard = () => {
                 <LineChart data={strikeData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
-                    dataKey="x"
+                    dataKey="hours"
                     axisLine={false}
                     tickLine={false}
                     tick={{ fill: "#6b7280", fontSize: 11 }}
-                    domain={[0, 360]}
-                    ticks={[0, 60, 120, 180, 240, 300, 360]}
+                    tickFormatter={(value: any) => `${value}h`}
                   />
                   <YAxis
                     axisLine={false}
                     tickLine={false}
                     tick={{ fill: "#6b7280", fontSize: 11 }}
-                    domain={[0, 48]}
-                    ticks={[0, 12, 24, 36, 48]}
-                    tickFormatter={(value: any) => `${value}h`}
+                    domain={[70, 160]}
+                    ticks={[80, 100, 120, 140, 160]}
+                    tickFormatter={(value: any) => `$${value}/hr`}
                   />
                   <Legend
                     verticalAlign="bottom"
                     height={32}
                     iconType="circle"
                     formatter={(value: any) => (
-                      <span
-                        className={`text-xs md:text-sm ${value === "responseTime" ? "text-teal-600" : "text-red-400"}`}
-                      >
-                        {value === "responseTime"
-                          ? "Response Time"
-                          : "Strike Duration"}
+                      <span className="text-xs md:text-sm text-gray-700">
+                        {value === "travelRate"
+                          ? "Travel Clinician"
+                          : "Strike Clinician"}
                       </span>
                     )}
                   />
                   <Line
                     type="monotone"
-                    dataKey="responseTime"
+                    dataKey="travelRate"
                     stroke="#14b8a6"
                     strokeWidth={2}
-                    dot={{ fill: "#14b8a6", r: 3 }}
-                    name="responseTime"
+                    dot={{ fill: "#14b8a6", r: 4 }}
                   />
                   <Line
                     type="monotone"
-                    dataKey="strikeDuration"
-                    stroke="#f87171"
+                    dataKey="strikeRate"
+                    stroke="#f97316"
                     strokeWidth={2}
-                    dot={{ fill: "#f87171", r: 3 }}
-                    name="strikeDuration"
+                    dot={{ fill: "#f97316", r: 4 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
