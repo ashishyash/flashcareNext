@@ -163,7 +163,7 @@ const AnalyticsDashboard = () => {
                 Deployment Timeline Graph
               </CardTitle>
             </CardHeader>
-            <CardContent className="pl-0">
+            <CardContent>
               <ResponsiveContainer
                 width="100%"
                 height={250}

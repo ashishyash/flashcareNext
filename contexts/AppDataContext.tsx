@@ -98,7 +98,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       {
         id: 1,
         time: `${credDateStrMaternity}, ${credTimeStrMaternity}`,
-        text: "16 Maternity nurses deployed to Memorial Hospital",
+        text: "16 Telemetry nurses deployed to Memorial Hospital",
         color: "text-amber-600",
         bg2: "bg-green-600",
         bg: "bg-amber-100",
@@ -107,7 +107,7 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       {
         id: 2,
         time: `${credDateStrGeneral}, ${credTimeStrGeneral}`,
-        text: "16 General Ward nurses deployed to Memorial Hospital",
+        text: "16 Labor and Delivery nurses deployed to Memorial Hospital",
         color: "text-amber-600",
         bg2: "bg-green-600",
         bg: "bg-amber-100",

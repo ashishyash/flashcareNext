@@ -214,7 +214,7 @@ export default function DashboardClient(): JSX.Element {
           })}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-4 mb-4 sm:mb-6">
           <Card className="border border-sidebar-border overflow-hidden">
             <CardHeader className="border-b border-b-sidebar-border py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
@@ -223,7 +223,7 @@ export default function DashboardClient(): JSX.Element {
             </CardHeader>
             <CardContent className="p-0 px-2">
               <div className="overflow-x-auto">
-                <Table>
+                <Table >
                   <TableHeader>
                     <TableRow className="border-b border-b-sidebar-border">
                       <TableHead className="text-left text-brand-black1 text-xs whitespace-nowrap">
