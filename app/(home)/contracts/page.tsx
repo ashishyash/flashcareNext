@@ -303,7 +303,7 @@ const ContractGeneration = () => {
             <Card className="border border-sidebar-border">
               <CardContent className="p-4 sm:p-6">
                 <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
-                  Generation Stats
+                  4 of Contracts Awaiting Signature
                 </h3>
                 <div className="space-y-4">
                   <div>
