@@ -88,7 +88,7 @@ const ContractGeneration = () => {
                         const startDate = new Date();
                         startDate.setDate(startDate.getDate() + 14);
                         const endDate = new Date(startDate);
-                        endDate.setDate(endDate.getDate() + 5);
+                        endDate.setDate(endDate.getDate() + 4);
                         return `${startDate.toLocaleDateString("en-US", {
                           month: "long",
                           day: "numeric",
