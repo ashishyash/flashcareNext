@@ -163,7 +163,7 @@ const AnalyticsDashboard = () => {
                 Deployment Timeline Graph
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pl-0">
               <ResponsiveContainer
                 width="100%"
                 height={250}
@@ -216,12 +216,12 @@ const AnalyticsDashboard = () => {
 
           {/* Travel vs Strike Clinician Bill Rate */}
           <Card className="border-sidebar-border">
-            <CardHeader className="pb-2 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4 pr-0">
               <CardTitle className="text-lg md:text-xl font-normal text-brand-black1">
                 Travel Clinician Bill Rate vs Strike Clinician Bill Rate
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pl-0">
               <ResponsiveContainer
                 width="100%"
                 height={250}

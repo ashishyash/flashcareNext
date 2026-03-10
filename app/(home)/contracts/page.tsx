@@ -305,7 +305,7 @@ const ContractGeneration = () => {
                 <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
                   4 of Contracts Awaiting Signature
                 </h3>
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <div>
                     <p className="text-xs sm:text-sm text-brand-black2 mb-1">
                       Generation Time
@@ -338,7 +338,7 @@ const ContractGeneration = () => {
                       Pre-approved template
                     </p>
                   </div>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
 
