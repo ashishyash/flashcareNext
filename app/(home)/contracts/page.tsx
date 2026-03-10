@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Calendar,  CircleCheckBig, DollarSign, Download , FileStack, FileText, MapPin, Send } from "lucide-react";
+import { toast } from "sonner";
 
 const ContractGeneration = () => {
   return (
@@ -17,7 +18,10 @@ const ContractGeneration = () => {
               Automated contract creation and management
             </p>
           </div>
-          <Button className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan2 w-full sm:w-auto">
+          <Button
+            onClick={() => toast(`Generate Bulk Contracts is coming soon`)}
+            className="text-sm sm:text-base font-normal py-2 bg-brand-cyan1 hover:bg-brand-cyan2 w-full sm:w-auto"
+          >
             <FileStack className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="ml-2">Generate Bulk Contracts</span>
           </Button>
@@ -35,8 +39,11 @@ const ContractGeneration = () => {
                   Contract Generated Successfully
                 </h3>
                 <p className="text-xs sm:text-sm text-brand-black2 font-normal">
-                  Auto-generated preview on Feb 11, 2026 • Contract ID:
-                  CON-2026-1847
+                  {`Auto-generated preview on ${new Date().toLocaleDateString(
+                    "en-US",
+                    { month: "short", day: "numeric", year: "numeric" },
+                  )} • Contract ID:
+                  CON-2026-1847`}
                 </p>
               </div>
             </div>
@@ -66,12 +73,32 @@ const ContractGeneration = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8">
                   <div>
                     <p className="text-sm">Generated Date</p>
-                    <p className="text-sm font-normal">Feb 11, 2026</p>
+                    <p className="text-sm font-normal">
+                      {new Date().toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </p>
                   </div>
                   <div>
-                    <p className="text-sm">Duration</p>
+                    <p className="text-sm">Anticipated Assignment Dates</p>
                     <p className="text-sm font-normal">
-                      Duration of strike - Starts Tomorrow 7 AM
+                      {(() => {
+                        const startDate = new Date();
+                        startDate.setDate(startDate.getDate() + 14);
+                        const endDate = new Date(startDate);
+                        endDate.setDate(endDate.getDate() + 5);
+                        return `${startDate.toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })} - ${endDate.toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })}`;
+                      })()}
                     </p>
                   </div>
                 </div>
@@ -91,7 +118,7 @@ const ContractGeneration = () => {
                     Sarah Chen
                   </h3>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
-                    123 Main St, Los Angeles, CA 90001
+                    Bellevue, WA
                   </p>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
                     License: RN-CA-485692
@@ -108,7 +135,7 @@ const ContractGeneration = () => {
                     Memorial Hospital
                   </h3>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
-                    Houston, TX
+                    Powell Ave SW Renton, WA 98057
                   </p>
                   <p className="text-sm sm:text-base text-brand-black2 mb-1">
                     Contact: HR Department
@@ -129,10 +156,10 @@ const ContractGeneration = () => {
                     <Calendar className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5" />
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
-                        Duration
+                        Shift Assigned
                       </span>
                       <p className="text-sm sm:text-base font-normal text-brand-black1">
-                        1 weeks
+                        7am-7pm
                       </p>
                       <p className="text-xs sm:text-sm text-brand-black2">
                         Duration of Strike
@@ -151,7 +178,7 @@ const ContractGeneration = () => {
                         $75/hour + $150/day Housing
                       </p>
                       <p className="text-xs sm:text-sm text-gray-600">
-                        40 hours/week
+                        36 hours/week
                       </p>
                     </div>
                   </CardContent>
@@ -231,7 +258,9 @@ const ContractGeneration = () => {
                     Facility Representative
                   </p>
                   <div className="border-t border-gray-300 pb-2 pt-2 mb-2">
-                    <p className="text-brand-black2">HR Department</p>
+                    <p className="text-brand-black2">
+                      FlashCareAI Representative
+                    </p>
                   </div>
                   <p className="text-sm text-brand-black2">
                     Date: _______________
@@ -252,6 +281,7 @@ const ContractGeneration = () => {
                 <div className="space-y-3">
                   <Button
                     variant="outline"
+                    onClick={() => toast(`Send for E-Signature is coming soon`)}
                     className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                   >
                     <Send className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -259,6 +289,7 @@ const ContractGeneration = () => {
                   </Button>
                   <Button
                     variant="outline"
+                    onClick={() => toast(`Download PDF is coming soon`)}
                     className="w-full text-sm sm:text-base font-normal border py-4 sm:py-1 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
                   >
                     <Download className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -272,9 +303,9 @@ const ContractGeneration = () => {
             <Card className="border border-sidebar-border">
               <CardContent className="p-4 sm:p-6">
                 <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
-                  Generation Stats
+                  4 of Contracts Awaiting Signature
                 </h3>
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <div>
                     <p className="text-xs sm:text-sm text-brand-black2 mb-1">
                       Generation Time
@@ -307,7 +338,7 @@ const ContractGeneration = () => {
                       Pre-approved template
                     </p>
                   </div>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
 

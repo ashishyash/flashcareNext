@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { AlertTriangle, Users, TrendingUp, Clock } from "lucide-react";
+import { toast } from "sonner";
 import {
   Table,
   TableBody,
@@ -12,10 +13,10 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useApiData } from "@/hooks/useApiData";
-
+import { useAppData } from "@/contexts/AppDataContext";
 import quickActionsData from "@/data/quick-actions.json";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { DeploymentMapDialog } from "./deployment-map-dialog";
 
 interface Metric {
   label: string;
@@ -70,17 +71,18 @@ interface DashboardState {
 }
 
 export default function DashboardClient(): JSX.Element {
-  const { data: metricsData } = useApiData<any>("metrics");
-  const { data: unitsData } = useApiData<Unit>("units");
-  const { data: activitiesData } = useApiData<Activity_Item>("activities");
+  const {
+    metrics: metricsData,
+    units: unitsData,
+    activities: activitiesData,
+  } = useAppData();
 
   const [state, setState] = useState<DashboardState>({
-    elapsedTime: "2 hours ago",
+    elapsedTime: " 5 days ago",
     countdown: 120,
     seconds: 0,
   });
-
-  const router = useRouter();
+  const [isMapOpen, setIsMapOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -94,31 +96,32 @@ export default function DashboardClient(): JSX.Element {
     return () => clearInterval(timer);
   }, []);
 
-  // const formatCountdown = (minutes: number, seconds: number): string => {
-  //   const hours = Math.floor(minutes / 60);
-  //   const mins = minutes % 60;
-  //   return `${hours}h ${mins}m ${seconds}s remaining`;
-  // };
-
   const iconMap = {
     Users,
     TrendingUp,
     Clock,
   };
 
-  const metrics: Metric[] = metricsData.map((metric) => ({
-    ...metric,
-    icon: iconMap[metric.icon as keyof typeof iconMap],
-  }));
+  const metrics: Metric[] = useMemo(
+    () =>
+      metricsData.map((metric: any) => ({
+        ...metric,
+        icon: iconMap[metric.icon as keyof typeof iconMap],
+      })),
+    [metricsData],
+  );
   const quickActions: QuickAction[] = quickActionsData;
 
-  const units: Unit[] = unitsData || [];
+  const units: Unit[] = (unitsData as any) || [];
 
-  const activities: Activity_Item[] = activitiesData || [];
-  const search = () => {
-    router.push("/search");
-  };
+  const activities: Activity_Item[] = (activitiesData as any) || [];
 
+  // const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
+  // const totalNurseNeeded = Number(metrics[0]?.value) || 0;
+  const fulfillmentPercentage = 30;
+  // totalNurseNeeded > 0
+  //   ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
+  //   : 0;
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="w-full mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6">
@@ -137,14 +140,13 @@ export default function DashboardClient(): JSX.Element {
               </div>
             </div>
             <div className="text-left sm:text-right">
-              <Button
-                onClick={search}
-                className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto"
-              >
-                <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
-                <span className="sm:hidden">Find</span>
-                <span className="hidden sm:inline">Search Nurse</span>
-              </Button>
+              <Link href="/search">
+                <Button className="bg-brand-cyan1 hover:bg-brand-cyan2 text-white py-2 sm:py-1 px-3 sm:px-4 text-sm sm:text-base w-full sm:w-auto">
+                  <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2" />
+                  <span className="sm:hidden">Find</span>
+                  <span className="hidden sm:inline">Find Nurse</span>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -153,28 +155,31 @@ export default function DashboardClient(): JSX.Element {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div className="flex items-start">
               <div>
-                <h2 className="flex items-center text-base sm:text-xl font-normal">
+                <h2 className="flex items-center text-base sm:text-xl font-semibold mb-2">
                   <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
-                  <span className="hidden sm:inline">
-                    ACTIVE STRIKE: Memorial Hospital
-                  </span>
-                  <span className="sm:hidden">ACTIVE STRIKE</span>
+                  ACTIVE STRIKE
                 </h2>
+                <div className="text-lg sm:text-2xl font-bold mb-1">
+                  Memorial Hospital
+                </div>
+                <div className="text-xs sm:text-sm opacity-90">
+                  Powell Ave SW, Renton, WA 98057
+                </div>
 
-                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1 sm:gap-4 text-sm mt-1 sm:mt-2">
-                  <span className="flex items-center text-lg sm:text-3xl">
-                    Started {state.elapsedTime} -
+                <div className="flex flex-col sm:flex-row sm:flex-wrap gap-0.25 sm:gap-1 text-sm mt-2 sm:mt-3">
+                  <span className="flex items-center text-base sm:text-xl">
+                    Notice Given {state.elapsedTime} -
                   </span>
-                  <span className="flex items-center text-lg sm:text-3xl">
-                    {`${metrics[0]?.value || 0} Nurses Needed`}
+                  <span className="flex items-center text-base sm:text-xl">
+                    {`172 clinicians ordered`}
                   </span>
                 </div>
               </div>
             </div>
             <div className="text-left sm:text-right mt-2 sm:mt-0">
-              <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4">
+              {/* <Button className="bg-white text-normal text-brand-red1 hover:bg-white-50 text-xs sm:text-base py-1 sm:py-2 px-2 sm:px-4">
                 Manage
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -199,7 +204,9 @@ export default function DashboardClient(): JSX.Element {
                     {metric.value}
                   </div>
                   <div className={`text-xs sm:text-sm ${metric.color}`}>
-                    {metric.statusMsg}
+                    {index === 1
+                      ? `${fulfillmentPercentage}% ${metric.statusMsg}`
+                      : metric.statusMsg}
                   </div>
                 </CardContent>
               </Card>
@@ -207,16 +214,16 @@ export default function DashboardClient(): JSX.Element {
           })}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-4 mb-4 sm:mb-6">
           <Card className="border border-sidebar-border overflow-hidden">
-            <CardHeader className="border-b border-b-sidebar-border py-3">
+            <CardHeader className="border-b border-b-sidebar-border py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Unit Status Overview
               </CardTitle>
             </CardHeader>
-            <CardContent className="p-0">
+            <CardContent className="p-0 px-2">
               <div className="overflow-x-auto">
-                <Table>
+                <Table >
                   <TableHeader>
                     <TableRow className="border-b border-b-sidebar-border">
                       <TableHead className="text-left text-brand-black1 text-xs whitespace-nowrap">
@@ -243,7 +250,7 @@ export default function DashboardClient(): JSX.Element {
                         key={index}
                       >
                         <TableCell className="text-xs sm:text-sm font-normal whitespace-nowrap">
-                          {unit.name}
+                          {`${unit.name} (${Math.floor((unit.current / unit.capacity) * 100)}%)`}
                         </TableCell>
                         <TableCell className="text-xs sm:text-sm font-normal whitespace-nowrap">
                           {unit.capacity}
@@ -270,7 +277,7 @@ export default function DashboardClient(): JSX.Element {
           </Card>
 
           <Card className="border border-sidebar-border">
-            <CardHeader className="py-3">
+            <CardHeader className="py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
                 Recent Activity
               </CardTitle>
@@ -295,17 +302,6 @@ export default function DashboardClient(): JSX.Element {
                     <div className="flex justify-between w-full items-start gap-2">
                       <div className="text-xs sm:text-sm font-normal text-brand-black1 line-clamp-2">
                         {activity.text}
-                      </div>
-                      <div
-                        className={`text-[10px] sm:text-xs font-normal  ${
-                          activity.color
-                            ? activity.color
-                            : "bg-green-100 text-green-600"
-                        } ${
-                          activity.bg
-                        } rounded-sm p-1 whitespace-nowrap flex-shrink-0`}
-                      >
-                        {activity.status || "Stable"}
                       </div>
                     </div>
                   </div>
@@ -339,11 +335,18 @@ export default function DashboardClient(): JSX.Element {
                           {action.label}
                         </div>
                       </div>
-                      <div className="text-xs sm:text-sm font-normal leading-tight text-brand-black1 mb-2">
+                      <div className="text-xs sm:text-sm font-normal leading-tight text-brand-black1 mb-2 min-h-[50px]">
                         {action.description}
                       </div>
                       <Button
                         variant="outline"
+                        onClick={() => {
+                          if (action.label === "View Deployment Map") {
+                            setIsMapOpen(true);
+                          } else {
+                            toast(`${action.btn_label} is coming soon`);
+                          }
+                        }}
                         className="text-xs sm:text-base font-normal bg-brand-cyan3 hover:bg-brand-cyan2 text-white w-full mt-1 sm:mt-2 py-1.5 sm:py-2"
                       >
                         {action.btn_label}
@@ -356,6 +359,8 @@ export default function DashboardClient(): JSX.Element {
           </CardContent>
         </Card>
       </div>
+
+      <DeploymentMapDialog open={isMapOpen} onOpenChange={setIsMapOpen} />
     </div>
   );
 }

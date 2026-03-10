@@ -3,13 +3,13 @@
 import { useSearchParams } from "next/navigation";
 import { useMemo, useState, useEffect, Suspense } from "react";
 import { SearchWrapper } from "./search-wrapper";
-import { useApiData } from "@/hooks/useApiData";
 import { Nurse } from "./search.constant";
 import { Loader2 } from "lucide-react";
+import { useAppData } from "@/contexts/AppDataContext";
 
  const NurseSearchPageInner = () => {
   const searchParams = useSearchParams();
-  const { data: nursesData, loading: apiLoading, refetch } = useApiData<Nurse>('nurses');
+  const { nurses: nursesData } = useAppData();
   const [isLoading, setIsLoading] = useState(false);
   const [displayedNurses, setDisplayedNurses] = useState<Nurse[]>([]);
   const [loadingStep, setLoadingStep] = useState(0);
@@ -20,21 +20,16 @@ import { Loader2 } from "lucide-react";
     
     const location = searchParams.get('location') || '100';
     const specialization = searchParams.get('specialization') || 'icu';
-    const experience = searchParams.get('experience') || '5+';
-    const availability = searchParams.get('availability') || 'immediate';
-    
-    const locationMiles = Number.parseInt(location);
-    const experienceYears = Number.parseInt(experience);
+    const experience = searchParams.get('experience') || 'all';
+    const availability = searchParams.get('availability') || 'all';
     
     return nursesData.filter((nurse) => {
       if (nurse.deployed) return false;
       
-      const matchesLocation = nurse.distance_miles <= locationMiles;
-      const matchesSpecialization = nurse.specialty.toLowerCase() === specialization.toLowerCase();
-      const matchesExperience = nurse.experience_years >= experienceYears;
-      const matchesAvailability = availability === 'immediate' 
-        ? nurse.availability_status === 'Available' 
-        : true;
+      const matchesLocation = location === 'all' || nurse.distance_miles <= Number.parseInt(location);
+      const matchesSpecialization = specialization === 'all' || nurse.specialty.toLowerCase() === specialization.toLowerCase();
+      const matchesExperience = experience === 'all' || nurse.experience_years >= Number.parseInt(experience);
+      const matchesAvailability = availability === 'all' || nurse.availability_status === availability;
       
       return matchesLocation && matchesSpecialization && matchesExperience && matchesAvailability;
     });
@@ -45,19 +40,21 @@ import { Loader2 } from "lucide-react";
       setIsLoading(true);
       setLoadingStep(0);
       
-      const step1 = setTimeout(() => setLoadingStep(1), 1000);
-      const step2 = setTimeout(() => setLoadingStep(2), 2000);
-      const step3 = setTimeout(() => setLoadingStep(3), 3000);
+      const step1 = setTimeout(() => setLoadingStep(1), 1500);
+      const step2 = setTimeout(() => setLoadingStep(2), 3000);
+      const step3 = setTimeout(() => setLoadingStep(3), 4500);
+      const step4 = setTimeout(() => setLoadingStep(4), 6000);
       const final = setTimeout(() => {
         setDisplayedNurses(filteredNurses);
         setIsLoading(false);
         setIsInitialLoad(false);
-      }, 4000);
+      }, 7500);
       
       return () => {
         clearTimeout(step1);
         clearTimeout(step2);
         clearTimeout(step3);
+        clearTimeout(step4);
         clearTimeout(final);
       };
     } else {
@@ -69,11 +66,12 @@ import { Loader2 } from "lucide-react";
   const loadingMessages = [
     "Searching 2,847 registered nurses...",
     "Analyzing qualifications...",
+    "Finding matching profiles using AI...",
     "Calculating match scores...",
     `Found ${filteredNurses?.length} qualified nurses`
   ];
   
-  if (isLoading || apiLoading) {
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
@@ -86,7 +84,7 @@ import { Loader2 } from "lucide-react";
   
   return (
     <div>
-      <SearchWrapper nurses={displayedNurses} onDeploymentComplete={refetch} />
+      <SearchWrapper nurses={displayedNurses} />
     </div>
   );
 };

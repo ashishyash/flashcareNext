@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useState, useRef } from "react";
 import {
   Dialog,
@@ -20,6 +18,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useAppData } from "@/contexts/AppDataContext";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 interface DeploymentDialogProps {
   readonly nurses: readonly Nurse[];
@@ -33,145 +34,13 @@ interface DeploymentStep {
   progress?: number;
 }
 
-const updateDashboardData = async (nurses: readonly Nurse[]) => {
-  try {
-    console.log("Starting dashboard update for", nurses.length, "nurses");
-    const deployedCount = nurses.length;
-    const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
-
-    // Mark nurses as deployed
-    for (const nurse of nurses) {
-      await fetch(`${baseUrl}/api/nurses/${nurse.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ deployed: true }),
-      });
-    }
-
-    // Update metrics - increment deployed nurses
-    const metricsRes = await fetch(`${baseUrl}/api/metrics`);
-    const metricsData = await metricsRes.json();
-    console.log("Metrics data:", metricsData);
-
-    if (metricsData.success && metricsData.data) {
-      // Update Deployed count
-      const deployedMetric = metricsData.data.find(
-        (m: any) => m.label === "Deployed",
-      );
-      console.log("Found deployed metric:", deployedMetric);
-
-      if (deployedMetric) {
-        const currentValue = Number.parseInt(deployedMetric.value);
-        const newValue = currentValue + deployedCount;
-        console.log("Updating deployed from", currentValue, "to", newValue);
-
-        await fetch(`${baseUrl}/api/metrics/${deployedMetric.id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ value: String(newValue) }),
-        });
-      }
-
-      // Update Nurses Needed count (decrease)
-      const neededMetric = metricsData.data.find(
-        (m: any) => m.label === "Nurses Needed",
-      );
-      console.log("Found nurses needed metric:", neededMetric);
-
-      if (neededMetric) {
-        const currentValue = Number.parseInt(neededMetric.value);
-        const newValue = Math.max(0, currentValue - deployedCount);
-        console.log(
-          "Updating nurses needed from",
-          currentValue,
-          "to",
-          newValue,
-        );
-
-        await fetch(`${baseUrl}/api/metrics/${neededMetric.id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ value: String(newValue) }),
-        });
-      }
-    }
-
-    // Update units - increase staffed percentage based on specialty
-    const unitsRes = await fetch(`${baseUrl}/api/units`);
-    const unitsData = await unitsRes.json();
-    console.log("Units data:", unitsData);
-
-    if (unitsData.success && unitsData.data) {
-      // Group nurses by specialty
-      const nursesBySpecialty = nurses.reduce(
-        (acc, nurse) => {
-          const specialty = nurse.specialty;
-          acc[specialty] = (acc[specialty] || 0) + 1;
-          return acc;
-        },
-        {} as Record<string, number>,
-      );
-
-      console.log("Nurses by specialty:", nursesBySpecialty);
-
-      // Update each unit based on matching specialty
-      for (const unit of unitsData.data) {
-        const matchingCount = nursesBySpecialty[unit.name] || 0;
-
-        if (matchingCount > 0) {
-          const newCurrent = Math.min(
-            unit.capacity,
-            unit.current + matchingCount,
-          );
-          const newNeeded = Math.max(0, unit.capacity - newCurrent);
-          const newStaffed = Math.round((newCurrent / unit.capacity) * 100);
-
-          console.log(
-            `Updating unit ${unit.name}: current ${unit.current} -> ${newCurrent}, needed ${unit.needed} -> ${newNeeded}, staffed ${unit.staffed}% -> ${newStaffed}%`,
-          );
-
-          await fetch(`${baseUrl}/api/units/${unit.id}`, {
-            method: "PATCH",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              current: newCurrent,
-              needed: newNeeded,
-              staffed: newStaffed,
-            }),
-          });
-        }
-      }
-    }
-
-    // Add activity
-    console.log("Adding activity");
-    const activityRes = await fetch(`${baseUrl}/api/activities`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        time: new Date().toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        text: `${deployedCount} nurse${
-          deployedCount > 1 ? "s" : ""
-        } deployed to Memorial Hospital`,
-      }),
-    });
-    const activityResult = await activityRes.json();
-    console.log("Activity result:", activityResult);
-
-    console.log("Dashboard update complete");
-  } catch (error) {
-    console.error("Failed to update dashboard:", error);
-  }
-};
-
 export function DeploymentDialog({
   nurses,
   open,
   onOpenChange,
 }: DeploymentDialogProps) {
+  const router = useRouter();
+  const { deployNurses } = useAppData();
   const [steps, setSteps] = useState<DeploymentStep[]>([
     { label: "Generate contracts", status: "complete" },
     { label: "Send to nurses for signature", status: "complete" },
@@ -215,7 +84,8 @@ export function DeploymentDialog({
 
             if (
               progressIndex + 1 < updated.length &&
-              updated[progressIndex + 1].status === "pending"
+              updated[progressIndex + 1].status === "pending" &&
+              progressIndex + 1 < 4
             ) {
               updated[progressIndex + 1].status = "progress";
               updated[progressIndex + 1].progress = 0;
@@ -230,16 +100,16 @@ export function DeploymentDialog({
     return () => clearInterval(interval);
   }, [open]);
 
-  // Separate effect to handle completion
   useEffect(() => {
-    const allComplete = steps.every((s) => s.status === "complete");
-    if (allComplete && !isComplete && !hasUpdatedRef.current && open) {
-      console.log("Deployment complete, calling updateDashboardData once");
-      setIsComplete(true);
+    const firstFourComplete = steps.slice(0, 4).every((s) => s.status === "complete");
+    if (firstFourComplete && !isComplete && !hasUpdatedRef.current && open) {
       hasUpdatedRef.current = true;
-      updateDashboardData(nurses);
+      setTimeout(() => {
+        setIsComplete(true);
+        deployNurses(nurses.map(n => n.id));
+      }, 2000);
     }
-  }, [steps, isComplete, open, nurses.length]);
+  }, [steps, isComplete, open, nurses, deployNurses]);
 
   if (nurses.length === 0) return null;
 
@@ -250,15 +120,17 @@ export function DeploymentDialog({
   });
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    
+    <Dialog  open={open} onOpenChange={onOpenChange}>
       <DialogContent
-        className={`max-w-4xl max-h-[80vh] overflow-y-auto py-2 ${!isComplete ? "[&>button]:hidden" : ""}`}
+        className={`max-w-4xl max-h-[80vh] overflow-hidden py-0 ${!isComplete ? "[&>button]:hidden" : ""}`}
       >
+        <div className="max-h-[80vh] overflow-y-auto py-6 pt-2 px-6 -mx-6">
         {isComplete && (
           <DialogHeader className="border-b  border-sidebar-border">
             {isComplete && (
               <DialogTitle className="text-2xl pb-2 font-normal text-brand-black1">
-                Deployment Confirmation
+                 Deployment Initiation & Progress
               </DialogTitle>
             )}
           </DialogHeader>
@@ -373,8 +245,10 @@ export function DeploymentDialog({
                   <Check className="w-5 h-5 " />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">
-                    {`${nurses.length} Nurses deployed successfully to Memorial Hospital ICU`}
+                  <h3 className="text-2xl font-bold justify-between flex gap-4">
+                    {/* {`${nurses.length} Nurses deployed successfully to Memorial Hospital ICU`} */}
+                    <p className="text-lg">Estimated deployment : 18 hours</p>
+                    <p className="inline text-lg">Target : Nurses on-site by 8 AM tomorrow</p>
                   </h3>
                 </div>
               </div>
@@ -426,8 +300,52 @@ export function DeploymentDialog({
                 </Table>
               </div>
             </div>
+            {/* Next Steps */}
+            <div className="bg-gradient-to-r from-emerald-50 to-cyan-50 rounded-lg p-6 border border-cyan-200">
+              <div className="space-y-3">
+                <h3 className="text-lg font-semibold text-brand-black2">
+                  Next Steps :-
+                </h3>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-brand-black2">
+                    Automated emails sent to nurses
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-brand-black2">
+                    Workday profiles being created
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-brand-black2">
+                    Housing arrangements in progress
+                  </span>
+                </div>
+              </div>
+            </div>
+            {/* next step buttons */}
+            <div className="flex justify-end gap-3">
+              <Button
+                variant="outline"
+                onClick={() => router.push("/dashboard")}
+                className="text-sm sm:text-base font-normal border py-2 sm:py-3 rounded-lg border-brand-cyan1 text-brand-cyan1 hover:bg-brand-cyan1 hover:text-white"
+              >
+                Go to Dashboard
+              </Button>
+              <Button
+                onClick={() => onOpenChange(false)}
+                className="bg-brand-cyan1 hover:bg-brand-cyan2 font-normal text-sm sm:text-base py-2 sm:py-3"
+              >
+                Close
+              </Button>
+            </div>
+            
           </div>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   );

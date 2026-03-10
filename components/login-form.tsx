@@ -6,7 +6,7 @@ import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Checkbox } from '@/components/ui/checkbox'
 import Image from 'next/image'
 
@@ -48,16 +48,28 @@ export function LoginForm() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader className="space-y-2 items-center">
-        <Image
-          alt="login-icon"
-          src="/assets/icon/login-icon.svg"
-          width={64}
-          height={64}
-        />
-        <CardTitle className="text-2xl">FlashCare AI</CardTitle>
+        {/* <CardTitle className="text-2xl">FlashCare AI</CardTitle>
         <CardDescription className="text-black-400">
           Crisis Management & Deployment System
-        </CardDescription>
+        </CardDescription> */}
+
+        <div className="flex justify-center items-center">
+          <div>
+          <Image
+            alt="login-icon"
+            src="/assets/icon/flashlogo.svg"
+            width={81}
+            height={106}
+            />
+            </div>
+          <div className='ml-2'>
+            <div className="flex">
+              <span className='text-brand-cyan3 text-4xl font-black'>Flash</span>
+              <span className='text-brand-cyan2 text-4xl font-black'>CareAI</span>
+            </div>
+<span className='font-normal text-sm text-brand-black5 tracking-[0.7px]'>Workforce Crisis Management</span>
+          </div>
+        </div>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">

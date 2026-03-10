@@ -28,10 +28,9 @@ import { MapPin, Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface NursesTableProps {
   readonly nurses: readonly Nurse[];
-  readonly onDeploymentComplete?: () => void;
 }
 
-export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps) {
+export function SearchWrapper({ nurses }: NursesTableProps) {
   const [checkedIds, setCheckedIds] = useState<Set<number>>(new Set());
   const [sortBy, _setSortBy] = useState<string>("name");
   const [filterAvailability, _setFilterAvailability] = useState<string>("all");
@@ -42,11 +41,10 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [itemsPerPage, setItemsPerPage] = useState(5);
 
   const filteredAndSortedNurses = useMemo(() => {
     let filtered = nurses.filter((nurse) => {
-      console.log(nurse);
       const availabilityMatch =
         filterAvailability === "all" ||
         nurse.availability_status === filterAvailability;
@@ -165,18 +163,6 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
     handleSelectAll(checkedIds.size !== filteredAndSortedNurses.length);
   };
 
-  //   const exportCheckedData = () => {
-  //     const dataStr = JSON.stringify(checkedNurses, null, 2);
-  //     const dataBlob = new Blob([dataStr], { type: "application/json" });
-  //     const url = URL.createObjectURL(dataBlob);
-  //     const link = document.createElement("a");
-  //     link.href = url;
-  //     link.download = `checked-nurses-${new Date().toISOString().split("T")[0]}.json`;
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     document.body.removeChild(link);
-  //     URL.revokeObjectURL(url);
-  //   };
 
   const handleDeploy = (nurse: Nurse) => {
     setDeployingNurses([nurse]);
@@ -192,7 +178,6 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
   const handleDeploymentComplete = () => {
     setCheckedIds(new Set());
     setIsDeploymentOpen(false);
-    onDeploymentComplete?.();
   };
 
   const handleNurseClick = (nurse: Nurse) => {
@@ -200,10 +185,7 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
     setIsDialogOpen(true);
   };
 
-  // Call the callback when checked nurses change
-  //   if (onCheckedNursesChange) {
-  //     // onCheckedNursesChange(checkedNurses);
-  //   }
+
 
   return (
     <div className="w-full space-y-4 p-4 md:p-6">
@@ -214,7 +196,7 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
       >
         <div>
           <h1 className="text-2xl sm:text-[32px] font-normal text-brand-black1">
-            Nurse Search & AI Matching
+            Find Nurse & AI Matching
           </h1>
           <p className="text-sm sm:text-base font-normal mt-1 text-brand-black2">
             Find and deploy qualified nurses with intelligent matching
@@ -232,14 +214,7 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
       {/* Search Filters */}
       <SearchClient filteredNursesCount={filteredAndSortedNurses?.length} />
 
-      {/* <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
-        <p className="text-sm text-slate-700">
-          Selected: <strong>{checkedNurses.length}</strong> of{" "}
-          <strong>{filteredAndSortedNurses.length}</strong> nurses
-        </p>
-      </div> */}
-
-      {/* Table */}
+     {/* Table */}
       <div className="rounded-lg border overflow-hidden">
         <div className="overflow-x-auto">
           <Table>
@@ -260,7 +235,7 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
                 <TableHead>CREDENTIALS</TableHead>
                 <TableHead>SPECIALTY</TableHead>
                 <TableHead className="">EXPERIENCE</TableHead>
-                <TableHead>Location</TableHead>
+                <TableHead>LOCATION</TableHead>
                 <TableHead className=""> DISTANCE</TableHead>
                 <TableHead className="text-center"> MATCH SCORE</TableHead>
                 <TableHead> AVAILABILITY</TableHead>
@@ -324,14 +299,16 @@ export function SearchWrapper({ nurses, onDeploymentComplete }: NursesTableProps
                   <TableCell>
                     <Badge
                       variant={
-                        nurse.availability_status === "Available"
+                        nurse.availability_status === "Immediate"
                           ? "default"
                           : "secondary"
                       }
                       className={`text-xs font-normal px-2 py-1.5 rounded-full shadow-none ${
-                        nurse.availability_status === "Available"
+                        nurse.availability_status === "Immediate"
                           ? "bg-brand-green4 text-brand-green5 hover:bg-hidden hover:text-brand-green5"
-                          : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
+                          : nurse.availability_status === "24 Hrs"
+                            ? "bg-blue-100 text-blue-800 hover:bg-hidden hover:text-blue-800"
+                            : "bg-amber-100 text-amber-800 hover:bg-hidden hover:text-amber-800"
                       }`}
                     >
                       {nurse.availability_status}

@@ -1,0 +1,257 @@
+"use client";
+ 
+import { createContext, useContext, useState, ReactNode } from "react";
+import nursesJson from "@/data/nurses.json";
+import metricsJson from "@/data/metrics.json";
+import unitsJson from "@/data/units.json";
+import { Nurse } from "@/app/(home)/search/search.constant";
+
+interface Metric {
+  id: number;
+  label: string;
+  value: string;
+  [key: string]: any;
+}
+
+interface Unit {
+  id: number;
+  name: string;
+  current: number;
+  capacity: number;
+  needed: number;
+  staffed: number;
+  [key: string]: any;
+}
+
+interface Activity {
+  id: number;
+  time: string;
+  text: string;
+  [key: string]: any;
+}
+
+interface AppDataContextType {
+  nurses: Nurse[];
+  metrics: Metric[];
+  units: Unit[];
+  activities: Activity[];
+  deployNurses: (nurseIds: number[]) => void;
+}
+
+const AppDataContext = createContext<AppDataContextType | undefined>(undefined);
+
+export function AppDataProvider({ children }: { children: ReactNode }) {
+  const [nurses, setNurses] = useState<Nurse[]>(nursesJson as any);
+  const [metrics, setMetrics] = useState<Metric[]>(metricsJson as Metric[]);
+  const [units, _setUnits] = useState<Unit[]>(unitsJson as Unit[]);
+
+  // Initialize activities with dynamic timestamps
+  const [activities, setActivities] = useState<Activity[]>(() => {
+    const now = new Date();
+
+    // Strike alert - 2 hours ago
+    const strikeTime = new Date(now.getTime() - 2 * 60 * 60 * 1000);
+    const strikeTimeStr = strikeTime.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const strikeDateStr = strikeTime.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    // Emergency credentials - 1 hour 40 minutes ago
+    const credTime = new Date(now.getTime() - 100 * 60 * 1000);
+    const credTimeStr = credTime.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStr = credTime.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    const credTimeGeneral = new Date(now.getTime() - 95 * 60 * 1000);
+    const credTimeStrGeneral = credTimeGeneral.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStrGeneral = credTimeGeneral.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    const credTimeMaternity = new Date(now.getTime() - 89 * 60 * 1000);
+    const credTimeStrMaternity = credTimeMaternity.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStrMaternity = credTimeMaternity.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    return [
+      {
+        id: 1,
+        time: `${credDateStrMaternity}, ${credTimeStrMaternity}`,
+        text: "16 Telemetry nurses deployed to Memorial Hospital",
+        color: "text-amber-600",
+        bg2: "bg-green-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+      {
+        id: 2,
+        time: `${credDateStrGeneral}, ${credTimeStrGeneral}`,
+        text: "16 Labor and Delivery nurses deployed to Memorial Hospital",
+        color: "text-amber-600",
+        bg2: "bg-green-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+      {
+        id: 3,
+        time: `${credDateStr}, ${credTimeStr}`,
+        text: "8 ICU nurses deployed to Memorial Hospital",
+        color: "text-amber-600",
+        bg2: "bg-green-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+      {
+        id: 4,
+        time: `${strikeDateStr}, ${strikeTimeStr}`,
+        text: "Strike alert activated",
+        color: "text-amber-600",
+        bg2: "bg-amber-600",
+        bg: "bg-amber-100",
+        status: "Emergency",
+      },
+    ];
+  });
+
+  const deployNurses = (nurseIds: number[]) => {
+    const deployedNurses = nurses.filter((n) => nurseIds.includes(n.id));
+    console.log("deployedNurses: ", deployedNurses);
+    const deployedCount = deployedNurses.length;
+
+    setNurses((prev) =>
+      prev.map((n) => (nurseIds.includes(n.id) ? { ...n, deployed: true } : n)),
+    );
+
+    setMetrics((prev) => {
+      const updated = prev.map((m) => {
+        if (m.label === "In Process") {
+          const newValue = String(Number.parseInt(m.value) + deployedCount);
+          console.log("Updating In Process from", m.value, "to", newValue);
+          return { ...m, value: newValue };
+        }
+        if (m.label === "Nurses Needed") {
+          const newValue = String(
+            Math.max(0, Number.parseInt(m.value) - deployedCount),
+          );
+          console.log("Updating Nurses Needed from", m.value, "to", newValue);
+          return { ...m, value: newValue };
+        }
+        return m;
+      });
+      console.log("Updated metrics:", updated);
+      return updated;
+    });
+
+    // const nursesBySpecialty = deployedNurses.reduce(
+    //   (acc, nurse) => {
+    //     acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
+    //     return acc;
+    //   },
+    //   {} as Record<string, number>,
+    // );
+
+    // setUnits((prev) =>
+    //   prev.map((unit) => {
+    //     const additionalNurses = nursesBySpecialty[unit.name] || 0;
+    //     if (additionalNurses > 0) {
+    //       const newCurrent = Math.min(
+    //         unit.capacity,
+    //         unit.current + additionalNurses,
+    //       );
+    //       const newNeeded = Math.max(0, unit.needed - additionalNurses);
+
+    //       let status = "Critical";
+    //       let color = "text-red-600";
+    //       let bg = "bg-red-100";
+    //       let border = "border-red-300";
+
+    //       if (newNeeded <= 2) {
+    //         status = "Stable";
+    //         color = "text-green-600";
+    //         bg = "bg-green-100";
+    //         border = "border-green-300";
+    //       } else if (newNeeded <= 5) {
+    //         status = "Warning";
+    //         color = "text-amber-600";
+    //         bg = "bg-amber-100";
+    //         border = "border-amber-300";
+    //       }
+
+    //       return {
+    //         ...unit,
+    //         // current: newCurrent,
+    //         // needed: newNeeded,
+    //         // staffed: newCurrent,
+    //         status,
+    //         color,
+    //         bg,
+    //         border,
+    //       };
+    //     }
+    //     return unit;
+    //   }),
+    // );
+
+    const now = new Date();
+    const time = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const date = now.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+    const dateTime = `${date}, ${time}`;
+
+    const newActivity = {
+      id: activities.length + 1,
+      time: dateTime,
+      text: `${deployedCount} ${deployedNurses[0]?.specialty} nurse${
+        deployedCount > 1 ? "s" : ""
+      } deployed to Memorial Hospital`,
+      color: "",
+      status: "",
+      bg: "",
+      bg2: "bg-green-600",
+    };
+    setActivities((prev) => [newActivity, ...prev]);
+  };
+
+  return (
+    <AppDataContext.Provider
+      value={{ nurses, metrics, units, activities, deployNurses }}
+    >
+      {children}
+    </AppDataContext.Provider>
+  );
+}
+ 
+export function useAppData() {
+  const context = useContext(AppDataContext);
+  if (!context) {
+    throw new Error("useAppData must be used within AppDataProvider");
+  }
+  return context;
+}

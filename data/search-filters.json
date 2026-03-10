@@ -1,27 +1,30 @@
 {
   "location": [
+    { "value": "all", "label": "All" },
     { "value": "50", "label": "Within 50 miles" },
     { "value": "100", "label": "Within 100 miles" },
-    { "value": "200", "label": "Within 200 miles" }
+    { "value": "200", "label": "Within 200 miles" },
+    { "value": "350", "label": "Within 350 miles" }
   ],
   "specialization": [
+    { "value": "all", "label": "All" },
     { "value": "icu", "label": "ICU" },
-    { "value": "maternity", "label": "Maternity" },
-    { "value": "dialysis", "label": "Dialysis" },
-    { "value": "general ward", "label": "General Ward" },
-    { "value": "emergency", "label": "Emergency" },
-    { "value": "oncology", "label": "Oncology" },
-    { "value": "nicu", "label": "NICU" }
+    { "value": "er", "label": "ER" },
+    { "value": "telemetry", "label": "Telemetry" },
+    { "value": "medical-surgical", "label": "Medical-Surgical" },
+    { "value": "labor and delivery", "label": "Labor and Delivery" }
   ],
   "experience": [
+    { "value": "all", "label": "All" },
     { "value": "1+", "label": "1+ years" },
     { "value": "3+", "label": "3+ years" },
     { "value": "5+", "label": "5+ years" },
     { "value": "10+", "label": "10+ years" }
   ],
   "availability": [
-    { "value": "immediate", "label": "Immediate (24hrs)" },
-    { "value": "week", "label": "Within a week" },
-    { "value": "month", "label": "Within a month" }
+    { "value": "all", "label": "All" },
+    { "value": "Immediate", "label": "Immediate" },
+    { "value": "24 Hrs", "label": "24 Hours" },
+    { "value": "48 Hrs", "label": "48 Hours" }
   ]
 }

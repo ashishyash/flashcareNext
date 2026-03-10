@@ -8,7 +8,7 @@ export interface Nurse {
   location: string;
   distance_miles: number;
   match_score: number;
-  availability_status: "Available" | "Busy";
+  availability_status: "Immediate" | "24 Hrs" | "48 Hrs";
   rate_per_hour: number;
   certifications: string[];
   previous_rating: number;

@@ -18,23 +18,20 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { showFilter, setShowFilter } = useSidebar();
-  const [isOpen, setIsOpen] = useState(showFilter);
+  const [isOpen, setIsOpen] = useState(true);
 
   const [filters, setFilters] = useState({
     location: searchParams.get("location") || "100",
     specialization: searchParams.get("specialization") || "icu",
-    experience: searchParams.get("experience") || "5+",
-    availability: searchParams.get("availability") || "immediate",
+    experience: searchParams.get("experience") || "all",
+    availability: searchParams.get("availability") || "all",
   });
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(filters);
-  //   router.replace(`/search?${params.toString()}`);
-  // }, []);
+  console.log("filters", searchFilters.specialization, filters);
 
   const handleSubmit = () => {
     const params = new URLSearchParams(filters);
-    router.push(`/search?${params.toString()}`);
+    router.replace(`/search?${params.toString()}`);
   };
 
   return (
@@ -44,13 +41,16 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-5 py-4">
         <div className="flex items-center">
-          <h3 className="text-lg font-normal text-brand-black1">Filters</h3>
+          <h3 className="text-lg font-normal text-brand-black1">
+            Search Results : 
+          </h3>
           {/* Results count */}
           <p
             data-testid="results-count"
-            className="ml-8 text-sm font-normal text-brand-black2"
+            className="ml-2 text-sm font-normal text-brand-black2"
           >
-            {filteredNursesCount} nurses match your criteria
+            {`Found ${filteredNursesCount} qualified nurses matching Memorial
+            Hospital's needs`}
           </p>
         </div>{" "}
         <button
@@ -68,8 +68,7 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
       </div>
 
       {isOpen && (
-        <>
-          <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]  gap-4">
+        <div className="px-5 pb-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(4,minmax(0,1fr))_auto]  gap-4">
             <div>
               <label className="block text-sm text-brand-black2 font-normal mb-1.5">
                 Location
@@ -199,7 +198,6 @@ export const SearchClient = ({ filteredNursesCount = 0 }) => {
               </Button>
             </div>
           </div>
-        </>
       )}
     </div>
   );
