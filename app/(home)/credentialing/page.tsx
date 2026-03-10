@@ -74,7 +74,7 @@ const verifiedCredentials = [
   { title: "RN License", source: "AI System", duration: "2 min" },
   { title: "PALS Certification", source: "AI System", duration: "2 min" },
   { title: "Background Check", source: "AI System", duration: "6 min" },
-  { title: "References", source: "AI System", duration: "3 min" },
+  { title: "Competency Exams", source: "AI System", duration: "3 min" },
 ];
 
 const CredentialingQueue = () => {
@@ -185,7 +185,7 @@ const CredentialingQueue = () => {
               <Loader2 className="w-5 h-6 sm:w-6 sm:h-6 animate-spin text-brand-amber1 flex-shrink-0" />
               <div>
                 <div className="text-sm font-normal text-brand-black1">
-                  Hospital Privileges - In Progress
+                  Hospital Access - In Progress
                 </div>
               </div>
             </Card>

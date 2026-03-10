@@ -5,14 +5,14 @@ import nursesJson from "@/data/nurses.json";
 import metricsJson from "@/data/metrics.json";
 import unitsJson from "@/data/units.json";
 import { Nurse } from "@/app/(home)/search/search.constant";
- 
+
 interface Metric {
   id: number;
   label: string;
   value: string;
   [key: string]: any;
 }
- 
+
 interface Unit {
   id: number;
   name: string;
@@ -22,7 +22,7 @@ interface Unit {
   staffed: number;
   [key: string]: any;
 }
- 
+
 interface Activity {
   id: number;
   time: string;
@@ -73,10 +73,31 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       day: "numeric",
     });
 
+    const credTimeGeneral = new Date(now.getTime() - 95 * 60 * 1000);
+    const credTimeStrGeneral = credTimeGeneral.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStrGeneral = credTimeGeneral.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+
+    const credTimeMaternity = new Date(now.getTime() - 89 * 60 * 1000);
+    const credTimeStrMaternity = credTimeMaternity.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    const credDateStrMaternity = credTimeMaternity.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
     return [
       {
         id: 1,
-        time: `${credDateStr}, ${credTimeStr}`,
+        time: `${credDateStrMaternity}, ${credTimeStrMaternity}`,
         text: "16 Telemetry nurses deployed to Memorial Hospital",
         color: "text-amber-600",
         bg2: "bg-green-600",
@@ -85,8 +106,8 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       },
       {
         id: 2,
-        time: `${credDateStr}, ${credTimeStr}`,
-        text: "16 Medical-Surgical nurses deployed to Memorial Hospital",
+        time: `${credDateStrGeneral}, ${credTimeStrGeneral}`,
+        text: "16 Labor and Delivery nurses deployed to Memorial Hospital",
         color: "text-amber-600",
         bg2: "bg-green-600",
         bg: "bg-amber-100",
@@ -142,7 +163,13 @@ export function AppDataProvider({ children }: { children: ReactNode }) {
       return updated;
     });
 
-
+    // const nursesBySpecialty = deployedNurses.reduce(
+    //   (acc, nurse) => {
+    //     acc[nurse.specialty] = (acc[nurse.specialty] || 0) + 1;
+    //     return acc;
+    //   },
+    //   {} as Record<string, number>,
+    // );
 
     // setUnits((prev) =>
     //   prev.map((unit) => {
