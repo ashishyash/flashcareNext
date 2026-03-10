@@ -78,7 +78,7 @@ export default function DashboardClient(): JSX.Element {
   } = useAppData();
 
   const [state, setState] = useState<DashboardState>({
-    elapsedTime: "2 hours ago",
+    elapsedTime: " 5 days ago",
     countdown: 120,
     seconds: 0,
   });
@@ -168,10 +168,10 @@ export default function DashboardClient(): JSX.Element {
 
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-0.25 sm:gap-1 text-sm mt-2 sm:mt-3">
                   <span className="flex items-center text-base sm:text-xl">
-                    Started {state.elapsedTime} -
+                    Notice Given {state.elapsedTime} -
                   </span>
                   <span className="flex items-center text-base sm:text-xl">
-                    {`172 Nurses Needed`}
+                    {`172 clinicians ordered`}
                   </span>
                 </div>
               </div>

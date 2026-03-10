@@ -40,9 +40,9 @@ const AnalyticsDashboard = () => {
     },
     {
       id: 2,
-      title: "Avg Deployment Time",
+      title: "Average fulfillment",
       value: "22h",
-      subtitle: "Time to deployment",
+      subtitle: "Time to Fulfilled Order",
       icon: Clock,
       iconBg: "bg-cyan-100",
       iconColor: "text-cyan-600",
@@ -52,7 +52,7 @@ const AnalyticsDashboard = () => {
     },
     {
       id: 3,
-      title: "Placement Success Rate",
+      title: "Completion Rate",
       value: "94%",
       subtitle: "Assignment completion",
       icon: Award,
@@ -64,9 +64,9 @@ const AnalyticsDashboard = () => {
     },
     {
       id: 4,
-      title: "Cost Savings",
+      title: "Revenue Generated",
       value: "$147K",
-      subtitle: "vs traditional staffing",
+      subtitle: "",
       icon: DollarSign,
       iconBg: "bg-orange-100",
       iconColor: "text-orange-600",
