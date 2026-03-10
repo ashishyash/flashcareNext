@@ -3,14 +3,16 @@
     { "value": "all", "label": "All" },
     { "value": "50", "label": "Within 50 miles" },
     { "value": "100", "label": "Within 100 miles" },
-    { "value": "200", "label": "Within 200 miles" }
+    { "value": "200", "label": "Within 200 miles" },
+    { "value": "350", "label": "Within 350 miles" }
   ],
   "specialization": [
     { "value": "all", "label": "All" },
     { "value": "icu", "label": "ICU" },
-    { "value": "maternity", "label": "Maternity" },
-    { "value": "dialysis", "label": "Dialysis" },
-    { "value": "general ward", "label": "General Ward" }
+    { "value": "er", "label": "ER" },
+    { "value": "telemetry", "label": "Telemetry" },
+    { "value": "medical-surgical", "label": "Medical-Surgical" },
+    { "value": "labor and delivery", "label": "Labor and Delivery" }
   ],
   "experience": [
     { "value": "all", "label": "All" },

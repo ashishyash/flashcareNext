@@ -82,9 +82,23 @@ const ContractGeneration = () => {
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm">Duration : 1 Week</p>
+                    <p className="text-sm">Anticipated Assignment Dates</p>
                     <p className="text-sm font-normal">
-                      Starts Date : Tomorrow 7 AM
+                      {(() => {
+                        const startDate = new Date();
+                        startDate.setDate(startDate.getDate() + 14);
+                        const endDate = new Date(startDate);
+                        endDate.setDate(endDate.getDate() + 4);
+                        return `${startDate.toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })} - ${endDate.toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })}`;
+                      })()}
                     </p>
                   </div>
                 </div>
@@ -142,10 +156,10 @@ const ContractGeneration = () => {
                     <Calendar className="w-5 h-5 text-brand-cyan1 flex-shrink-0 mt-0.5" />
                     <div className="min-w-0">
                       <span className="text-xs sm:text-sm font-normal text-brand-black2 block">
-                        Duration
+                        Shift Assigned
                       </span>
                       <p className="text-sm sm:text-base font-normal text-brand-black1">
-                        1 weeks
+                        7am-7pm
                       </p>
                       <p className="text-xs sm:text-sm text-brand-black2">
                         Duration of Strike
@@ -164,7 +178,7 @@ const ContractGeneration = () => {
                         $75/hour + $150/day Housing
                       </p>
                       <p className="text-xs sm:text-sm text-gray-600">
-                        40 hours/week
+                        36 hours/week
                       </p>
                     </div>
                   </CardContent>
@@ -244,7 +258,9 @@ const ContractGeneration = () => {
                     Facility Representative
                   </p>
                   <div className="border-t border-gray-300 pb-2 pt-2 mb-2">
-                    <p className="text-brand-black2">HR Department</p>
+                    <p className="text-brand-black2">
+                      FlashCareAI Representative
+                    </p>
                   </div>
                   <p className="text-sm text-brand-black2">
                     Date: _______________
@@ -287,9 +303,9 @@ const ContractGeneration = () => {
             <Card className="border border-sidebar-border">
               <CardContent className="p-4 sm:p-6">
                 <h3 className="text-base sm:text-lg font-normal text-brand-black1 mb-4">
-                  Generation Stats
+                  4 of Contracts Awaiting Signature
                 </h3>
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                   <div>
                     <p className="text-xs sm:text-sm text-brand-black2 mb-1">
                       Generation Time
@@ -322,7 +338,7 @@ const ContractGeneration = () => {
                       Pre-approved template
                     </p>
                   </div>
-                </div>
+                </div> */}
               </CardContent>
             </Card>
 

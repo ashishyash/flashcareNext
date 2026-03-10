@@ -78,7 +78,7 @@ export default function DashboardClient(): JSX.Element {
   } = useAppData();
 
   const [state, setState] = useState<DashboardState>({
-    elapsedTime: "2 hours ago",
+    elapsedTime: " 5 days ago",
     countdown: 120,
     seconds: 0,
   });
@@ -151,7 +151,7 @@ export default function DashboardClient(): JSX.Element {
           </div>
         </div>
 
-        <div className="bg-brand-red1 text-white rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 shadow-lg animate-pulse">
+        <div className="bg-brand-red1 text-white rounded-lg p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 shadow-lg ">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div className="flex items-start">
               <div>
@@ -168,10 +168,10 @@ export default function DashboardClient(): JSX.Element {
 
                 <div className="flex flex-col sm:flex-row sm:flex-wrap gap-0.25 sm:gap-1 text-sm mt-2 sm:mt-3">
                   <span className="flex items-center text-base sm:text-xl">
-                    Started {state.elapsedTime} -
+                    Notice Given {state.elapsedTime} -
                   </span>
                   <span className="flex items-center text-base sm:text-xl">
-                    {`172 Nurses Needed`}
+                    {`172 clinicians ordered`}
                   </span>
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function DashboardClient(): JSX.Element {
           })}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-4 mb-4 sm:mb-6">
           <Card className="border border-sidebar-border overflow-hidden">
             <CardHeader className="border-b border-b-sidebar-border py-3 px-4">
               <CardTitle className="text-base sm:text-lg font-normal">
