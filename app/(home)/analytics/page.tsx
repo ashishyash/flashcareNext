@@ -163,7 +163,7 @@ const AnalyticsDashboard = () => {
                 Deployment Timeline Graph
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pl-0">
               <ResponsiveContainer
                 width="100%"
                 height={250}
@@ -216,12 +216,12 @@ const AnalyticsDashboard = () => {
 
           {/* Strike Duration vs Response Time */}
           <Card className="border-sidebar-border">
-            <CardHeader className="pb-2 md:pb-4">
+            <CardHeader className="pb-2 md:pb-4 pr-0">
               <CardTitle className="text-lg md:text-xl font-normal text-brand-black1">
-                Strike Duration vs Response Time
+                Travel Clinician Bill Rate vs Strike Clinician Bill Rate
               </CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="pl-0">
               <ResponsiveContainer
                 width="100%"
                 height={250}
@@ -235,7 +235,7 @@ const AnalyticsDashboard = () => {
                     tickLine={false}
                     tick={{ fill: "#6b7280", fontSize: 11 }}
                     domain={[0, 360]}
-                    ticks={[0, 60, 120, 180, 240, 300, 360]}
+                    ticks={[0,40, 80, 120, 160, 200, 240, 280,320,360]}
                   />
                   <YAxis
                     axisLine={false}
@@ -254,8 +254,8 @@ const AnalyticsDashboard = () => {
                         className={`text-xs md:text-sm ${value === "responseTime" ? "text-teal-600" : "text-red-400"}`}
                       >
                         {value === "responseTime"
-                          ? "Response Time"
-                          : "Strike Duration"}
+                          ? "Travel Clinician Bill Rate "
+                          : "Strike Clinician Bill Rate"}
                       </span>
                     )}
                   />

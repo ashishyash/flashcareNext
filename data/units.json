@@ -14,7 +14,7 @@
   },
   {
     "id": 2,
-    "name": "Maternity",
+    "name": "Telemetry",
     "current": 25,
     "capacity": 36,
     "needed": 11,
@@ -26,7 +26,7 @@
   },
   {
     "id": 3,
-    "name": "Dialysis",
+    "name": "Labor and Delivery",
     "current": 20,
     "capacity": 23,
     "needed": 3,
@@ -37,8 +37,20 @@
     "border": "border-green-300"
   },
   {
+  "id": 4,
+  "name": "ER",
+  "current": 20,
+  "capacity": 27,
+  "needed": 7,
+  "staffed": 0,
+  "status": "Warning",
+    "color": "text-amber-600",
+    "bg": "bg-amber-100",
+    "border": "border-amber-300"
+},
+  {
     "id": 4,
-    "name": "General Ward",
+    "name": "Medical-Surgical",
     "current": 23,
     "capacity": 27,
     "needed": 4,

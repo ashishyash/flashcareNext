@@ -77,8 +77,8 @@ export function AppSidebar() {
             </h3>
           </div>
         </div>
-        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-white tracking-[1.7px]">
-          Hospital Crisis Management
+        <p className="text-sm group-data-[collapsible=icon]:hidden text-brand-white tracking-[1px]">
+          Workforce Crisis Management
         </p>
       </SidebarHeader>
       <hr className="mt-2 border-brand-cyan1" />

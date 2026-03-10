@@ -116,8 +116,7 @@ export default function DashboardClient(): JSX.Element {
 
   const activities: Activity_Item[] = (activitiesData as any) || [];
 
-  const fulfillmentCount = units.reduce((sum, unit) => sum + unit.current, 0);
-  const totalNurseNeeded = Number(metrics[0]?.value) || 0;
+
   const fulfillmentPercentage = 30;
   // totalNurseNeeded > 0
   //   ? Math.floor((fulfillmentCount / totalNurseNeeded) * 100)
