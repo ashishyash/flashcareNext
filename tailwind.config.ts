@@ -88,6 +88,7 @@ const config = {
           black2: "hsl(var(--brand-black2))",
           black3: "hsl(var(--brand-black3))",
           black4: "hsl(var(--brand-black4))",
+          black5: "hsl(var(--brand-black5))",
           red1: "hsl(var(--brand-red1))",
           cyan1: "hsl(var(--brand-cyan1))",
           cyan2: "hsl(var(--brand-cyan2))",

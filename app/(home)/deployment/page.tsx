@@ -16,7 +16,7 @@ const deploymentsData = [
         "text-xs font-normal bg-orange-100 rounded-full text-orange-700 border border-orange-400 hover:bg-orange-100",
     },
     hospital: "Memorial Hospital",
-    location: "Houston, TX",
+    location: "Washington",
     startDate: "Feb 8, 2026",
     endDate: "Mar 8, 2026",
     timeToDeploy: "12 hours to deploy",
@@ -34,7 +34,7 @@ const deploymentsData = [
         "text-xs font-normal rounded-full bg-cyan-100 text-cyan-700 border border-cyan-200 hover:bg-cyan-100",
     },
     hospital: "Memorial Hospital",
-    location: "Houston, TX",
+    location: "Washington",
     startDate: "Feb 13, 2026",
     endDate: "Mar 8, 2026",
     timeToDeploy: "18 hours to deploy",
@@ -52,7 +52,7 @@ const deploymentsData = [
         "text-xs font-normal rounded-full bg-orange-100 text-orange-700 border-orange-400 hover:bg-orange-100",
     },
     hospital: "Memorial Hospital",
-    location: "Houston, TX",
+    location: "Washington",
     startDate: "Feb 11, 2026",
     endDate: "Mar 8, 2026",
     timeToDeploy: "12 hours to deploy",
@@ -70,7 +70,7 @@ const deploymentsData = [
         "text-xs font-normal rounded-full bg-yellow-100 text-yellow-700 border border-yellow-200 hover:bg-yellow-100",
     },
     hospital: "Memorial Hospital",
-    location: "Houston, TX",
+    location: "Washington",
     startDate: "Feb 12, 2026",
     endDate: "Mar 8, 2026",
     timeToDeploy: "2 days to deploy",
@@ -88,7 +88,7 @@ const deploymentsData = [
         "text-xs font-normal rounded-full bg-cyan-100 text-cyan-700 border border-cyan-300 hover:bg-cyan-100",
     },
     hospital: "Memorial Hospital",
-    location: "Houston, TX",
+    location: "Washington",
     startDate: "Feb 11, 2026",
     endDate: "Mar 8, 2026",
     timeToDeploy: "2 days to deploy",
@@ -156,7 +156,7 @@ const DeploymentPipeline = () => {
           Deployment Pipeline
         </h1>
         <p className="text-base font-normal mb-6">
-          Operational oversight of all active deployments
+          Operational oversight of all active clinicians
         </p>
 
         {/* Stats Cards */}
